@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css?family=IM+Fell+English+SC|Seaweed+Script');
+
+.italic {
+    font-style: italic;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.rightAlign {
+    text-align: right;
+}
+
+.textJustify {
+    text-align: justify;
+}
+
+#wrapper {
+    margin: 20px;
+    width: 300px;
+    border: 1px solid #000000c9;
+    box-shadow: 0 0 30px black inset;
+    padding: 0 15px;  
+    background-image: url("http://backgrounds.mysitemyway.com/wp-content/uploads/2009/03/watercolor-grunge-000100-glossy-rust.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; 
+}
+
+
+
+/* CORNER DECORATIONS */
+
+.decoContainer {
+    position: relative;
+    left: 0;
+    top: 0;
+}
+
+.cornerLeft {
+    display: inline-block;
+    transform:rotate(130deg);
+    position: absolute;
+    left: -25px;
+    top: 10px;
+}
+
+.cornerRight {
+    display: inline-block;
+    transform: rotate(-133deg);
+    position: absolute;
+    right: -25px;
+    top: 10px;
+}
+
+.deco {
+    height: 30px;
+    filter: brightness(80%);
+}
+
+
+
+/* GRADIENT TITLE */
+
+.titleContainer {
+    background-color: #f3f3ee00;
+    position: relative;
+    z-index: 1;
+}
+
+.title {
+    font-size: 40px;
+    background-image: -webkit-linear-gradient(#fbfbb4, #ff4500de);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    text-align: center;
+    font-family: "IM Fell English SC";
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+h3::after {
+    background: rgba(0, 0, 0, 0);
+    content: attr(data-text);
+    left: 80px;
+    top: 0;
+    position: absolute;
+    text-shadow: 2px 2px 5px black;
+    z-index: -1;
+  }
+
+
+/* IMG, CONTENT STYLES */
+
+.beastImg {
+    width: 300px;
+    box-shadow: 0 0 15px black;
+    border-radius: 10px;
+}
+
+#content {
+    border-radius: 10px;
+    background-color: rgba(47, 24, 0, 0.36);
+    padding: 0px 10px 0 10px;
+    font-family: "Seaweed Script", serif;
+    font-size: 110%;
+    color: black;
+    text-shadow: 1px 1px 1px #ea4710ba;
+    box-shadow: 0 0 10px #00000094;
+}
+
+.factList {
+    list-style-type: none;
+    padding: 0;
+}
