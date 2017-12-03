@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=IM+Fell+English+SC|Seaweed+Script');
+@import url('https://fonts.googleapis.com/css?family=El+Messiri|Euphoria+Script');
 
 .italic {
     font-style: italic;
@@ -20,9 +20,10 @@
     margin: 20px;
     width: 300px;
     border: 1px solid #000000c9;
+    border-radius: 15px;
     box-shadow: 0 0 30px black inset;
     padding: 0 15px;  
-    background-image: url("http://backgrounds.mysitemyway.com/wp-content/uploads/2009/03/watercolor-grunge-000100-glossy-rust.jpg");
+    background-image: url("https://wallpaperstock.net/wallpapers/thumbs1/34518wide.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover; 
@@ -70,13 +71,13 @@
 }
 
 .title {
-    font-size: 40px;
-    background-image: -webkit-linear-gradient(#fbfbb4, #ff4500de);
+    font-size: 60px;
+    background-image: -webkit-linear-gradient(#f5ece3, #817665);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     position: relative;
     text-align: center;
-    font-family: "IM Fell English SC";
+    font-family: "Euphoria Script", serif;
     margin-top: 15px;
     margin-bottom: 10px;
 }
@@ -84,10 +85,10 @@
 h3::after {
     background: rgba(0, 0, 0, 0);
     content: attr(data-text);
-    left: 80px;
+    left: 71px;
     top: 0;
     position: absolute;
-    text-shadow: 2px 2px 5px black;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.79);
     z-index: -1;
   }
 
@@ -97,21 +98,27 @@ h3::after {
 .beastImg {
     width: 300px;
     box-shadow: 0 0 15px black;
-    border-radius: 10px;
+    border-radius: 15px 15px 3px 3px;
 }
 
 #content {
-    border-radius: 10px;
-    background-color: rgba(47, 24, 0, 0.36);
-    padding: 0px 10px 0 10px;
-    font-family: "Seaweed Script", serif;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border-radius: 3px 3px 15px 15px;
+    background-color: #d6be9bd1;
+    font-family: "El Messiri", serif;
     font-size: 110%;
+    line-height: 1;
     color: black;
-    text-shadow: 1px 1px 1px #ea4710ba;
-    box-shadow: 0 0 10px #00000094;
+    text-shadow: 0px 0px 3px #f36193;
+    box-shadow: 0 0 15px #000000;
 }
 
 .factList {
     list-style-type: none;
-    padding: 0;
+}
+
+.textSpacing {
+    padding: 10px;
+    margin: 0;
 }
