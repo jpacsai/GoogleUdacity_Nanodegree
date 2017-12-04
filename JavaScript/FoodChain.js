@@ -25,3 +25,6 @@ var category = eatsPlants && eatsAnimals ? ("omnivore") :
     (eatsAnimals ? ("carnivore") : ("")));
 
 console.log(category);
+console.log("Hello world!");
+
+
