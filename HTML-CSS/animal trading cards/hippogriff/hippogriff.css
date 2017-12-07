@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css?family=El+Messiri|Euphoria+Script');
+
+.italic {
+    font-style: italic;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.rightAlign {
+    text-align: right;
+}
+
+.textJustify {
+    text-align: justify;
+}
+
+.wrapper {
+    margin: 20px;
+    width: 300px;
+    border: 1px solid #000000c9;
+    border-radius: 15px;
+    box-shadow: 0 0 30px black inset;
+    padding: 0 15px;  
+    background-image: url("https://image.freepik.com/free-vector/watercolor-background-white-and-blue_1035-6040.jpg"); 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; 
+}
+
+
+
+/* CORNER DECORATIONS */
+
+.decoContainer {
+    position: relative;
+    left: 0;
+    top: 0;
+}
+
+.cornerLeft {
+    display: inline-block;
+    transform:rotate(130deg);
+    position: absolute;
+    left: -25px;
+    top: 10px;
+}
+
+.cornerRight {
+    display: inline-block;
+    transform: rotate(-133deg);
+    position: absolute;
+    right: -25px;
+    top: 10px;
+}
+
+.deco {
+    height: 30px;
+    filter: brightness(80%);
+}
+
+
+
+/* GRADIENT TITLE */
+
+.titleContainer {
+    background-color: #f3f3ee00;
+    position: relative;
+    z-index: 1;
+}
+
+.title {
+    font-size: 60px;
+    background-image: -webkit-linear-gradient(#f5ece3, #817665);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    text-align: center;
+    font-family: "Euphoria Script", serif;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.title::after {
+    background: rgba(0, 0, 0, 0);
+    content: attr(data-text);
+    left: 71px;
+    top: 0;
+    position: absolute;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.79);
+    z-index: -1;
+  }
+
+
+/* IMG, CONTENT STYLES */
+
+.beastImg {
+    width: 300px;
+    box-shadow: 0 0 15px black;
+    border-radius: 15px 15px 3px 3px;
+}
+
+.content {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border-radius: 3px 3px 15px 15px;
+    background-color: #ffffff6e;
+    font-family: "El Messiri", serif;
+    font-size: 110%;
+    line-height: 1;
+    color: black;
+    text-shadow: 0px 0px 3px #ffffff;
+    box-shadow: 0 0 15px #000000;
+}
+
+.factList {
+    list-style-type: none;
+}
+
+.textSpacing {
+    padding: 10px;
+    margin: 0;
+}
