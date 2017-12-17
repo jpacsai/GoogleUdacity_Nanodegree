@@ -14,18 +14,14 @@ var tdetail = $("<td></td>");
 $("input[type=submit]").click(function(){
     row = $("#input_height").val();
     col = $("#input_width").val();
-    makeGrid(row);
-    
+    makeGrid(row); 
 });
 
-var appTr = $("#pixel_canvas").append("<tr></tr>");;
-var appTdt = $("tr").each(append("<tr></tr>"));
-
 function makeGrid(row) {
-    for (var rowt = 1; t <= rowt; t++) {
+    /*for (var rowt = 1; t <= rowt; t++) {
         for (var tdt = 1; tdt <= col; tdt++) {
-            
         }
     }
-    alert("you");
+    */
+    t.append("<tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr>");
 }
