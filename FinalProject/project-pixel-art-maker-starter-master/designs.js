@@ -11,17 +11,18 @@ var tdetail = $("<td></td>");
 
 // When size is submitted by the user, call makeGrid()
 
-$("input[type=submit]").click(function(){
+$("input[type=button]").click(function(){
     row = $("#input_height").val();
     col = $("#input_width").val();
     makeGrid(row); 
 });
 
 function makeGrid(row) {
-    /*for (var rowt = 1; t <= rowt; t++) {
+    for (var rowt = 1; t <= rowt; t++) {
         for (var tdt = 1; tdt <= col; tdt++) {
+            t.append()
         }
     }
-    */
-    t.append("<tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr>");
+    
+    
 }
