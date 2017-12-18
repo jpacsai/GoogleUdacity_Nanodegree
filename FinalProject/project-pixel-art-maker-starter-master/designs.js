@@ -6,8 +6,6 @@ var t = $("#pixel_canvas");
 var trow = "<tr></tr>";
 var tdetail = "<td class='canv'></td>";
 
-var color = $("#colorPicker").val();
-
 
 // When size is submitted by the user, call makeGrid()
 $("input[type=button]").click(function(){
@@ -17,10 +15,12 @@ $("input[type=button]").click(function(){
     makeGrid(); 
 });
 
+// Removes previous grid to start over
 function clearGrid() {
     t.find("tr","td").remove();
 }
 
+// Creates grid & paint function
 function makeGrid() {
     for (var x = 1; x <= row; x++) {
         t.append(trow);
@@ -28,14 +28,17 @@ function makeGrid() {
             $("tr").last().append(tdetail);
         }
     }
+    $("td").mousedown(function() {
+        var color = $("#colorPicker").val();
+        $(this).css("background-color", color);
+      });
 }
 
-// Get color value on change
-$("#colorPicker").change(function() {
-    color = $(this).val();
-});
 
-// Paint function
-$(".canv").mousedown(function() {
-    $( this ).css( "background-color", color );
-  });
+
+
+
+  
+
+
+
