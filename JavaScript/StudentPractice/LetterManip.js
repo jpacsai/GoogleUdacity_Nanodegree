@@ -8,11 +8,11 @@ letterManip("chAt");    // "C-Hh-Aaa-Tttt"
 */
 
 function letterManip(letters) {
-    var arr = letters.toLowerCase().split("");
-    var newArr = [];
-      for (var i = 0; i < letters.length; i++) {
-        var letter = arr[i].repeat(i+1);
-        newArr = newArr.concat(letter.charAt(0).toUpperCase() + letter.slice(1));
-      }
-    return newArr.toString().replace(/,/g,"-");
+  var arr = letters.toLowerCase().split("");
+  var newArr = [];
+    for (var i = 0; i < letters.length; i++) {
+      var letter = arr[i].repeat(i+1);
+      newArr = newArr.concat(letter.charAt(0).toUpperCase() + letter.slice(1));
+    }
+  return newArr.join("-");
 }
