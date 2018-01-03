@@ -1,8 +1,8 @@
 /*
 Concatenating mid characters in array of words
 
-Write a function that takes an array of words as an argument and returns a string represents every middle characters 
-in odd number letters words
+Write a function that takes an array of words as an argument and returns a string 
+represents every middle characters in odd number letters words
 
 
 For example:
