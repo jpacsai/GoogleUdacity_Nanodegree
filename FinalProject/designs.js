@@ -33,12 +33,3 @@ function makeGrid() {
         $(this).css("background-color", color);
       });
 }
-
-
-
-
-
-  
-
-
-
