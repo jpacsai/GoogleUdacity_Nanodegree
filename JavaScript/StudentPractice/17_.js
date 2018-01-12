@@ -3,11 +3,12 @@ function removeCopies(arr) {
     var dupes = [];
     while (i--) {
       if (arr.indexOf(arr[i]) != i) {
-                
+        dupes.push(arr[i]);
       }
     }
-  console.log(arr);
-    return arr;
+  var newArr = arr.filter(function(value){return value != arr[i];});
+  console.log(newArr);  
+  return arr;
 }
 
 
