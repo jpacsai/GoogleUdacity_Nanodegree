@@ -14,8 +14,7 @@ shiftCapital(frienDs,3)  // frDiens
 
 */
 
-function shiftCapital(str,num) {
-    var newStr = str.replace(str.match(/[A-Z]/),""); 
-    var newIndex = (str.indexOf(str.match(/[A-Z]/))+num)%newStr.length;  
-    return newStr.substr(0,newIndex) + str.match(/[A-Z]/) + newStr.substr(newIndex);   
+function check(arr) {
+    var middle = Math.floor(arr.length/2);
+    return arr.slice(0,middle).join("") === arr.slice( - middle).sort().join("");
 }
