@@ -1,3 +1,16 @@
+/*
+Write a function that can take two or more strings as arguments and returns a string represent 
+them all , all characters should be in same order in the original string but no duplication 
+in the returned string
+
+For example
+
+uniqueStr("abcd","ahkd") // abcdhk
+uniqueStr("rbanr","fzyrc") // rbanfzyc
+uniqueStr("every","day","a problem") // evrydapoblm
+
+*/
+
 function uniqueStr(...str) {
     var newStr = str.join("").split("");
     console.log(newStr);
