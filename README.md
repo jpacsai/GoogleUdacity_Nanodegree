@@ -1,7 +1,5 @@
 # GoogleUdacity - Google Front End Developer Scholarship
 
-The scholarship program is structured in two parts:   
-
 3-months of access to one of four Udacity courses: Intro to HTML + CSS, Offline Web Applications, Android Basics and Developing Android Apps. Scholarship recipients in these courses will receive a robust community experience supported by dedicated Community Managers and  Udacity mentor support.
 
 1. (Welcome)
