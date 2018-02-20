@@ -1,0 +1,32 @@
+[1mdiff --git a/README.md b/README.md[m
+[1mindex dac07d6..42b873a 100644[m
+[1m--- a/README.md[m
+[1m+++ b/README.md[m
+[36m@@ -1,18 +1,7 @@[m
+[31m-# GoogleUdacity - Google Developer Challenge Scholarship[m
+[32m+[m[32m# GoogleUdacity - Google Front End Developer Scholarship[m
+ [m
+[31m-The scholarship program is structured in two parts:  [m
+[32m+[m[32m3-months of access to one of four Udacity courses: Intro to HTML + CSS, Offline Web Applications, Android Basics and Developing Android Apps. Scholarship recipients in these courses will receive a robust community experience supported by dedicated Community Managers and  Udacity mentor support.[m
+ [m
+[31m-#### Phase 1: Challenge Scholarships  [m
+[31m-[m
+[31m-The first phase of this scholarship provides 3-months of access to one of four Udacity courses: Intro to HTML + CSS, Offline Web Applications, Android Basics and Developing Android Apps. Scholarship recipients in these courses will receive a robust community experience supported by dedicated Community Managers, Udacity mentor support, and a chance to qualify for a full Nanodegree scholarship.  [m
+[31m-[m
+[31m-After the 3-months, full scholarships will be awarded to students based on the progress in Phase 1 and their contributions to the Udacity community.  [m
+[31m-[m
+[31m-#### Phase 2: Nanodegree Scholarships (Top 10% of Phase 1 students)[m
+[31m-[m
+[31m-The top 10% in the program earn an additional 6-month scholarship to one of four Nanodegree Programs: Front-End Web Developer, Mobile Web Specialist, Android Basics Nanodegree and Android Developer. The full-scholarships will include project reviews, mentorship and community support.[m
+[31m-[m
+[31m-## Phase 1:[m
+ 1. (Welcome)[m
+ 2. HTML Syntax[m
+ 3. HTML Syntax Problem Set[m
+[36m@@ -34,5 +23,5 @@[m [mThe top 10% in the program earn an additional 6-month scholarship to one of four[m
+ 19. The Tricks: DOM manipulation[m
+ 20. Event Listeners with jQuery[m
+ 21. **Project:** Pixel Art Maker[m
+[31m-22. (Challenge Course Wrap Up)[m
+[32m+[m[32m22. (Course Wrap Up)[m
+  [m
