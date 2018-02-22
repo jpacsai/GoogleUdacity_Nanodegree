@@ -4,7 +4,8 @@ The scholarship program is structured in two parts:
 
 #### Phase 1: Challenge Scholarships  
 
-The first phase of this scholarship provides 3-months of access to one of four Udacity courses: Intro to HTML + CSS, Offline Web Applications, Android Basics and Developing Android Apps. Scholarship recipients in these courses will receive a robust community experience supported by dedicated Community Managers, Udacity mentor support, and a chance to qualify for a full Nanodegree scholarship.  
+Out of 200,000 applications, 10% has been chosen to start Phase 1.
+This part of this scholarship provides 3-months of access to one of four Udacity courses: Intro to HTML + CSS, Offline Web Applications, Android Basics and Developing Android Apps. Scholarship recipients in these courses will receive a robust community experience supported by dedicated Community Managers, Udacity mentor support, and a chance to qualify for a full Nanodegree scholarship.  
 
 After the 3-months, full scholarships will be awarded to students based on the progress in Phase 1 and their contributions to the Udacity community.  
 
@@ -35,4 +36,16 @@ The top 10% in the program earn an additional 6-month scholarship to one of four
 20. Event Listeners with jQuery
 21. **Project:** Pixel Art Maker
 22. (Challenge Course Wrap Up)
+
+## Phase 2: Front End Nanodegree
+**1. Web Foundations:**  
+    - Projects: Animal Trading Cards, Portfolio Site  
+**2. Web Programming with JavaScript:**  
+    - Project: Memory Game  
+**3. Exploring JS - Objects, Tools and Testing**  
+    - Projects: Classic Arcade Game clone, Feed Reader testing  
+**4. Front End Applications:**  
+    - Project: Restaurant Reviews App   
+**5. Building with React:**  
+    - Projects: MyReads -a book tracking app, Neighbour Map  
  
