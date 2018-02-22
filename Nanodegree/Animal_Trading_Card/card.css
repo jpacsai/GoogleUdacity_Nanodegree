@@ -11,7 +11,6 @@
 	animation: sky 20s cubic-bezier(.4,0,.49,1) infinite;
 }
 
-/* ----- ANIMAL IMAGE ----- */
 .frame {
 	box-sizing: border-box;
 	margin: 10px auto 10px;
@@ -139,7 +138,8 @@
 	height: 36px;
 	width: 36px;
 	border-radius: 100%;
-	background: linear-gradient(yellow, yellow, white);
+	background-color: yellow;
+  background: linear-gradient(yellow, yellow, white);
 	box-shadow: 0 0 9px yellow;
 }
 
@@ -370,7 +370,7 @@
     left: 250px;
 }
 
-/* ----- ANIMATIONS ----- */
+
 
 @keyframes sun-moon {
 	0% {
@@ -439,11 +439,11 @@
 		background: #7DDFFC;
 	}
 
-	50% {
+	45% {
 		background: #612c2c;
 	}
 	
-	58% {
+	55% {
 		background: #272C34;
 	}
 
@@ -478,11 +478,11 @@
 		background-color: #339900;
 	}
 
-	40% {
+	35% {
 		background-color: #339900;
 	}
 		
-	50% {
+	42% {
 		background-color: #094004;
 	}
 		
@@ -566,8 +566,6 @@
   	}
 }
 
-/* ----- GENERAL STYLES ----- */
-
 .border {
 	border: 2px solid #4d2e06;
 	border-radius: 2px;
@@ -580,8 +578,6 @@
 .shadow {
 	box-shadow: 1px 2px 10px rgba(0,0,0,0.3);
 }
-
-/* ----- CARD STYLES ----- */
 
 .title {
 	font-family: "Julius Sans One", sans-serif;
