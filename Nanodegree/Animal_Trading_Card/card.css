@@ -140,7 +140,7 @@
 	height: 36px;
 	width: 36px;
 	border-radius: 100%;
-	background-color: yellow;
+	background: linear-gradient(yellow, yellow, white);
 	box-shadow: 0 0 9px yellow;
 }
 
