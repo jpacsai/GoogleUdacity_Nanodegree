@@ -38,14 +38,16 @@ The top 10% in the program earn an additional 6-month scholarship to one of four
 22. (Challenge Course Wrap Up)
 
 ## [Phase 2: Front End Nanodegree](https://eu.udacity.com/course/front-end-web-developer-nanodegree--nd001)
-**1. Web Foundations:**  
-    - Projects: Animal Trading Cards, Portfolio Site  
-**2. Web Programming with JavaScript:**  
-    - Project: Memory Game  
-**3. Exploring JS - Objects, Tools and Testing**  
-    - Projects: Classic Arcade Game clone, Feed Reader testing  
-**4. Front End Applications:**  
-    - Project: Restaurant Reviews App   
-**5. Building with React:**  
-    - Projects: MyReads -a book tracking app, Neighbour Map  
- 
+- **1.&nbsp;Web Foundations:**
+     - Animal Trading Cards
+     - Portfolio Site
+  - **2.&nbsp;Web Programming with JavaScript:**
+     - Memory Game
+  - **3.&nbsp;Exploring JS - Objects, Tools and Testing**
+     - Classic Arcade Game clone
+     - Feed Reader testing
+  - **4.&nbsp;Front End Applications:**
+     - Restaurant Reviews App
+  - **5.&nbsp;Building with React:**
+     - MyReads -a book tracking app
+     - Neighbour Map  
