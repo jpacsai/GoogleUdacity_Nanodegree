@@ -1,4 +1,4 @@
-# GoogleUdacity - Google Developer Challenge Scholarship
+# [GoogleUdacity - Google Developer Challenge Scholarship](https://www.udacity.com/google-scholarships)
 
 The scholarship program is structured in two parts:  
 
