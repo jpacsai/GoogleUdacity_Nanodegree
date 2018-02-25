@@ -37,7 +37,7 @@ The top 10% in the program earn an additional 6-month scholarship to one of four
 21. **Project:** Pixel Art Maker
 22. (Challenge Course Wrap Up)
 
-## Phase 2: Front End Nanodegree
+## [Phase 2: Front End Nanodegree](https://eu.udacity.com/course/front-end-web-developer-nanodegree--nd001)
 **1. Web Foundations:**  
     - Projects: Animal Trading Cards, Portfolio Site  
 **2. Web Programming with JavaScript:**  
