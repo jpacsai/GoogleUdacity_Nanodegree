@@ -41,13 +41,13 @@ The top 10% in the program earn an additional 6-month scholarship to one of four
 - **1.&nbsp;Web Foundations:**
      - Animal Trading Cards
      - Portfolio Site
-  - **2.&nbsp;Web Programming with JavaScript:**
+- **2.&nbsp;Web Programming with JavaScript:**
      - Memory Game
-  - **3.&nbsp;Exploring JS - Objects, Tools and Testing**
+- **3.&nbsp;Exploring JS - Objects, Tools and Testing**
      - Classic Arcade Game clone
      - Feed Reader testing
-  - **4.&nbsp;Front End Applications:**
+- **4.&nbsp;Front End Applications:**
      - Restaurant Reviews App
-  - **5.&nbsp;Building with React:**
+- **5.&nbsp;Building with React:**
      - MyReads -a book tracking app
      - Neighbour Map  
