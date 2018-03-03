@@ -135,12 +135,22 @@
   .hero {
     order: 0;
     width: 60%;
+    height: 400px;
   }
+
+  .hero article {
+    height: 45%;
+  }
+
   .weather {
     order: 1;
     width: 40%;
   }
 
+  .weather__next {
+    margin-top: 30px;
+  }
+  
   .header__title {
     font-size: 3em;
   }
@@ -180,6 +190,7 @@
 @media screen and (min-width: 700px) {
   .hero {
     width: 50%;
+    height: 400px;
   }
   .top-news {
     order: 1;
@@ -191,6 +202,40 @@
   }
   .weather {
     order: 3;
+  }
+
+  th.date {
+    width: 20px;
+  }
+
+  th.team1 {
+    padding-left: 0;
+  }
+
+  .scores__table td:nth-child(3) {
+    text-align: left;
+  }
+
+  td.team1 {
+    padding-left: 0;
+  }
+
+  th.score {
+    padding: 0;
+  }
+
+  td.score {
+    padding: 0;
+    text-align: center;
+  }
+  
+  .snippet__thumbnail {
+    width: 300px;
+    margin-bottom: 20px;
+  }
+
+  .snippetText {
+    min-height: 200px;
   }
 
   footer {
