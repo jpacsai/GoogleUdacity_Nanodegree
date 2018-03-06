@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:300|Pacifico');
+
+
 /* ------------------------*/ /* ---------->>> GLOBAL CSS SPACE RESET <<<-----------*/ /* ------------------------*/
 * {
     border: 0; margin: 0; padding: 0;
@@ -5,13 +8,13 @@
 }
 
 /* ------------------------*/ /* ---------->>> HELPER COLORS <<<-----------*/ /* ------------------------*/
-header {
+/*header {
     background-color: rgba(0, 255, 255, 0.7);
 }
 
 main {
     background-color: rgba(128, 0, 128, 0.7);
-}
+}*/
 
 
 
@@ -20,47 +23,31 @@ footer {
 }
 /* ------------------------*/ /* ---------->>> GLOBAL STYLES <<<-----------*/ /* ------------------------*/
 body {
-    width: 96%;
+    width: 100vw;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 /* ------------------------*/ /* ---------->>> HEADER <<<-----------*/ /* ------------------------*/
+header {
+    width: 100vw;
+    padding: 20px;
+}
 
+.name {
+    font-family: Pacifico, sans-serif;
+}
+
+.title {
+    font-family: "Josefin Sans", sans-serif;
+}
 
 /* ------------------------*/ /* ---------->>> MAIN <<<-----------*/ /* ------------------------*/
-.selfie-container {
-    display: flex;
-}
 
-.selfie {
-    justify-content: center;
-    width: 80%;
-}
-
-.project {
-    float: left;
-}
-
-.placeholder {
-    width: 100%;
-}
 
 /* ------------------------*/ /* ---------->>> FOOTER <<<-----------*/ /* ------------------------*/
 
 
 /*
-https://coolors.co/f7edf0-e6ca8e-ff0022-06032a-493657
-
-https://wildsidedesign.co/best-free-boho-adventure-fonts/
-
-https://msol.io/blog/tech/host-your-own-web-fonts/
-
-https://www.pinterest.com/pin/388083692881797566/
-
-https://www.pinterest.com/pin/22588435610682816/
-
-https://www.canva.com/learn/website-color-schemes/
-
-jsbin
-codepen
-linkedin
