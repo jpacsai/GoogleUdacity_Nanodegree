@@ -3,8 +3,9 @@
 
 /* ------------------------*/ /* ---------->>> GLOBAL CSS SPACE RESET <<<-----------*/ /* ------------------------*/
 * {
-    border: 0; margin: 0; padding: 0;
-    
+    border: 0; 
+    margin: 0; 
+    padding: 0;
 }
 
 /* ------------------------*/ /* ---------->>> HELPER COLORS <<<-----------*/ /* ------------------------*/
@@ -14,35 +15,33 @@
 
 main {
     background-color: rgba(128, 0, 128, 0.7);
-}*/
-
-
-
-footer {
-    background-color: rgba(255, 255, 0, 0.7);
 }
+
+*/
+
 /* ------------------------*/ /* ---------->>> GLOBAL STYLES <<<-----------*/ /* ------------------------*/
 body {
-    width: 100vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: 100vw;
 }
 
 /* ------------------------*/ /* ---------->>> HEADER <<<-----------*/ /* ------------------------*/
 header {
-    margin: 20px 0;
-    width: 100vw;
+    margin: 10px 0;
     display: grid;
-    grid-template: 100px / 20px 25% 5% 1fr 20px;
+    grid-template: 100px / minmax(20px, 1fr) 25% 5% minmax(180px, 1fr) minmax(20px, 1fr);
+    width: 100vw;
+   
 }
 
 .header-text {
     grid-column: 4 / 5;
-    text-align: right;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    text-align: right;
 }
 
 .selfie-container {
@@ -53,17 +52,15 @@ header {
 }
 
 .selfie {
-    max-width: 150px;
-    max-height: 150px;
     width: 100%;
     height: auto;
-    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-    -webkit-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    max-width: 90px;
+    border-radius: 50%;
 }
 
 .name {
-    font-family: Pacifico, sans-serif;
     width: 100%;
+    font-family: Pacifico, sans-serif;
     font-size: 160%;
 }
 
@@ -81,8 +78,7 @@ header {
 
 .hero-pic {
     max-width: 100%;
-
-    height: calc(100vh - 140px);
+    max-height: calc(100vh - 140px);
 }
 
 /* ------------------------*/ /* ---------->>> ABOUT <<<-----------*/ /* ------------------------*/
@@ -93,46 +89,64 @@ header {
 }
 
 .about {
+    margin: 20px 0;
     width: 80%;
     max-width: 800px;
+    text-align: center;
     font-family: "Josefin Sans", sans-serif;
     font-size: 25px;
-    text-align: center;
-    margin: 20px;
 }
 
 /* ------------------------*/ /* ---------->>> CONTACT <<<-----------*/ /* ------------------------*/
 .contact {
+    margin: 0 auto;
     display: flex;
+    justify-content: space-around;
+    width: 80%;
+    height: 70px;
+    max-width: 800px;
+    font-size: 2em;
+
+}
+
+.contact-link {
+    margin: 0 5px;
+    min-width: 70px;
+    height: 100%;
+    display: flex;
+    align-items: center;
     justify-content: center;
+    border-radius: 100%;
+    background-color: aquamarine;
 }
 
 /* ------------------------*/ /* ---------->>> PROJECTS <<<-----------*/ /* ------------------------*/
 .project-container {
-    margin: 20px 0;
+    margin: -35px 0;
+    padding-top: 50px;
     max-width: 100%;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
     justify-content: center;
+    background-color: bisque;
 }
 
 .project {
+    margin: 20px;
     max-width: 80%;
-    margin-bottom: 20px;
 }
 
 .placeholder {
     width: 100%;
     max-width: 300px;
-    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-    -webkit-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
 }
 
 .project-figcaption {
+    margin-top: 5px;
     text-align: center;
     font-family: "Josefin Sans", sans-serif;
-    font-size: 16px;
+    font-size: 25px;
 }
 
 /* ------------------------*/ /* ---------->>> FOOTER <<<-----------*/ /* ------------------------*/
