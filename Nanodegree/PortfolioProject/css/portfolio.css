@@ -237,6 +237,191 @@ header {
 clip-path: polygon(100% 0, 9% 0, 100% 110%);
 }
 
+.screen-browser {
+  top: 0;
+  left: 0;
+  height: 10px;
+  width: 100%;
+  background: linear-gradient(to bottom, rgba(236,235,236,1) 0%,rgba(212,212,212,1) 100%);
+}
+
+.dots {
+  top: 4px;
+  left: 2px;
+}
+
+.dot {
+  top: 0px;
+  width: 3px;
+  height: 3px;
+  border-radius: 100%;
+}
+
+.red-dot {
+  left: 0;
+  background-color: #FF5A5C;
+}
+
+.yellow-dot {
+  left: 5px;
+  background-color: #FCBA42;
+}
+
+.green-dot {
+  left: 10px;
+  background-color: #05C94B;
+}
+
+.browser-icons {
+  left: 20px;
+  top: 2px;
+}
+
+.safari-icon {
+  width: 6px;
+  height: 6px;
+  background-color: #FDFDFD;
+  border-radius: 1px;
+}
+
+.back-arrow {
+  left: 0;
+}
+
+.forward-arrow {
+  left: 7px;
+}
+
+.arrow-image {
+  width: 6px;
+}
+
+.back-arrow-image {
+  transform: rotate(180deg);
+}
+
+.bookmark {
+  left: 17px;
+}
+
+.bookmark-image {
+  width: 6px;
+}
+
+.new-window {
+  left: 180px;
+  top: 2px;
+}
+
+.windows {
+  left: 190px;
+  top: 2px;
+}
+
+.new-window-icon {
+  height: 5px;
+}
+
+.windows-icon {
+  width: 6px;
+}
+
+.search-bar {
+  left: 65px;
+  top: 2px;
+  width: 85px;
+  height: 6px;
+  background-color: #FDFDFD;
+  border-radius: 1px;
+  
+}
+
+.search-icon {
+  left: 20px;
+  width: 6px;
+}
+
+.search-text {
+  top: 1px;
+  left: 28px;
+  color: #BFBFBF;
+  font-family: sans-serif;
+  font-size: 3px;
+}
+
+.screen-sidenav {
+  top: 10px;
+  left: 0;
+  height: calc(100% - 15px);
+  width: 45px;
+  background-color: #2E3D49;
+}
+
+.udacity-logo {
+  top: 3px;
+  left: 2px;
+  width: 6px;
+}
+
+.udacity-logo-text {
+  top: 3px;
+  left: 10px;
+  color: white;
+  font-family: sans-serif;
+  font-size: 6px;
+  letter-spacing: 1px;
+}
+
+.udacity-icon {
+  left: 2px;
+  width: 6px;
+}
+
+.udacity-text {
+  left: 10px;
+  color: white;
+  font-family: sans-serif;
+  font-size: 6px;
+}
+
+.home-icon,
+.home-text {
+  top: 13px;
+}
+
+.catalog-icon,
+.catalog-text {
+  top: 23px;
+}
+
+.career-icon,
+.career-text {
+  top: 33px;
+}
+
+.mentor-icon,
+.mentor-text {
+  top: 43px;
+}
+
+.settings-icon,
+.settings-text {
+  top: 83px;
+}
+
+.logout-icon,
+.logout-text {
+  top: 93px;
+}
+
+.main-screen {
+  top: 10px;
+  left: 45px;
+  width: calc(100% - 45px);
+  height:calc(100% - 15px);
+  background-color: #FAFBFC;
+}
+
 .screen-bottom {
   top: 340px;
   left: 270px;
