@@ -1,0 +1,252 @@
+.content {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.header__menu {
+  display: none;
+}
+
+.hero, .top-news, .scores, .weather, .recent-news {
+  order: 10;
+}
+
+@media screen and (max-width: 549px) {
+  .header__logo {
+    height: 48px;
+    margin-right: 0.5em;
+  }
+  .header__title {
+    margin-left: 0;
+    font-size: 2em;
+    vertical-align: bottom; 
+  }
+  .nav {
+    z-index: 10;
+    background-color: #fff;
+    width: 300px;
+    position: absolute;
+    /* This trasform moves the drawer off canvas. */
+    -webkit-transform: translate(-300px, 0);
+    transform: translate(-300px, 0);
+    /* Optionally, we animate the drawer. */
+    transition: transform 0.3s ease;
+  }
+  .nav.open {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+  .nav__item {
+    display: list-item;
+    border-bottom: 1px solid #E0E0E0;
+    width: 100%;
+    text-align: left;
+  }
+  .header__menu {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    padding: 1em;
+  }
+  .header__menu svg {
+    width: 32px;
+    fill: #E0E0E0;
+  }
+
+  .hero {
+    margin-bottom: 180px;
+  }
+
+  .hero article {
+    bottom: -180px;
+    height: 60%;
+  }
+
+  .scores__location {
+    display: none;
+  }
+
+  .score {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .snippet__thumbnail {
+    float: none;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  footer {
+    text-align: center;
+  }
+  
+  footer a {
+    padding: 0;
+  }
+  
+}
+
+@media screen and (max-width: 340px) {
+  .header__title {
+    font-size: 1.3em;
+  }
+}
+
+@media screen and (min-width: 341px) and (max-width: 379px) {
+  .header__title {
+    font-size: 1.5em;
+  }
+}
+
+@media screen and (min-width: 380px) and (max-width: 410px) {
+  .header__title {
+    font-size: 1.8em;
+  }
+}
+
+@media screen and (max-width: 410px) {
+  footer {
+    text-align: center;
+  }
+
+  footer a {
+    display: block;
+    padding: 0;
+    width: 80vw;
+    padding: 10px;
+  }
+}
+
+@media screen and (min-width: 445px) and (max-width: 549px) {
+  .hero {
+    margin-bottom: 150px;
+  }
+
+  .hero article {
+    bottom: -150px;
+    height: 50%;
+  }
+}
+
+
+
+@media screen and (min-width: 550px) {
+  .hero {
+    order: 0;
+    width: 60%;
+    height: 400px;
+  }
+
+  .hero article {
+    height: 45%;
+  }
+
+  .weather {
+    order: 1;
+    width: 40%;
+  }
+
+  .weather__next {
+    margin-top: 30px;
+  }
+  
+  .header__title {
+    font-size: 3em;
+  }
+
+  footer {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 410px) {
+  
+  th.date {
+    width: 20px;
+  }
+
+  th.team1 {
+    padding-left: 0;
+  }
+
+  .scores__table td:nth-child(3) {
+    text-align: left;
+  }
+
+  td.team1 {
+    padding-left: 0;
+  }
+
+  th.score {
+    padding: 0;
+  }
+
+  td.score {
+    padding: 0;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .hero {
+    width: 50%;
+    height: 400px;
+  }
+  .top-news {
+    order: 1;
+    width: 50%;
+  }
+  .scores {
+    order: 2;
+    width: 60%;
+  }
+  .weather {
+    order: 3;
+  }
+
+  th.date {
+    width: 20px;
+  }
+
+  th.team1 {
+    padding-left: 0;
+  }
+
+  .scores__table td:nth-child(3) {
+    text-align: left;
+  }
+
+  td.team1 {
+    padding-left: 0;
+  }
+
+  th.score {
+    padding: 0;
+  }
+
+  td.score {
+    padding: 0;
+    text-align: center;
+  }
+  
+  .snippet__thumbnail {
+    width: 300px;
+    margin-bottom: 20px;
+  }
+
+  .snippetText {
+    min-height: 200px;
+  }
+
+  footer {
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 850px) {
+  main, .header__inner, .nav, .content {
+    width: 850px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

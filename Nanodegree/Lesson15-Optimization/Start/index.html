@@ -5,11 +5,9 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Brighton Times</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script type="text/javascript" src="main.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" type="text/css" href="responsive.css">
   </head>
   <body>
 
@@ -19,9 +17,11 @@
         <h1 class="header__title">
           The Brighton Times
         </h1>
-      </div>
-      <div id="menu" class="hamburger-nav">
-        <i class="fa fas fa-bars"></i>
+        <a id="menu" class="header__menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M2 6h20v3H2zm0 5h20v3H2zm0 5h20v3H2z"/>
+          </svg>
+        </a>
       </div>
     </header>
 
@@ -36,14 +36,14 @@
 
     <main>
       <section class="content">
-        <section class="hero box">
+        <section class="hero">
           <article class="description">
             <h2>Absolutely astonishing breaking news!</h2>
             <p>Organic raw denim Vice keffiyeh lomo Kickstarter art lomo Kickstarter art four loko. Organic raw denim Vice keffiyeh lomo Kickstarter art lomo Kickstarter art four loko.</p>
           </article>
         </section>
 
-        <section class="news top-news box">
+        <section class="news top-news">
           <h2 class="news__title">Top news <a href="#" class="news__more">+ more</a></h2>
           <ul>
             <li class="top-news__item">
@@ -61,11 +61,12 @@
           </ul>
         </section>
 
-        <section class="scores box">
+        <section class="scores">
           <table class="scores__table">
             <thead>
               <tr>
                 <th>date</th>
+                <th class="scores__location">location</th>
                 <th>team</th>
                 <th colspan="2">score</th>
                 <th>team</th>
@@ -74,6 +75,7 @@
             <tbody>
               <tr>
                 <td>Friday</td>
+                <td class="scores__location">Brighton</td>
                 <td>Bears</td>
                 <td>95</td>
                 <td class="winner">109</td>
@@ -81,6 +83,7 @@
               </tr>
               <tr>
                 <td>Friday</td>
+                <td class="scores__location">Worthington</td>
                 <td class="winner">Otters</td>
                 <td class="winner">3</td>
                 <td>1</td>
@@ -88,6 +91,7 @@
               </tr>
               <tr>
                 <td>Saturday</td>
+                <td class="scores__location">Littlehampton</td>
                 <td class="winner">Wolves</td>
                 <td class="winner">7</td>
                 <td>0</td>
@@ -95,6 +99,7 @@
               </tr>
               <tr>
                 <td>Sunday</td>
+                <td class="scores__location">Portslade</td>
                 <td>Hawks</td>
                 <td>11</td>
                 <td class="winner">12</td>
@@ -102,6 +107,7 @@
               </tr>
               <tr>
                 <td>Sunday</td>
+                <td class="scores__location">Hove</td>
                 <td class="winner">Stags</td>
                 <td class="winner">6</td>
                 <td>2</td>
@@ -112,11 +118,11 @@
           </table>
         </section>
 
-        <section class="weather box">
+        <section class="weather">
           <span class="weather__location">Brighton, UK</span>
           <span class="weather__desc">Sunny</span>
           <span class="weather__today">
-          <img class="weather__today__image" src="images/weather.png" alt="icon of a partially sunny day"><span class="weather__today__temp">13</span><span class="weather__today__deg">&deg;C</span>
+          <img class="weather__today__image" src="images/weather.png" alt="icon of a partially cloudy day"><span class="weather__today__temp">13</span><span class="weather__today__deg">&deg;C</span>
           </span>
           <ul class="weather__next">
             <li class="weather__next__item">
@@ -143,7 +149,7 @@
           </ul>
         </section>
 
-        <section class="news recent-news box">
+        <section class="news recent-news">
           <h2 class="news__title">Latest news <a href="#" class="news__more">+ more</a></h2>
           <ul>
             <li class="snippet">
@@ -184,5 +190,22 @@
         </ul>
       </footer>
     </main>
+    <script>
+      /*
+       * Open the drawer when the menu ison is clicked.
+       */
+      var menu = document.querySelector('#menu');
+      var main = document.querySelector('main');
+      var drawer = document.querySelector('.nav');
+
+      menu.addEventListener('click', function(e) {
+        drawer.classList.toggle('open');
+        e.stopPropagation();
+      });
+      main.addEventListener('click', function() {
+        drawer.classList.remove('open');
+      });
+
+    </script>
   </body>
 </html>

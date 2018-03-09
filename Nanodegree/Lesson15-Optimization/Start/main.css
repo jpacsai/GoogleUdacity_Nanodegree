@@ -1,5 +1,4 @@
-body, 
-html {
+body, html {
   margin: 0;
   padding: 0;
   width: 100%;
@@ -12,20 +11,11 @@ body {
   color: #424242;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5 {
+h1, h2, h3, h4, h5 {
   margin: 0; 
 }
 
-header,
-nav, 
-footer, 
-section, 
-article, 
-div {
+header, nav, footer, section, article, div {
   box-sizing: border-box;
 }
 
@@ -91,6 +81,7 @@ ul {
  */
 
 .nav {
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -177,8 +168,10 @@ main {
  */
 
 .top-news {
+  max-height: 300px;
   border-bottom: 1px solid #E0E0E0;
   padding: 1em;
+  width: 100%;
 }
 
 .news__title {
@@ -205,6 +198,7 @@ main {
 .top-news__item a {
   text-decoration: none;
   color: #666;
+  padding: 1.5em inherit;
 }
 
 .top-news__item a:hover,
@@ -221,6 +215,7 @@ main {
 
 .scores {
   padding-top: 1em;
+  flex-grow: 1;
 }
 
 .scores__table {
@@ -267,6 +262,7 @@ main {
  */
 
 .weather {
+  flex-grow: 1;
   padding: 1em;
 }
 
@@ -321,6 +317,7 @@ main {
  */
 
 .recent-news {
+  flex-grow: 1;
   clear: both;
   padding: 1em;
 }
@@ -343,6 +340,7 @@ main {
 .snippet__title a {
   text-decoration: none;
   color: #666;
+  padding: 1.5em inherit;
 }
 
 .snippet__title a:hover,
@@ -372,128 +370,4 @@ footer a {
   text-decoration: none;
   color: #333;
   padding: 1.5em;
-}
-
-.hamburger-nav {
-  display: none;
-}
-
-.content {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.box {
-  width: 100%;
-}
-
-@media screen and (max-width: 600px) {
-  .header {
-    display: grid;
-    grid-template: 100% / 1fr 60px;
-  }
-
-  .header__inner {
-    grid-column-start: 1;
-  }
-
-  .header__title {
-    text-align: center;
-    font-size: 1.85em;
-    line-height: 1.8;
-  }
-
-  .header__logo {
-    height: 39px;
-    margin-right: 0;
-  }
-
-  .hamburger-nav {
-    grid-column-start: 2;
-    font-size: 3em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #aaa;
-    cursor: pointer;
-  }
-
-  .nav__item {
-    width: 100%;
-    border: #aaa solid 1px;
-  }
-
-  nav {
-    z-index: 2;
-    width: 250px;
-    height: 300px;
-    position: absolute;
-    /* This trasform moves the drawer off canvas. */
-    -webkit-transform: translate(-250px, 0);
-    transform: translate(-250px, 0);
-    /* Optionally, we animate the drawer. */
-    transition: transform 0.3s ease;
-    background-color: white;
-  }
-
-  nav.open {
-    -webkit-transform: translate(0, 0);
-    transform: translate(0, 0);
-  }
-}
-
-@media screen and (min-width: 450px) and (max-width: 600px){
-  .header__title {
-    font-size: 2.5em;
-    line-height: 1;
-  }
-}
-
-@media screen and (min-width: 601px) and (max-width: 900px) {
-  .hero,
-  .weather {
-    width: 50%;
-  }
-
-  .hero { order: 0; }
-  .weather { order: 1; }
-  .top-news { order: 2; }
-  .scores { order: 3; }
-  .recent-news { order: 4; }
-}
-
-@media screen and (min-width: 901px) and (max-width: 1099px) {
-  .hero,
-  .top-news,
-  .weather,
-  .scores {
-    width: 50%;
-  }
-
-  .hero { order: 0; }
-  .top-news { order: 1; }
-  .weather { order: 2; }
-  .scores { order: 3; }
-  .recent-news { order: 4; }
-}
-
-@media screen and (min-width: 1100px) {
-  main {
-    width: 1100px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  .hero,
-  .top-news,
-  .weather,
-  .scores {
-    width: 50%;
-  }
-
-  .hero { order: 0; }
-  .top-news { order: 1; }
-  .weather { order: 2; }
-  .scores { order: 3; }
-  .recent-news { order: 4; }
 }
