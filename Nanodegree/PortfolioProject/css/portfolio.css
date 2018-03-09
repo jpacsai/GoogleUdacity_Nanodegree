@@ -72,8 +72,7 @@ header {
 
 /* ------------------------*/ /* ---------->>> HERO <<<-----------*/ /* ------------------------*/
 .hero {
-    display: flex;
-    justify-content: center;
+    overflow: hidden;
 }
 
 .hero-pic {
@@ -159,24 +158,24 @@ header {
 .drawing {
   position: relative;
   top: 0;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 800px;
-  height: 400px;
+  height: 450px;
   background-color: #45F0DF;
-  
 }
 
 .table {
   top: 380px;
   left: 0; 
-  height: 100px;
+  height: 70px;
   width: 800px;
   background-color: #CC9D76;
 }
 
 .clock {
   top: 50px;
-  left: 150px;
+  left: 245px;
   height: 100px;
   width: 100px;
   background: linear-gradient(to bottom, rgba(49,51,48,1) 0%, rgba(17,20,18,1) 100%);
@@ -328,7 +327,7 @@ clip-path: polygon(100% 0, 9% 0, 100% 110%);
 
 .pencil-pot {
   top: 360px;
-  left: 540px;
+  left: 600px;
   height: 40px;
   width: 30px;
   border-radius: 0 0 5px 5px;
@@ -387,7 +386,7 @@ clip-path: polygon(100% 0, 9% 0, 100% 110%);
 
 .cup {
   top: 350px;
-  left: 600px;
+  left: 530px;
   height: 50px;
   width: 38px;
   background-color: #404240;
@@ -412,8 +411,8 @@ clip-path: polygon(100% 0, 9% 0, 100% 110%);
   
 }
 .steam {
-  top: 300px;
-  left: 600px;
+  top: 320px;
+  left: 530px;
   transform: rotate(5deg);
 }
 
@@ -536,7 +535,7 @@ clip-path: polygon(100% 0, 9% 0, 100% 110%);
 
 .shelf-book-css {
   top: -25px;
-  left: 105px;
+  left: 75px;
   width: 120px;
   height: 20px;
   background: linear-gradient(to bottom, rgba(69,105,144,1) 0%,rgba(69,105,144,1) 78%,rgba(51,77,105,1) 100%);
@@ -548,7 +547,7 @@ clip-path: polygon(100% 0, 9% 0, 100% 110%);
 
 .shelf-book-js {
   top: -55px;
-  left: 95px;
+  left: 65px;
   width: 120px;
   height: 24px;
   background: -webkit-linear-gradient(top, rgba(255,16,83,1) 0%,rgba(255,16,83,1) 73%,rgba(186,12,61,1) 100%);
@@ -562,7 +561,7 @@ clip-path: polygon(100% 0, 9% 0, 100% 110%);
 
 .shelf-book-html {
   top: -80px;
-  left: 110px;
+  left: 80px;
   width: 100px;
   height: 20px;
   background: linear-gradient(to bottom, rgba(164,80,139,1) 0%,rgba(164,80,139,1) 77%,rgba(105,51,89,1) 100%);
@@ -577,7 +576,7 @@ clip-path: polygon(100% 0, 9% 0, 100% 110%);
 
 .shelf-book-jq {
   top: -51px;
-  left: 41px;
+  left: 11px;
   width: 80px;
   height: 21px;
   background: linear-gradient(to bottom, rgba(184,146,255,1) 0%,rgba(184,146,255,1) 78%,rgba(134,107,186,1) 100%);
