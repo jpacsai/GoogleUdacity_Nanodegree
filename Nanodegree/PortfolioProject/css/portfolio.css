@@ -319,6 +319,7 @@ clip-path: polygon(100% 0, 9% 0, 100% 110%);
 }
 
 .new-window-icon {
+  left: 0.5px;
   height: 5px;
 }
 
@@ -414,12 +415,182 @@ clip-path: polygon(100% 0, 9% 0, 100% 110%);
   top: 93px;
 }
 
+.logout-icon {
+  transform: rotate(180deg);
+}
+
 .main-screen {
   top: 10px;
   left: 45px;
-  width: calc(100% - 45px);
-  height:calc(100% - 15px);
+  width: 170px;
+  height: calc(100% - 15px);
   background-color: #FAFBFC;
+}
+
+.main-screen-header {
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  padding: 2px 0 0 3px;
+  width: 170px;
+  height: 10px;
+  color: #1C262F;
+  font-family: sans-serif;
+  font-size: 5px;
+  box-shadow: 0px 2px 5px #D6D6D6;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 150%, 0% 150%);
+}
+
+.label-text {
+  color: #1C262F;
+  font-size: 3.5px;
+  font-family: sans-serif;
+  text-transform: uppercase;
+}
+
+.activity-text {
+  top: 18px;
+  left: 15px;
+}
+
+.udacity-card {
+  background-color: white;
+  border-radius: 2px;
+  box-shadow: 0px 1px 3px #D6D6D6;
+}
+
+.main-screen-activity {
+  top: 26px;
+  left: 15px;
+  width: 138px;
+  height: 28px;
+}
+
+.activity-continue {
+  top: 5px;
+  left: 8px;
+  font-family: sans-serif;
+  color: #1C262F;
+  font-size: 4px;
+  font-weight: bold;
+}
+
+.activity-place-text {
+  top: 11px;
+  left: 8px;
+  font-family: sans-serif;
+  color: #95AABC;
+  font-size: 4px;
+  font-weight: bold;
+}
+
+.continue-button {
+  top: 8px;
+  left: 110px;
+  height: 6px;
+  width: 21px;
+  background-color: #02B3E4;
+  border-radius: 1px;
+  font-family: sans-serif;
+  font-size: 3px;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  box-shadow: 2px 2px 4px #D6D6D6;
+}
+
+.progress-dots {
+  top: 18px;
+  left: 8px;
+}
+
+.progress-dot {
+  height: 2px;
+  width: 2px;
+  border-radius: 100%;
+}
+
+.dark-dot {
+  background-color: #02CCBA;
+}
+
+.grey-dot {
+  background-color: #DBE2E8;
+}
+
+.pr-dot1 {
+  left: 0;
+}
+
+.pr-dot2 {
+  left: 4px;
+}
+
+.pr-dot3 {
+  left: 8px;
+}
+
+.pr-dot4 {
+  left: 12px;
+}
+
+.pr-dot5 {
+  left: 16px;
+}
+
+.progress-text {
+  top: -0.55px;
+  left: 20px;
+  width: 30px;
+  font-family: sans-serif;
+  font-size: 2.65px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #1C262F;
+}
+
+.current-enrolments {
+  top: 60px;
+  left: 15px;
+}
+
+.current-enr-label {
+  color: #1C262F;
+  width: 60px;
+}
+
+.current-enr {
+  top: 8px;
+  left: 0;
+  width: 65px;
+  height: 35px;
+  background-color: red;
+}
+
+.enr-tag {
+  z-index: 1;
+  top: 12px;
+  left: -1px;
+  width: 5px;
+  height: 5px;
+  background-color: #02B3E4;
+}
+
+.enr-tag-image {
+  top: -0.5px;
+  left: -0.5px;
+  width: 6px;
+
+}
+
+.visual-studio {
+  top: 47%;
+  left: 57%;
+  height: 53.3%;
+  width: 43%;
+  background-color: black;
 }
 
 .screen-bottom {
