@@ -188,6 +188,7 @@ header {
   width: 100px;
   z-index: 1;
   color: white;
+  text-shadow: 0 0 7px white;
   font-family: sans-serif;
   font-size: 1.8em;
   text-align: center;
@@ -994,7 +995,7 @@ clip-path: polygon(100% 0, 9% 0, 100% 110%);
 }
 
 .shelf-book-css {
-  top: -25px;
+  top: -24px;
   left: 75px;
   width: 120px;
   height: 20px;
@@ -1006,7 +1007,7 @@ clip-path: polygon(100% 0, 9% 0, 100% 110%);
 }
 
 .shelf-book-js {
-  top: -55px;
+  top: -54px;
   left: 65px;
   width: 120px;
   height: 24px;
@@ -1020,7 +1021,7 @@ clip-path: polygon(100% 0, 9% 0, 100% 110%);
 }
 
 .shelf-book-html {
-  top: -80px;
+  top: -78px;
   left: 80px;
   width: 100px;
   height: 20px;
@@ -1036,7 +1037,7 @@ clip-path: polygon(100% 0, 9% 0, 100% 110%);
 
 .shelf-book-jq {
   top: -51px;
-  left: 11px;
+  left: 12px;
   width: 80px;
   height: 21px;
   background: linear-gradient(to bottom, rgba(184,146,255,1) 0%,rgba(184,146,255,1) 78%,rgba(134,107,186,1) 100%);
@@ -1046,7 +1047,8 @@ clip-path: polygon(100% 0, 9% 0, 100% 110%);
   line-height: 1;
   text-align: center;
   color: #404240;
-  transform: rotate(-75deg)
+  transform: rotate(-75deg);
+  text-shadow: 1px 1px 2px grey;
 }
 
 .lamp {
