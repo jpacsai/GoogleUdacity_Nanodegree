@@ -785,7 +785,7 @@ clip-path: polygon(100% 0, 9% 0, 100% 110%);
 .mouse {
   top: 210px;
   left: 210px;
-  width: 25px;
+  width: 30px;
   height: 12px;
   background: -webkit-linear-gradient(top, rgba(231,236,240,1) 0%,rgba(231,236,240,1) 48%,rgba(160,160,165,1) 90%);
   border-radius: 10px 10px 5px 5px;
@@ -1163,32 +1163,19 @@ clip-path: polygon(100% 0, 9% 0, 100% 110%);
   background-color: #6FB70B;
 }
 
-.leaf-1 {
-  top: 100px;
+.glasses {
+  top: 405px;
+  left: 570px;
+}
+
+.glasses-frame {
+  top: 0;
   left: 0;
-}
-
-.leaf-2 {
-  top: 80px;
-  left: 20px;
-}
-
-.leaf-3 {
-  top: 20px;
-  left: 50px;
-}
-
-.leaf-4 {
-  top: 40px;
-  left: 70px;
-}
-
-.leaf-5 {
-  top: 50px;
-  left: 80px;
-}
-
-
+  width: 70px;
+  height: 26px;
+  clip-path: url(#svgPath);
+  background-color: black;
+}*/
 
 /* ----> ANIMATIONS <---- */
 
