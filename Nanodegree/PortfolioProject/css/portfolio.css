@@ -792,6 +792,8 @@ clip-path: polygon(100% 0, 9% 0, 100% 110%);
   box-shadow: 0 1px 2px black;
 }
 
+/* ------------------------*/ /* ---------->>> PENCIL POT <<<-----------*/ /* ------------------------*/
+
 .pencil-pot {
   z-index: 1;
   top: 349px;
@@ -851,6 +853,8 @@ clip-path: polygon(100% 0, 9% 0, 100% 110%);
 	     -o-transform: skew(-5deg);
 	background-color: #0052AA;
 }
+
+/* ------------------------*/ /* ---------->>> CUP <<<-----------*/ /* ------------------------*/
 
 .cup {
   top: 350px;
@@ -928,6 +932,8 @@ clip-path: polygon(100% 0, 9% 0, 100% 110%);
   color: black;
   box-shadow: 0 2px 3px black;
 }
+
+/* ------------------------*/ /* ---------->>> SHELF <<<-----------*/ /* ------------------------*/
 
 .shelf {
   top: 130px;
@@ -1018,60 +1024,11 @@ clip-path: polygon(100% 0, 9% 0, 100% 110%);
   text-shadow: 1px 1px 2px grey;
 }
 
+/* ------------------------*/ /* ---------->>> LAMP <<<-----------*/ /* ------------------------*/
+
 .lamp {
   top: 190px;
   left: 40px;
-}
-
-.lamp-base {
-  top: 210px;
-  left: 35px;
-  height: 8px;
-  width: 70px;
-  border-radius: 7px 7px 0 0 ;
-  background: linear-gradient(to bottom, #E7ECF0 0%, #B2B2B2 23%,#707C8B 41%,  #707C8B 100%);
-  box-shadow: 0 2px 3px black;
-}
-
-.lamp-base-upper {
-  z-index: 1;
-  top: 200px;
-  left: 45px;
-  height: 20px;
-  width: 50px;
-  border-radius: 100%;
-  background: linear-gradient(to bottom, #E7ECF0 0%, #B2B2B2 23%,#707C8B 41%,  #707C8B 100%);
-  clip-path: polygon(0% 0%, 100% 0%, 100% 50%, 0% 50%);
-}
-
-.lamp-arm {
-  height: 100px;
-  width: 5px;
-}
-
-.lamp-arm-lower {
-  top: 116px;
-  left: 35px;
-  transform: rotate(-45deg);
-  background-color: #b1c5d5;
-}
-
-.lamp-arm-upper {
-  top: 45px;
-  left: 35px;
-  transform: rotate(45deg);
-  background: linear-gradient(to bottom, #CECECE 0%,#E7ECF0 30%,#b1c5d5 100%);
-}
-
-.lamp-joint {
-  top: 123px;
-  left: -5px;
-  height: 10px;
-  width: 10px;
-  border: 2px solid grey;
-  border-radius: 100%;
-  background-color: #E7ECF0;
-  box-shadow: inset 0 2px 2px 2px #b1c5d5;
 }
 
 .lamp-shade-top {
@@ -1108,6 +1065,130 @@ clip-path: polygon(100% 0, 9% 0, 100% 110%);
   clip-path: polygon(35% 0%, 65% 0%, 100% 100%, 0% 100%)
 }
 
+.lamp-arm {
+  height: 100px;
+  width: 5px;
+}
+
+.lamp-arm-lower {
+  top: 116px;
+  left: 35px;
+  transform: rotate(-45deg);
+  background-color: #b1c5d5;
+}
+
+.lamp-arm-upper {
+  top: 45px;
+  left: 35px;
+  transform: rotate(45deg);
+  background: linear-gradient(to bottom, #CECECE 0%,#E7ECF0 30%,#b1c5d5 100%);
+}
+
+.lamp-joint {
+  top: 123px;
+  left: -5px;
+  height: 10px;
+  width: 10px;
+  border: 2px solid grey;
+  border-radius: 100%;
+  background-color: #E7ECF0;
+  box-shadow: inset 0 -2px 2px 2px #b1c5d5;
+}
+
+.lamp-base-upper {
+  z-index: 1;
+  top: 200px;
+  left: 45px;
+  height: 20px;
+  width: 50px;
+  border-radius: 100%;
+  background: linear-gradient(to bottom, #E7ECF0 0%, #B2B2B2 23%,#707C8B 41%,  #707C8B 100%);
+  clip-path: polygon(0% 0%, 100% 0%, 100% 50%, 0% 50%);
+}
+
+.lamp-base {
+  top: 210px;
+  left: 35px;
+  height: 8px;
+  width: 70px;
+  border-radius: 7px 7px 0 0 ;
+  background: linear-gradient(to bottom, #E7ECF0 0%, #B2B2B2 23%,#707C8B 41%,  #707C8B 100%);
+  box-shadow: 0 2px 3px black;
+}
+
+
+
+/* ------------------------*/ /* ---------->>> FLOWER <<<-----------*/ /* ------------------------*/
+
+.flower {
+  top: 200px;
+  left: 550px;
+}
+
+.flower-pot {
+  top: 100px;
+  left: 110px;
+  width: 80px;
+  height: 130px;
+  background-color: #DF8D53;
+  background: linear-gradient(to bottom, rgba(173,98,65,1) 52%,rgba(223,141,83,1) 57%,rgba(223,141,83,1) 63%,rgba(165,110,62,1) 83%,rgba(122,69,46,1) 90%);
+  border-radius: 100%;
+  clip-path: polygon(0% 50%, 100% 50%, 100% 90%, 0% 90%);
+}
+
+.pot-shadow {
+  top: 210px;
+  left: 124px;
+  width: 52px;
+  height: 5px;
+  background-color: transparent;
+  box-shadow: 0 2px 5px black;
+}
+
+.flower-pot-top {
+  top: 150px;
+  left: 100px;
+  border-top: 20px solid #DF8D53;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  height: 0;
+  width: 90px;
+  background-color: transparent;
+}
+
+.leaf {
+  width: 20px;
+  height: 30px;
+  border-radius: 70% 0;
+  background-color: #6FB70B;
+}
+
+.leaf-1 {
+  top: 100px;
+  left: 0;
+}
+
+.leaf-2 {
+  top: 80px;
+  left: 20px;
+}
+
+.leaf-3 {
+  top: 20px;
+  left: 50px;
+}
+
+.leaf-4 {
+  top: 40px;
+  left: 70px;
+}
+
+.leaf-5 {
+  top: 50px;
+  left: 80px;
+}
+
+
 
 /* ----> ANIMATIONS <---- */
 
@@ -1129,3 +1210,4 @@ clip-path: polygon(100% 0, 9% 0, 100% 110%);
     transform: translateY(-40px);
   }
 }
+
