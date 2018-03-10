@@ -878,76 +878,32 @@ clip-path: polygon(100% 0, 9% 0, 100% 110%);
   clip-path: polygon(0% 0%, 50% 0%, 80% 10%, 100% 35%, 100% 70%, 80% 90%, 50% 100%, 0 100%, 0% 85%, 35% 85%, 60% 75%, 70% 65%, 70% 45%, 60% 25%, 40% 15%, 0% 15%);
   
 }
-.steam {
+.steams {
   top: 320px;
   left: 530px;
   transform: rotate(5deg);
 }
 
-.steam-1a {
+.steam {
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.3) 0%,rgba(255,255,255,0.7) 35%,rgba(255,255,255,0.9) 50%,rgba(255,255,255,0.7) 65%,rgba(255,255,255,0.3) 100%);
+  clip-path: polygon(12% 0%, 15% 0%, 9% 6%, 8% 15%, 21% 30%, 27% 33%, 39% 45%, 45% 54%, 45% 66%, 42% 72%, 30% 87%, 27% 90%, 30% 84%, 33% 78%, 36% 72%, 33% 63%, 27% 54%, 15% 42%, 9% 39%, 3% 33%, 0% 27%, 0% 18%, 3% 12%, 4% 9%);
+}
+
+.steam-1 {
   top: 0;
   left: 0;
-  width: 10px;
-  height: 10px;
-  background: none;
-  border: 3px solid rgba(255, 255, 255, 0.7);
-  border-radius: 100%;
-  clip-path: polygon(0% 0%, 50% 0%, 50% 100%, 0% 100%);
 }
 
-.steam-1b {
-  top: 14px;
-  left: -2px;
-  width: 10px;
-  height: 10px;
-  background: none;
-  border: 3px solid rgba(255, 255, 255, 0.7);
-  border-radius: 100%;
-  clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 50% 100%);
-}
-
-.steam-2a {
+.steam-2 {
   top: 0;
   left: 20px;
-  width: 10px;
-  height: 10px;
-  background: none;
-  border: 3px solid rgba(255, 255, 255, 0.7);
-  border-radius: 100%;
-  clip-path: polygon(0% 0%, 50% 0%, 50% 100%, 0% 100%);
 }
 
-.steam-2b {
-  top: 14px;
-  left: 18px;
-  width: 10px;
-  height: 10px;
-  background: none;
-  border: 3px solid rgba(255, 255, 255, 0.7);
-  border-radius: 100%;
-  clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 50% 100%);
-}
-
-.steam-3a {
+.steam-3 {
   top: 0;
   left: 10px;
-  width: 10px;
-  height: 10px;
-  background: none;
-  border: 3px solid rgba(255, 255, 255, 0.7);
-  border-radius: 100%;
-  clip-path: polygon(0% 0%, 50% 0%, 50% 100%, 0% 100%);
-}
-
-.steam-3b {
-  top: 14px;
-  left: 8px;
-  width: 10px;
-  height: 10px;
-  background: none;
-  border: 3px solid rgba(255, 255, 255, 0.7);
-  border-radius: 100%;
-  clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 50% 100%);
 }
 
 .books {
