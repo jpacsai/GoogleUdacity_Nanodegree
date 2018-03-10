@@ -889,21 +889,24 @@ clip-path: polygon(100% 0, 9% 0, 100% 110%);
   height: 30px;
   background: linear-gradient(to bottom, rgba(255,255,255,0.3) 0%,rgba(255,255,255,0.7) 35%,rgba(255,255,255,0.9) 50%,rgba(255,255,255,0.7) 65%,rgba(255,255,255,0.3) 100%);
   clip-path: polygon(12% 0%, 15% 0%, 9% 6%, 8% 15%, 21% 30%, 27% 33%, 39% 45%, 45% 54%, 45% 66%, 42% 72%, 30% 87%, 27% 90%, 30% 84%, 33% 78%, 36% 72%, 33% 63%, 27% 54%, 15% 42%, 9% 39%, 3% 33%, 0% 27%, 0% 18%, 3% 12%, 4% 9%);
+  animation: steam 6s infinite; /* line 1112 */
 }
 
 .steam-1 {
-  top: 0;
-  left: 0;
+  top: 30px;
+  left: 5px;
+  animation-delay: 2s;
 }
 
 .steam-2 {
-  top: 0;
-  left: 20px;
+  top: 30px;
+  left: 10px;
 }
 
 .steam-3 {
-  top: 0;
-  left: 10px;
+  top: 30px;
+  left: 20px;
+  animation-delay: 5s;
 }
 
 .books {
@@ -1103,4 +1106,26 @@ clip-path: polygon(100% 0, 9% 0, 100% 110%);
   background: linear-gradient(to bottom, rgba(255,255,160,0.8) 0%,rgba(255,255,255,0) 100%);
   transform: rotate(-45deg);
   clip-path: polygon(35% 0%, 65% 0%, 100% 100%, 0% 100%)
+}
+
+
+/* ----> ANIMATIONS <---- */
+
+@keyframes steam { /* line 894 */
+  0% {
+    opacity: 0;
+  }
+
+  25% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
 }
