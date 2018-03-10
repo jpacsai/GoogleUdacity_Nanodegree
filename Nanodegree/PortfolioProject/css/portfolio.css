@@ -148,7 +148,7 @@ header {
     font-size: 25px;
 }
 
-/* ------------------------*/ /* ---------->>> FOOTER <<<-----------*/ /* ------------------------*/
+/* ------------------------*/ /* ---------->>> DRAWING <<<-----------*/ /* ------------------------*/
 
 
 .abs {
@@ -246,7 +246,7 @@ clip-path: polygon(100% 0, 9% 0, 100% 110%);
 }
 
 .dots {
-  top: 4px;
+  top: 3.5px;
   left: 2px;
 }
 
@@ -443,7 +443,7 @@ clip-path: polygon(100% 0, 9% 0, 100% 110%);
 
 .label-text {
   color: #1C262F;
-  font-size: 3.5px;
+  font-size: 3px;
   font-family: sans-serif;
   text-transform: uppercase;
 }
@@ -455,24 +455,27 @@ clip-path: polygon(100% 0, 9% 0, 100% 110%);
 
 .udacity-card {
   background-color: white;
-  border-radius: 2px;
+  border-radius: 1px;
   box-shadow: 0px 1px 3px #D6D6D6;
 }
 
 .main-screen-activity {
-  top: 26px;
+  top: 24px;
   left: 15px;
   width: 138px;
   height: 28px;
 }
 
-.activity-continue {
-  top: 5px;
-  left: 8px;
+.activity-header {
   font-family: sans-serif;
   color: #1C262F;
   font-size: 4px;
   font-weight: bold;
+}
+
+.activity-continue {
+  top: 5px;
+  left: 8px;
 }
 
 .activity-place-text {
@@ -540,6 +543,14 @@ clip-path: polygon(100% 0, 9% 0, 100% 110%);
   left: 16px;
 }
 
+.tiny-text {
+  font-family: sans-serif;
+  font-size: 2.65px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #1C262F;
+}
+
 .progress-text {
   top: -0.55px;
   left: 20px;
@@ -551,8 +562,16 @@ clip-path: polygon(100% 0, 9% 0, 100% 110%);
   color: #1C262F;
 }
 
+.activity-card-tag {
+  top: 4px;
+  left: -0.5px;
+  height: 5px;
+  width: 1px;
+  background-color: #02B3E4;
+}
+
 .current-enrolments {
-  top: 60px;
+  top: 62px;
   left: 15px;
 }
 
@@ -561,17 +580,17 @@ clip-path: polygon(100% 0, 9% 0, 100% 110%);
   width: 60px;
 }
 
-.current-enr {
-  top: 8px;
+.current-enr-card {
+  top: 6px;
   left: 0;
-  width: 65px;
-  height: 35px;
-  background-color: red;
+  width: 140px;
+  height: 45px;
+  clip-path: polygon(-20% -20%, 120% -20%, 120% 82%, -20% 82%);
 }
 
 .enr-tag {
   z-index: 1;
-  top: 12px;
+  top: 10px;
   left: -1px;
   width: 5px;
   height: 5px;
@@ -585,12 +604,97 @@ clip-path: polygon(100% 0, 9% 0, 100% 110%);
 
 }
 
-.visual-studio {
-  top: 47%;
+.current-program {
+  top: 4px;
+  left: 8px;
+  color: #58646D;
+}
+
+.current-program-header {
+  top: 9px;
+  left: 8px;
+  width: 150px;
+}
+
+.activity-description {
+  top: 15px;
+  left: 8px;
+  width: 60px;
+  text-transform: none;
+  font-weight: normal;
+  line-height: 1.5;
+  color: #58646D;
+}
+
+.horizontal-line {
+  top: 30px;
+  left: 0;
+  height: 1px;
+  width: 70px;
+  border-bottom: 0.1px solid #DBE2E8;
+}
+
+.visual-studio-code {
+  top: 45%;
   left: 57%;
-  height: 53.3%;
-  width: 43%;
+  box-sizing: border-box;
+  height: 55.3%;
+  width: 44%;
+  border: 0.5px solid #404240;
   background-color: black;
+  clip-path: polygon(0% 0%, 98% 0%, 98% 99.5%, 0% 99.5%);
+}
+
+.vsc-top {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background-color: white;
+}
+
+.vsc-logo {
+  top: 0.5px;
+  left: 1px;
+  width: 4px;
+}
+
+.vsc-top-text {
+  color: #404240;
+  font-family: sans-serif;
+  font-size: 3.5px;
+}
+
+.vsc-window-text {
+  top: 0.5px;
+  left: 6px;
+  width: 100px;
+}
+
+.vsc-menu {
+  top: 5px;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background-color: #E4E4E4;
+}
+
+.vsc-menu-text {
+  top: 0.5px;
+  left: 1px;
+  word-spacing: 2px;
+}
+
+.vsc-code {
+  top: 12px;
+  left: 7px;
+  font-family: sans-serif;
+  font-size: 4px;
+  color: #06FF0B;
+}
+
+.code-block {
+  text-indent: -5px;
 }
 
 .screen-bottom {
