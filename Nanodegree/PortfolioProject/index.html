@@ -5,10 +5,9 @@
   <meta name="viewport" content="width=device-width">
   <title>Judit C. Pacsai - Portfolio Page</title>
   <link href="css/portfolio.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
   <link href="https://fonts.googleapis.com/css?family=The+Girl+Next+Door" rel="stylesheet">
-  <!-- <script src="portfolio.js"></script> -->
+  <script src="portfolio.js"></script>
 </head>
 <body>
     <header>
@@ -28,7 +27,7 @@
             <div class="drawing">
                 <div class="table abs"></div>
                 <div class="clock abs">
-                    <div class="clock-display abs">15:45</div>
+                    <div id="time"  class="clock-display abs"></div>
                 </div>
                 <div class="computer abs">
                     <div class="screen-border abs"></div>
@@ -81,7 +80,7 @@
                             <div class="main-screen-header abs">Home</div>
                             <span class="label-text activity-text abs">Latest activity</span>
                             <div class="udacity-card main-screen-activity abs">
-                                <span class="activity-continue abs">Continue Front-End Web Developer Nanodegree?</span>
+                                <span class="activity-header activity-continue abs">Continue Front-End Web Developer Nanodegree?</span>
                                 <span class="activity-place-text abs">You are on Build a Portfolio Site</span>
                                 <div class="continue-button abs">
                                     <span class="continue-text">Continue</span>
@@ -92,21 +91,53 @@
                                     <div class="progress-dot grey-dot pr-dot3 abs"></div>
                                     <div class="progress-dot grey-dot pr-dot4 abs"></div>
                                     <div class="progress-dot grey-dot pr-dot5 abs"></div>
-                                    <span class="progress-text abs">0/5 parts finished</span>
+                                    <span class="tiny-text progress-text abs">0/5 parts finished</span>
                                 </div>
+                                <div class="activity-card-tag abs"></div>
                             </div>
+                            
                             <div class="current-enrolments abs">
                                 <span class="label-text current-enr-label abs">current enrolments</span>
                                 <div class="enr-tag abs">
                                     <img class="enr-tag-image abs" src="img/paral.svg">
                                 </div>
-                                <div class="udacity-card current-enr abs">
-
+                                <div class="udacity-card current-enr-card abs">
+                                    <span class="label-text current-program abs">Nanodegree program</span>
+                                    <span class="activity-header current-program-header abs">Front-End Web Developer Nanodegree</span>
+                                    <span class="tiny-text activity-description abs">Become a Front-End Developer by completing a variety of projects for your portfolio - become an HTML, CSS and JavaScript pro!</span>
+                                    <div class="horizontal-line abs"></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="visual-studio abs">
-
+                        <div class="visual-studio-code abs">
+                            <div class="vsc-top abs">
+                                <div class="vsc-window-top abs">
+                                    <img class="vsc-logo abs" src="img/visual-studio-code.svg">
+                                    <span class="vsc-top-text vsc-window-text abs">portfolio.css - PortfolioProject - Visual Studio Code</span>
+                                </div>
+                                <div class="vsc-menu abs">
+                                    <span class="vsc-top-text vsc-menu-text abs">File Edit Selection View Go Debug Tasks Help</span>
+                                </div>
+                            </div>
+                            <div class="vsc-code abs">
+                                <p class="code-block">
+                                .drawing {<br>
+                                    position: relative;<br>
+                                    top: 0;<br>
+                                    left: 50%;<br>
+                                    transform: translateX(-50%);<br>
+                                    width: 800px;<br>
+                                    height: 450px;<br>
+                                    background-color: #45f0df;
+                                </p>
+                                <p class="code-block">}</p>
+                                <br>
+                                <p class="code-block">
+                                .table {<br>
+                                    top: 380px;<br>
+                                    left: 0; <br>
+                                </p>
+                            </div>
                         </div>
                     </div>
                     <div class="screen-bottom abs"></div>
@@ -131,13 +162,10 @@
                     <div class="pen-cap abs"></div>
                     </div>
                 </div>
-                <div class="steam abs">
-                     <div class="steam-1a abs"></div>
-                     <div class="steam-1b abs"></div>
-                     <div class="steam-2a abs"></div>
-                     <div class="steam-2b abs"></div>
-                     <div class="steam-3a abs"></div>
-                     <div class="steam-3b abs"></div>
+                <div class="steams abs">
+                     <div class="steam steam-1 abs"></div>
+                     <div class="steam steam-2 abs"></div>
+                     <div class="steam steam-3 abs"></div>
                 </div>
                 <div class="cup abs">
                    <i class="fa fab fa-github fa-2x abs"></i>
@@ -164,6 +192,28 @@
                     <div class="lamp-shade-top abs"></div>
                     <div class="lamp-shade abs"></div>
                     <div class="lamp-light abs"></div>
+                </div>
+                <div class="flower abs">
+                    <div class="flower-pot abs"></div>
+                    <div class="flower-pot-top abs"></div>
+                    <div class="pot-shadow abs"></div>
+                    <div class="leaf leaf-1 abs"></div>
+                    <div class="leaf leaf-2 abs"></div>
+                    <div class="leaf leaf-3 abs"></div>
+                    <div class="leaf leaf-4 abs"></div>
+                    <div class="leaf leaf-5 abs"></div>
+                </div>
+                <div class="glasses abs">
+                        <svg height="0" width="0">
+                                <defs>
+                                    <clipPath id="svgPath">
+                                        <path fill="#FFFFFF" stroke="#000000" stroke-width="1.5794" stroke-miterlimit="10" d="M215,100.3c97.8-32.6,90.5-71.9,336-77.6
+                                    c92.4-2.1,98.1,81.6,121.8,116.4c101.7,149.9,53.5,155.9,14.7,178c-96.4,54.9,5.4,269-257,115.1c-57-33.5-203,46.3-263.7,20.1
+                                    c-33.5-14.5-132.5-45.5-95-111.1C125.9,246.6,98.6,139.1,215,100.3z"/>
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                    <div class="glasses-frame"></div>
                 </div>
             </div>
         </section>
@@ -219,5 +269,6 @@
             </section>
         
     </main>
+    <script src="js/portfolio.js"></script>
 </body>
 </html>
