@@ -181,7 +181,7 @@ header {
   width: 100px;
   background: linear-gradient(to bottom, rgba(49,51,48,1) 0%, rgba(17,20,18,1) 100%);
   border-radius: 6px;
-  box-shadow: 2px 5px 10px #525151;
+  box-shadow: 2px 5px 6px #525151;
 }
 
 .clock-display {
@@ -1164,26 +1164,31 @@ clip-path: polygon(100% 0, 9% 0, 100% 110%);
 }
 
 .cork-board {
+  z-index: -3;
   top: 120px;
   left: 60px;
   width: 150px;
   height: 200px;
   background-color: #795d52e6;
   border-radius: 3px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5) inset, 2px 3px 6px rgba(0, 0, 0, 0.3);
 }
 
 .cork-board-middle {
+  z-index: -2;
   top: 10px;
   left: 10px;
   width: 130px;
   height: 180px;
   background-color: #CBB39B;
+  box-shadow:0px 0px 5px rgba(0, 0, 0, 0.5) inset;
 }
 
 .postit {
   width: 30px;
   height: 30px;
   background-color: #f9f09c;
+  box-shadow:0 1px 4px rgba(0, 0, 0, 0.3);
 }
 
 .sticker1 {
@@ -1198,22 +1203,57 @@ clip-path: polygon(100% 0, 9% 0, 100% 110%);
   transform: rotate(2deg);
 }
 
-.sheet {
-  top: 40px;
-  left: 75px;
-  width: 50px;
-  height: 70px;
-  background-color: white;
-}
-
 .pin {
-  top: 43px;
-  left: 100px;
   width: 5px;
   height: 5px;
   background-color: #ff000080;
   border-radius: 100%;
   box-shadow: 0 1px 1px grey;
+}
+
+.pin1 {
+  top: 43px;
+  left: 100px;
+}
+
+.pin2 {
+  top: 13px;
+  left: 120px;
+  background-color: #DC52B0;
+}
+
+.pin3 {
+  top: 23px;
+  left: 130px;
+  background-color: #5DE45C;
+}
+
+.box{
+  top: 40px; 
+  left: 75px;
+  width: 50px;
+  height: 70px;
+  background-color:white; 
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.box:before {
+  z-index:-1;
+  position:absolute;
+  content:"";
+  top: 80%;
+  left: 1px;
+  bottom: 3px;
+  width: 40px;
+  background:#9B7468;
+  -webkit-box-shadow: 0 5px 5px #9B7468;
+  -moz-box-shadow: 0 5px 5px #9B7468;
+  box-shadow: 0 5px 5px #9B7468;
+  -webkit-transform: rotate(6deg);
+  -moz-transform: rotate(6deg);
+  transform: rotate(6deg);
+  right: 1px;
+  left: auto;
 }
 
 .glasses {
