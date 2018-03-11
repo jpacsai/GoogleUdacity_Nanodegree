@@ -1163,6 +1163,59 @@ clip-path: polygon(100% 0, 9% 0, 100% 110%);
   background-color: #6FB70B;
 }
 
+.cork-board {
+  top: 120px;
+  left: 60px;
+  width: 150px;
+  height: 200px;
+  background-color: #795d52e6;
+  border-radius: 3px;
+}
+
+.cork-board-middle {
+  top: 10px;
+  left: 10px;
+  width: 130px;
+  height: 180px;
+  background-color: #CBB39B;
+}
+
+.postit {
+  width: 30px;
+  height: 30px;
+  background-color: #f9f09c;
+}
+
+.sticker1 {
+  top: 30px;
+  left: 30px;
+  transform: rotate(-5deg);
+}
+
+.sticker2 {
+  top: 75px;
+  left: 35px;
+  transform: rotate(2deg);
+}
+
+.sheet {
+  top: 40px;
+  left: 75px;
+  width: 50px;
+  height: 70px;
+  background-color: white;
+}
+
+.pin {
+  top: 43px;
+  left: 100px;
+  width: 5px;
+  height: 5px;
+  background-color: #ff000080;
+  border-radius: 100%;
+  box-shadow: 0 1px 1px grey;
+}
+
 .glasses {
   top: 405px;
   left: 570px;
@@ -1172,10 +1225,28 @@ clip-path: polygon(100% 0, 9% 0, 100% 110%);
   top: 0;
   left: 0;
   width: 70px;
-  height: 26px;
-  clip-path: url(#svgPath);
+  height: 30px;
+  clip-path: url(#svg-frame);
+  background: linear-gradient(to bottom, rgba(51,51,51,1) 0%,rgba(0,0,0,1) 23%);
+}
+
+.glasses-temples {
+  top: -2px;
+  left: -4px;
+  width: 70px;
+  height: 30px;
+  clip-path: url(#svg-temples);
   background-color: black;
-}*/
+}
+
+.glasses-lenses {
+  top: -5px;
+  left: -8px;
+  width: 70px;
+  height: 30px;
+  clip-path: url(#svg-lenses);
+  background-color: rgba(255, 255, 255, 0.3);
+}
 
 /* ----> ANIMATIONS <---- */
 
