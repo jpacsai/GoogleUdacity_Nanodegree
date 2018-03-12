@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:300|Pacifico');
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:300|The+Girl+Next+Door');
 
 
 /* ------------------------*/ /* ---------->>> GLOBAL CSS SPACE RESET <<<-----------*/ /* ------------------------*/
@@ -16,10 +16,10 @@ body {
 	justify-content: center;
 }
 
-a:link { color: black; text-decoration: none;}
-a:visited { color: black; }
-a:hover { color: #4B3B47; transform: scale(1.4);}
-a:active { color: blueviolet; }
+a:link 		{ color: black; text-decoration: none;}
+a:visited 	{ color: black; }
+a:hover 	{ color: black; transform: scale(0.9);}
+a:active 	{ color: black; }
 
 /* ------------------------*/ /* ---------->>> HEADER <<<-----------*/ /* ------------------------*/
 header {
@@ -56,25 +56,24 @@ header {
 	max-height: 90px;
 	max-width: 90px;
 	padding: 5px;
-	background-color: #dcd2ef;
 	background: linear-gradient(45deg, #8be408, #7ee2d1);
 	border-radius: 100%;
 	box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
 }
 
 .logo {
+	height: 95%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 95%;
 	border: 2px dashed #F7EEEE;
 	border-radius: 100%;
 }
 
 .name {
 	width: 100%;
-	font-family: Pacifico, sans-serif;
-	font-size: 160%;
+	font-family: "The Girl Next Door", sans-serif;
+	font-size: 150%;
 }
 
 .title {
@@ -87,6 +86,7 @@ header {
 .hero {
 	overflow: hidden;
 	background-color: #7ee2d1;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
 .hero-pic {
@@ -116,27 +116,26 @@ header {
 	height: 70px;
 	max-width: 800px;
 	margin: 0 auto;
-	font-size: 2em;
 	text-align: center;
+	font-size: 2em;
 }
 
 .social-list {
-    list-style: none;
+    height: 60px;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-	height: 60px;
+	list-style: none;
 }
 
 .social-link {
-	display: inline-block;
 	width: 60px;
 	height: 60px;
+	display: inline-block;
 	transition: all 256ms;
 }
 
 .social-link:after {
-	display: inline-block;
 	z-index: 1;
 	content: "";
 	width: 60px;
@@ -147,20 +146,36 @@ header {
 	justify-content: center;
 	border-radius: 100%;
 	position: relative;
-	top: -25px;
+	top: -58px;
 	transition: all 256ms;
-	box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
+
+.social-link:before {
+	display: inline-block;
+	z-index: 1;
+	content: "";
+	width: 60px;
+	height: 60px;
+	background-color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 100%;
+	position: relative;
+	top: 39px;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+} 
 
 .social-link:hover:after {
 	transform: scale(0);
+	
 }
 
 .social-icon {
 	z-index: 2;
 	display: inline-block;
 	position: relative;
-	top: 23px;
+	top: -8px;
 	left: 1px;
 }
 
@@ -182,6 +197,7 @@ header {
 	flex-wrap: wrap;
 	justify-content: center;
 	background-color: #cbf1eb;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
 .project {
@@ -189,28 +205,17 @@ header {
 	margin: 20px;
 }
 
-.placeholder {
+.project-image {
 	width: 100%;
 	height: 100%;
 	max-height: 200px;
 	max-width: 300px;
+	transition: all 256ms;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
-.ovrly {
-    background: rgba(0, 0, 0, 0.5);
-    height: 100%;
-    left: 0;
-    top: -100%;
-    width: 100%;
-    position: absolute;
-    -webkit-transition: all 0.5s;
-    -moz-transition: all 0.5s;
-    -o-transition: all 0.5s;
-    transition: all 0.5s;
-} 
-
-.placeholder:hover .ovrly {
-    top: 0;
+.project-image:hover {
+	transform: scale(0.9);
 }
 
 .project-figcaption {
@@ -1551,3 +1556,10 @@ header {
 		-o-transform: rotate(10deg);
 }
 
+/* ------------------------*/ /* ---------->>> MEDIA <<<-----------*/ /* ------------------------*/
+
+@media screen and (min-width: 500px) {
+	.name {
+		font-size: 190%;
+	}
+}
