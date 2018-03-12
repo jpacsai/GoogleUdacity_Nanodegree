@@ -140,43 +140,41 @@ header {
 	content: "";
 	width: 60px;
 	height: 60px;
-	background: linear-gradient(45deg, #8be408, #7ee2d1);
+	position: relative;
+	top: -58px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	background: linear-gradient(45deg, #8be408, #7ee2d1);
 	border-radius: 100%;
-	position: relative;
-	top: -58px;
 	transition: all 256ms;
 }
 
 .social-link:before {
-	display: inline-block;
 	z-index: 1;
 	content: "";
 	width: 60px;
 	height: 60px;
-	background-color: white;
+	position: relative;
+	top: 39px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	background-color: white;
 	border-radius: 100%;
-	position: relative;
-	top: 39px;
 	box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 } 
 
 .social-link:hover:after {
 	transform: scale(0);
-	
 }
 
 .social-icon {
 	z-index: 2;
-	display: inline-block;
 	position: relative;
 	top: -8px;
 	left: 1px;
+	display: inline-block;
 }
 
 .social-link:hover > .social-icon {
@@ -1556,7 +1554,7 @@ header {
 		-o-transform: rotate(10deg);
 }
 
-/* ------------------------*/ /* ---------->>> MEDIA <<<-----------*/ /* ------------------------*/
+/* ------------------------*/ /* ---------->>> MEDIA QUERIES <<<-----------*/ /* ------------------------*/
 
 @media screen and (min-width: 500px) {
 	.name {
