@@ -10,18 +10,22 @@
 
 /* ------------------------*/ /* ---------->>> GLOBAL STYLES <<<-----------*/ /* ------------------------*/
 body {
-	width: 100vw;
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	
 }
+
+a:link { color: black; text-decoration: none;}
+a:visited { color: black; }
+a:hover { color: purple; }
+a:active { color: blueviolet; }
 
 /* ------------------------*/ /* ---------->>> HEADER <<<-----------*/ /* ------------------------*/
 header {
 	width: 100vw;
 	max-width: 800px;
-	margin: 10px auto;
+	margin: 22px auto;
 	display: grid;
 	grid-template: 100px / 20px 25% 5% minmax(180px, 1fr) 20px;
 }
@@ -34,18 +38,35 @@ header {
 	text-align: right;
 }
 
-.selfie-container {
+.logo-container {
 	grid-column: 2 / 3;
 	display: flex;
-	flex-direction: column;
-	justify-content: center;
+	justify-content: flex-start;
+	align-items: center;
+	font-family: "Josefin Sans",sans-serif;
+	font-size: 30px;
+	font-weight: bold;
+	color: #404240;
 }
 
-.selfie {
+.logo-background {
+	box-sizing: border-box;
 	width: 100%;
-	height: auto;
+	height: 100%;
+	max-height: 90px;
 	max-width: 90px;
-	border-radius: 50%;
+	padding: 5px;
+	background-color: #dcd2ef;
+	border-radius: 100%;
+}
+
+.logo {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 95%;
+	border: 2px dashed #F7EEEE;
+	border-radius: 100%;
 }
 
 .name {
@@ -63,6 +84,7 @@ header {
 /* ------------------------*/ /* ---------->>> HERO <<<-----------*/ /* ------------------------*/
 .hero {
 	overflow: hidden;
+	background-color: #7ee2d1;
 }
 
 .hero-pic {
@@ -80,7 +102,7 @@ header {
 .about {
 	width: 80%;
 	max-width: 800px;
-	margin: 20px 0;
+	margin: 50px 0;
 	text-align: center;
 	font-family: "Josefin Sans", sans-serif;
 	font-size: 25px;
@@ -92,32 +114,65 @@ header {
 	height: 70px;
 	max-width: 800px;
 	margin: 0 auto;
+	font-size: 2em;
+	text-align: center;
+}
+
+.social-list {
+	padding: 0;
+    list-style: none;
+    margin: 1em;
 	display: flex;
 	justify-content: space-around;
-	font-size: 2em;
+}
+
+li {
+	display: inline-block;
+    position: relative;
+}
+
+.social-icon {
+	width: 100%;
+	color: black;
+    position: absolute;
+    top: 13px;
+	left: 0;
+	transition: all 265ms ease-out;
 }
 
 .contact-link {
-	min-width: 70px;
-	height: 100%;
-	margin: 0 5px;
+	display: inline-block;
 	display: flex;
-	align-items: center;
 	justify-content: center;
-	border-radius: 100%;
-	background-color: aquamarine;
+	align-items: center;
+}
+
+.social-link:before {
+    content: "";
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    display: block;
+    background-color: #c8ef91;
+    transition: all 2s;
+}
+
+.social-link:hover {
+	transform: scale(0);
+	transition: all 2s;
+	background-color: yellow;
 }
 
 /* ------------------------*/ /* ---------->>> PROJECTS <<<-----------*/ /* ------------------------*/
 .project-container {
 	max-width: 100%;
 	margin: -35px 0;
-	padding-top: 50px;
+	padding: 50px 0 30px;
 	display: flex;
 	align-items: center;
 	flex-wrap: wrap;
 	justify-content: center;
-	background-color: bisque;
+	background-color: #cbf1eb;
 }
 
 .project {
@@ -128,6 +183,23 @@ header {
 .placeholder {
 	width: 100%;
 	max-width: 300px;
+}
+
+.ovrly {
+    background: rgba(0, 0, 0, 0.5);
+    height: 100%;
+    left: 0;
+    top: -100%;
+    width: 100%;
+    position: absolute;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+} 
+
+.placeholder:hover .ovrly {
+    top: 0;
 }
 
 .project-figcaption {
@@ -152,6 +224,7 @@ header {
 	height: 450px;
 	transform: translateX(-50%);
 	background-color: #28d1d5ba;
+	background-color: #7ee2d1;
 }
 
 .table {
@@ -238,7 +311,7 @@ header {
 
 .screen-bottom {
 	top: 140px;
-	left: 0px;
+	left: 0;
 	width: 235px;
 	height: 21px;
 	background-color: #e7ecf0;
@@ -485,7 +558,7 @@ header {
 	font-family: sans-serif;
 	font-size: 5px;
 	color: #1c262f;
-	box-shadow: 0px 2px 5px #d6d6d6;
+	box-shadow: 0 2px 5px #d6d6d6;
 	clip-path: polygon(0% 0%, 100% 0%, 100% 150%, 0% 150%);
 		-webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 150%, 0% 150%);
 }
@@ -505,7 +578,7 @@ header {
 .udacity-card {
 	background-color: white;
 	border-radius: 1px;
-	box-shadow: 0px 1px 3px #d6d6d6;
+	box-shadow: 0 1px 3px #d6d6d6;
 }
 
 .main-screen-activity {
@@ -770,7 +843,7 @@ header {
 
 .keys {
 	top: 2px;
-	left: 0px;
+	left: 0;
 	width: 125px;
 	height: 5px;
 	background-color: #eff2f5;
@@ -799,7 +872,7 @@ header {
 	height: 200px;
 	background-color: #776a60;
 	border-radius: 3px;
-	box-shadow: 0 0 5px rgba(0, 0, 0, 0.5) inset, 2px 3px 6px rgba(0, 0, 0, 0.3);
+	box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5), 2px 3px 6px rgba(0, 0, 0, 0.3);
 }
 
 .cork-board-middle {
@@ -809,7 +882,7 @@ header {
 	width: 130px;
 	height: 180px;
 	background-color: #cbb39b;
-	box-shadow: 0 0 5px rgba(0, 0, 0, 0.5) inset;
+	box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 .postit {
@@ -950,7 +1023,7 @@ header {
 	width: 20px;
 	height: 20px;
 	border-radius: 100%;
-	background: linear-gradient(to bottom, #778699 0%, #b1c5d5 25%, #b1c5d5 100%);
+	background: linear-gradient(to bottom, #878b8e 0%,#878b8e 0%,#bec3c6 22%,#dbe2e8 45%);
 	clip-path: polygon(0% 0%, 100% 0%, 100% 50%, 0% 50%);
 		-webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 50%, 0% 50%);
 }
@@ -962,7 +1035,7 @@ header {
 	width: 55px;
 	height: 80px;
 	border-radius: 100%;
-	background: linear-gradient(to bottom, #778699 0%, #e3e8eb 25%, #b1c5d5);
+	background: linear-gradient(to bottom, #878b8e 0%,#878b8e 0%,#bec3c6 22%,#dbe2e8 45%);
 	clip-path: polygon(0% 0%, 100% 0%, 100% 50%, 0% 50%);
 		-webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 50%, 0% 50%);
 }
@@ -981,6 +1054,7 @@ header {
 .lamp-arm {
 	width: 5px;
 	height: 100px;
+	box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .lamp-arm-lower {
@@ -1005,9 +1079,9 @@ header {
 	width: 10px;
 	height: 10px;
 	background-color: #e7ecf0;
-	border: 2px solid grey;
+	border: 1.5px solid grey;
 	border-radius: 100%;
-	box-shadow: 0 -2px 2px 2px #b1c5d5 inset;
+	box-shadow: inset 0 -2px 2px 2px #b1c5d5;
 }
 
 .lamp-base-upper {
@@ -1047,7 +1121,7 @@ header {
 
 .pencil {
 	top: -20px;
-	left: 0px;
+	left: 0;
 	width: 3px;
 	height: 20px;
 	transform: skew(20deg);
@@ -1220,7 +1294,7 @@ header {
 	box-shadow: 0 2px 2px black;
 }
 
-.fa-github {
+.cup-github {
 	display: block;
 	top: 8px;
 	left: 5px;
@@ -1251,7 +1325,7 @@ header {
 	background: linear-gradient(to bottom, rgba(255,255,255,0.3) 0%,rgba(255,255,255,0.7) 35%,rgba(255,255,255,0.9) 50%,rgba(255,255,255,0.7) 65%,rgba(255,255,255,0.3) 100%);
 	clip-path: polygon(12% 0%, 15% 0%, 9% 6%, 8% 15%, 21% 30%, 27% 33%, 39% 45%, 45% 54%, 45% 66%, 42% 72%, 30% 87%, 27% 90%, 30% 84%, 33% 78%, 36% 72%, 33% 63%, 27% 54%, 15% 42%, 9% 39%, 3% 33%, 0% 27%, 0% 18%, 3% 12%, 4% 9%);
 		-webkit-clip-path: polygon(12% 0%, 15% 0%, 9% 6%, 8% 15%, 21% 30%, 27% 33%, 39% 45%, 45% 54%, 45% 66%, 42% 72%, 30% 87%, 27% 90%, 30% 84%, 33% 78%, 36% 72%, 33% 63%, 27% 54%, 15% 42%, 9% 39%, 3% 33%, 0% 27%, 0% 18%, 3% 12%, 4% 9%);
-	animation: steam 6s infinite; /* line 1112 */
+	animation: steam 6s infinite;
 }
 
 .steam-1 {
@@ -1269,6 +1343,28 @@ header {
 	top: 30px;
 	left: 20px;
 	animation-delay: 5s;
+}
+
+@keyframes steam {
+	0% {
+		opacity: 0;
+	}
+
+	25% {
+		opacity: 0;
+	}
+
+	50% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 0;
+		transform: translateY(-40px);
+			-webkit-transform: translateY(-40px);
+			-moz-transform: translateY(-40px);
+			-o-transform: translateY(-40px);
+	}
 }
 
 /* ------------------------*/ /* ---------->>> GLASSES <<<-----------*/ /* ------------------------*/
@@ -1315,7 +1411,7 @@ header {
 	height: 18px;
 	background-color: transparent;
 	border-radius: 100%;
-	box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
+	box-shadow: 0 5px 5px rgba(0, 0, 0, 0.6);
 }
 
 .glasses-shadow:after {
@@ -1327,7 +1423,7 @@ header {
 	height: 18px;
 	background-color: transparent;
 	border-radius: 100%;
-	box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
+	box-shadow: 0 5px 5px rgba(0, 0, 0, 0.6);
 }
 
 
@@ -1442,29 +1538,5 @@ header {
 		-webkit-transform: rotate(10deg);
 		-moz-transform: rotate(10deg);
 		-o-transform: rotate(10deg);
-}
-
-/* ------------------------*/ /* ---------->>> ANIMATION <<<-----------*/ /* ------------------------*/
-
-@keyframes steam { /* line 891 */
-	0% {
-		opacity: 0;
-	}
-
-	25% {
-		opacity: 0;
-	}
-
-	50% {
-		opacity: 1;
-	}
-
-	100% {
-		opacity: 0;
-		transform: translateY(-40px);
-			-webkit-transform: translateY(-40px);
-			-moz-transform: translateY(-40px);
-			-o-transform: translateY(-40px);
-	}
 }
 
