@@ -137,35 +137,29 @@ header {
 	transition: all 256ms;
 }
 
-.social-link:after {
+.social-link:before, .social-link:after {
 	z-index: 1;
 	content: "";
 	width: 60px;
 	height: 60px;
 	position: relative;
-	top: -58px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background: linear-gradient(45deg, #8be408, #7ee2d1);
 	border-radius: 100%;
-	transition: all 256ms;
-}
+} 
 
 .social-link:before {
-	z-index: 1;
-	content: "";
-	width: 60px;
-	height: 60px;
-	position: relative;
 	top: 39px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
 	background-color: white;
-	border-radius: 100%;
 	box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-} 
+}
+
+.social-link:after {
+	top: -58px;
+	background: linear-gradient(45deg, #8be408, #7ee2d1);
+	transition: all 256ms;
+}
 
 .social-link:hover:after {
 	transform: scale(0);
