@@ -156,7 +156,7 @@ header {
 }
 
 .social-link:after {
-	top: -61px;
+	top: -63px;
 	background: linear-gradient(45deg, #8be408, #7ee2d1);
 	transition: all 256ms;
 }
