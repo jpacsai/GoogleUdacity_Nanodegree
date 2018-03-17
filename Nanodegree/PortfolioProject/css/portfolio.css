@@ -2,6 +2,7 @@
 
 
 /* ------------------------*/ /* ---------->>> GLOBAL CSS SPACE RESET <<<-----------*/ /* ------------------------*/
+
 * {
 	border: 0; 
 	margin: 0; 
@@ -9,6 +10,7 @@
 }
 
 /* ------------------------*/ /* ---------->>> GLOBAL STYLES <<<-----------*/ /* ------------------------*/
+
 body {
 	width: 100%;
 	display: flex;
@@ -160,7 +162,7 @@ header {
 }
 
 .social-link:after {
-	top: -61px;
+	top: -62px;
 	background: linear-gradient(45deg, #8be408, #7ee2d1);
 	transition: all 256ms;
 }
