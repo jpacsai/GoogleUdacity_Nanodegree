@@ -1,6 +1,11 @@
 
 @import url('https://fonts.googleapis.com/css?family=Julius+Sans+One|Monda');
 
+body {
+  display: flex;
+  justify-content: center;
+}
+
 .card {
 	box-sizing: border-box;
 	border-radius: 2px;
