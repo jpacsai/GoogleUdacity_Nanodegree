@@ -71,22 +71,26 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function disable() {
-        
+        for (let x in cards) {
+            cards[x].classList.add('disable');
+        }
     }
 
     function enable() {
-        
+        for (let x in cards) {
+            cards[x].classList.remove('disable');
+        }
     }
 
     function counter() {
-       
+        
     }
     
     function win() {
         
     }
 
-    function restart() {
+    function restart {
 
     }
 });
