@@ -107,7 +107,20 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     
     function win() {
+        const won = document.createElement("DIV");
+        won.classList.add("winner");
+
+        const wonHeader = document.createElement("H1");
+        wonHeader.classList.add("winnerHeader");
+        wonHeader.textContent = "Congratulation!";
+
+        const wonText = document.createElement("H2");
+        wonText.classList.add("winnerText");
+        wonText.textContent = "You won with " + count + " moves!";
         
+        won.appendChild(wonHeader);
+        won.appendChild(wonText);
+        document.body.appendChild(won);  
     }
 
     function restart() {

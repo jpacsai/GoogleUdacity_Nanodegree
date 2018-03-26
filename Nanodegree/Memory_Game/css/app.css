@@ -66,16 +66,17 @@ h1 {
     transition: transform 0.4s;
     perspective: 1000;
     transform-style: preserve-3d;
+    transform: rotateY(180deg);
 }
 
 .deck .card.open {
-    transform: rotateY(180deg);
+    transform: rotateY(0);
     background: #02b3e4;
     cursor: default;
-    
 }
 
 .deck .card.show {
+    
     font-size: 33px;
 }
 
@@ -83,11 +84,6 @@ h1 {
     cursor: default;
     background: #02ccba;
     font-size: 33px;
-}
-
-.disable {
-    pointer-events: none;
-    cursor: default;
 }
 
 /*
