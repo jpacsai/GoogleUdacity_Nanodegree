@@ -101,7 +101,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function counter() {
-        
+        count++;
+        console.log(count);
+        document.querySelector('.moves').textContent = count;
     }
     
     function win() {
