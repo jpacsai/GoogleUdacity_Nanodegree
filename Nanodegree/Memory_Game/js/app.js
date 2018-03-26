@@ -1,6 +1,12 @@
 document.addEventListener('DOMContentLoaded', function () {
 
     let cards = Array.from(document.getElementsByClassName("card"));
+    let count = 0;
+    let matchedCards = 0;
+
+    let openCards = [];
+    let card1;
+    let card2;
 
     addCards();
 
@@ -26,4 +32,61 @@ document.addEventListener('DOMContentLoaded', function () {
         return array;
     }
   
+    for (let x in cards) {
+        cards[x].onclick = function(event) {
+            cardClicked(event);
+        };
+    }
+
+    function cardClicked(event) {
+        event.target.classList.add("open");
+        setTimeout(function(){event.target.classList.add("show");}, 180);
+        check(event);
+    }
+
+    function check(event) {
+        openCards.push(event.target.innerHTML.trim());
+        if (openCards.length === 1) {
+            card1 = event.target;
+        }
+        else if (openCards.length === 2) {
+            counter();
+            disable();
+            card2 = event.target;
+            if (openCards[0] === openCards[1]) {
+                match();
+            }
+            else {
+                noMatch();
+            }
+        }
+    }
+
+    function match() {
+        
+    }
+
+    function noMatch() {
+        
+    }
+
+    function disable() {
+        
+    }
+
+    function enable() {
+        
+    }
+
+    function counter() {
+       
+    }
+    
+    function win() {
+        
+    }
+
+    function restart() {
+
+    }
 });
