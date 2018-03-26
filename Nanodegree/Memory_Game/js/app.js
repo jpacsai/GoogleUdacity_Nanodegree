@@ -63,11 +63,29 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function match() {
-        
+        openCards.length = 0;
+        card1.classList.add("match");
+        card2.classList.add("match");
+        card1 = null;
+        card2 = null;
+        enable();
+        matchedCards++;
+        if (matchedCards === 8) {
+            win();
+        }
     }
 
     function noMatch() {
-        
+        openCards.length = 0;
+        setTimeout(function(){
+            card1.classList.remove("open");
+            card1.classList.remove("show");
+            card2.classList.remove("open");
+            card2.classList.remove("show");
+            card1 = null;
+            card2 = null;
+            enable();
+        }, 1200);
     }
 
     function disable() {
@@ -90,7 +108,7 @@ document.addEventListener('DOMContentLoaded', function () {
         
     }
 
-    function restart {
+    function restart() {
 
     }
 });
