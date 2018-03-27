@@ -50,8 +50,8 @@ document.addEventListener('DOMContentLoaded', function () {
             card1 = event.target;
         }
         else if (openCards.length === 2) {
-            counter();
             disable();
+            counter();
             card2 = event.target;
             if (openCards[0] === openCards[1]) {
                 match();
