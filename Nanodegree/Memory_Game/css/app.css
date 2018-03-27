@@ -122,3 +122,23 @@ h1 {
     float: right;
     cursor: pointer;
 }
+
+/*
+ * Styles for modal
+ */
+.winner {
+    position: absolute;
+    top: 25%;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.winnerHeader {
+
+}

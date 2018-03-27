@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const wonText = document.createElement("H2");
         wonText.classList.add("winnerText");
-        wonText.textContent = "You won with " + count + " moves!";
+        wonText.textContent = "You won with " + count + " moves";
         
         won.appendChild(wonHeader);
         won.appendChild(wonText);
