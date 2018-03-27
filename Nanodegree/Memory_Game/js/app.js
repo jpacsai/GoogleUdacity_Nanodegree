@@ -68,6 +68,15 @@ document.addEventListener('DOMContentLoaded', function () {
             else {
                 noMatch();
             }
+            if (moveCounter === 2) {
+                star2();
+            }
+            else if (moveCounter === 3) {
+                star1();
+            }
+            else if (moveCounter === 4) {
+                star0();
+            }
         }
     }
 
@@ -88,10 +97,8 @@ document.addEventListener('DOMContentLoaded', function () {
     function noMatch() {
         openCards.length = 0;
         setTimeout(function(){
-            card1.classList.remove("open");
-            card1.classList.remove("show");
-            card2.classList.remove("open");
-            card2.classList.remove("show");
+            card1.classList.remove("open", "show");
+            card2.classList.remove("open", "show");
             card1 = null;
             card2 = null;
             enable();
@@ -172,11 +179,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // turn back open cards, reshuffle deck
         for (let card in cards) {
-            cards[card].classList.remove("open");
-            cards[card].classList.remove("show");
-            cards[card].classList.remove("match");
+            cards[card].classList.remove("open", "show", "match");
         }
         setTimeout(function(){ addCards(); }, 400);
+
+        // reset stars
+        let stars = document.getElementsByClassName("fa");
+        for (let s in stars) {
+            let st = stars[s].classList;
+            if (st.contains('fa-star-o') === true) {
+                st.replace('fa-star-o', 'fa-star');
+            }
+        }
 
         // reset variables
         cardClick = 0;
@@ -185,5 +199,20 @@ document.addEventListener('DOMContentLoaded', function () {
         matchedCards = 0;
         
         enable();
+    }
+
+    function star2() {
+        let star = document.getElementsByClassName("fa")[2].classList;
+        star.replace('fa-star', 'fa-star-o');
+    }
+
+    function star1() {
+        let star = document.getElementsByClassName("fa")[1].classList;
+        star.replace('fa-star', 'fa-star-o');
+    }
+
+    function star0() {
+        let star = document.getElementsByClassName("fa")[0].classList;
+        star.replace('fa-star', 'fa-star-o');
     }
 });
