@@ -68,13 +68,13 @@ document.addEventListener('DOMContentLoaded', function () {
             else {
                 noMatch();
             }
-            if (moveCounter === 2) {
+            if (moveCounter === 14) {
                 star2();
             }
-            else if (moveCounter === 3) {
+            else if (moveCounter === 18) {
                 star1();
             }
-            else if (moveCounter === 4) {
+            else if (moveCounter === 22) {
                 star0();
             }
         }
