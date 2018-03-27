@@ -13,6 +13,8 @@ document.addEventListener('DOMContentLoaded', function () {
     let secCounter = 0;
     let minCounter = 0;
 
+    let starCounter = 3;
+
     addCards();
 
     function addCards() {
@@ -69,12 +71,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 noMatch();
             }
             if (moveCounter === 14) {
+                starCounter = 2;
                 star2();
             }
             else if (moveCounter === 18) {
+                starCounter = 1;
                 star1();
             }
             else if (moveCounter === 22) {
+                starCounter = 0;
                 star0();
             }
         }
@@ -132,10 +137,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const wonText = document.createElement("H2");
         wonText.classList.add("winnerText");
-        wonText.textContent = "You won with " + count + " moves";
+        wonText.textContent = "You won with " + moveCounter + " moves in " + minCounter + " min " + secCounter + " sec!";
+
+        const wonStar = document.createElement("DIV");
+        
+        for (let i = 0; i < starCounter; i++) {
+            const wonStarOne = document.createElement("I");
+            wonStarOne.classList.add('fa','fa-star','fa-3x','wonStar');
+            wonStar.appendChild(wonStarOne);
+        } 
+
+        const newGameButton = document.createElement('DIV');
+        newGameButton.classList.add('newGameButton');
+        newGameButton.textContent = 'Play again?';
         
         won.appendChild(wonHeader);
         won.appendChild(wonText);
+        won.appendChild(wonStar);
+        won.appendChild(newGameButton);
         document.body.appendChild(won);  
     }
 
@@ -184,12 +203,9 @@ document.addEventListener('DOMContentLoaded', function () {
         setTimeout(function(){ addCards(); }, 400);
 
         // reset stars
-        let stars = document.getElementsByClassName("fa");
+        let stars = Array.from(document.getElementsByClassName("fa"));
         for (let s in stars) {
-            let st = stars[s].classList;
-            if (st.contains('fa-star-o') === true) {
-                st.replace('fa-star-o', 'fa-star');
-            }
+            stars[s].classList.replace('fa-star-o', 'fa-star');
         }
 
         // reset variables
@@ -197,6 +213,7 @@ document.addEventListener('DOMContentLoaded', function () {
         card1 = null;
         card2 = null;
         matchedCards = 0;
+        starCounter = 3;
         
         enable();
     }
