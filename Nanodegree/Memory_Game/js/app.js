@@ -8,8 +8,10 @@ document.addEventListener('DOMContentLoaded', function () {
     let card1;
     let card2;
 
+    let cardClick = 0;
     let timing;
-    let secCount = 0;
+    let secCounter = 0;
+    let minCounter = 0;
 
     addCards();
 
@@ -42,7 +44,10 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function cardClicked(event) {
-        timer();
+        cardClick++;
+        if (cardClick === 1) {
+            timer();
+        }
         event.target.classList.add("open");
         setTimeout(function(){event.target.classList.add("show");}, 180);
         check(event);
@@ -107,7 +112,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function counter() {
         count++;
-        console.log(count);
         document.querySelector('.moves').textContent = count;
     }
     
@@ -131,7 +135,15 @@ document.addEventListener('DOMContentLoaded', function () {
     function timer() {
         timing = setInterval(function(){
             secCounter++;
-            document.querySelector('.secText').textContent = secCounter;
+            if (secCounter === 60) {
+                secCounter = 0;
+                document.querySelector('.secCount').textContent = secCounter;
+                minCounter++;
+                document.querySelector('.minCount').textContent = minCounter;
+            }
+            else {
+                document.querySelector('.secCount').textContent = secCounter;
+            }
         },1000);
     }
 
