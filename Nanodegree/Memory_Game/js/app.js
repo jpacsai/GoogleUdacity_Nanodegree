@@ -155,6 +155,11 @@ document.addEventListener('DOMContentLoaded', function () {
         won.appendChild(wonText);
         won.appendChild(wonStar);
         won.appendChild(newGameButton);
+        newGameButton.onclick = function(event) {
+            restart();
+            hideWin(won);
+        };
+
         document.body.appendChild(won);  
     }
 
@@ -231,5 +236,10 @@ document.addEventListener('DOMContentLoaded', function () {
     function star0() {
         let star = document.getElementsByClassName("fa")[0].classList;
         star.replace('fa-star', 'fa-star-o');
+    }
+
+    function hideWin(won) {
+        won.style.display === "none";
+        won.remove();
     }
 });
