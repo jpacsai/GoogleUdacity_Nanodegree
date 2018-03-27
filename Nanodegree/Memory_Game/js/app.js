@@ -8,6 +8,9 @@ document.addEventListener('DOMContentLoaded', function () {
     let card1;
     let card2;
 
+    let timing;
+    let secCount = 0;
+
     addCards();
 
     function addCards() {
@@ -39,6 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function cardClicked(event) {
+        timer();
         event.target.classList.add("open");
         setTimeout(function(){event.target.classList.add("show");}, 180);
         check(event);
@@ -72,6 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
         matchedCards++;
         if (matchedCards === 8) {
             win();
+            stopTimer();
         }
     }
 
@@ -121,6 +126,17 @@ document.addEventListener('DOMContentLoaded', function () {
         won.appendChild(wonHeader);
         won.appendChild(wonText);
         document.body.appendChild(won);  
+    }
+
+    function timer() {
+        timing = setInterval(function(){
+            secCounter++;
+            document.querySelector('.secText').textContent = secCounter;
+        },1000);
+    }
+
+    function stopTimer() {
+        clearInterval(timing);
     }
 
     function restart() {
