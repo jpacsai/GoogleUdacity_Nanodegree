@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
 
     let cards = Array.from(document.getElementsByClassName("card"));
-    let count = 0;
+    let moveCounter = 0;
     let matchedCards = 0;
 
     let openCards = [];
@@ -111,8 +111,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function counter() {
-        count++;
-        document.querySelector('.moves').textContent = count;
+        moveCounter++;
+        document.querySelector('.moves').textContent = moveCounter;
     }
     
     function win() {
@@ -149,9 +149,41 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function stopTimer() {
         clearInterval(timing);
+        secCounter = 0;
+        minCounter = 0;
     }
 
-    function restart() {
+    const restartButton = document.querySelector(".restart");
+    restartButton.onclick = function() {
+        restart();
+    };
 
+    function restart() {
+        disable();
+
+        // reset timer
+        stopTimer();
+        document.querySelector('.secCount').textContent = 0;
+        document.querySelector('.minCount').textContent = 0;
+
+        // reset moves counter
+        moveCounter = 0;
+        document.querySelector('.moves').textContent = 0;
+
+        // turn back open cards, reshuffle deck
+        for (let card in cards) {
+            cards[card].classList.remove("open");
+            cards[card].classList.remove("show");
+            cards[card].classList.remove("match");
+        }
+        setTimeout(function(){ addCards(); }, 400);
+
+        // reset variables
+        cardClick = 0;
+        card1 = null;
+        card2 = null;
+        matchedCards = 0;
+        
+        enable();
     }
 });
