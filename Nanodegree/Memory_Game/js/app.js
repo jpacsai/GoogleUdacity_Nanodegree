@@ -70,17 +70,13 @@ document.addEventListener('DOMContentLoaded', function () {
             else {
                 noMatch();
             }
-            if (moveCounter === 14) {
+            if (moveCounter === 15) {
                 starCounter = 2;
                 star2();
             }
-            else if (moveCounter === 18) {
+            else if (moveCounter === 20) {
                 starCounter = 1;
                 star1();
-            }
-            else if (moveCounter === 22) {
-                starCounter = 0;
-                star0();
             }
         }
     }
@@ -230,11 +226,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function star1() {
         let star = document.getElementsByClassName("fa")[1].classList;
-        star.replace('fa-star', 'fa-star-o');
-    }
-
-    function star0() {
-        let star = document.getElementsByClassName("fa")[0].classList;
         star.replace('fa-star', 'fa-star-o');
     }
 
