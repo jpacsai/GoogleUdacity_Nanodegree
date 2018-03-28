@@ -1,0 +1,232 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
+    font-family: 'Coda', cursive;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+}
+
+/*
+ * Styles for the deck of cards
+ */
+
+.deck {
+    width: 660px;
+    min-height: 680px;
+    background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+    padding: 32px;
+    border-radius: 10px;
+    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 3em;
+}
+
+.deck .card {
+    height: 125px;
+    width: 125px;
+    background: #2e3d49;
+    font-size: 0;
+    color: #ffffff;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+    transition: transform 0.4s;
+    perspective: 1000;
+    transform-style: preserve-3d;
+    transform: rotateY(180deg);
+}
+
+.deck .card.open {
+    transform: rotateY(0);
+    background: #02b3e4;
+    cursor: default;
+}
+
+.deck .card.show {
+    font-size: 33px;
+}
+
+.deck .card.match {
+    cursor: default;
+    background: #02ccba;
+    font-size: 33px;
+    pointer-events: none;
+    cursor: default;
+    animation: jello-horizontal 0.9s both;
+}
+
+
+/**
+ * ----------------------------------------
+ * animation jello-horizontal
+ * ----------------------------------------
+ */
+ @keyframes jello-horizontal {
+    0% {
+      transform: scale3d(1, 1, 1);
+    }
+    30% {
+      transform: scale3d(1.25, 0.75, 1);
+    }
+    40% {
+      transform: scale3d(0.75, 1.25, 1);
+    }
+    50% {
+      transform: scale3d(1.15, 0.85, 1);
+    }
+    65% {
+      transform: scale3d(0.95, 1.05, 1);
+    }
+    75% {
+      transform: scale3d(1.05, 0.95, 1);
+    }
+    100% {
+      transform: scale3d(1, 1, 1);
+    }
+}
+
+.deck .card.unMatch {
+    animation: shake-horizontal 0.7s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+}
+
+/**
+ * ----------------------------------------
+ * animation shake-horizontal
+ * ----------------------------------------
+ */
+ @keyframes shake-horizontal {
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+    10%,
+    30%,
+    50%,
+    70% {
+      transform: translateX(-10px);
+    }
+    20%,
+    40%,
+    60% {
+      transform: translateX(10px);
+    }
+    80% {
+      transform: translateX(8px);
+    }
+    90% {
+      transform: translateX(-8px);
+    }
+}
+  
+  
+.disable {
+    pointer-events: none;
+    cursor: default;
+}
+
+/*
+ * Styles for the Score Panel
+ */
+
+.score-panel {
+    text-align: left;
+    width: 345px;
+    margin-bottom: 10px;
+}
+
+.score-panel .stars {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    margin: 0 5px 0 0;
+}
+
+.score-panel .stars li {
+    list-style: none;
+    display: inline-block;
+}
+
+.score-panel .timer {
+    display: inline-block;
+    margin-left: 20%;
+}
+
+.score-panel .restart {
+    float: right;
+    cursor: pointer;
+}
+
+/*
+ * Styles for modal
+ */
+.winner {
+    position: absolute;
+    top: 25%;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.wonStar {
+    margin: auto 10px;
+    color: #FED766;
+    text-shadow: 5px 2px 20px rgba(46, 61, 73, 0.5);
+}
+
+.newGameButton {
+    width: 150px;
+    height: 50px;
+    border-radius: 3px;
+    background-color: #28bbbe;
+    margin-top: 30px;
+    color: white;
+    font-size: 1.3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+    cursor: pointer;
+}
+
+.newGameButton:hover {
+    background-color: #135152;
+    box-shadow: none;
+}
