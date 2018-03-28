@@ -161,3 +161,8 @@ h1 {
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
     cursor: pointer;
 }
+
+.newGameButton:hover {
+    background-color: #135152;
+    box-shadow: none;
+}
