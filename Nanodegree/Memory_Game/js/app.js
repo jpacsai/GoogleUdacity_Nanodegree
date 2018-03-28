@@ -98,12 +98,16 @@ document.addEventListener('DOMContentLoaded', function () {
     function noMatch() {
         openCards.length = 0;
         setTimeout(function(){
-            card1.classList.remove("open", "show");
-            card2.classList.remove("open", "show");
+            card1.classList.add("unMatch");
+            card2.classList.add("unMatch");
+        }, 800);
+        setTimeout(function(){
+            card1.classList.remove("open", "show", "unMatch");
+            card2.classList.remove("open", "show", "unMatch");
             card1 = null;
             card2 = null;
             enable();
-        }, 1200);
+        }, 2000);
     }
 
     function disable() {
