@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
 
     let cards = Array.from(document.getElementsByClassName("card"));
+    let won;
     let moveCounter = 0;
     let matchedCards = 0;
 
@@ -130,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     
     function win() {
-        const won = document.createElement("DIV");
+        won = document.createElement("DIV");
         won.classList.add("winner");
 
         const wonHeader = document.createElement("H1");
@@ -157,12 +158,10 @@ document.addEventListener('DOMContentLoaded', function () {
         won.appendChild(wonText);
         won.appendChild(wonStar);
         won.appendChild(newGameButton);
-        newGameButton.onclick = function(event) {
-            restart();
-            hideWin(won);
-        };
+        newGameButton.onclick = function(){restart()};
 
         document.body.appendChild(won);  
+        window.addEventListener('keypress', restart, false);
     }
 
     function timer() {
@@ -188,6 +187,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function restart() {
         disable();
 
+        window.addEventListener('unload', unload, false);
         // reset timer
         clearInterval(timing);
         document.querySelector('.secCount').textContent = 0;
@@ -217,8 +217,14 @@ document.addEventListener('DOMContentLoaded', function () {
         starCounter = 3;
         secCounter = 0;
         minCounter = 0;
-        
+        won.style.display === "none";
+        won.remove();
         enable();
+    }
+
+    function unload() {
+        window.removeEventListener('keypress', wonRestart, false);
+        window.removeEventListener('unload', unload, false);
     }
 
     function star2() {
@@ -230,9 +236,9 @@ document.addEventListener('DOMContentLoaded', function () {
         let star = document.getElementsByClassName("fa")[1].classList;
         star.replace('fa-star', 'fa-star-o');
     }
-
-    function hideWin(won) {
+/*
+    function hideWin() {
         won.style.display === "none";
         won.remove();
-    }
+    }*/
 });
