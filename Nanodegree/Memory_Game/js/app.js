@@ -90,8 +90,10 @@ document.addEventListener('DOMContentLoaded', function () {
         enable();
         matchedCards++;
         if (matchedCards === 8) {
-            win();
-            stopTimer();
+            clearInterval(timing);
+            setTimeout(function() {
+                win()
+            }, 1000);
         }
     }
 
@@ -178,12 +180,6 @@ document.addEventListener('DOMContentLoaded', function () {
         },1000);
     }
 
-    function stopTimer() {
-        clearInterval(timing);
-        secCounter = 0;
-        minCounter = 0;
-    }
-
     const restartButton = document.querySelector(".restart");
     restartButton.onclick = function() {
         restart();
@@ -193,7 +189,7 @@ document.addEventListener('DOMContentLoaded', function () {
         disable();
 
         // reset timer
-        stopTimer();
+        clearInterval(timing);
         document.querySelector('.secCount').textContent = 0;
         document.querySelector('.minCount').textContent = 0;
 
@@ -219,6 +215,8 @@ document.addEventListener('DOMContentLoaded', function () {
         card2 = null;
         matchedCards = 0;
         starCounter = 3;
+        secCounter = 0;
+        minCounter = 0;
         
         enable();
     }
