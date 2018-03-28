@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let cards = Array.from(document.getElementsByClassName("card"));
     let won;
+    let pauseScreen;
     let moveCounter = 0;
     let matchedCards = 0;
 
@@ -187,7 +188,8 @@ document.addEventListener('DOMContentLoaded', function () {
     function restart() {
         disable();
 
-        window.addEventListener('unload', unload, false);
+        window.removeEventListener('keypress', restart, false);
+        
         // reset timer
         clearInterval(timing);
         document.querySelector('.secCount').textContent = 0;
@@ -217,8 +219,12 @@ document.addEventListener('DOMContentLoaded', function () {
         starCounter = 3;
         secCounter = 0;
         minCounter = 0;
-        won.style.display === "none";
-        won.remove();
+
+        if (won !== undefined) {
+            won.style.display === "none";
+            won.remove();
+        }
+        
         enable();
     }
 
@@ -236,9 +242,39 @@ document.addEventListener('DOMContentLoaded', function () {
         let star = document.getElementsByClassName("fa")[1].classList;
         star.replace('fa-star', 'fa-star-o');
     }
-/*
-    function hideWin() {
-        won.style.display === "none";
-        won.remove();
-    }*/
+
+    const pauseButton = document.querySelector(".pause");
+        pauseButton.onclick = function() {
+        pause();
+    };
+
+    function pause() {
+        clearInterval(timing);
+        disable();
+        pauseScreen = document.createElement("DIV");
+        pauseScreen.classList.add("pause-screen");
+        const pauseText = document.createElement('H1');
+        pauseText.textContent = "Game paused";
+        pauseScreen.appendChild(pauseText);
+        const pauseImg = document.createElement("IMG");
+        pauseImg.classList.add("pause-img");
+        pauseImg.src = "IMG/PAUSE.PNG";
+        pauseScreen.appendChild(pauseImg);
+
+        document.body.appendChild(pauseScreen); 
+        
+        window.addEventListener('keypress', resume);
+        //window.addEventListener('click', resume);
+    }
+
+    function resume() {
+        window.removeEventListener('keypress', resume);
+        window.removeEventListener('click', resume);
+        pauseScreen.style.display === "none";
+        pauseScreen.remove();
+        if (cardClick >= 1) {
+            timer();
+        }
+        enable();
+    }
 });
