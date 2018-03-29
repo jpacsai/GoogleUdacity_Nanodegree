@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
 
     let cards = Array.from(document.getElementsByClassName("card"));
+    let won;
+    let pauseScreen;
     let moveCounter = 0;
     let matchedCards = 0;
 
@@ -90,8 +92,10 @@ document.addEventListener('DOMContentLoaded', function () {
         enable();
         matchedCards++;
         if (matchedCards === 8) {
-            win();
-            stopTimer();
+            clearInterval(timing);
+            setTimeout(function() {
+                win()
+            }, 1000);
         }
     }
 
@@ -128,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     
     function win() {
-        const won = document.createElement("DIV");
+        won = document.createElement("DIV");
         won.classList.add("winner");
 
         const wonHeader = document.createElement("H1");
@@ -155,12 +159,10 @@ document.addEventListener('DOMContentLoaded', function () {
         won.appendChild(wonText);
         won.appendChild(wonStar);
         won.appendChild(newGameButton);
-        newGameButton.onclick = function(event) {
-            restart();
-            hideWin(won);
-        };
+        newGameButton.onclick = function(){restart()};
 
         document.body.appendChild(won);  
+        window.addEventListener('keypress', restart, false);
     }
 
     function timer() {
@@ -178,12 +180,6 @@ document.addEventListener('DOMContentLoaded', function () {
         },1000);
     }
 
-    function stopTimer() {
-        clearInterval(timing);
-        secCounter = 0;
-        minCounter = 0;
-    }
-
     const restartButton = document.querySelector(".restart");
     restartButton.onclick = function() {
         restart();
@@ -192,8 +188,10 @@ document.addEventListener('DOMContentLoaded', function () {
     function restart() {
         disable();
 
+        window.removeEventListener('keypress', restart, false);
+        
         // reset timer
-        stopTimer();
+        clearInterval(timing);
         document.querySelector('.secCount').textContent = 0;
         document.querySelector('.minCount').textContent = 0;
 
@@ -219,6 +217,13 @@ document.addEventListener('DOMContentLoaded', function () {
         card2 = null;
         matchedCards = 0;
         starCounter = 3;
+        secCounter = 0;
+        minCounter = 0;
+
+        if (won !== undefined) {
+            won.style.display === "none";
+            won.remove();
+        }
         
         enable();
     }
@@ -233,8 +238,38 @@ document.addEventListener('DOMContentLoaded', function () {
         star.replace('fa-star', 'fa-star-o');
     }
 
-    function hideWin(won) {
-        won.style.display === "none";
-        won.remove();
+    const pauseButton = document.querySelector(".pause");
+        pauseButton.onclick = function() {
+        pause();
+    };
+
+    function pause() {
+        clearInterval(timing);
+        disable();
+        pauseScreen = document.createElement("DIV");
+        pauseScreen.classList.add("pause-screen");
+        const pauseText = document.createElement('H1');
+        pauseText.textContent = "Game paused";
+        pauseScreen.appendChild(pauseText);
+        const pauseImg = document.createElement("IMG");
+        pauseImg.classList.add("pause-img");
+        pauseImg.src = "IMG/PAUSE.PNG";
+        pauseScreen.appendChild(pauseImg);
+
+        document.body.appendChild(pauseScreen); 
+        
+        window.addEventListener('keypress', resume);
+        //window.addEventListener('click', resume);
+    }
+
+    function resume() {
+        window.removeEventListener('keypress', resume);
+        window.removeEventListener('click', resume);
+        pauseScreen.style.display === "none";
+        pauseScreen.remove();
+        if (cardClick >= 1) {
+            timer();
+        }
+        enable();
     }
 });
