@@ -248,9 +248,15 @@ document.addEventListener('DOMContentLoaded', function () {
         disable();
         pauseScreen = document.createElement("DIV");
         pauseScreen.classList.add("pause-screen");
+
         const pauseText = document.createElement('H1');
         pauseText.textContent = "Game paused";
         pauseScreen.appendChild(pauseText);
+
+        const pauseComment = document.createElement('H3');
+        pauseComment.textContent = "press any key to return";
+        pauseScreen.appendChild(pauseComment);
+
         const pauseImg = document.createElement("IMG");
         pauseImg.classList.add("pause-img");
         pauseImg.src = "IMG/PAUSE.PNG";
