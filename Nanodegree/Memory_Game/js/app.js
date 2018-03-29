@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
 
+    // - - - - VARIABLES - - - -
+
     let cards = Array.from(document.getElementsByClassName("card"));
     let openCards = [];
     let card1;
@@ -17,6 +19,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // js DOM elements
     let won;
     let pauseScreen;
+
+    // - - - - CARDS  - - - -
 
     addCards();
 
@@ -63,8 +67,10 @@ document.addEventListener('DOMContentLoaded', function () {
         check(event);
     }
 
-    // adds card to openCards array
+    // - - - - CHECK CARDS AFTER CLICK  - - - -
+    
     function check(event) {
+        // adds card to openCards array
         openCards.push(event.target.innerHTML.trim());
         if (openCards.length === 1) {
             card1 = event.target;
@@ -94,7 +100,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // if two cards are a match
+    // - - - - MATCHING CARDS  - - - -
+
     function match() {
         openCards.length = 0;
 
@@ -117,7 +124,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // if cards are no match
+    // - - - - NOT MATCHING CARDS  - - - -
+
     function noMatch() {
         openCards.length = 0;
 
@@ -141,6 +149,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 2000);
     }
 
+    // - - - - DISABLE CLICK  - - - -
     // function to disable clicking on other cards when two cards are open
     function disable() {
         for (let x in cards) {
@@ -148,62 +157,35 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // allow clicking again
+    // - - - - ENABLE CLICK  - - - -
+
     function enable() {
         for (let x in cards) {
             cards[x].classList.remove('disable');
         }
     }
 
-    // function for move counter
+    // - - - - STAR COUNTER  - - - -
+
+    function star2() { // remove the first star
+        let star = document.getElementsByClassName("fa")[2].classList;
+        star.replace('fa-star', 'fa-star-o');
+    }
+
+    function star1() { // remove the second star
+        let star = document.getElementsByClassName("fa")[1].classList;
+        star.replace('fa-star', 'fa-star-o');
+    }
+
+    // - - - - MOVE COUNTER  - - - -
+
     function counter() {
         moveCounter++;
         document.querySelector('.moves').textContent = moveCounter;
     }
     
-    // winning screen
-    function win() {
-        won = document.createElement("DIV");
-        won.classList.add("winner");
+    // - - - - TIMER  - - - -
 
-        // add header
-        const wonHeader = document.createElement("H1");
-        wonHeader.classList.add("winnerHeader");
-        wonHeader.textContent = "Congratulation!";
-
-        // add info about the game
-        const wonText = document.createElement("H2");
-        wonText.classList.add("winnerText");
-        wonText.textContent = "You won with " + moveCounter + " moves in " + minCounter + " min " + secCounter + " sec!";
-
-        // add stars earned
-        const wonStar = document.createElement("DIV");
-        for (let i = 0; i < starCounter; i++) {
-            const wonStarOne = document.createElement("I");
-            wonStarOne.classList.add('fa','fa-star','fa-3x','wonStar');
-            wonStar.appendChild(wonStarOne);
-        } 
-
-        // add new game button
-        const newGameButton = document.createElement('DIV');
-        newGameButton.classList.add('newGameButton');
-        newGameButton.textContent = 'Play again?';
-        
-        won.appendChild(wonHeader);
-        won.appendChild(wonText);
-        won.appendChild(wonStar);
-        won.appendChild(newGameButton);
-
-        document.body.appendChild(won);  
-
-        // event listeners for new game button - click or keypress
-        newGameButton.onclick = function(){
-            restart()
-        };
-        window.addEventListener('keypress', restart, false);
-    }
-
-    // timer function
     function timer() {
         timing = setInterval(function(){
             secCounter++;
@@ -219,7 +201,8 @@ document.addEventListener('DOMContentLoaded', function () {
         },1000);
     }
 
-    // restart button 
+    // - - - - RESTART BUTTON  - - - -
+
     const restartButton = document.querySelector(".restart");
     restartButton.onclick = function() {
         restart();
@@ -272,19 +255,8 @@ document.addEventListener('DOMContentLoaded', function () {
         enable();
     }
 
-    // remove the first star
-    function star2() {
-        let star = document.getElementsByClassName("fa")[2].classList;
-        star.replace('fa-star', 'fa-star-o');
-    }
+    // - - - - PAUSE BUTTON  - - - -
 
-    // remove the second star
-    function star1() {
-        let star = document.getElementsByClassName("fa")[1].classList;
-        star.replace('fa-star', 'fa-star-o');
-    }
-
-    // button to pause the game with event handler
     const pauseButton = document.querySelector(".pause");
     pauseButton.onclick = function() {
         pause();
@@ -306,7 +278,7 @@ document.addEventListener('DOMContentLoaded', function () {
         pauseScreen.appendChild(pauseText);
 
         const pauseComment = document.createElement('H3');
-        pauseComment.textContent = "press any key to return";
+        pauseComment.textContent = "press any key or click to return";
         pauseScreen.appendChild(pauseComment);
 
         const pauseImg = document.createElement("IMG");
@@ -317,7 +289,6 @@ document.addEventListener('DOMContentLoaded', function () {
         document.body.appendChild(pauseScreen); 
         
         // event listener to restart a game with a keypress or a click
-        
         pauseScreen.onclick = function() {
             resume();
         };
@@ -328,7 +299,6 @@ document.addEventListener('DOMContentLoaded', function () {
     function resume() {
         // remove event listeners
         window.removeEventListener('keypress', resume);
-        //window.removeEventListener('click', resume);
 
         // hide pause screen and remove
         pauseScreen.style.display === "none";
@@ -339,5 +309,48 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // enable clicking again
         enable();
+    }
+
+    // - - - - WINNER SCREEN - - - -
+
+    function win() {
+        won = document.createElement("DIV");
+        won.classList.add("winner");
+
+        // add header
+        const wonHeader = document.createElement("H1");
+        wonHeader.classList.add("winnerHeader");
+        wonHeader.textContent = "Congratulation!";
+
+        // add info about the game
+        const wonText = document.createElement("H2");
+        wonText.classList.add("winnerText");
+        wonText.textContent = "You won with " + moveCounter + " moves in " + minCounter + " min " + secCounter + " sec!";
+
+        // add stars earned
+        const wonStar = document.createElement("DIV");
+        for (let i = 0; i < starCounter; i++) {
+            const wonStarOne = document.createElement("I");
+            wonStarOne.classList.add('fa','fa-star','fa-3x','wonStar');
+            wonStar.appendChild(wonStarOne);
+        } 
+
+        // add new game button
+        const newGameButton = document.createElement('DIV');
+        newGameButton.classList.add('newGameButton');
+        newGameButton.textContent = 'Play again?';
+        
+        won.appendChild(wonHeader);
+        won.appendChild(wonText);
+        won.appendChild(wonStar);
+        won.appendChild(newGameButton);
+
+        document.body.appendChild(won);  
+
+        // event listeners for new game button - click or keypress
+        newGameButton.onclick = function(){
+            restart()
+        };
+        window.addEventListener('keypress', restart, false);
     }
 });
