@@ -317,15 +317,18 @@ document.addEventListener('DOMContentLoaded', function () {
         document.body.appendChild(pauseScreen); 
         
         // event listener to restart a game with a keypress or a click
+        
+        pauseScreen.onclick = function() {
+            resume();
+        };
         window.addEventListener('keypress', resume);
-        //window.addEventListener('click', resume);
     }
 
     // function to resume the game after it was paused
     function resume() {
         // remove event listeners
         window.removeEventListener('keypress', resume);
-        window.removeEventListener('click', resume);
+        //window.removeEventListener('click', resume);
 
         // hide pause screen and remove
         pauseScreen.style.display === "none";
