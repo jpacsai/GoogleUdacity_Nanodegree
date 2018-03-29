@@ -325,7 +325,10 @@ document.addEventListener('DOMContentLoaded', function () {
         // add info about the game
         const wonText = document.createElement("H2");
         wonText.classList.add("winnerText");
-        wonText.textContent = "You won with " + moveCounter + " moves in " + minCounter + " min " + secCounter + " sec!";
+        let wonInfo = minCounter === 0 ? 
+            "You won with " + moveCounter + " moves in " + secCounter + " sec!" : 
+            "You won with " + moveCounter + " moves in " + minCounter + " min " + secCounter + " sec!";
+        wonText.textContent = wonInfo;
 
         // add stars earned
         const wonStar = document.createElement("DIV");
