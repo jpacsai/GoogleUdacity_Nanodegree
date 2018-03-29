@@ -163,8 +163,10 @@ h1 {
 
 .score-panel {
     text-align: left;
-    width: 345px;
+    width: 360px;
     margin-bottom: 10px;
+    display: grid;
+    grid-template: 1fr / 18% 10% 15% 37% 10% 10%;
 }
 
 .score-panel .stars {
@@ -179,14 +181,49 @@ h1 {
     display: inline-block;
 }
 
+.score-panel .moves {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .score-panel .timer {
-    display: inline-block;
-    margin-left: 20%;
+    display: grid;
+    grid-template: 1fr / 10% 20% 20% 20% 20% 10%;
+}
+
+.score-panel .minCount {
+    display: flex;
+    justify-content: center;
+    grid-area: 1 / 2 / 2 / 3;
+}
+
+.score-panel .minText {
+    grid-area: 1 / 3 / 2 / 4;
+}
+
+.score-panel .secCount {
+    display: flex;
+    justify-content: center;
+    grid-area: 1 / 4 / 2 / 5;
+}
+
+.score-panel .secText {
+    grid-area: 1 / 5 / 2 / 6;
 }
 
 .score-panel .restart {
-    float: right;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.score-panel .pause {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /*
