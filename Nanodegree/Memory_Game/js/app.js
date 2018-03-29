@@ -228,11 +228,6 @@ document.addEventListener('DOMContentLoaded', function () {
         enable();
     }
 
-    function unload() {
-        window.removeEventListener('keypress', wonRestart, false);
-        window.removeEventListener('unload', unload, false);
-    }
-
     function star2() {
         let star = document.getElementsByClassName("fa")[2].classList;
         star.replace('fa-star', 'fa-star-o');
