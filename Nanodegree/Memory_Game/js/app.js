@@ -339,11 +339,12 @@ document.addEventListener('DOMContentLoaded', function () {
         const newGameButton = document.createElement('DIV');
         newGameButton.classList.add('newGameButton');
         newGameButton.textContent = 'Play again?';
+
+        // add key press comment
+        const newGameComment = document.createElement("H3");
+        newGameComment.textContent = 'or press any key';
         
-        won.appendChild(wonHeader);
-        won.appendChild(wonText);
-        won.appendChild(wonStar);
-        won.appendChild(newGameButton);
+        won.append(wonHeader, wonText, wonStar, newGameButton, newGameComment);
 
         document.body.appendChild(won);  
 
