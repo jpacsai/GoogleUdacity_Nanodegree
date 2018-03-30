@@ -18,7 +18,8 @@ body {
 
 body {
     font-family: 'Coda', cursive;
-    background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
+    background: url('../img/polygon.jpg') no-repeat center center fixed;; 
+    
 }
 
 .container {
@@ -58,7 +59,7 @@ h1 {
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    font-size: 0;
+    
     color: #ffffff;
     border-radius: 8px;
     background: #2e3d49;
@@ -69,14 +70,18 @@ h1 {
     transform: rotateY(180deg);
 }
 
+.deck .card .icon {
+    transform: scale(0);
+}
+
 .deck .card.open {
     cursor: default;
     background: #02b3e4;
     transform: rotateY(0);
 }
 
-.deck .card.show {
-    font-size: 33px;
+.deck .card.show .icon  {
+    transform: scale(0.5);
 }
 
 .deck .card.match {
