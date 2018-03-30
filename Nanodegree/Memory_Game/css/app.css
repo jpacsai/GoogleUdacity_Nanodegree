@@ -184,7 +184,7 @@ h1 {
     margin: 0 5px 0 0;
     padding: 0;
     display: inline-block;
-    color: #ffe236;
+    color: #f1990f;
 }
 
 .score-panel .stars li {
@@ -243,17 +243,17 @@ h1 {
 
 .winner {
     position: absolute;
-    top: 25%;
+    top: 15%;
     left: 0;
     width: 100%;
-    height: 50%;
+    height: 70%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     background-color: rgba(255, 255, 255, 0.9);
     color: #270555;
-    transition: ease-in;
+    animation: fadeIn 0.8s;
 }
 
 .wonStar {
@@ -270,15 +270,16 @@ h1 {
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    border-radius: 3px;
-    background-color: #1cb189;
+    border-radius: 8px;
+    background-color: #8563be;
     font-size: 1.3em;
     color: white;
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+    transition: all 0.3s ease 0s;
 }
 
 .newGameButton:hover {
-    background-color: #135152;
+    background-color: #2f0b6b;
     box-shadow: none;
 }
 
@@ -306,3 +307,8 @@ h1 {
     width: 300px;
     margin: 30px;
 }
+
+@keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+ } 
