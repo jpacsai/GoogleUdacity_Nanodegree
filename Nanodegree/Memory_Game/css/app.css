@@ -303,7 +303,7 @@ h1 {
 }
 
 .pause-img {
-    width: 300px;
+    width: 180px;
     margin: 30px;
 }
 
@@ -315,6 +315,8 @@ h1 {
 footer {
     width: 80vw;
     text-align: center;
+    align-self: flex-end;
+    justify-self: center;
 }
 /* ------------------------*/ /* ---------->>> MEDIA QUERIES <<<-----------*/ /* ------------------------*/
 
@@ -330,6 +332,23 @@ footer {
     .deck {
         margin-bottom: 1em;
     }
+
+    .winnerHeader {
+        font-size: 2em;
+    }
+
+    .winnerText {
+        font-size: 1em;
+    }
+
+    .newGameButton {
+        font-size: 1em;
+
+    }
+
+    .newGameComment {
+        font-size: 1em;
+    }
 }
 
 @media only screen and (min-width: 451px) and (max-width: 600px) {
@@ -339,6 +358,18 @@ footer {
 
     .score-panel {
         font-size: 0.9em;
+    }
+
+    .winnerHeader {
+        font-size: 2.5em;
+    }
+
+    .winnerText {
+        font-size: 1.3em;
+    }
+
+    footer {
+        font-size: 0.8em;
     }
 }
 

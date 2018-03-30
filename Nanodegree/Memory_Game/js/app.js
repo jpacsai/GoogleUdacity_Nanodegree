@@ -345,6 +345,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // add key press comment
         const newGameComment = document.createElement("H3");
+        newGameComment.classList.add('newGameComment');
         newGameComment.textContent = 'or press any key';
         
         won.append(wonHeader, wonText, wonStar, newGameButton, newGameComment);
