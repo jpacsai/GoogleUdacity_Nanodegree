@@ -321,8 +321,7 @@ h1 {
 footer {
     width: 80vw;
     text-align: center;
-    align-self: flex-end;
-    justify-self: center;
+    align-content: flex-end;
 }
 /* ------------------------*/ /* ---------->>> MEDIA QUERIES <<<-----------*/ /* ------------------------*/
 
