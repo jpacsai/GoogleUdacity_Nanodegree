@@ -155,6 +155,9 @@ h1 {
     }
 }
   
+/*
+ * Styles to disable clicking
+ */
   
 .disable {
     pointer-events: none;
@@ -178,6 +181,7 @@ h1 {
     background-color: rgba(216, 253, 255, 0.7);
 }
 
+/* Stars */
 .score-panel .stars {
     padding: 0;
     display: flex;
@@ -191,6 +195,7 @@ h1 {
     list-style: none;
 }
 
+/* Moves */
 .score-panel .moves {
     display: flex;
     justify-content: center;
@@ -205,6 +210,7 @@ h1 {
     grid-column: 4;
 }
 
+/* Time */
 .score-panel .timer {
     grid-column: 6;
     display: grid;
@@ -232,6 +238,7 @@ h1 {
     grid-column: 3;
 }
 
+/* Restart button  */
 .score-panel .restart {
     cursor: pointer;
     display: flex;
@@ -240,6 +247,7 @@ h1 {
     grid-column: 8;
 }
 
+/* Pause button  */
 .score-panel .pause {
     cursor: pointer;
     display: flex;
@@ -293,6 +301,19 @@ h1 {
     box-shadow: none;
 }
 
+/*
+ * Fade in animation for winner screen
+ */
+ @keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+
+/*
+ * Styles for pause screen
+ */
+
 .pause-screen {
     z-index: 2;
     position: absolute;
@@ -313,16 +334,16 @@ h1 {
     margin: 30px;
 }
 
-@keyframes fadeIn {
-    0% {opacity: 0;}
-    100% {opacity: 1;}
-}
+/*
+ * Styles for footer 
+ */
 
 footer {
     width: 80vw;
     text-align: center;
     align-content: flex-end;
 }
+
 /* ------------------------*/ /* ---------->>> MEDIA QUERIES <<<-----------*/ /* ------------------------*/
 
 @media only screen and (max-width: 450px) {
