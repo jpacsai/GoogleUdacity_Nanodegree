@@ -189,10 +189,16 @@ document.addEventListener('DOMContentLoaded', function () {
     function timer() {
         timing = setInterval(function(){
             secCounter++;
+            if (String(secCounter).length === 1) {
+                secCounter = "0" + secCounter;
+            }
             if (secCounter === 60) {
-                secCounter = 0;
+                secCounter = "00";
                 document.querySelector('.secCount').textContent = secCounter;
                 minCounter++;
+                if (String(minCounter).length === 1) {
+                    minCounter = "0" + minCounter;
+                }
                 document.querySelector('.minCount').textContent = minCounter;
             }
             else {
