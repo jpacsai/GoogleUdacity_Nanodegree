@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // - - - - VARIABLES - - - -
 
-    let cards = Array.from(document.getElementsByClassName("card"));
+    let cards = Array.from(document.getElementsByClassName('card'));
     let openCards = [];
     let card1;
     let card2;
@@ -28,11 +28,11 @@ document.addEventListener('DOMContentLoaded', function () {
     function addCards() {
         cards = shuffle(cards);
         const deck = document.querySelector('.deck');
-        deck.style.display === "none";
+        deck.style.display === 'none';
         for (let card in cards) {
             deck.appendChild(cards[card]);
         }
-        deck.style.display === "flex";
+        deck.style.display === 'flex';
     }
 
     // shuffle function
@@ -62,8 +62,8 @@ document.addEventListener('DOMContentLoaded', function () {
         if (cardClick === 1) {
             timer();
         }
-        event.target.classList.add("open");
-        setTimeout(function(){event.target.classList.add("show");}, 180);
+        event.target.classList.add('open');
+        setTimeout(function(){event.target.classList.add('show');}, 180);
         check(event);
     }
 
@@ -106,8 +106,8 @@ document.addEventListener('DOMContentLoaded', function () {
         openCards.length = 0;
 
         // add match animation
-        card1.classList.add("match");
-        card2.classList.add("match");
+        card1.classList.add('match');
+        card2.classList.add('match');
         card1 = null;
         card2 = null;
         enable(); //enable clicking on other card
@@ -134,8 +134,8 @@ document.addEventListener('DOMContentLoaded', function () {
             card1.classList.add('unMatch');
             card2.classList.add('unMatch');
             setTimeout(function() {
-                card1.classList.remove("unMatch");
-                card2.classList.remove("unMatch");
+                card1.classList.remove('unMatch');
+                card2.classList.remove('unMatch');
             }, 700);
         }, 800);
 
@@ -168,12 +168,12 @@ document.addEventListener('DOMContentLoaded', function () {
     // - - - - STAR COUNTER  - - - -
 
     function star2() { // remove the first star
-        let star = document.getElementsByClassName("fa")[2].classList;
+        let star = document.getElementsByClassName('fa')[2].classList;
         star.replace('fa-star', 'fa-star-o');
     }
 
     function star1() { // remove the second star
-        let star = document.getElementsByClassName("fa")[1].classList;
+        let star = document.getElementsByClassName('fa')[1].classList;
         star.replace('fa-star', 'fa-star-o');
     }
 
@@ -191,16 +191,16 @@ document.addEventListener('DOMContentLoaded', function () {
             secCounter++;
             // add leading zero to seconds
             if (String(secCounter).length === 1) {
-                secCounter = "0" + secCounter;
+                secCounter = '0' + secCounter;
             }
             // if seconds reaches 60 reset seconds, increment minutes
             if (secCounter === 60) {
-                secCounter = "00";
+                secCounter = '00';
                 document.querySelector('.secCount').textContent = secCounter;
                 minCounter++;
                 // add leading zero to minutes
                 if (String(minCounter).length === 1) {
-                    minCounter = "0" + minCounter;
+                    minCounter = '0' + minCounter;
                 }
                 document.querySelector('.minCount').textContent = minCounter;
             }
@@ -212,7 +212,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // - - - - RESTART BUTTON  - - - -
 
-    const restartButton = document.querySelector(".restart");
+    const restartButton = document.querySelector('.restart');
     restartButton.onclick = function() {
         restart();
     };
@@ -226,8 +226,8 @@ document.addEventListener('DOMContentLoaded', function () {
         
         // reset timer
         clearInterval(timing);
-        document.querySelector('.secCount').textContent = "00";
-        document.querySelector('.minCount').textContent = "00";
+        document.querySelector('.secCount').textContent = '00';
+        document.querySelector('.minCount').textContent = '00';
 
         // reset moves counter
         moveCounter = 0;
@@ -235,12 +235,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // turn back open cards, reshuffle deck
         for (let card in cards) {
-            cards[card].classList.remove("open", "show", "match");
+            cards[card].classList.remove('open', 'show', 'match');
         }
         setTimeout(function(){ addCards(); }, 400);
 
         // reset stars
-        let stars = Array.from(document.getElementsByClassName("fa"));
+        let stars = Array.from(document.getElementsByClassName('fa'));
         for (let s in stars) {
             stars[s].classList.replace('fa-star-o', 'fa-star');
         }
@@ -256,7 +256,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // remove won screen if new game initiated from there
         if (won !== undefined) {
-            won.style.display === "none";
+            won.style.display === 'none';
             won.remove();
         }
         
@@ -266,7 +266,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // - - - - PAUSE BUTTON  - - - -
 
-    const pauseButton = document.querySelector(".pause");
+    const pauseButton = document.querySelector('.pause');
     pauseButton.onclick = function() {
         pause();
     };
@@ -279,20 +279,20 @@ document.addEventListener('DOMContentLoaded', function () {
         disable();
 
         // create pause screen
-        pauseScreen = document.createElement("DIV");
-        pauseScreen.classList.add("pause-screen");
+        pauseScreen = document.createElement('DIV');
+        pauseScreen.classList.add('pause-screen');
 
         const pauseText = document.createElement('H1');
-        pauseText.textContent = "Game paused";
+        pauseText.textContent = 'Game paused';
         pauseScreen.appendChild(pauseText);
 
         const pauseComment = document.createElement('H3');
-        pauseComment.textContent = "press any key or click to return";
+        pauseComment.textContent = 'press any key or click to return';
         pauseScreen.appendChild(pauseComment);
 
-        const pauseImg = document.createElement("IMG");
-        pauseImg.classList.add("pause-img");
-        pauseImg.src = "IMG/PAUSE.PNG";
+        const pauseImg = document.createElement('IMG');
+        pauseImg.classList.add('pause-img');
+        pauseImg.src = 'IMG/PAUSE.PNG';
         pauseScreen.appendChild(pauseImg);
 
         document.body.appendChild(pauseScreen); 
@@ -310,7 +310,7 @@ document.addEventListener('DOMContentLoaded', function () {
         window.removeEventListener('keypress', resume);
 
         // hide pause screen and remove
-        pauseScreen.style.display === "none";
+        pauseScreen.style.display === 'none';
         pauseScreen.remove();
         if (cardClick >= 1) {
             timer();
@@ -323,26 +323,26 @@ document.addEventListener('DOMContentLoaded', function () {
     // - - - - WINNER SCREEN - - - -
 
     function win() {
-        won = document.createElement("DIV");
-        won.classList.add("winner");
+        won = document.createElement('DIV');
+        won.classList.add('winner');
 
         // add header
-        const wonHeader = document.createElement("H1");
-        wonHeader.classList.add("winnerHeader");
-        wonHeader.textContent = "Congratulation!";
+        const wonHeader = document.createElement('H1');
+        wonHeader.classList.add('winnerHeader');
+        wonHeader.textContent = 'Congratulation!';
 
         // add info about the game
-        const wonText = document.createElement("H2");
-        wonText.classList.add("winnerText");
+        const wonText = document.createElement('H2');
+        wonText.classList.add('winnerText');
         let wonInfo = minCounter === 0 ? 
-            "You won with " + moveCounter + " moves in " + secCounter + " sec!" : 
-            "You won with " + moveCounter + " moves in " + minCounter + " min " + secCounter + " sec!";
+            'You won with ' + moveCounter + ' moves in ' + secCounter + ' sec!' : 
+            'You won with ' + moveCounter + ' moves in ' + minCounter + ' min ' + secCounter + ' sec!';
         wonText.textContent = wonInfo;
 
         // add stars earned
-        const wonStar = document.createElement("DIV");
+        const wonStar = document.createElement('DIV');
         for (let i = 0; i < starCounter; i++) {
-            const wonStarOne = document.createElement("I");
+            const wonStarOne = document.createElement('I');
             wonStarOne.classList.add('fa','fa-star','fa-3x','wonStar');
             wonStar.appendChild(wonStarOne);
         } 
@@ -353,7 +353,7 @@ document.addEventListener('DOMContentLoaded', function () {
         newGameButton.textContent = 'Play again?';
 
         // add key press comment
-        const newGameComment = document.createElement("H3");
+        const newGameComment = document.createElement('H3');
         newGameComment.classList.add('newGameComment');
         newGameComment.textContent = 'or press any key';
         
