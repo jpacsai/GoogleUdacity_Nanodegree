@@ -14,10 +14,11 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
+    color: white;
 }
 
 body {
-    font-family: 'Coda', cursive;
+    font-family: 'Mina', cursive;
     background: url('../img/polygon.jpg');
     background-position: center;
     background-repeat: no-repeat;
@@ -33,8 +34,10 @@ body {
 }
 
 h1 {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Mina', sans-serif;
     font-weight: 300;
+    font-size: 3em;
+    margin-bottom: 0;
 }
 
 /*
@@ -51,7 +54,7 @@ h1 {
     justify-content: space-between;
     align-items: center;
     border-radius: 10px;
-    background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+    background-color: #d8fdff;
     box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
 }
 
@@ -62,10 +65,8 @@ h1 {
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    
-    color: #ffffff;
     border-radius: 8px;
-    background: #2e3d49;
+    background: #66dabf;
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
     transition: transform 0.4s;
     perspective: 1000;
@@ -79,19 +80,19 @@ h1 {
 
 .deck .card.open {
     cursor: default;
-    background: #02b3e4;
+    background: #fdf6ff;
     transform: rotateY(0);
 }
 
 .deck .card.show .icon {
-    width: 50%;
+    width: 65%;
 }
 
 .deck .card.match {
     cursor: default;
     pointer-events: none;
     font-size: 33px;
-    background: #02ccba;
+    background: #2f0b6b;
     animation: jello-horizontal 0.9s both;
 }
 
@@ -167,17 +168,23 @@ h1 {
  */
 
 .score-panel {
-    width: 360px;
+    width: 660px;
     margin-bottom: 10px;
+    padding: 10px;
     display: grid;
     grid-template: 1fr / 18% 10% 15% 37% 10% 10%;
     text-align: left;
+    font-size: 1.2em;
+    color: #270555;
+    border-radius: 10px;
+    background-color: rgba(216, 253, 255, 0.7);
 }
 
 .score-panel .stars {
     margin: 0 5px 0 0;
     padding: 0;
     display: inline-block;
+    color: #ffe236;
 }
 
 .score-panel .stars li {
@@ -245,11 +252,13 @@ h1 {
     justify-content: center;
     flex-direction: column;
     background-color: rgba(255, 255, 255, 0.9);
+    color: #270555;
+    transition: ease-in;
 }
 
 .wonStar {
     margin: auto 10px;
-    color: #FED766;
+    color: #ffe236;
     text-shadow: 5px 2px 20px rgba(46, 61, 73, 0.5);
 }
 
@@ -262,7 +271,7 @@ h1 {
     align-items: center;
     cursor: pointer;
     border-radius: 3px;
-    background-color: #28bbbe;
+    background-color: #1cb189;
     font-size: 1.3em;
     color: white;
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
