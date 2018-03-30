@@ -18,7 +18,10 @@ body {
 
 body {
     font-family: 'Coda', cursive;
-    background: url('../img/polygon.jpg') no-repeat center center fixed;; 
+    background: url('../img/polygon.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; 
     
 }
 
@@ -71,7 +74,7 @@ h1 {
 }
 
 .deck .card .icon {
-    transform: scale(0);
+    width: 0;
 }
 
 .deck .card.open {
@@ -80,8 +83,8 @@ h1 {
     transform: rotateY(0);
 }
 
-.deck .card.show .icon  {
-    transform: scale(0.5);
+.deck .card.show .icon {
+    width: 50%;
 }
 
 .deck .card.match {
