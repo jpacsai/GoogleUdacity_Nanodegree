@@ -226,8 +226,8 @@ document.addEventListener('DOMContentLoaded', function () {
         
         // reset timer
         clearInterval(timing);
-        document.querySelector('.secCount').textContent = 0;
-        document.querySelector('.minCount').textContent = 0;
+        document.querySelector('.secCount').textContent = "00";
+        document.querySelector('.minCount').textContent = "00";
 
         // reset moves counter
         moveCounter = 0;
