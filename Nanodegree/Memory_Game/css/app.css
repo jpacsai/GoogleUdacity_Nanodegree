@@ -19,11 +19,7 @@ body {
 
 body {
     font-family: 'Mina', cursive;
-    background: url('../img/polygon.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover; 
-    
+    background: url('../img/polygon.jpg') center / cover no-repeat fixed;    
 }
 
 .container {
@@ -330,9 +326,17 @@ footer {
     .score-panel {
         font-size: 0.69em;
     }
+    
+    .deck {
+        margin-bottom: 1em;
+    }
 }
 
 @media only screen and (min-width: 451px) and (max-width: 600px) {
+    .deck {
+        margin-bottom: 1em;
+    }
+
     .score-panel {
         font-size: 0.9em;
     }
