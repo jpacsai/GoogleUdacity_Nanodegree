@@ -189,13 +189,16 @@ document.addEventListener('DOMContentLoaded', function () {
     function timer() {
         timing = setInterval(function(){
             secCounter++;
+            // add leading zero to seconds
             if (String(secCounter).length === 1) {
                 secCounter = "0" + secCounter;
             }
+            // if seconds reaches 60 reset seconds, increment minutes
             if (secCounter === 60) {
                 secCounter = "00";
                 document.querySelector('.secCount').textContent = secCounter;
                 minCounter++;
+                // add leading zero to minutes
                 if (String(minCounter).length === 1) {
                     minCounter = "0" + minCounter;
                 }
