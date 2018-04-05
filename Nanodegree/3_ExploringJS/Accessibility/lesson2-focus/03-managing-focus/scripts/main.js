@@ -21,6 +21,8 @@ page('/:slug', function(context) {
 
 });
 
+newPage.querySelector('h2').focus();
+
 page({
   hashbang: true
 });
