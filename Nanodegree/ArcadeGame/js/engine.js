@@ -24,8 +24,8 @@ var Engine = (function(global) {
         ctx = canvas.getContext('2d'),
         lastTime;
 
-    canvas.width = 705;
-    canvas.height = 906;
+    canvas.width = 710;
+    canvas.height = 690;
     doc.body.appendChild(canvas);
 
     /* This function serves as the kickoff point for the game loop itself
@@ -111,12 +111,11 @@ var Engine = (function(global) {
                 'images/water-block.png',   // Top row is water
                 'images/road-block.png',   // Row 1 of 3 of road
                 'images/road-block.png',   // Row 2 of 3 of road
-                'images/road-block.png',
                 'images/road-block.png',   // Row 3 of 3 of road
                 'images/grass-block.png',   // Row 1 of 2 of grass
                 'images/grass-block.png'    // Row 2 of 2 of grass
             ],
-            numRows = 8,
+            numRows = 7,
             numCols = 7,
             row, col;
         
