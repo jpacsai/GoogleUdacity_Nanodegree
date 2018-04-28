@@ -39,10 +39,10 @@ The top 10% in the program earn an additional 6-month scholarship to one of four
 
 ## [Phase 2: Front End Nanodegree](https://eu.udacity.com/course/front-end-web-developer-nanodegree--nd001)
 - **1.&nbsp;Web Foundations:**
-     - Animal Trading Cards
-     - Portfolio Site
+     - [Animal Trading Cards](https://jpacsai.github.io/GoogleUdacity_Nanodegree/Nanodegree/Animal_Trading_Card/)  
+     - [Portfolio Site](https://jpacsai.github.io/GoogleUdacity_Nanodegree/Nanodegree/Portfolio_Project/)  
 - **2.&nbsp;Web Programming with JavaScript:**
-     - Memory Game
+     - [Memory Game](https://jpacsai.github.io/GoogleUdacity_Nanodegree/Nanodegree/Memory_Game/)  
 - **3.&nbsp;Exploring JS - Objects, Tools and Testing**
      - Classic Arcade Game clone
      - Feed Reader testing
