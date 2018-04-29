@@ -29,6 +29,8 @@ var Player = function(row, col) {
     this.playerImage = 'images/char-boy.png';
     this.row = 5;
     this.col = 3;
+    this.grab = false;
+    this.toy = "none";
 }
 
 Player.prototype.update = function() {
@@ -42,15 +44,34 @@ Player.prototype.render = function() {
 Player.prototype.handleInput = function(key) {
     if (key === 'up' && this.row - 1 > 0) {
         this.row--;
+        if (this.grab === true) {
+            this.toy.y--;
+        }
     }
     else if (key === 'down' && this.row + 1 <= Math.round(document.querySelector("canvas").height / 115)) {
         this.row++;
+        if (this.grab === true) {
+            this.toy.y++;
+        }
     }
     else if (key === 'left' && this.col - 1 >= 0) {
         this.col--;
+        if (this.grab === true) {
+            this.toy.x--;
+        }
     }
     else if (key === 'right' && this.col + 1 < Math.round(document.querySelector("canvas").width / 100)) {
         this.col++;
+        if (this.grab === true) {
+            this.toy.x++;
+        }
+    }
+    if (this.grab === false && this.row === 6) {
+        let grabbedToy = allToys.find(a => a.x === player.col);
+        console.log(grabbedToy.color);
+        this.grab = true;
+        grabbedToy.grabbed = true;
+        this.toy = grabbedToy;
     }
 }
 
@@ -82,7 +103,6 @@ var Characters = function(color, imageFile, position) {
 }
 
 var charPosition = shuffle([0, 1, 2, 3, 4, 5, 6]);
-console.log(charPosition);
 
 var pinkKid = new Characters('pink', 'images/pink-kid.png', charPosition[0]);
 var blueKid = new Characters('blue', 'images/blue-kid.png', charPosition[1]);
@@ -98,7 +118,32 @@ Characters.prototype.render = function() {
     ctx.drawImage(Resources.get(this.imageFile), this.x * 101, this.y * 83 - 30);
 };
 
-// shuffle function to randomize order of characters
+// Toys
+var Toys = function(color, imageFile, position) {
+    this.x = position;
+    this.y = 6;
+    this.color = color;
+    this.imageFile = imageFile;
+    this.grabbed = false;
+}
+
+var toyPosition = shuffle([0, 1, 2, 3, 4, 5, 6]);
+
+var pinkToy = new Toys('pink', 'images/pink-toy.png', toyPosition[0]);
+var blueToy = new Toys('blue', 'images/blue-toy.png', toyPosition[1]);
+var greenToy = new Toys('green', 'images/green-toy.png', toyPosition[2]);
+var yellowToy = new Toys('yellow', 'images/yellow-toy.png', toyPosition[3]);
+var redToy = new Toys('red', 'images/red-toy.png', toyPosition[4]);
+var tealToy = new Toys('teal', 'images/teal-toy.png', toyPosition[5]);
+var purpleToy = new Toys('purple', 'images/purple-toy.png', toyPosition[6]);   
+
+var allToys = [pinkToy, blueToy, greenToy, yellowToy, redToy, tealToy, purpleToy];
+
+Toys.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.imageFile), this.x * 101, this.y * 83 - 30);
+};
+
+// shuffle function to randomize order of characters/toys
 function shuffle(array) {
     let currentIndex = array.length, temporaryValue, randomIndex;
     while (currentIndex !== 0) {

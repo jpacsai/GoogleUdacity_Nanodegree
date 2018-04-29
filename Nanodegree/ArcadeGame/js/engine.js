@@ -153,12 +153,16 @@ var Engine = (function(global) {
    /*     allEnemies.forEach(function(enemy) {
             enemy.render();
         }); */
-        allKids.forEach(function(kids) {
-            kids.render();
-        })
-        enemy.render();
         player.render();
 
+        allKids.forEach(function(kids) {
+            kids.render();
+        });
+
+        allToys.forEach(function(toys) {
+            toys.render();
+        });
+        enemy.render();
     }
 
     /* This function does nothing but it could have been a good place to
@@ -187,7 +191,14 @@ var Engine = (function(global) {
         'images/red-kid.png',
         'images/teal-kid.png',
         'images/purple-kid.png',
-        'images/green-kid.png'
+        'images/green-kid.png',
+        'images/blue-toy.png',
+        'images/pink-toy.png',
+        'images/yellow-toy.png',
+        'images/red-toy.png',
+        'images/teal-toy.png',
+        'images/purple-toy.png',
+        'images/green-toy.png'
     ]);
     Resources.onReady(init);
 
