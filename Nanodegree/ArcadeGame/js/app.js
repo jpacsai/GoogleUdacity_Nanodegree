@@ -26,7 +26,7 @@ Enemy.prototype.render = function() {
 // This class requires an update(), render() and
 // a handleInput() method.
 var Player = function(row, col) {
-    var playerImage = 'images/char-boy.png';
+    this.playerImage = 'images/char-boy.png';
     this.row = 5;
     this.col = 3;
 }
@@ -36,21 +36,21 @@ Player.prototype.update = function() {
 }
 
 Player.prototype.render = function() {
-    document.querySelector("canvas").getContext('2d').drawImage(Resources.get('images/char-boy.png'), player.col * 101, player.row * 83 - 30);
+    ctx.drawImage(Resources.get(this.playerImage), this.col * 101, this.row * 83 - 30);
 }
 
 Player.prototype.handleInput = function(key) {
-    if (key === 'up' && player.row - 1 > 0) {
-        player.row--;
+    if (key === 'up' && this.row - 1 > 0) {
+        this.row--;
     }
-    else if (key === 'down' && player.row + 1 <= Math.round(document.querySelector("canvas").height / 115)) {
-        player.row++;
+    else if (key === 'down' && this.row + 1 <= Math.round(document.querySelector("canvas").height / 115)) {
+        this.row++;
     }
-    else if (key === 'left' && player.col - 1 >= 0) {
-        player.col--;
+    else if (key === 'left' && this.col - 1 >= 0) {
+        this.col--;
     }
-    else if (key === 'right' && player.col + 1 < Math.round(document.querySelector("canvas").width / 100)) {
-        player.col++;
+    else if (key === 'right' && this.col + 1 < Math.round(document.querySelector("canvas").width / 100)) {
+        this.col++;
     }
 }
 
