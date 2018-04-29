@@ -107,13 +107,13 @@ var Engine = (function(global) {
          * for that particular row of the game level.
          */
         var rowImages = [
+                'images/grass-block.png',
+                'images/grass-block.png',
+                'images/road-block.png',
+                'images/road-block.png',
+                'images/road-block.png',
+                'images/grass-block.png',
                 'images/water-block.png',
-                'images/water-block.png',   // Top row is water
-                'images/road-block.png',   // Row 1 of 3 of road
-                'images/road-block.png',   // Row 2 of 3 of road
-                'images/road-block.png',   // Row 3 of 3 of road
-                'images/grass-block.png',   // Row 1 of 2 of grass
-                'images/grass-block.png'    // Row 2 of 2 of grass
             ],
             numRows = 7,
             numCols = 7,
