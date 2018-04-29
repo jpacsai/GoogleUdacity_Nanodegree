@@ -153,7 +153,7 @@ var Engine = (function(global) {
    /*     allEnemies.forEach(function(enemy) {
             enemy.render();
         }); */
-
+        enemy.render();
         player.render();
     }
 
@@ -173,7 +173,7 @@ var Engine = (function(global) {
         'images/road-block.png',
         'images/water-block.png',
         'images/grass-block.png',
-        'images/enemy-bug.png',
+        'images/enemy-car.png',
         'images/char-boy.png'
     ]);
     Resources.onReady(init);
