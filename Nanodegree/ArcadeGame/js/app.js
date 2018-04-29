@@ -66,12 +66,20 @@ Player.prototype.handleInput = function(key) {
             this.toy.x++;
         }
     }
-    if (this.grab === false && this.row === 6) {
-        let grabbedToy = allToys.find(a => a.x === player.col);
-        console.log(grabbedToy.color);
+    if (this.grab === false && this.row === 6 && allToys.find(a => a.x === player.col && a.y === player.row) !== undefined) {
+        let grabbedToy = allToys.find(a => a.x === player.col && a.y === player.row);
         this.grab = true;
         grabbedToy.grabbed = true;
         this.toy = grabbedToy;
+    }
+    if (this.grab === true && this.row === 1) {
+        let kidAbove = allKids.find(b => b.x === player.col);
+        if (kidAbove.color === this.toy.color) {
+            this.toy.y--;
+            this.grab = false;
+            this.toy.grabbed = false;
+            this.toy = 'none';
+        }
     }
 }
 

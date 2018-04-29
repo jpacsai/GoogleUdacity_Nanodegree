@@ -162,6 +162,7 @@ var Engine = (function(global) {
         allToys.forEach(function(toys) {
             toys.render();
         });
+        
         enemy.render();
     }
 
