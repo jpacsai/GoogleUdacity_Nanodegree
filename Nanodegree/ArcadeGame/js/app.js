@@ -74,6 +74,29 @@ document.addEventListener('keyup', function(e) {
 });
 
 // Characters
+var Characters = function(color, imageFile, position) {
+    this.x = position;
+    this.y = 0;
+    this.color = color;
+    this.imageFile = imageFile;
+}
+
+var charPosition = shuffle([0, 1, 2, 3, 4, 5, 6]);
+console.log(charPosition);
+
+var pinkKid = new Characters('pink', 'images/pink-kid.png', charPosition[0]);
+var blueKid = new Characters('blue', 'images/blue-kid.png', charPosition[1]);
+var greenKid = new Characters('green', 'images/green-kid.png', charPosition[2]);
+var yellowKid = new Characters('yellow', 'images/yellow-kid.png', charPosition[3]);
+var redKid = new Characters('red', 'images/red-kid.png', charPosition[4]);
+var tealKid = new Characters('teal', 'images/teal-kid.png', charPosition[5]);
+var purpleKid = new Characters('purple', 'images/purple-kid.png', charPosition[6]);   
+
+var allKids = [pinkKid, blueKid, greenKid, yellowKid, redKid, tealKid, purpleKid];
+
+Characters.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.imageFile), this.x * 101, this.y * 83 - 30);
+};
 
 // shuffle function to randomize order of characters
 function shuffle(array) {
