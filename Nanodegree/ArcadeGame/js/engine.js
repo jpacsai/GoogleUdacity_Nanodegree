@@ -107,13 +107,13 @@ var Engine = (function(global) {
          * for that particular row of the game level.
          */
         var rowImages = [
+                'images/grass-block.png',
+                'images/grass-block.png',
+                'images/road-block.png',
+                'images/road-block.png',
+                'images/road-block.png',
+                'images/grass-block.png',
                 'images/water-block.png',
-                'images/water-block.png',   // Top row is water
-                'images/road-block.png',   // Row 1 of 3 of road
-                'images/road-block.png',   // Row 2 of 3 of road
-                'images/road-block.png',   // Row 3 of 3 of road
-                'images/grass-block.png',   // Row 1 of 2 of grass
-                'images/grass-block.png'    // Row 2 of 2 of grass
             ],
             numRows = 7,
             numCols = 7,
@@ -153,8 +153,28 @@ var Engine = (function(global) {
    /*     allEnemies.forEach(function(enemy) {
             enemy.render();
         }); */
-
         player.render();
+        
+        allKids.forEach(function(kids) {
+            kids.render();
+        });
+
+        allToys.forEach(function(toys) {
+            toys.render();
+        });
+
+        if (player.row === 1) {
+            if (player.grab === false) {
+                player.render();
+            }
+            else {
+                player.render();
+                player.toy.render();
+            }
+        }
+        enemy.render();
+        
+
     }
 
     /* This function does nothing but it could have been a good place to
@@ -173,8 +193,24 @@ var Engine = (function(global) {
         'images/road-block.png',
         'images/water-block.png',
         'images/grass-block.png',
-        'images/enemy-bug.png',
-        'images/char-boy.png'
+        'images/enemy-car.png',
+        'images/enemy-bike.png',
+        'images/enemy-truck.png',
+        'images/char-boy.png',
+        'images/blue-kid.png',
+        'images/pink-kid.png',
+        'images/yellow-kid.png',
+        'images/red-kid.png',
+        'images/teal-kid.png',
+        'images/purple-kid.png',
+        'images/green-kid.png',
+        'images/blue-toy.png',
+        'images/pink-toy.png',
+        'images/yellow-toy.png',
+        'images/red-toy.png',
+        'images/teal-toy.png',
+        'images/purple-toy.png',
+        'images/green-toy.png'
     ]);
     Resources.onReady(init);
 
