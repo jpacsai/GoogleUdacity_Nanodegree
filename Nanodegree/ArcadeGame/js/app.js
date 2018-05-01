@@ -100,6 +100,10 @@ Player.prototype.handleInput = function(key) {
             this.toy.grabbed = false;
             this.toy = 'none';
             toyCounter++;
+            console.log('toys: ' + toyCounter);
+            if (toyCounter === 7) {
+                console.log('Congratulation! You won!');
+            }
         }
     }
 }
@@ -188,3 +192,4 @@ function shuffle(array) {
     }
     return array;
 }
+
