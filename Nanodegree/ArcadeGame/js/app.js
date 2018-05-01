@@ -1,13 +1,17 @@
 // Enemies our player must avoid
+var allEnemies = [];
+var toyCounter = 0;
+
 var Enemy = function(length, type) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
-    this.x = -1;
-    this.y = 3;
+    this.x = -1 * (Math.floor(Math.random() * 10) + 3);
+    this.y = Math.floor(Math.random() * (5 - 2) + 2);
     this.length = length;
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = type;
+    allEnemies.push(this);
 };
 
 // Update the enemy's position, required method for game
@@ -95,6 +99,7 @@ Player.prototype.handleInput = function(key) {
             this.grab = false;
             this.toy.grabbed = false;
             this.toy = 'none';
+            toyCounter++;
         }
     }
 }
@@ -102,9 +107,13 @@ Player.prototype.handleInput = function(key) {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-var enemy = new Enemy(2, 'images/enemy-car.png');
+// var enemy = new Enemy(2, 'images/enemy-car.png');
+for (let i = 0; i < 5; i++) {
+    var enemy = new Enemy(2, 'images/enemy-car.png');
+}
+
 var player = new Player;
-var allEnemies = [enemy];
+
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
