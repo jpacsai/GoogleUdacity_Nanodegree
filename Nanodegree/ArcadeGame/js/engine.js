@@ -163,19 +163,6 @@ var Engine = (function(global) {
         allToys.forEach(function(toys) {
             toys.render();
         });
-
-        if (player.row === 1) {
-            if (player.grab === false) {
-                player.render();
-            }
-            else {
-                player.render();
-                player.toy.render();
-            }
-        }
-        enemy.render();
-        
-
     }
 
     /* This function does nothing but it could have been a good place to
