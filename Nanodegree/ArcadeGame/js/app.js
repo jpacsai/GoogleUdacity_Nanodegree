@@ -43,6 +43,8 @@ Player.prototype.update = function() {
     if ( enemy.x + enemy.length - 0.4 >= this.x && enemy.x < this.x && this.y === enemy.y) {
         this.x = 3;
         this.y = 5;
+        this.toy.x = 3;
+        this.toy.y = 5;
     }
     
     /*if (enemyPosition >= this.x - 0.2 && enemyPosition > this.x + 0.2 && enemy.y === this.y) {
