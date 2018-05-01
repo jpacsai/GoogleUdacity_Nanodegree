@@ -1,12 +1,17 @@
 // Enemies our player must avoid
-var Enemy = function() {
+var allEnemies = [];
+var toyCounter = 0;
+
+var Enemy = function(length, type) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
-    this.x = -1;
-    this.y = 3;
+    this.x = -1 * (Math.floor(Math.random() * 10) + 3);
+    this.y = Math.floor(Math.random() * (5 - 2) + 2);
+    this.length = length;
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
-    this.sprite = 'images/enemy-car.png';
+    this.sprite = type;
+    allEnemies.push(this);
 };
 
 // Update the enemy's position, required method for game
@@ -15,11 +20,11 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    this.x = (this.x + 2 * dt);
+    this.x = (this.x + 3 * dt);
     if (this.x > 7) {
-        this.x = -1;
+        this.x = -1 * (Math.floor(Math.random() * 10) + 3);
+        this.y = Math.floor(Math.random() * (5 - 2) + 2);
     }
-    console.log(this.x);
 };
 
 // Draw the enemy on the screen, required method for game
@@ -30,60 +35,70 @@ Enemy.prototype.render = function() {
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
-var Player = function(row, col) {
+var Player = function() {
     this.playerImage = 'images/char-boy.png';
-    this.row = 5;
-    this.col = 3;
+    this.x = 3;
+    this.y = 5;
     this.grab = false;
     this.toy = "none";
 }
 
-Player.prototype.update = function() {
-    
+Player.prototype.update = function() {  // FIX THIS!! multiple collision check
+    if ( enemy.x + enemy.length - 0.4 >= this.x && enemy.x < this.x && this.y === enemy.y) {
+        this.x = 3;
+        this.y = 5;
+        this.toy.x = 3;
+        this.toy.y = 5;
+    }
 }
 
 Player.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.playerImage), this.col * 101, this.row * 83 - 30);
+    ctx.drawImage(Resources.get(this.playerImage), this.x * 101, this.y * 83 - 30);
 }
 
 Player.prototype.handleInput = function(key) {
-    if (key === 'up' && this.row - 1 > 0) {
-        this.row--;
+    if (key === 'up' && this.y - 1 > 0) {
+        this.y--;
         if (this.grab === true) {
             this.toy.y--;
         }
     }
-    else if (key === 'down' && this.row + 1 <= Math.round(document.querySelector("canvas").height / 115)) {
-        this.row++;
+    else if (key === 'down' && this.y + 1 <= Math.round(document.querySelector("canvas").height / 115)) {
+        this.y++;
         if (this.grab === true) {
             this.toy.y++;
         }
     }
-    else if (key === 'left' && this.col - 1 >= 0) {
-        this.col--;
+    else if (key === 'left' && this.x - 1 >= 0) {
+        this.x--;
         if (this.grab === true) {
             this.toy.x--;
         }
     }
-    else if (key === 'right' && this.col + 1 < Math.round(document.querySelector("canvas").width / 100)) {
-        this.col++;
+    else if (key === 'right' && this.x + 1 < Math.round(document.querySelector("canvas").width / 100)) {
+        this.x++;
         if (this.grab === true) {
             this.toy.x++;
         }
     }
-    if (this.grab === false && this.row === 6 && allToys.find(a => a.x === player.col && a.y === player.row) !== undefined) {
-        let grabbedToy = allToys.find(a => a.x === player.col && a.y === player.row);
+    if (this.grab === false && this.y === 6 && allToys.find(a => a.x === player.x && a.y === player.y) !== undefined) {
+        let grabbedToy = allToys.find(a => a.x === player.x && a.y === player.y);
         this.grab = true;
         grabbedToy.grabbed = true;
         this.toy = grabbedToy;
     }
-    if (this.grab === true && this.row === 1) {
-        let kidAbove = allKids.find(b => b.x === player.col);
+    if (this.grab === true && this.y === 1) {
+        let kidAbove = allKids.find(b => b.x === player.x);
         if (kidAbove.color === this.toy.color) {
             this.toy.y--;
             this.grab = false;
             this.toy.grabbed = false;
             this.toy = 'none';
+            toyCounter++;
+            console.log('toys: ' + toyCounter);
+            if (toyCounter === 7) {
+                console.log('Congratulation! You won!');
+            }
         }
     }
 }
@@ -91,9 +106,13 @@ Player.prototype.handleInput = function(key) {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-var enemy = new Enemy;
+// var enemy = new Enemy(2, 'images/enemy-car.png');
+for (let i = 0; i < 5; i++) {
+    var enemy = new Enemy(2, 'images/enemy-car.png');
+}
+
 var player = new Player;
-var allEnemies = [enemy];
+
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
@@ -168,3 +187,4 @@ function shuffle(array) {
     }
     return array;
 }
+
