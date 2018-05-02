@@ -110,9 +110,9 @@ Player.prototype.handleInput = function(key) {
 // Place the player object in a variable called player
 
 for (let i = 0; i < 2; i++) {
-    var enemy1 = new Enemy(2, 'images/enemy-car.png', 3);
-    var enemy2 = new Enemy(1, 'images/enemy-bike.png', 4);
-    var enemy3 = new Enemy(3, 'images/enemy-truck.png', 2)
+    var enemy1 = new Enemy(2, 'images/enemy-car.png', 2);
+    var enemy2 = new Enemy(1, 'images/enemy-bike.png', 3);
+    var enemy3 = new Enemy(3, 'images/enemy-truck.png', 1.5)
 }
 
 var player = new Player;
