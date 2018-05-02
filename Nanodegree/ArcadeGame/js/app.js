@@ -1,8 +1,9 @@
-// Enemies our player must avoid
+
 var allEnemies = [];
 var allKids = [];
-var toyCounter = 0;
+var fishCounter = 0;
 
+// Enemies our player must avoid
 var Enemy = function(length, file, speed, min, max, direction) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
@@ -13,8 +14,6 @@ var Enemy = function(length, file, speed, min, max, direction) {
     this.speed = speed;
     this.min = min;
     this.max = max;
-    // The image/sprite for our enemies, this uses
-    // a helper we've provided to easily load images
     this.sprite = file;
     allEnemies.push(this);
 };
@@ -36,7 +35,6 @@ Enemy.prototype.update = function(dt) {
         player.toy.x = 3;
         player.toy.y = 1;
     } 
-    console.log(polar.x);
 };
 
 // Draw the enemy on the screen, required method for game
@@ -101,9 +99,9 @@ Player.prototype.handleInput = function(key) {
             this.grab = false;
             this.toy.grabbed = false;
             this.toy = 'none';
-            toyCounter++;
-            console.log('toys: ' + toyCounter);
-            if (toyCounter === 7) {
+            fishCounter++;
+            console.log('toys: ' + fishCounter);
+            if (fishCounter === 7) {
                 console.log('Congratulation! You won!');
             }
         }
@@ -113,7 +111,6 @@ Player.prototype.handleInput = function(key) {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-
 for (let i = 0; i < 7; i++) {
     var enemy1 = new Enemy(2, 'images/enemy-seal.png', 2, 3, 6, 'right');
 }
@@ -135,7 +132,7 @@ document.addEventListener('keyup', function(e) {
     player.handleInput(allowedKeys[e.keyCode]);
 });
 
-// Characters
+// Baby penguins
 var Kids = function(position) {
     this.x = position;
     this.y = 0;
@@ -151,6 +148,7 @@ Kids.prototype.render = function() {
     ctx.drawImage(Resources.get(this.imageFile), this.x * 101, this.y * 83 - 30);
 };
 
+/*
 // Toys
 var Toys = function(color, imageFile, position) {
     this.x = position;
@@ -188,4 +186,4 @@ function shuffle(array) {
     }
     return array;
 }
-
+*/

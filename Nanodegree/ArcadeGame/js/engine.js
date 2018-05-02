@@ -177,7 +177,6 @@ var Engine = (function(global) {
      */
     Resources.load([
         'images/snow-block.png',
-        'images/water-snow.png',
         'images/water-block.png',
         'images/baby-penguin.png',
         'images/player.png',
