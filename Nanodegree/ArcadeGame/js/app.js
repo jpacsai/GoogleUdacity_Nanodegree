@@ -2,12 +2,13 @@
 var allEnemies = [];
 var toyCounter = 0;
 
-var Enemy = function(length, type) {
+var Enemy = function(length, type, speed) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
     this.x = -1 * (Math.floor(Math.random() * 10) + 3);
     this.y = Math.floor(Math.random() * (5 - 2) + 2);
     this.length = length;
+    this.speed = speed;
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = type;
@@ -20,7 +21,7 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    this.x = (this.x + 3 * dt);
+    this.x = (this.x + this.speed * dt);
     if (this.x > 7) {
         this.x = -1 * (Math.floor(Math.random() * 10) + 3);
         this.y = Math.floor(Math.random() * (5 - 2) + 2);
@@ -108,8 +109,10 @@ Player.prototype.handleInput = function(key) {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 
-for (let i = 0; i < 5; i++) {
-    var enemy = new Enemy(2, 'images/enemy-car.png');
+for (let i = 0; i < 2; i++) {
+    var enemy1 = new Enemy(2, 'images/enemy-car.png', 3);
+    var enemy2 = new Enemy(1, 'images/enemy-bike.png', 4);
+    var enemy3 = new Enemy(3, 'images/enemy-truck.png', 2)
 }
 
 var player = new Player;
