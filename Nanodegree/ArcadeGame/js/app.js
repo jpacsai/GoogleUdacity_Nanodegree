@@ -1,16 +1,20 @@
-// Enemies our player must avoid
-var allEnemies = [];
-var toyCounter = 0;
 
-var Enemy = function(length, type) {
+var allEnemies = [];
+var allKids = [];
+var fishCounter = 0;
+
+// Enemies our player must avoid
+var Enemy = function(length, file, speed, min, max, direction) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
-    this.x = -1 * (Math.floor(Math.random() * 10) + 3);
-    this.y = Math.floor(Math.random() * (5 - 2) + 2);
+    this.direction = direction === 'right' ? -1 : 1;
+    this.x = direction === 'right' ? this.direction * (Math.floor(Math.random() * 10) + 3) : (Math.floor(Math.random() * 10) + 7);
+    this.y = Math.floor(Math.random() * (max - min + 1) + min);
     this.length = length;
-    // The image/sprite for our enemies, this uses
-    // a helper we've provided to easily load images
-    this.sprite = type;
+    this.speed = speed;
+    this.min = min;
+    this.max = max;
+    this.sprite = file;
     allEnemies.push(this);
 };
 
@@ -20,11 +24,17 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    this.x = (this.x + 3 * dt);
-    if (this.x > 7) {
-        this.x = -1 * (Math.floor(Math.random() * 10) + 3);
-        this.y = Math.floor(Math.random() * (5 - 2) + 2);
+    this.x = (this.x + (-1 * this.direction) * this.speed * dt);
+    if (this.direction === -1 && this.x > 7 || this.direction === 1 && this.x < -2) {
+        this.x = this.direction === -1 ? this.direction * (Math.floor(Math.random() * 10) + 3) : (Math.floor(Math.random() * 12) + 9);
+        this.y = Math.floor(Math.random() * (this.max - this.min + 1) + this.min);
     }
+    if (this.x + this.length - 0.4 >= player.x && this.x < player.x && player.y === this.y) {
+        player.x = 3;
+        player.y = 1;
+        player.toy.x = 3;
+        player.toy.y = 1;
+    } 
 };
 
 // Draw the enemy on the screen, required method for game
@@ -36,20 +46,15 @@ Enemy.prototype.render = function() {
 // This class requires an update(), render() and
 // a handleInput() method.
 var Player = function() {
-    this.playerImage = 'images/char-boy.png';
+    this.playerImage = 'images/player.png';
     this.x = 3;
-    this.y = 5;
+    this.y = 1;
     this.grab = false;
     this.toy = "none";
 }
 
-Player.prototype.update = function() {  // FIX THIS!! multiple collision check
-    if ( enemy.x + enemy.length - 0.4 >= this.x && enemy.x < this.x && this.y === enemy.y) {
-        this.x = 3;
-        this.y = 5;
-        this.toy.x = 3;
-        this.toy.y = 5;
-    }
+Player.prototype.update = function() {  
+   
 }
 
 Player.prototype.render = function() {
@@ -94,9 +99,9 @@ Player.prototype.handleInput = function(key) {
             this.grab = false;
             this.toy.grabbed = false;
             this.toy = 'none';
-            toyCounter++;
-            console.log('toys: ' + toyCounter);
-            if (toyCounter === 7) {
+            fishCounter++;
+            console.log('toys: ' + fishCounter);
+            if (fishCounter === 7) {
                 console.log('Congratulation! You won!');
             }
         }
@@ -106,10 +111,11 @@ Player.prototype.handleInput = function(key) {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-// var enemy = new Enemy(2, 'images/enemy-car.png');
-for (let i = 0; i < 5; i++) {
-    var enemy = new Enemy(2, 'images/enemy-car.png');
+for (let i = 0; i < 7; i++) {
+    var enemy1 = new Enemy(2, 'images/enemy-seal.png', 2, 3, 6, 'right');
 }
+
+var polar = new Enemy(2, 'images/polar.png', 1, 2, 2, 'left');
 
 var player = new Player;
 
@@ -126,30 +132,23 @@ document.addEventListener('keyup', function(e) {
     player.handleInput(allowedKeys[e.keyCode]);
 });
 
-// Characters
-var Characters = function(color, imageFile, position) {
+// Baby penguins
+var Kids = function(position) {
     this.x = position;
     this.y = 0;
-    this.color = color;
-    this.imageFile = imageFile;
+    this.imageFile = 'images/baby-penguin.png';
+    allKids.push(this);
 }
 
-var charPosition = shuffle([0, 1, 2, 3, 4, 5, 6]);
+for (let i = 0; i < 7; i++) {
+    var kid = new Kids(i);
+}
 
-var pinkKid = new Characters('pink', 'images/pink-kid.png', charPosition[0]);
-var blueKid = new Characters('blue', 'images/blue-kid.png', charPosition[1]);
-var greenKid = new Characters('green', 'images/green-kid.png', charPosition[2]);
-var yellowKid = new Characters('yellow', 'images/yellow-kid.png', charPosition[3]);
-var redKid = new Characters('red', 'images/red-kid.png', charPosition[4]);
-var tealKid = new Characters('teal', 'images/teal-kid.png', charPosition[5]);
-var purpleKid = new Characters('purple', 'images/purple-kid.png', charPosition[6]);   
-
-var allKids = [pinkKid, blueKid, greenKid, yellowKid, redKid, tealKid, purpleKid];
-
-Characters.prototype.render = function() {
+Kids.prototype.render = function() {
     ctx.drawImage(Resources.get(this.imageFile), this.x * 101, this.y * 83 - 30);
 };
 
+/*
 // Toys
 var Toys = function(color, imageFile, position) {
     this.x = position;
@@ -187,4 +186,4 @@ function shuffle(array) {
     }
     return array;
 }
-
+*/
