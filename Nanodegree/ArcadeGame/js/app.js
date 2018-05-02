@@ -1,3 +1,13 @@
+// TO-DO:
+// fish to collect
+// random golden fish to collect
+// stats-panel
+// life counting
+// timer
+// restart
+// reset
+// starter screen with instructions
+// winner screen
 
 var allEnemies = [];
 var allKids = [];
@@ -29,7 +39,7 @@ Enemy.prototype.update = function(dt) {
         this.x = this.direction === -1 ? this.direction * (Math.floor(Math.random() * 10) + 3) : (Math.floor(Math.random() * 12) + 9);
         this.y = Math.floor(Math.random() * (this.max - this.min + 1) + this.min);
     }
-    if (this.x + this.length - 0.4 >= player.x && this.x < player.x && player.y === this.y) {
+    if (this.x + this.length - 0.4 >= player.x && this.x < player.x && player.y === this.y) {  // fix this with left direction!!!
         player.x = 3;
         player.y = 1;
         player.toy.x = 3;
