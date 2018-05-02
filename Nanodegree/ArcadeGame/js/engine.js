@@ -107,12 +107,12 @@ var Engine = (function(global) {
          * for that particular row of the game level.
          */
         var rowImages = [
-                'images/dirt-block.png',
-                'images/grass-block.png',
-                'images/road-block.png',
-                'images/road-block.png',
-                'images/road-block.png',
-                'images/grass-block.png',
+                'images/snow-block.png',
+                'images/snow-block.png',
+                'images/snow-block.png',
+                'images/water-block.png',
+                'images/water-block.png',
+                'images/water-block.png',
                 'images/water-block.png',
             ],
             numRows = 7,
@@ -178,10 +178,8 @@ var Engine = (function(global) {
      * all of these images are properly loaded our game will start.
      */
     Resources.load([
-        'images/road-block.png',
+        'images/snow-block.png',
         'images/water-block.png',
-        'images/grass-block.png',
-        'images/dirt-block.png',
         'images/enemy-car.png',
         'images/enemy-bike.png',
         'images/enemy-truck.png',
