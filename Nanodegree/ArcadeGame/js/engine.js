@@ -107,7 +107,7 @@ var Engine = (function(global) {
          * for that particular row of the game level.
          */
         var rowImages = [
-                'images/grass-block.png',
+                'images/dirt-block.png',
                 'images/grass-block.png',
                 'images/road-block.png',
                 'images/road-block.png',
@@ -181,6 +181,7 @@ var Engine = (function(global) {
         'images/road-block.png',
         'images/water-block.png',
         'images/grass-block.png',
+        'images/dirt-block.png',
         'images/enemy-car.png',
         'images/enemy-bike.png',
         'images/enemy-truck.png',
