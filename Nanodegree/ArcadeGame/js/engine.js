@@ -150,19 +150,15 @@ var Engine = (function(global) {
         /* Loop through all of the objects within the allEnemies array and call
          * the render function you have defined.
          */
-        allEnemies.forEach(function(enemy) {
+       /* allEnemies.forEach(function(enemy) {
             enemy.render();
-        }); 
-
-        player.render();
+        }); */
         
         allKids.forEach(function(kids) {
             kids.render();
         });
 
-        allToys.forEach(function(toys) {
-            toys.render();
-        });
+        player.render();
     }
 
     /* This function does nothing but it could have been a good place to
@@ -180,24 +176,8 @@ var Engine = (function(global) {
     Resources.load([
         'images/snow-block.png',
         'images/water-block.png',
-        'images/enemy-car.png',
-        'images/enemy-bike.png',
-        'images/enemy-truck.png',
-        'images/char-boy.png',
-        'images/blue-kid.png',
-        'images/pink-kid.png',
-        'images/yellow-kid.png',
-        'images/red-kid.png',
-        'images/teal-kid.png',
-        'images/purple-kid.png',
-        'images/green-kid.png',
-        'images/blue-toy.png',
-        'images/pink-toy.png',
-        'images/yellow-toy.png',
-        'images/red-toy.png',
-        'images/teal-toy.png',
-        'images/purple-toy.png',
-        'images/green-toy.png'
+        'images/baby-penguin.png',
+        'images/player.png',
     ]);
     Resources.onReady(init);
 
