@@ -25,6 +25,12 @@ Enemy.prototype.update = function(dt) {
         this.x = -1 * (Math.floor(Math.random() * 10) + 3);
         this.y = Math.floor(Math.random() * (5 - 2) + 2);
     }
+    if (this.x + this.length - 0.4 >= player.x && this.x < player.x && player.y === this.y) {
+        player.x = 3;
+        player.y = 5;
+        player.toy.x = 3;
+        player.toy.y = 5;
+    }  
 };
 
 // Draw the enemy on the screen, required method for game
@@ -43,13 +49,8 @@ var Player = function() {
     this.toy = "none";
 }
 
-Player.prototype.update = function() {  // FIX THIS!! multiple collision check
-    if ( enemy.x + enemy.length - 0.4 >= this.x && enemy.x < this.x && this.y === enemy.y) {
-        this.x = 3;
-        this.y = 5;
-        this.toy.x = 3;
-        this.toy.y = 5;
-    }
+Player.prototype.update = function() {  
+   
 }
 
 Player.prototype.render = function() {
@@ -106,7 +107,7 @@ Player.prototype.handleInput = function(key) {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-// var enemy = new Enemy(2, 'images/enemy-car.png');
+
 for (let i = 0; i < 5; i++) {
     var enemy = new Enemy(2, 'images/enemy-car.png');
 }
