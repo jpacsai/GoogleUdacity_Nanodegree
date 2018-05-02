@@ -109,7 +109,7 @@ var Engine = (function(global) {
         var rowImages = [
                 'images/snow-block.png',
                 'images/snow-block.png',
-                'images/snow-block.png',
+                'images/water-block.png',
                 'images/water-block.png',
                 'images/water-block.png',
                 'images/water-block.png',
@@ -150,15 +150,17 @@ var Engine = (function(global) {
         /* Loop through all of the objects within the allEnemies array and call
          * the render function you have defined.
          */
-       /* allEnemies.forEach(function(enemy) {
-            enemy.render();
-        }); */
         
         allKids.forEach(function(kids) {
             kids.render();
         });
 
         player.render();
+
+        allEnemies.forEach(function(enemy) {
+            enemy.render();
+        });
+        
     }
 
     /* This function does nothing but it could have been a good place to
@@ -175,9 +177,12 @@ var Engine = (function(global) {
      */
     Resources.load([
         'images/snow-block.png',
+        'images/water-snow.png',
         'images/water-block.png',
         'images/baby-penguin.png',
         'images/player.png',
+        'images/enemy-seal.png',
+        'images/polar.png'
     ]);
     Resources.onReady(init);
 

@@ -3,16 +3,19 @@ var allEnemies = [];
 var allKids = [];
 var toyCounter = 0;
 
-var Enemy = function(length, type, speed) {
+var Enemy = function(length, file, speed, min, max, direction) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
-    this.x = -1 * (Math.floor(Math.random() * 10) + 3);
-    this.y = Math.floor(Math.random() * (5 - 2) + 2);
+    this.direction = direction === 'right' ? -1 : 1;
+    this.x = direction === 'right' ? this.direction * (Math.floor(Math.random() * 10) + 3) : (Math.floor(Math.random() * 10) + 7);
+    this.y = Math.floor(Math.random() * (max - min + 1) + min);
     this.length = length;
     this.speed = speed;
+    this.min = min;
+    this.max = max;
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
-    this.sprite = type;
+    this.sprite = file;
     allEnemies.push(this);
 };
 
@@ -22,17 +25,18 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    this.x = (this.x + this.speed * dt);
-    if (this.x > 7) {
-        this.x = -1 * (Math.floor(Math.random() * 10) + 3);
-        this.y = Math.floor(Math.random() * (5 - 2) + 2);
+    this.x = (this.x + (-1 * this.direction) * this.speed * dt);
+    if (this.direction === -1 && this.x > 7 || this.direction === 1 && this.x < -2) {
+        this.x = this.direction === -1 ? this.direction * (Math.floor(Math.random() * 10) + 3) : (Math.floor(Math.random() * 12) + 9);
+        this.y = Math.floor(Math.random() * (this.max - this.min + 1) + this.min);
     }
     if (this.x + this.length - 0.4 >= player.x && this.x < player.x && player.y === this.y) {
         player.x = 3;
-        player.y = 5;
+        player.y = 1;
         player.toy.x = 3;
-        player.toy.y = 5;
-    }  
+        player.toy.y = 1;
+    } 
+    console.log(polar.x);
 };
 
 // Draw the enemy on the screen, required method for game
@@ -110,11 +114,11 @@ Player.prototype.handleInput = function(key) {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 
-for (let i = 0; i < 2; i++) {
-    var enemy1 = new Enemy(2, 'images/enemy-car.png', 2);
-    var enemy2 = new Enemy(1, 'images/enemy-bike.png', 3);
-    var enemy3 = new Enemy(3, 'images/enemy-truck.png', 1.5)
+for (let i = 0; i < 7; i++) {
+    var enemy1 = new Enemy(2, 'images/enemy-seal.png', 2, 3, 6, 'right');
 }
+
+var polar = new Enemy(2, 'images/polar.png', 1, 2, 2, 'left');
 
 var player = new Player;
 
