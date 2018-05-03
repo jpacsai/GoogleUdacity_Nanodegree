@@ -16,12 +16,12 @@ body {
 
 .life {
     display: flex;
-    justify-content: space-around;
     align-items: center;
 }
 
 .heart {
     height: 60px;
+    margin: auto 10px;
 }
 
 .timer {
@@ -53,6 +53,7 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    cursor: pointer;
 }
 
 .pause {
@@ -68,6 +69,7 @@ canvas {
 /*
  * Styles for winner screen
  */
+ .lost,
  .winner {
     position: absolute;
     top: 15%;
@@ -103,4 +105,37 @@ canvas {
 .newGameButton:hover {
     background-color: #2f0b6b;
     box-shadow: none;
+}
+
+/*
+ * Fade in animation for winner screen
+ */
+ @keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+
+/*
+ * Styles for pause screen
+ */
+
+ .pause-screen {
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #270555;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.pause-img {
+    width: 180px;
+    margin: 30px;
 }

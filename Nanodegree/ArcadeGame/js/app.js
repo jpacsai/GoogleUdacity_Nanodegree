@@ -1,12 +1,8 @@
 // TO-DO:
-// random golden fish to collect
-// stats-panel
 // life counting
-// timer
 // restart
-// reset
 // starter screen with instructions
-// winner screen
+// 
 
 var allEnemies = [];
 var allKids = [];
@@ -14,6 +10,10 @@ var allFish = [];
 var fishCounter = 0;
 var secCounter = 0;
 var minCounter = 0;
+var won;
+var loose;
+
+timer();
 
 // Enemies our player must avoid
 var Enemy = function(length, file, speed, min, max, direction) {
@@ -23,6 +23,7 @@ var Enemy = function(length, file, speed, min, max, direction) {
     this.x = direction === 'right' ? this.direction * (Math.floor(Math.random() * 10) + 3) : (Math.floor(Math.random() * 10) + 7);
     this.y = Math.floor(Math.random() * (max - min + 1) + min);
     this.length = length;
+    this.originalSpeed = speed;
     this.speed = speed;
     this.min = min;
     this.max = max;
@@ -41,17 +42,6 @@ Enemy.prototype.update = function(dt) {
         this.x = this.direction === -1 ? this.direction * (Math.floor(Math.random() * 10) + 3) : (Math.floor(Math.random() * 12) + 9);
         this.y = Math.floor(Math.random() * (this.max - this.min + 1) + this.min);
     }
-    if ((this.direction === -1 && this.x + this.length - 0.4 >= player.x && this.x < player.x && player.y === this.y) || 
-        (this.direction === 1 && this.x <= player.x + 1 - 0.4 && this.x + this.length - 0.4 > player.x && player.y === this.y)) {   
-        player.x = 3;
-        player.y = 1;
-        if (player.grab === true) {
-            player.fish.x = player.fish.originalX;
-            player.fish.y = player.fish.originalY;
-            player.fish.grabbed = false;
-            player.grab = false;
-        }
-    } 
 };
 
 // Draw the enemy on the screen, required method for game
@@ -68,10 +58,30 @@ var Player = function() {
     this.y = 1;
     this.grab = false;
     this.fish = false;
+    this.life = 3;
 }
 
 Player.prototype.update = function() {  
-   
+    allEnemies.forEach(function(enemy){
+        if ((enemy.direction === -1 && enemy.x + enemy.length - 0.4 >= player.x && enemy.x < player.x && player.y === enemy.y) || 
+        (enemy.direction === 1 && enemy.x <= player.x + 1 - 0.4 && enemy.x + enemy.length - 0.4 > player.x && player.y === enemy.y)) {   
+            player.x = 3;
+            player.y = 1;
+            player.life--;
+            if (player.grab === true) {
+                player.fish.x = player.fish.originalX;
+                player.fish.y = player.fish.originalY;
+                player.fish.grabbed = false;
+                player.grab = false;
+            }
+            if (player.life < 0) {
+                loose();
+            }
+            else {
+                looseLife();
+            }
+        }
+    });
 }
 
 Player.prototype.render = function() {
@@ -119,7 +129,9 @@ Player.prototype.handleInput = function(key) {
             fishCounter++;
             console.log('fish: ' + fishCounter);
             if (fishCounter === 7) {
-                win();
+                setTimeout(function() {
+                    win();
+                }, 1000);
                 console.log('Congratulation! You won!');
             }
         }
@@ -132,14 +144,14 @@ Player.prototype.handleInput = function(key) {
 for (let i = 0; i < 7; i++) {
     var enemy1 = new Enemy(2, 'images/enemy-seal.png', 2, 3, 6, 'right');
 }
-
 var polar = new Enemy(2, 'images/polar.png', 1, 2, 2, 'left');
-
 var player = new Player;
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
-document.addEventListener('keyup', function(e) {
+document.addEventListener('keyup', movement);
+
+function movement(e) {
     var allowedKeys = {
         37: 'left',
         38: 'up',
@@ -148,7 +160,7 @@ document.addEventListener('keyup', function(e) {
     };
 
     player.handleInput(allowedKeys[e.keyCode]);
-});
+}
 
 // Baby penguins
 var Kids = function(position) {
@@ -159,14 +171,13 @@ var Kids = function(position) {
     allKids.push(this);
 }
 
-for (let i = 0; i < 7; i++) {
-    var kid = new Kids(i);
-}
-
 Kids.prototype.render = function() {
     ctx.drawImage(Resources.get(this.imageFile), this.x * 101, this.y * 83 - 30);
 };
 
+for (let i = 0; i < 7; i++) {
+    var kid = new Kids(i);
+}
 
 // Fish
 var Fish = function(x ,y, number) {
@@ -229,6 +240,7 @@ function timer() {
     },1000);
 }
 
+// - - - - WINNER SCREEN - - - - 
 function win() {
     clearInterval(timing);
     won = document.createElement('DIV');
@@ -244,7 +256,7 @@ function win() {
     wonText.classList.add('winnerText');
     let wonInfo = minCounter === 0 ? 
         'You won in ' + secCounter + ' sec!' : 
-        'You won with in ' + minCounter + ' min ' + secCounter + ' sec!';
+        'You won in ' + minCounter + ' min ' + secCounter + ' sec!';
     wonText.textContent = wonInfo;
 
     // add new game button
@@ -263,7 +275,141 @@ function win() {
 
     // event listeners for new game button - click or keypress
     newGameButton.onclick = function(){
-        //restart()
+        restart()
     };
     window.addEventListener('keypress', restart, false);
+}
+
+// - - - - RESTART FUNCTION - - - -
+const restartButton = document.querySelector('.restart');
+
+    restartButton.onclick = function() {
+        restart();
+    };
+
+    // restart function, starts a new game
+    function restart() {/*
+        // reset timer
+        clearInterval(timing);
+        document.querySelector('.secCount').textContent = '00';
+        document.querySelector('.minCount').textContent = '00';
+
+        // reset hearts
+        /* let stars = Array.from(document.getElementsByClassName('fa'));
+        for (let s in stars) {
+            stars[s].classList.replace('fa-star-o', 'fa-star');
+        } */
+
+        // reset variables
+     /*   secCounter = 0;
+        minCounter = 0;
+        player.x = 3;
+        player.y = 1;
+        allEnemies = [];
+        allKids = [];
+        allFish = [];
+        fishCounter = 0; 
+
+        // remove won screen if new game initiated from there
+        if (won !== undefined) {
+            won.style.display === 'none';
+            won.remove();
+        } */
+
+        location.reload();
+    }
+
+// GAME OVER SCREEN
+function loose() {
+    clearInterval(timing);
+    loose = document.createElement('DIV');
+    loose.classList.add('lost');
+
+    // add header
+    const lostHeader = document.createElement('H1');
+    lostHeader.classList.add('lostHeader');
+    lostHeader.textContent = 'GAME OVER';
+
+    // add new game button
+    const newGameButton = document.createElement('DIV');
+    newGameButton.classList.add('newGameButton');
+    newGameButton.textContent = 'Play again?';
+
+    // add key press comment
+    const newGameComment = document.createElement('H3');
+    newGameComment.classList.add('newGameComment');
+    newGameComment.textContent = 'or press any key';
+        
+    loose.append(lostHeader, newGameButton, newGameComment);
+
+    document.body.appendChild(loose);  
+
+    // event listeners for new game button - click or keypress
+    newGameButton.onclick = function(){
+        restart()
+    };
+    window.addEventListener('keypress', restart, false);
+}
+
+// LIFE COUNTER IN STAT PANEL
+function looseLife() {
+    console.log(player.life);
+    var child = document.getElementsByClassName('heart')[player.life];
+    child.parentNode.removeChild(child);
+}
+
+// - - - - PAUSE BUTTON  - - - -
+
+const pauseButton = document.querySelector('.pause');
+pauseButton.onclick = function() {
+    pause();
+};
+
+// function to pause the game
+function pause() {
+    // clear timer variable
+    clearInterval(timing);
+
+    // create pause screen
+    pauseScreen = document.createElement('DIV');
+    pauseScreen.classList.add('pause-screen');
+
+    const pauseText = document.createElement('H1');
+    pauseText.textContent = 'Game paused';
+    pauseScreen.appendChild(pauseText);
+
+    const pauseComment = document.createElement('H3');
+    pauseComment.textContent = 'press any key or click to return';
+    pauseScreen.appendChild(pauseComment);
+
+    document.body.appendChild(pauseScreen); 
+
+    allEnemies.forEach(function(enemy){
+        enemy.speed = 0;
+    })
+
+    document.removeEventListener('keyup', movement);
+    
+    // event listener to restart a game with a keypress or a click
+    pauseScreen.onclick = function() {
+        resume();
+    };
+    window.addEventListener('keypress', resume);
+}
+
+// function to resume the game after it was paused
+function resume() {
+    // remove event listeners
+    window.removeEventListener('keypress', resume);
+
+    document.addEventListener('keyup', movement);
+
+    allEnemies.forEach(function(enemy){
+        enemy.speed = enemy.originalSpeed;
+    })
+
+    // hide pause screen and remove
+    pauseScreen.style.display === 'none';
+    pauseScreen.remove();
+    timer();
 }
