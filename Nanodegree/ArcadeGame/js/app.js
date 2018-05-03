@@ -14,6 +14,9 @@ var allFish = [];
 var fishCounter = 0;
 var secCounter = 0;
 var minCounter = 0;
+var won;
+
+timer();
 
 // Enemies our player must avoid
 var Enemy = function(length, file, speed, min, max, direction) {
@@ -119,7 +122,9 @@ Player.prototype.handleInput = function(key) {
             fishCounter++;
             console.log('fish: ' + fishCounter);
             if (fishCounter === 7) {
-                win();
+                setTimeout(function() {
+                    win();
+                }, 1000);
                 console.log('Congratulation! You won!');
             }
         }
@@ -229,6 +234,7 @@ function timer() {
     },1000);
 }
 
+// - - - - WINNER SCREEN - - - - 
 function win() {
     clearInterval(timing);
     won = document.createElement('DIV');
@@ -263,7 +269,46 @@ function win() {
 
     // event listeners for new game button - click or keypress
     newGameButton.onclick = function(){
-        //restart()
+        restart()
     };
     window.addEventListener('keypress', restart, false);
 }
+
+// - - - - RESTART FUNCTION - - - -
+const restartButton = document.querySelector('.restart');
+
+    restartButton.onclick = function() {
+        restart();
+    };
+
+    // restart function, starts a new game
+    function restart() {/*
+        // reset timer
+        clearInterval(timing);
+        document.querySelector('.secCount').textContent = '00';
+        document.querySelector('.minCount').textContent = '00';
+
+        // reset hearts
+        /* let stars = Array.from(document.getElementsByClassName('fa'));
+        for (let s in stars) {
+            stars[s].classList.replace('fa-star-o', 'fa-star');
+        } */
+
+        // reset variables
+     /*   secCounter = 0;
+        minCounter = 0;
+        player.x = 3;
+        player.y = 1;
+        allEnemies = [];
+        allKids = [];
+        allFish = [];
+        fishCounter = 0; 
+
+        // remove won screen if new game initiated from there
+        if (won !== undefined) {
+            won.style.display === 'none';
+            won.remove();
+        } */
+
+        location.reload();
+    }

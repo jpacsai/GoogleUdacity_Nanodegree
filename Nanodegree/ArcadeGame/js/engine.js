@@ -28,7 +28,7 @@ var Engine = (function(global) {
     canvas.height = 690;
     doc.body.appendChild(canvas);
 
-    timer();
+    
 
     /* This function serves as the kickoff point for the game loop itself
      * and handles properly calling the update and render methods.
@@ -48,7 +48,7 @@ var Engine = (function(global) {
          */
         update(dt);
         render();
-
+        
         /* Set our lastTime variable which is used to determine the time delta
          * for the next time this function is called.
          */
