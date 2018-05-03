@@ -77,6 +77,9 @@ Player.prototype.update = function() {
             if (player.life < 0) {
                 loose();
             }
+            else {
+                looseLife();
+            }
         }
     });
 }
@@ -344,4 +347,11 @@ function loose() {
         restart()
     };
     window.addEventListener('keypress', restart, false);
+}
+
+// LIFE COUNTER IN STAT PANEL
+function looseLife() {
+    console.log(player.life);
+    var child = document.getElementsByClassName('heart')[player.life];
+    child.parentNode.removeChild(child);
 }

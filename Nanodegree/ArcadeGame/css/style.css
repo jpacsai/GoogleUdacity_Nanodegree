@@ -16,12 +16,12 @@ body {
 
 .life {
     display: flex;
-    justify-content: space-around;
     align-items: center;
 }
 
 .heart {
     height: 60px;
+    margin: auto 10px;
 }
 
 .timer {
