@@ -44,8 +44,12 @@ Enemy.prototype.update = function(dt) {
         (this.direction === 1 && this.x <= player.x + 1 - 0.4 && this.x + this.length - 0.4 > player.x)) {   
         player.x = 3;
         player.y = 1;
-        player.toy.x = 3;
-        player.toy.y = 1;
+        if (player.grab === true) {
+            player.fish.x = player.fish.originalX;
+            player.fish.y = player.fish.originalY;
+            player.fish.grabbed = false;
+            player.grab = false;
+        }
     } 
 };
 
@@ -62,7 +66,7 @@ var Player = function() {
     this.x = 3;
     this.y = 1;
     this.grab = false;
-    this.toy = "none";
+    this.fish = false;
 }
 
 Player.prototype.update = function() {  
@@ -77,47 +81,47 @@ Player.prototype.handleInput = function(key) {
     if (key === 'up' && this.y - 1 > 0) {
         this.y--;
         if (this.grab === true) {
-            this.toy.y--;
+            this.fish.y--;
         }
     }
     else if (key === 'down' && this.y + 1 <= Math.round(document.querySelector("canvas").height / 115)) {
         this.y++;
         if (this.grab === true) {
-            this.toy.y++;
+            this.fish.y++;
         }
     }
     else if (key === 'left' && this.x - 1 >= 0) {
         this.x--;
         if (this.grab === true) {
-            this.toy.x--;
+            this.fish.x--;
         }
     }
     else if (key === 'right' && this.x + 1 < Math.round(document.querySelector("canvas").width / 100)) {
         this.x++;
         if (this.grab === true) {
-            this.toy.x++;
+            this.fish.x++;
         }
     }
-    if (this.grab === false && this.y === 6 && allToys.find(a => a.x === player.x && a.y === player.y) !== undefined) {
-        let grabbedToy = allToys.find(a => a.x === player.x && a.y === player.y);
+    if (this.grab === false && allFish.find(a => a.x === player.x && a.y === player.y) !== undefined) {
+        let grabbedFish = allFish.find(a => a.x === player.x && a.y === player.y);
         this.grab = true;
-        grabbedToy.grabbed = true;
-        this.toy = grabbedToy;
+        grabbedFish.grabbed = true;
+        this.fish = grabbedFish;
     }
-    if (this.grab === true && this.y === 1) {
+    /*if (this.grab === true && this.y === 1) {
         let kidAbove = allKids.find(b => b.x === player.x);
-        if (kidAbove.color === this.toy.color) {
-            this.toy.y--;
+        if (kidAbove.color === this.fish.color) {
+            this.fish.y--;
             this.grab = false;
-            this.toy.grabbed = false;
-            this.toy = 'none';
+            this.fish.grabbed = false;
+            this.fish = 'none';
             fishCounter++;
             console.log('toys: ' + fishCounter);
             if (fishCounter === 7) {
                 console.log('Congratulation! You won!');
             }
         }
-    }
+    }*/
 }
 
 // Now instantiate your objects.
@@ -162,18 +166,21 @@ Kids.prototype.render = function() {
 
 
 // Fish
-var Fish = function(x ,y) {
+var Fish = function(x ,y, number) {
+    this.originalX = x;
+    this.originalY = y;
     this.x = x;
     this.y = y;
     this.imageFile = 'images/fish.png';
     this.grabbed = false;
+    this.number = number;
     allFish.push(this);
 }
 
 var fishX = shuffle([0, 1, 2, 3, 4, 5, 6]); 
 
 for (let i = 0; i < 7; i++) {
-    var fish = new Fish(fishX[i], Math.floor(Math.random() * (6 - 2 + 1) + 2));
+    var fish = new Fish(fishX[i], Math.floor(Math.random() * (6 - 3 + 1) + 3), i);
 }
 
 Fish.prototype.render = function() {
