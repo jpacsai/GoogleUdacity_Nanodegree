@@ -24,6 +24,7 @@ var Enemy = function(length, file, speed, min, max, direction) {
     this.x = direction === 'right' ? this.direction * (Math.floor(Math.random() * 10) + 3) : (Math.floor(Math.random() * 10) + 7);
     this.y = Math.floor(Math.random() * (max - min + 1) + min);
     this.length = length;
+    this.originalSpeed = speed;
     this.speed = speed;
     this.min = min;
     this.max = max;
@@ -149,7 +150,9 @@ var player = new Player;
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
-document.addEventListener('keyup', function(e) {
+document.addEventListener('keyup', movement);
+
+function movement(e) {
     var allowedKeys = {
         37: 'left',
         38: 'up',
@@ -158,7 +161,7 @@ document.addEventListener('keyup', function(e) {
     };
 
     player.handleInput(allowedKeys[e.keyCode]);
-});
+}
 
 // Baby penguins
 var Kids = function(position) {
@@ -354,4 +357,43 @@ function looseLife() {
     console.log(player.life);
     var child = document.getElementsByClassName('heart')[player.life];
     child.parentNode.removeChild(child);
+}
+
+// - - - - PAUSE BUTTON  - - - -
+
+const pauseButton = document.querySelector('.pause');
+pauseButton.onclick = function() {
+    pause();
+};
+
+// function to pause the game
+function pause() {
+    // clear timer variable
+    clearInterval(timing);
+
+    // create pause screen
+    pauseScreen = document.createElement('DIV');
+    pauseScreen.classList.add('pause-screen');
+
+    const pauseText = document.createElement('H1');
+    pauseText.textContent = 'Game paused';
+    pauseScreen.appendChild(pauseText);
+
+    const pauseComment = document.createElement('H3');
+    pauseComment.textContent = 'press any key or click to return';
+    pauseScreen.appendChild(pauseComment);
+
+    document.body.appendChild(pauseScreen); 
+
+    allEnemies.forEach(function(enemy){
+        enemy.speed = 0;
+    })
+
+    document.removeEventListener('keyup', movement);
+    /*
+    // event listener to restart a game with a keypress or a click
+    pauseScreen.onclick = function() {
+        resume();
+    };
+    window.addEventListener('keypress', resume);*/
 }
