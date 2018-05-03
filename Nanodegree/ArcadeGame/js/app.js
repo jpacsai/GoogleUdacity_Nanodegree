@@ -39,7 +39,8 @@ Enemy.prototype.update = function(dt) {
         this.x = this.direction === -1 ? this.direction * (Math.floor(Math.random() * 10) + 3) : (Math.floor(Math.random() * 12) + 9);
         this.y = Math.floor(Math.random() * (this.max - this.min + 1) + this.min);
     }
-    if (this.x + this.length - 0.4 >= player.x && this.x < player.x && player.y === this.y) {  // fix this with left direction!!!
+    if ((this.direction === -1 && this.x + this.length - 0.4 >= player.x && this.x < player.x && player.y === this.y) || 
+        (this.direction === 1 && this.x <= player.x + 1 - 0.4 && this.x + this.length - 0.4 > player.x)) {   
         player.x = 3;
         player.y = 1;
         player.toy.x = 3;
