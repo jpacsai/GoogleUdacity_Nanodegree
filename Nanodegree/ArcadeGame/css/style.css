@@ -1,7 +1,106 @@
 body {
     text-align: center;
+    background: url('../images/background.png') center / cover no-repeat fixed; 
+    font-family: 'Mina', cursive;
+}
+
+.panel {
+    width: 500px;
+    height: 10vh;
+    margin: 10px auto;
+    box-sizing: border-box;
+    display: grid;
+    grid-template: 100% / 35% 35% 15% 15%;
+    font-size: 1.5em;
+}
+
+.life {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.heart {
+    height: 60px;
+}
+
+.timer {
+    display: grid;
+    grid-template: 100% / 20% 20% 20% 20% 20% ;
+}
+
+.minCount,
+.dots,
+.secCount {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.minCount {
+    grid-area: 1 / 2 / 2 / 3;
+}
+
+.dots {
+    grid-area: 1 / 3 / 2 / 4;
+}
+
+.secCount {
+    grid-area: 1 / 4 / 2 / 5;
+}
+
+.restart {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.pause {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 canvas {
-    height: 90vh;
+    height: 80vh;
+}
+
+/*
+ * Styles for winner screen
+ */
+ .winner {
+    position: absolute;
+    top: 15%;
+    left: 0;
+    width: 100%;
+    height: 70%;
+    min-height: 360px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #270555;
+    animation: fadeIn 0.8s;
+}
+
+.newGameButton {
+    width: 150px;
+    height: 50px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 8px;
+    background-color: #8563be;
+    font-size: 1.3em;
+    color: white;
+    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+    transition: all 0.3s ease 0s;
+}
+
+.newGameButton:hover {
+    background-color: #2f0b6b;
+    box-shadow: none;
 }

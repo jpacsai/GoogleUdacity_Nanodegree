@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', function () {
             clearInterval(timing);
             // call winner screen
             setTimeout(function() {
-                win()
+                win();
             }, 1000);
         }
     }

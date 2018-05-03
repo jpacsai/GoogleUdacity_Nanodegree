@@ -28,6 +28,8 @@ var Engine = (function(global) {
     canvas.height = 690;
     doc.body.appendChild(canvas);
 
+    timer();
+
     /* This function serves as the kickoff point for the game loop itself
      * and handles properly calling the update and render methods.
      */
@@ -157,10 +159,14 @@ var Engine = (function(global) {
 
         player.render();
 
+        allFish.forEach(function(fish) {
+            fish.render();
+        });
+
         allEnemies.forEach(function(enemy) {
             enemy.render();
         });
-        
+
     }
 
     /* This function does nothing but it could have been a good place to
@@ -181,7 +187,8 @@ var Engine = (function(global) {
         'images/baby-penguin.png',
         'images/player.png',
         'images/enemy-seal.png',
-        'images/polar.png'
+        'images/polar.png',
+        'images/fish.png'
     ]);
     Resources.onReady(init);
 
