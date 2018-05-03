@@ -1,12 +1,9 @@
 // TO-DO:
-// random golden fish to collect
-// stats-panel
 // life counting
-// timer
 // restart
 // reset
 // starter screen with instructions
-// winner screen
+// game over screen
 
 var allEnemies = [];
 var allKids = [];
@@ -14,8 +11,8 @@ var allFish = [];
 var fishCounter = 0;
 var secCounter = 0;
 var minCounter = 0;
-var lifes = 3;
 var won;
+var loose;
 
 timer();
 
@@ -61,6 +58,7 @@ var Player = function() {
     this.y = 1;
     this.grab = false;
     this.fish = false;
+    this.life = 3;
 }
 
 Player.prototype.update = function() {  
@@ -69,11 +67,15 @@ Player.prototype.update = function() {
         (enemy.direction === 1 && enemy.x <= player.x + 1 - 0.4 && enemy.x + enemy.length - 0.4 > player.x && player.y === enemy.y)) {   
             player.x = 3;
             player.y = 1;
+            player.life--;
             if (player.grab === true) {
                 player.fish.x = player.fish.originalX;
                 player.fish.y = player.fish.originalY;
                 player.fish.grabbed = false;
                 player.grab = false;
+            }
+            if (player.life < 0) {
+                loose();
             }
         }
     });
@@ -139,9 +141,7 @@ Player.prototype.handleInput = function(key) {
 for (let i = 0; i < 7; i++) {
     var enemy1 = new Enemy(2, 'images/enemy-seal.png', 2, 3, 6, 'right');
 }
-
 var polar = new Enemy(2, 'images/polar.png', 1, 2, 2, 'left');
-
 var player = new Player;
 
 // This listens for key presses and sends the keys to your
@@ -166,14 +166,13 @@ var Kids = function(position) {
     allKids.push(this);
 }
 
-for (let i = 0; i < 7; i++) {
-    var kid = new Kids(i);
-}
-
 Kids.prototype.render = function() {
     ctx.drawImage(Resources.get(this.imageFile), this.x * 101, this.y * 83 - 30);
 };
 
+for (let i = 0; i < 7; i++) {
+    var kid = new Kids(i);
+}
 
 // Fish
 var Fish = function(x ,y, number) {
@@ -314,3 +313,35 @@ const restartButton = document.querySelector('.restart');
 
         location.reload();
     }
+
+// GAME OVER SCREEN
+function loose() {
+    clearInterval(timing);
+    loose = document.createElement('DIV');
+    loose.classList.add('lost');
+
+    // add header
+    const lostHeader = document.createElement('H1');
+    lostHeader.classList.add('lostHeader');
+    lostHeader.textContent = 'GAME OVER';
+
+    // add new game button
+    const newGameButton = document.createElement('DIV');
+    newGameButton.classList.add('newGameButton');
+    newGameButton.textContent = 'Play again?';
+
+    // add key press comment
+    const newGameComment = document.createElement('H3');
+    newGameComment.classList.add('newGameComment');
+    newGameComment.textContent = 'or press any key';
+        
+    loose.append(lostHeader, newGameButton, newGameComment);
+
+    document.body.appendChild(loose);  
+
+    // event listeners for new game button - click or keypress
+    newGameButton.onclick = function(){
+        restart()
+    };
+    window.addEventListener('keypress', restart, false);
+}

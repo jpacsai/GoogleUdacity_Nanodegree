@@ -69,6 +69,7 @@ canvas {
 /*
  * Styles for winner screen
  */
+ .lost,
  .winner {
     position: absolute;
     top: 15%;
