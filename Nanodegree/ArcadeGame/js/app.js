@@ -1,9 +1,8 @@
 // TO-DO:
 // life counting
 // restart
-// reset
 // starter screen with instructions
-// game over screen
+// 
 
 var allEnemies = [];
 var allKids = [];
@@ -390,10 +389,27 @@ function pause() {
     })
 
     document.removeEventListener('keyup', movement);
-    /*
+    
     // event listener to restart a game with a keypress or a click
     pauseScreen.onclick = function() {
         resume();
     };
-    window.addEventListener('keypress', resume);*/
+    window.addEventListener('keypress', resume);
+}
+
+// function to resume the game after it was paused
+function resume() {
+    // remove event listeners
+    window.removeEventListener('keypress', resume);
+
+    document.addEventListener('keyup', movement);
+
+    allEnemies.forEach(function(enemy){
+        enemy.speed = enemy.originalSpeed;
+    })
+
+    // hide pause screen and remove
+    pauseScreen.style.display === 'none';
+    pauseScreen.remove();
+    timer();
 }
