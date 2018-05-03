@@ -119,7 +119,7 @@ Player.prototype.handleInput = function(key) {
             fishCounter++;
             console.log('fish: ' + fishCounter);
             if (fishCounter === 7) {
-                // win();
+                win();
                 console.log('Congratulation! You won!');
             }
         }
@@ -227,4 +227,43 @@ function timer() {
             document.querySelector('.secCount').textContent = secCounter;
         }
     },1000);
+}
+
+function win() {
+    clearInterval(timing);
+    won = document.createElement('DIV');
+    won.classList.add('winner');
+
+    // add header
+    const wonHeader = document.createElement('H1');
+    wonHeader.classList.add('winnerHeader');
+    wonHeader.textContent = 'Congratulation!';
+
+    // add info about the game
+    const wonText = document.createElement('H2');
+    wonText.classList.add('winnerText');
+    let wonInfo = minCounter === 0 ? 
+        'You won in ' + secCounter + ' sec!' : 
+        'You won with in ' + minCounter + ' min ' + secCounter + ' sec!';
+    wonText.textContent = wonInfo;
+
+    // add new game button
+    const newGameButton = document.createElement('DIV');
+    newGameButton.classList.add('newGameButton');
+    newGameButton.textContent = 'Play again?';
+
+    // add key press comment
+    const newGameComment = document.createElement('H3');
+    newGameComment.classList.add('newGameComment');
+    newGameComment.textContent = 'or press any key';
+        
+    won.append(wonHeader, wonText, newGameButton, newGameComment);
+
+    document.body.appendChild(won);  
+
+    // event listeners for new game button - click or keypress
+    newGameButton.onclick = function(){
+        //restart()
+    };
+    window.addEventListener('keypress', restart, false);
 }

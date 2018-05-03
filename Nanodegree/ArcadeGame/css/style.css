@@ -64,3 +64,43 @@ body {
 canvas {
     height: 80vh;
 }
+
+/*
+ * Styles for winner screen
+ */
+ .winner {
+    position: absolute;
+    top: 15%;
+    left: 0;
+    width: 100%;
+    height: 70%;
+    min-height: 360px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #270555;
+    animation: fadeIn 0.8s;
+}
+
+.newGameButton {
+    width: 150px;
+    height: 50px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 8px;
+    background-color: #8563be;
+    font-size: 1.3em;
+    color: white;
+    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+    transition: all 0.3s ease 0s;
+}
+
+.newGameButton:hover {
+    background-color: #2f0b6b;
+    box-shadow: none;
+}
