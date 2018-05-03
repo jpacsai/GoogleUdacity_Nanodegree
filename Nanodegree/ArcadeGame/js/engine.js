@@ -48,7 +48,7 @@ var Engine = (function(global) {
          */
         update(dt);
         render();
-        
+
         /* Set our lastTime variable which is used to determine the time delta
          * for the next time this function is called.
          */
@@ -95,7 +95,7 @@ var Engine = (function(global) {
         allEnemies.forEach(function(enemy) {
             enemy.update(dt);
         });
-        //player.update();
+        player.update();
     }
 
     /* This function initially draws the "game level", it will then call
