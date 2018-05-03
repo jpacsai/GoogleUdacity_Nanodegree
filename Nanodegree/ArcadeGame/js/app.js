@@ -251,7 +251,7 @@ function win() {
     wonText.classList.add('winnerText');
     let wonInfo = minCounter === 0 ? 
         'You won in ' + secCounter + ' sec!' : 
-        'You won with in ' + minCounter + ' min ' + secCounter + ' sec!';
+        'You won in ' + minCounter + ' min ' + secCounter + ' sec!';
     wonText.textContent = wonInfo;
 
     // add new game button
