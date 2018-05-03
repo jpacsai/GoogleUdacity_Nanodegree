@@ -1,7 +1,28 @@
 body {
     text-align: center;
+    background: url('../images/background.png') center / cover no-repeat fixed; 
+}
+
+.panel {
+    width: 30vw;
+    height: 10vh;
+    margin: 10px auto;
+    box-sizing: border-box;
+    display: grid;
+    grid-template: 100% / repeat(4, 25%);
+    font-size: 1.5em;
+}
+
+.life {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+}
+
+.heart {
+    height: 60px;
 }
 
 canvas {
-    height: 90vh;
+    height: 80vh;
 }

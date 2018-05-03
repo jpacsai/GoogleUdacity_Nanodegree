@@ -1,5 +1,4 @@
 // TO-DO:
-// fish to collect
 // random golden fish to collect
 // stats-panel
 // life counting

@@ -3,9 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Arcade Game</title>
+    <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <section class="panel">
+        <div class="life">
+            <img class="heart" src="images/Heart.png">
+            <img class="heart" src="images/Heart.png">
+            <img class="heart" src="images/Heart.png">
+        </div>
+        <div class="timer">
+            <span class="minCount">00</span>
+            <span class="dots">:</span>
+            <span class="secCount">00</span>
+        </div>
+        <div class="restart">
+        	<i class="fa fa-repeat"></i>
+        </div>
+        <div class="pause">
+            <i class="fa fa-pause" aria-hidden="true"></i>
+        </div>
+    </section>
     <script src="js/resources.js"></script>
     <script src="js/app.js"></script>
     <script src="js/engine.js"></script>
