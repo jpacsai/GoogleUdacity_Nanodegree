@@ -12,6 +12,8 @@ var allEnemies = [];
 var allKids = [];
 var allFish = [];
 var fishCounter = 0;
+var secCounter = 0;
+var minCounter = 0;
 
 // Enemies our player must avoid
 var Enemy = function(length, file, speed, min, max, direction) {
@@ -117,6 +119,7 @@ Player.prototype.handleInput = function(key) {
             fishCounter++;
             console.log('fish: ' + fishCounter);
             if (fishCounter === 7) {
+                // win();
                 console.log('Congratulation! You won!');
             }
         }
@@ -198,4 +201,30 @@ function shuffle(array) {
         array[randomIndex] = temporaryValue;
     }
     return array;
+}
+
+
+// Timer
+function timer() {
+    timing = setInterval(function(){
+        secCounter++;
+        // add leading zero to seconds
+        if (String(secCounter).length === 1) {
+            secCounter = '0' + secCounter;
+        }
+        // if seconds reaches 60 reset seconds, increment minutes
+        if (secCounter === 60) {
+            secCounter = '00';
+            document.querySelector('.secCount').textContent = secCounter;
+            minCounter++;
+            // add leading zero to minutes
+            if (String(minCounter).length === 1) {
+                minCounter = '0' + minCounter;
+            }
+            document.querySelector('.minCount').textContent = minCounter;
+        }
+        else {
+            document.querySelector('.secCount').textContent = secCounter;
+        }
+    },1000);
 }
