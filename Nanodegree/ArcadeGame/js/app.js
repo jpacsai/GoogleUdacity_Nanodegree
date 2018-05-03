@@ -108,20 +108,20 @@ Player.prototype.handleInput = function(key) {
         grabbedFish.grabbed = true;
         this.fish = grabbedFish;
     }
-    /*if (this.grab === true && this.y === 1) {
+    if (this.grab === true && this.y === 1) {
         let kidAbove = allKids.find(b => b.x === player.x);
-        if (kidAbove.color === this.fish.color) {
+        if (kidAbove.hasFish === false) {
+            kidAbove.hasFish = true;
             this.fish.y--;
             this.grab = false;
             this.fish.grabbed = false;
-            this.fish = 'none';
             fishCounter++;
-            console.log('toys: ' + fishCounter);
+            console.log('fish: ' + fishCounter);
             if (fishCounter === 7) {
                 console.log('Congratulation! You won!');
             }
         }
-    }*/
+    }
 }
 
 // Now instantiate your objects.
@@ -153,6 +153,7 @@ var Kids = function(position) {
     this.x = position;
     this.y = 0;
     this.imageFile = 'images/baby-penguin.png';
+    this.hasFish = false;
     allKids.push(this);
 }
 
