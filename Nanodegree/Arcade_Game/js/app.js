@@ -12,7 +12,7 @@ var secCounter = 0;
 var minCounter = 0;
 var won;
 var loose;
-
+var mainMusic = new Audio('sounds/main.mp3');
 
 
 // Enemies our player must avoid
@@ -461,6 +461,7 @@ function start() {
         start.style.display === 'none';
         start.remove();
         timer();
+        mainMusic.play();
     };
     window.addEventListener('keypress', restart, false);
 }
