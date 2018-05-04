@@ -15,6 +15,7 @@ var loose;
 var mainMusic = new Audio('sounds/main.mp3');
 var fishSound = new Audio('sounds/fish.wav');
 var hurtSound = new Audio('sounds/hurt.wav');
+var babySound = new Audio('sounds/baby.wav');
 
 
 // Enemies our player must avoid
@@ -126,6 +127,7 @@ Player.prototype.handleInput = function(key) {
     if (this.grab === true && this.y === 1) {
         let kidAbove = allKids.find(b => b.x === player.x);
         if (kidAbove.hasFish === false) {
+            babySound.play();
             kidAbove.hasFish = true;
             this.fish.y--;
             this.grab = false;
