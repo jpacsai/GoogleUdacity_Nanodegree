@@ -321,6 +321,9 @@ const restartButton = document.querySelector('.restart');
 
 // GAME OVER SCREEN
 function loose() {
+
+    disable();
+
     clearInterval(timing);
     loose = document.createElement('DIV');
     loose.classList.add('lost');
@@ -343,8 +346,6 @@ function loose() {
     loose.append(lostHeader, newGameButton, newGameComment);
 
     document.body.appendChild(loose);  
-
-    disable();
 
     // event listeners for new game button - click or keypress
     newGameButton.onclick = function(){
@@ -409,7 +410,7 @@ function disable() {
     allEnemies.forEach(function(enemy){
         enemy.speed = 0;
     })
-
+    console.log('disabled');
     document.removeEventListener('keyup', movement);
 }
 
@@ -421,4 +422,46 @@ function enable() {
     allEnemies.forEach(function(enemy){
         enemy.speed = enemy.originalSpeed;
     })
+}
+
+// - - - - START SCREEN - - - - 
+function start() {
+    clearInterval(timing);
+    start = document.createElement('DIV');
+    start.classList.add('start');
+
+    // add header
+    const wonHeader = document.createElement('H1');
+    wonHeader.classList.add('winnerHeader');
+    wonHeader.textContent = 'Congratulation!';
+
+    // add info about the game
+    const wonText = document.createElement('H2');
+    wonText.classList.add('winnerText');
+    let wonInfo = minCounter === 0 ? 
+        'You won in ' + secCounter + ' sec!' : 
+        'You won in ' + minCounter + ' min ' + secCounter + ' sec!';
+    wonText.textContent = wonInfo;
+
+    // add new game button
+    const newGameButton = document.createElement('DIV');
+    newGameButton.classList.add('newGameButton');
+    newGameButton.textContent = 'Play again?';
+
+    // add key press comment
+    const newGameComment = document.createElement('H3');
+    newGameComment.classList.add('newGameComment');
+    newGameComment.textContent = 'or press any key';
+        
+    won.append(wonHeader, wonText, newGameButton, newGameComment);
+
+    document.body.appendChild(won);  
+
+    disable();
+
+    // event listeners for new game button - click or keypress
+    newGameButton.onclick = function(){
+        restart()
+    };
+    window.addEventListener('keypress', restart, false);
 }
