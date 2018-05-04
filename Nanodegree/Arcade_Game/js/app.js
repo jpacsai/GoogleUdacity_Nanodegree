@@ -127,12 +127,10 @@ Player.prototype.handleInput = function(key) {
             this.grab = false;
             this.fish.grabbed = false;
             fishCounter++;
-            console.log('fish: ' + fishCounter);
             if (fishCounter === 7) {
                 setTimeout(function() {
                     win();
                 }, 1000);
-                console.log('Congratulation! You won!');
             }
         }
     }
@@ -273,6 +271,8 @@ function win() {
 
     document.body.appendChild(won);  
 
+    disable();
+
     // event listeners for new game button - click or keypress
     newGameButton.onclick = function(){
         restart()
@@ -344,6 +344,8 @@ function loose() {
 
     document.body.appendChild(loose);  
 
+    disable();
+
     // event listeners for new game button - click or keypress
     newGameButton.onclick = function(){
         restart()
@@ -384,11 +386,7 @@ function pause() {
 
     document.body.appendChild(pauseScreen); 
 
-    allEnemies.forEach(function(enemy){
-        enemy.speed = 0;
-    })
-
-    document.removeEventListener('keyup', movement);
+    disable();
     
     // event listener to restart a game with a keypress or a click
     pauseScreen.onclick = function() {
@@ -399,17 +397,28 @@ function pause() {
 
 // function to resume the game after it was paused
 function resume() {
-    // remove event listeners
-    window.removeEventListener('keypress', resume);
-
-    document.addEventListener('keyup', movement);
-
-    allEnemies.forEach(function(enemy){
-        enemy.speed = enemy.originalSpeed;
-    })
+    enable();
 
     // hide pause screen and remove
     pauseScreen.style.display === 'none';
     pauseScreen.remove();
     timer();
+}
+
+function disable() {
+    allEnemies.forEach(function(enemy){
+        enemy.speed = 0;
+    })
+
+    document.removeEventListener('keyup', movement);
+}
+
+function enable() {
+    window.removeEventListener('keypress', resume);
+    
+    document.addEventListener('keyup', movement);
+
+    allEnemies.forEach(function(enemy){
+        enemy.speed = enemy.originalSpeed;
+    })
 }
