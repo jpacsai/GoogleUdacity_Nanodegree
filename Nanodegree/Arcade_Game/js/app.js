@@ -1,8 +1,8 @@
 // TO-DO:
-// life counting
-// restart
-// starter screen with instructions
-// 
+// find game over and winner sound
+// fix restart
+// fix starter screen with instructions
+// fix collision distances
 
 var allEnemies = [];
 var allKids = [];
