@@ -13,6 +13,7 @@ var minCounter = 0;
 var won;
 var loose;
 var mainMusic = new Audio('sounds/main.mp3');
+var fishSound = new Audio('sounds/fish.wav');
 
 
 // Enemies our player must avoid
@@ -118,6 +119,7 @@ Player.prototype.handleInput = function(key) {
         this.grab = true;
         grabbedFish.grabbed = true;
         this.fish = grabbedFish;
+        fishSound.play();
     }
     if (this.grab === true && this.y === 1) {
         let kidAbove = allKids.find(b => b.x === player.x);
