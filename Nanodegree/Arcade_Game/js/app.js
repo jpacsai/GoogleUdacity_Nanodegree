@@ -1,8 +1,8 @@
 // TO-DO:
-// life counting
-// restart
-// starter screen with instructions
-// 
+// find game over and winner sound
+// fix restart
+// fix starter screen with instructions
+// fix collision distances
 
 var allEnemies = [];
 var allKids = [];
@@ -12,8 +12,11 @@ var secCounter = 0;
 var minCounter = 0;
 var won;
 var loose;
+var mainMusic = new Audio('sounds/main.mp3');
+var fishSound = new Audio('sounds/fish.wav');
+var hurtSound = new Audio('sounds/hurt.wav');
+var babySound = new Audio('sounds/baby.wav');
 
-timer();
 
 // Enemies our player must avoid
 var Enemy = function(length, file, speed, min, max, direction) {
@@ -78,6 +81,7 @@ Player.prototype.update = function() {
                 loose();
             }
             else {
+                hurtSound.play();
                 looseLife();
             }
         }
@@ -118,21 +122,21 @@ Player.prototype.handleInput = function(key) {
         this.grab = true;
         grabbedFish.grabbed = true;
         this.fish = grabbedFish;
+        fishSound.play();
     }
     if (this.grab === true && this.y === 1) {
         let kidAbove = allKids.find(b => b.x === player.x);
         if (kidAbove.hasFish === false) {
+            babySound.play();
             kidAbove.hasFish = true;
             this.fish.y--;
             this.grab = false;
             this.fish.grabbed = false;
             fishCounter++;
-            console.log('fish: ' + fishCounter);
             if (fishCounter === 7) {
                 setTimeout(function() {
                     win();
                 }, 1000);
-                console.log('Congratulation! You won!');
             }
         }
     }
@@ -240,6 +244,8 @@ function timer() {
     },1000);
 }
 
+start();
+
 // - - - - WINNER SCREEN - - - - 
 function win() {
     clearInterval(timing);
@@ -272,6 +278,8 @@ function win() {
     won.append(wonHeader, wonText, newGameButton, newGameComment);
 
     document.body.appendChild(won);  
+
+    disable();
 
     // event listeners for new game button - click or keypress
     newGameButton.onclick = function(){
@@ -321,6 +329,9 @@ const restartButton = document.querySelector('.restart');
 
 // GAME OVER SCREEN
 function loose() {
+
+    disable();
+
     clearInterval(timing);
     loose = document.createElement('DIV');
     loose.classList.add('lost');
@@ -384,11 +395,7 @@ function pause() {
 
     document.body.appendChild(pauseScreen); 
 
-    allEnemies.forEach(function(enemy){
-        enemy.speed = 0;
-    })
-
-    document.removeEventListener('keyup', movement);
+    disable();
     
     // event listener to restart a game with a keypress or a click
     pauseScreen.onclick = function() {
@@ -399,17 +406,68 @@ function pause() {
 
 // function to resume the game after it was paused
 function resume() {
-    // remove event listeners
-    window.removeEventListener('keypress', resume);
-
-    document.addEventListener('keyup', movement);
-
-    allEnemies.forEach(function(enemy){
-        enemy.speed = enemy.originalSpeed;
-    })
+    enable();
 
     // hide pause screen and remove
     pauseScreen.style.display === 'none';
     pauseScreen.remove();
     timer();
+}
+
+function disable() {
+    allEnemies.forEach(function(enemy){
+        enemy.speed = 0;
+    })
+    console.log('disabled');
+    document.removeEventListener('keyup', movement);
+}
+
+function enable() {
+    window.removeEventListener('keypress', resume);
+    
+    document.addEventListener('keyup', movement);
+
+    allEnemies.forEach(function(enemy){
+        enemy.speed = enemy.originalSpeed;
+    })
+}
+
+// - - - - START SCREEN - - - - 
+function start() {
+    start = document.createElement('DIV');
+    start.classList.add('start');
+
+    // add header
+    const startHeader = document.createElement('H1');
+    startHeader.classList.add('startHeader');
+    startHeader.textContent = 'How to play?';
+
+    // add info about the game
+    const startText = document.createElement('H2');
+    startText.classList.add('startText');
+    startText.textContent = "Collect fish for the baby penguins. When all the babies have a fish, you win! You can move with the arrow keys (left / right / up / down). Make sure you avoid enemies."
+
+    // add new game button
+    const startGameButton = document.createElement('DIV');
+    startGameButton.classList.add('startGameButton');
+    startGameButton.textContent = 'Start game';
+
+    // add key press comment
+    const startGameComment = document.createElement('H3');
+    startGameComment.classList.add('startGameComment');
+    startGameComment.textContent = 'or press any key';
+        
+    start.append(startHeader, startText, startGameButton, startGameComment);
+
+    document.body.appendChild(start);  
+    disable();
+    // event listeners for new game button - click or keypress
+    startGameButton.onclick = function(){
+        enable();
+        start.style.display === 'none';
+        start.remove();
+        timer();
+        mainMusic.play();
+    };
+    window.addEventListener('keypress', restart, false);
 }
