@@ -14,6 +14,7 @@ var won;
 var loose;
 var mainMusic = new Audio('sounds/main.mp3');
 var fishSound = new Audio('sounds/fish.wav');
+var hurtSound = new Audio('sounds/hurt.wav');
 
 
 // Enemies our player must avoid
@@ -79,6 +80,7 @@ Player.prototype.update = function() {
                 loose();
             }
             else {
+                hurtSound.play();
                 looseLife();
             }
         }
