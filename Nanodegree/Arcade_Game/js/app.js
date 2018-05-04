@@ -13,7 +13,7 @@ var minCounter = 0;
 var won;
 var loose;
 
-timer();
+
 
 // Enemies our player must avoid
 var Enemy = function(length, file, speed, min, max, direction) {
@@ -238,6 +238,8 @@ function timer() {
     },1000);
 }
 
+start();
+
 // - - - - WINNER SCREEN - - - - 
 function win() {
     clearInterval(timing);
@@ -426,42 +428,39 @@ function enable() {
 
 // - - - - START SCREEN - - - - 
 function start() {
-    clearInterval(timing);
     start = document.createElement('DIV');
     start.classList.add('start');
 
     // add header
-    const wonHeader = document.createElement('H1');
-    wonHeader.classList.add('winnerHeader');
-    wonHeader.textContent = 'Congratulation!';
+    const startHeader = document.createElement('H1');
+    startHeader.classList.add('startHeader');
+    startHeader.textContent = 'How to play?';
 
     // add info about the game
-    const wonText = document.createElement('H2');
-    wonText.classList.add('winnerText');
-    let wonInfo = minCounter === 0 ? 
-        'You won in ' + secCounter + ' sec!' : 
-        'You won in ' + minCounter + ' min ' + secCounter + ' sec!';
-    wonText.textContent = wonInfo;
+    const startText = document.createElement('H2');
+    startText.classList.add('startText');
+    startText.textContent = "Collect fish for the baby penguins. When all the babies have a fish, you win! You can move with the arrow keys (left / right / up / down). Make sure you avoid enemies."
 
     // add new game button
-    const newGameButton = document.createElement('DIV');
-    newGameButton.classList.add('newGameButton');
-    newGameButton.textContent = 'Play again?';
+    const startGameButton = document.createElement('DIV');
+    startGameButton.classList.add('startGameButton');
+    startGameButton.textContent = 'Start game';
 
     // add key press comment
-    const newGameComment = document.createElement('H3');
-    newGameComment.classList.add('newGameComment');
-    newGameComment.textContent = 'or press any key';
+    const startGameComment = document.createElement('H3');
+    startGameComment.classList.add('startGameComment');
+    startGameComment.textContent = 'or press any key';
         
-    won.append(wonHeader, wonText, newGameButton, newGameComment);
+    start.append(startHeader, startText, startGameButton, startGameComment);
 
-    document.body.appendChild(won);  
-
+    document.body.appendChild(start);  
     disable();
-
     // event listeners for new game button - click or keypress
-    newGameButton.onclick = function(){
-        restart()
+    startGameButton.onclick = function(){
+        enable();
+        start.style.display === 'none';
+        start.remove();
+        timer();
     };
     window.addEventListener('keypress', restart, false);
 }
