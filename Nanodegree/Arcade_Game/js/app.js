@@ -1,18 +1,27 @@
-// TO-DO:
-// find game over and winner sound
+// - - - - TO-DO: - - - -
+// find winner sound
 // fix starter screen with instructions
 // fix collision distances
 // add animation to baby penguin
 
+
+// - - - - VARIABLES - - - -
+// characters
 var allEnemies = [];
 var allKids = [];
 var allFish = [];
+
+// counter variables
 var fishCounter = 0;
 var secCounter = 0;
 var minCounter = 0;
+
+// screens
 var won;
 var lost;
 var pauseScreen;
+
+// sounds and music
 var mainMusic = new Audio('sounds/main.mp3');
 mainMusic.loop = true;
 var fishSound = new Audio('sounds/fish.wav');
@@ -21,7 +30,7 @@ var babySound = new Audio('sounds/baby.wav');
 var gameOverSound = new Audio('sounds/game_over.wav');
 
 
-// Enemies our player must avoid
+// - - - - ENEMIES our player must avoid - - - -
 var Enemy = function(length, file, speed, min, max, direction) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
@@ -55,7 +64,14 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x * 101, this.y * 83 - 30);
 };
 
-// Now write your own player class
+// instantiate enemies
+for (let i = 0; i < 7; i++) {
+    var enemy1 = new Enemy(2, 'images/enemy-seal.png', 2, 3, 6, 'right');
+}
+var polar = new Enemy(2, 'images/polar.png', 1, 2, 2, 'left');
+
+
+// - - - - PLAYER CHARACTER - - - -
 // This class requires an update(), render() and
 // a handleInput() method.
 var Player = function() {
@@ -145,15 +161,11 @@ Player.prototype.handleInput = function(key) {
     }
 }
 
-// Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
-for (let i = 0; i < 7; i++) {
-    var enemy1 = new Enemy(2, 'images/enemy-seal.png', 2, 3, 6, 'right');
-}
-var polar = new Enemy(2, 'images/polar.png', 1, 2, 2, 'left');
+// instantiate player character
 var player = new Player;
 
+
+// - - - - INPUT HANDLER - - - -
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', movement);
@@ -169,7 +181,7 @@ function movement(e) {
     player.handleInput(allowedKeys[e.keyCode]);
 }
 
-// Baby penguins
+// - - - - BABY PENGUINS to feed - - - -
 var Kids = function(position) {
     this.x = position;
     this.y = 0;
@@ -182,11 +194,12 @@ Kids.prototype.render = function() {
     ctx.drawImage(Resources.get(this.imageFile), this.x * 101, this.y * 83 - 30);
 };
 
+// instantiate baby penguins
 for (let i = 0; i < 7; i++) {
     var kid = new Kids(i);
 }
 
-// Fish
+// - - - - FISH to collect - - - -
 var Fish = function(x ,y, number) {
     this.originalX = x;
     this.originalY = y;
@@ -198,8 +211,10 @@ var Fish = function(x ,y, number) {
     allFish.push(this);
 }
 
+// shuffle array to randomize fish x position
 var fishX = shuffle([0, 1, 2, 3, 4, 5, 6]); 
 
+// instantiate fish
 for (let i = 0; i < 7; i++) {
     var fish = new Fish(fishX[i], Math.floor(Math.random() * (6 - 3 + 1) + 3), i);
 }
@@ -208,7 +223,7 @@ Fish.prototype.render = function() {
     ctx.drawImage(Resources.get(this.imageFile), this.x * 101, this.y * 83 - 30);
 };
 
-// shuffle function to randomize order of characters/toys
+// - - - - SHUFFLE FUNCTION to randomize order of characters - - - -
 function shuffle(array) {
     let currentIndex = array.length, temporaryValue, randomIndex;
     while (currentIndex !== 0) {
@@ -222,7 +237,7 @@ function shuffle(array) {
 }
 
 
-// Timer
+// - - - - TIMER - - - -
 function timer() {
     timing = setInterval(function(){
         secCounter++;
@@ -247,6 +262,7 @@ function timer() {
     },1000);
 }
 
+// - - - - CALL STARTER SCREEN - - - -
 start();
 
 // - - - - WINNER SCREEN - - - - 
@@ -282,6 +298,7 @@ function win() {
 
     document.body.appendChild(won);  
 
+    // disable movement
     disable();
 
     // event listeners for new game button - click or keypress
@@ -298,89 +315,98 @@ const restartButton = document.querySelector('.restart');
         restart();
     };
 
-    // restart function, starts a new game
-    function restart() {
+// restart function, starts a new game
+function restart() {
 
-        // reset timer
-        clearInterval(timing);
-        document.querySelector('.secCount').textContent = '00';
-        document.querySelector('.minCount').textContent = '00';
+    // reset timer
+    clearInterval(timing);
+    document.querySelector('.secCount').textContent = '00';
+    document.querySelector('.minCount').textContent = '00';
 
-        fishX = shuffle([0, 1, 2, 3, 4, 5, 6]);
+    fishX = shuffle([0, 1, 2, 3, 4, 5, 6]);
 
-        // randomize fish
-        allFish.forEach(function(fish, index) {
-            fish.x = fishX[index];
-            fish.y = Math.floor(Math.random() * (6 - 3 + 1) + 3);
-            fish.grabbed = false;
-        });
+    // randomize fish
+    allFish.forEach(function(fish, index) {
+        fish.x = fishX[index];
+        fish.y = Math.floor(Math.random() * (6 - 3 + 1) + 3);
+        fish.grabbed = false;
+    });
 
-        // reset and randomize enemies
-        allEnemies.forEach(function(enemy) {
-            enemy.x = enemy.direction === 1 ? enemy.direction * (Math.floor(Math.random() * 10) + 3) : (Math.floor(Math.random() * 10) + 7);
-            enemy.y = Math.floor(Math.random() * (enemy.max - enemy.min + 1) + enemy.min);
-        })
-        polar.x = polar.direction === 1 ? polar.direction * (Math.floor(Math.random() * 10) + 3) : (Math.floor(Math.random() * 10) + 7);
-        polar.y = Math.floor(Math.random() * (polar.max - polar.min + 1) + polar.min);
+    // reset and randomize enemies
+    allEnemies.forEach(function(enemy) {
+        enemy.x = enemy.direction === 1 ? enemy.direction * (Math.floor(Math.random() * 10) + 3) : (Math.floor(Math.random() * 10) + 7);
+        enemy.y = Math.floor(Math.random() * (enemy.max - enemy.min + 1) + enemy.min);
+    })
 
-        // reset baby penguins
-        allKids.forEach(function(kid) {
-            kid.hasFish = false;
-        })
+    polar.x = polar.direction === 1 ? polar.direction * (Math.floor(Math.random() * 10) + 3) : (Math.floor(Math.random() * 10) + 7);
+    polar.y = Math.floor(Math.random() * (polar.max - polar.min + 1) + polar.min);
+
+    // reset baby penguins
+    allKids.forEach(function(kid) {
+        kid.hasFish = false;
+    })
         
-        console.log('life: ' + player.life);
-        // reset life
-        var addLife = player.life === -1 ? 3 : 3 - player.life;
-        if (addLife !== 0) {
-            var fragment = document.createDocumentFragment();
-            for (let i = 0; i < addLife; i++) {
-                var heart = document.createElement('IMG');
-                heart.classList.add('heart');
-                heart.src = 'IMAGES/HEART.PNG';
-                fragment.appendChild(heart);
-            }
-            document.getElementById('life').appendChild(fragment);
+    // reset life
+    var addLife = player.life === -1 ? 3 : 3 - player.life;
+    if (addLife !== 0) {
+        var fragment = document.createDocumentFragment();
+        for (let i = 0; i < addLife; i++) {
+            var heart = document.createElement('IMG');
+            heart.classList.add('heart');
+            heart.src = 'IMAGES/HEART.PNG';
+            fragment.appendChild(heart);
         }
-
-        // remove screen if new game initiated from there
-        if (won !== undefined) {
-            won.style.display === 'none';
-            won.remove();
-        }
-
-        if (pauseScreen !== undefined) {
-            pauseScreen.style.display === 'none';
-            pauseScreen.remove();
-        }
-
-        if (lost !== undefined) {
-            lost.style.display === 'none';
-            lost.remove();
-        }
-
-        // reset variables
-        secCounter = 0;
-        minCounter = 0;
-        player.x = 3;
-        player.y = 1; 
-        player.life = 3;
-        fishCounter = 0;
-
-        timer();
-        enable();
+        document.getElementById('life').appendChild(fragment);
     }
+
+    // remove screen if new game initiated from there
+    if (won !== undefined) {
+        won.style.display === 'none';
+        won.remove();
+    }
+
+    if (pauseScreen !== undefined) {
+        pauseScreen.style.display === 'none';
+        pauseScreen.remove();
+    }
+
+    if (lost !== undefined) {
+        lost.style.display === 'none';
+        lost.remove();
+    }
+
+    // reset variables
+    secCounter = 0;
+    minCounter = 0;
+    player.x = 3;
+    player.y = 1; 
+    player.life = 3;
+    fishCounter = 0;
+
+    timer();
+    enable();
+}
 
 // GAME OVER SCREEN
 function loose() {
+
+    // game over sound
+    // mute main music
     mainMusic.volume = 0;
+    // play game over sound
     gameOverSound.play();
+    // resume main music
     setTimeout(function(){ 
         mainMusic.volume = 1; 
     }, 6000);
     
+    // disable movement
     disable();
 
+    // clear timer
     clearInterval(timing);
+
+    // CREATE GAME OVER SCREEN
     lost = document.createElement('DIV');
     lost.classList.add('lost');
 
@@ -410,22 +436,22 @@ function loose() {
     window.addEventListener('keypress', restart, false);
 }
 
-// LIFE COUNTER IN STAT PANEL
+// - - - - LIFE COUNTER IN STAT PANEL - - - -
 function looseLife() {
+    // remove a life
     var child = document.getElementsByClassName('heart')[player.life];
     child.parentNode.removeChild(child);
 }
 
 // - - - - PAUSE BUTTON  - - - -
-
 const pauseButton = document.querySelector('.pause');
 pauseButton.onclick = function() {
     pause();
 };
 
-// function to pause the game
+// - - - - PAUSE - - - 
 function pause() {
-    // clear timer variable
+    // clear timer
     clearInterval(timing);
 
     // create pause screen
@@ -442,6 +468,7 @@ function pause() {
 
     document.body.appendChild(pauseScreen); 
 
+    // disable movement
     disable();
     
     // event listener to restart a game with a keypress or a click
@@ -451,29 +478,38 @@ function pause() {
     window.addEventListener('keypress', resume);
 }
 
-// function to resume the game after it was paused
+// - - - - RESUME the game after it was paused - - - -
 function resume() {
+    // enable movement
     enable();
 
     // hide pause screen and remove
     pauseScreen.style.display === 'none';
     pauseScreen.remove();
+
+    // start timer again
     timer();
 }
 
+// - - - - DISABLE movement - - - -
 function disable() {
+    // set enemies speed to zero
     allEnemies.forEach(function(enemy){
         enemy.speed = 0;
     })
-    console.log('disabled');
+    // remove input handler for player
     document.removeEventListener('keyup', movement);
 }
 
+// - - - - ENABLE movement - - - - 
 function enable() {
+    // remove event listener for keypress
     window.removeEventListener('keypress', resume);
     
+    // add back input handler for player
     document.addEventListener('keyup', movement);
 
+    // reset enemies speed to original
     allEnemies.forEach(function(enemy){
         enemy.speed = enemy.originalSpeed;
     })
@@ -507,7 +543,10 @@ function start() {
     start.append(startHeader, startText, startGameButton, startGameComment);
 
     document.body.appendChild(start);  
+
+    // disable movement
     disable();
+    
     // event listeners for new game button - click or keypress
     startGameButton.onclick = function(){
         enable();
