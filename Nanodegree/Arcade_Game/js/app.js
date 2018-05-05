@@ -1,6 +1,6 @@
 // - - - - TO-DO: - - - -
-// fix starter screen with instructions
 // add animation to baby penguin
+// tidy up code
 
 
 // - - - - VARIABLES - - - -
