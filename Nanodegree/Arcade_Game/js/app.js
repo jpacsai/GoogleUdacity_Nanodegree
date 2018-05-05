@@ -149,9 +149,11 @@ Player.prototype.handleInput = function(key) {
             kidAbove.hasFish = true;
             this.fish.y--;
             this.grab = false;
+            kidAbove.jump = true;
             this.fish.grabbed = false;
             fishCounter++;
             if (fishCounter === 7) {
+                disable();
                 setTimeout(function() {
                     win();
                 }, 1000);
@@ -186,12 +188,27 @@ var Kids = function(position) {
     this.y = 0;
     this.imageFile = 'images/baby-penguin.png';
     this.hasFish = false;
+    this.fishNumber = 'none';
+    this.jump = false;
     allKids.push(this);
 }
 
 Kids.prototype.render = function() {
     ctx.drawImage(Resources.get(this.imageFile), this.x * 101, this.y * 83 - 30);
 };
+
+Kids.prototype.update = function() {
+    if (this.jump === true) {
+        this.y -= 0.5;
+        player.fish.y -= 0.5;
+        var f = this;
+        setTimeout(function() {
+            f.y += 0.5;
+            player.fish.y += 0.5;
+        }, 200);
+        this.jump = false;
+    }
+}
 
 // instantiate baby penguins
 for (let i = 0; i < 7; i++) {
@@ -206,7 +223,6 @@ var Fish = function(x ,y, number) {
     this.y = y;
     this.imageFile = 'images/fish.png';
     this.grabbed = false;
-    this.number = number;
     allFish.push(this);
 }
 
@@ -302,9 +318,6 @@ function win() {
     won.append(wonHeader, wonText, newGameButton, newGameComment);
 
     document.body.appendChild(won);  
-
-    // disable movement
-    disable();
 
     // event listeners for new game button - click or keypress
     newGameButton.onclick = function(){
