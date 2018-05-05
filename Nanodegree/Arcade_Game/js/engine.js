@@ -188,7 +188,8 @@ var Engine = (function(global) {
         'images/player.png',
         'images/enemy-seal.png',
         'images/polar.png',
-        'images/fish.png'
+        'images/fish.png',
+        'images/fish-small.png'
     ]);
     Resources.onReady(init);
 
