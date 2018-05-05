@@ -27,7 +27,8 @@ var hurtSound = new Audio('sounds/hurt.wav');
 var babySound = new Audio('sounds/baby.wav');
 var gameOverSound = new Audio('sounds/game_over.wav');
 var winSound = new Audio('sounds/win.wav');
-
+var allSounds = [mainMusic, fishSound, hurtSound, babySound, gameOverSound, winSound];
+var muted = false;
 
 // - - - - ENEMIES our player must avoid - - - -
 var Enemy = function(length, file, speed, min, max, direction) {
@@ -329,9 +330,9 @@ function win() {
 // - - - - RESTART FUNCTION - - - -
 const restartButton = document.querySelector('.restart');
 
-    restartButton.onclick = function() {
-        restart();
-    };
+restartButton.onclick = function() {
+    restart();
+};
 
 // restart function, starts a new game
 function restart() {
@@ -404,6 +405,30 @@ function restart() {
     timer();
     enable();
 }
+
+// - - - - VOLUME FUNCTION - - - -
+const volumeButton = document.querySelector('.volume');
+
+volumeButton.onclick = function() {
+    var icon = document.querySelector('.volume-icon').classList;
+    if (muted === false) {
+        mainMusic.pause();
+        allSounds.forEach(function(sound) {
+            sound.muted = true;
+        })
+        icon.replace('fa-volume-up', 'fa-volume-off');
+        //icon.replace('fa-volume-up', 'fa-volume-off');
+        muted = true;
+    }
+    else {
+        mainMusic.play();
+        allSounds.forEach(function(sound) {
+            sound.muted = false;
+        });
+        icon.replace('fa-volume-off', 'fa-volume-up');
+        muted = false;
+    }
+};
 
 // GAME OVER SCREEN
 function loose() {

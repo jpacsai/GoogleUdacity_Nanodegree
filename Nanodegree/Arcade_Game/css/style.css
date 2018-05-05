@@ -10,7 +10,7 @@ body {
     margin: 10px auto;
     box-sizing: border-box;
     display: grid;
-    grid-template: 100% / 35% 35% 15% 15%;
+    grid-template: 100% / 35% 35% 10% 10% 10%;
     font-size: 1.5em;
 }
 
@@ -49,17 +49,13 @@ body {
     grid-area: 1 / 4 / 2 / 5;
 }
 
-.restart {
+.restart,
+.pause,
+.volume {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     cursor: pointer;
-}
-
-.pause {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
 }
 
 canvas {
