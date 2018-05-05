@@ -14,7 +14,7 @@ body {
     font-size: 1.5em;
 }
 
-.life {
+#life {
     display: flex;
     align-items: center;
 }
@@ -142,4 +142,19 @@ canvas {
 .pause-img {
     width: 180px;
     margin: 30px;
+}
+
+.fish {
+    display: inline;
+    position: relative;
+    top: 15px;
+}
+
+.instruction-first-line {
+    display: inline;
+    text-align: center;
+}
+
+.instruction-text {
+    text-align: center;
 }

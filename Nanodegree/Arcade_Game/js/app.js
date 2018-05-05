@@ -1,24 +1,35 @@
-// TO-DO:
-// find game over and winner sound
-// fix restart
-// fix starter screen with instructions
-// fix collision distances
+// - - - - TO-DO: - - - -
+// add animation to baby penguin
+// tidy up code
 
+
+// - - - - VARIABLES - - - -
+// characters
 var allEnemies = [];
 var allKids = [];
 var allFish = [];
+
+// counter variables
 var fishCounter = 0;
 var secCounter = 0;
 var minCounter = 0;
+
+// screens
 var won;
-var loose;
+var lost;
+var pauseScreen;
+
+// sounds and music
 var mainMusic = new Audio('sounds/main.mp3');
+mainMusic.loop = true;
 var fishSound = new Audio('sounds/fish.wav');
 var hurtSound = new Audio('sounds/hurt.wav');
 var babySound = new Audio('sounds/baby.wav');
+var gameOverSound = new Audio('sounds/game_over.wav');
+var winSound = new Audio('sounds/win.wav');
 
 
-// Enemies our player must avoid
+// - - - - ENEMIES our player must avoid - - - -
 var Enemy = function(length, file, speed, min, max, direction) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
@@ -52,7 +63,14 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x * 101, this.y * 83 - 30);
 };
 
-// Now write your own player class
+// instantiate enemies
+for (let i = 0; i < 7; i++) {
+    var enemy1 = new Enemy(2, 'images/enemy-seal.png', 2, 3, 6, 'right');
+}
+var polar = new Enemy(2, 'images/polar.png', 1, 2, 2, 'left');
+
+
+// - - - - PLAYER CHARACTER - - - -
 // This class requires an update(), render() and
 // a handleInput() method.
 var Player = function() {
@@ -66,8 +84,8 @@ var Player = function() {
 
 Player.prototype.update = function() {  
     allEnemies.forEach(function(enemy){
-        if ((enemy.direction === -1 && enemy.x + enemy.length - 0.4 >= player.x && enemy.x < player.x && player.y === enemy.y) || 
-        (enemy.direction === 1 && enemy.x <= player.x + 1 - 0.4 && enemy.x + enemy.length - 0.4 > player.x && player.y === enemy.y)) {   
+        if ((enemy.direction === -1 && enemy.x + enemy.length - 0.2 >= player.x && enemy.x < player.x + 1 - 0.4 && player.y === enemy.y) || 
+        (enemy.direction === 1 && enemy.x <= player.x + 1 - 0.4 && enemy.x + enemy.length - 0.4> player.x && player.y === enemy.y)) {   
             player.x = 3;
             player.y = 1;
             player.life--;
@@ -142,15 +160,11 @@ Player.prototype.handleInput = function(key) {
     }
 }
 
-// Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
-for (let i = 0; i < 7; i++) {
-    var enemy1 = new Enemy(2, 'images/enemy-seal.png', 2, 3, 6, 'right');
-}
-var polar = new Enemy(2, 'images/polar.png', 1, 2, 2, 'left');
+// instantiate player character
 var player = new Player;
 
+
+// - - - - INPUT HANDLER - - - -
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', movement);
@@ -166,7 +180,7 @@ function movement(e) {
     player.handleInput(allowedKeys[e.keyCode]);
 }
 
-// Baby penguins
+// - - - - BABY PENGUINS to feed - - - -
 var Kids = function(position) {
     this.x = position;
     this.y = 0;
@@ -179,11 +193,12 @@ Kids.prototype.render = function() {
     ctx.drawImage(Resources.get(this.imageFile), this.x * 101, this.y * 83 - 30);
 };
 
+// instantiate baby penguins
 for (let i = 0; i < 7; i++) {
     var kid = new Kids(i);
 }
 
-// Fish
+// - - - - FISH to collect - - - -
 var Fish = function(x ,y, number) {
     this.originalX = x;
     this.originalY = y;
@@ -195,8 +210,10 @@ var Fish = function(x ,y, number) {
     allFish.push(this);
 }
 
+// shuffle array to randomize fish x position
 var fishX = shuffle([0, 1, 2, 3, 4, 5, 6]); 
 
+// instantiate fish
 for (let i = 0; i < 7; i++) {
     var fish = new Fish(fishX[i], Math.floor(Math.random() * (6 - 3 + 1) + 3), i);
 }
@@ -205,7 +222,7 @@ Fish.prototype.render = function() {
     ctx.drawImage(Resources.get(this.imageFile), this.x * 101, this.y * 83 - 30);
 };
 
-// shuffle function to randomize order of characters/toys
+// - - - - SHUFFLE FUNCTION to randomize order of characters - - - -
 function shuffle(array) {
     let currentIndex = array.length, temporaryValue, randomIndex;
     while (currentIndex !== 0) {
@@ -219,7 +236,7 @@ function shuffle(array) {
 }
 
 
-// Timer
+// - - - - TIMER - - - -
 function timer() {
     timing = setInterval(function(){
         secCounter++;
@@ -244,10 +261,21 @@ function timer() {
     },1000);
 }
 
+// - - - - CALL STARTER SCREEN - - - -
 start();
 
 // - - - - WINNER SCREEN - - - - 
 function win() {
+    // winner music
+    // mute main music
+    mainMusic.volume = 0;
+    // play winner music
+    winSound.play();
+    // resume main music
+    setTimeout(function(){ 
+        mainMusic.volume = 1; 
+    }, 8000);
+
     clearInterval(timing);
     won = document.createElement('DIV');
     won.classList.add('winner');
@@ -279,6 +307,7 @@ function win() {
 
     document.body.appendChild(won);  
 
+    // disable movement
     disable();
 
     // event listeners for new game button - click or keypress
@@ -295,46 +324,100 @@ const restartButton = document.querySelector('.restart');
         restart();
     };
 
-    // restart function, starts a new game
-    function restart() {/*
-        // reset timer
-        clearInterval(timing);
-        document.querySelector('.secCount').textContent = '00';
-        document.querySelector('.minCount').textContent = '00';
+// restart function, starts a new game
+function restart() {
 
-        // reset hearts
-        /* let stars = Array.from(document.getElementsByClassName('fa'));
-        for (let s in stars) {
-            stars[s].classList.replace('fa-star-o', 'fa-star');
-        } */
+    // reset timer
+    clearInterval(timing);
+    document.querySelector('.secCount').textContent = '00';
+    document.querySelector('.minCount').textContent = '00';
 
-        // reset variables
-     /*   secCounter = 0;
-        minCounter = 0;
-        player.x = 3;
-        player.y = 1;
-        allEnemies = [];
-        allKids = [];
-        allFish = [];
-        fishCounter = 0; 
+    fishX = shuffle([0, 1, 2, 3, 4, 5, 6]);
 
-        // remove won screen if new game initiated from there
-        if (won !== undefined) {
-            won.style.display === 'none';
-            won.remove();
-        } */
+    // randomize fish
+    allFish.forEach(function(fish, index) {
+        fish.x = fishX[index];
+        fish.y = Math.floor(Math.random() * (6 - 3 + 1) + 3);
+        fish.grabbed = false;
+    });
 
-        location.reload();
+    // reset and randomize enemies
+    allEnemies.forEach(function(enemy) {
+        enemy.x = enemy.direction === 1 ? enemy.direction * (Math.floor(Math.random() * 10) + 3) : (Math.floor(Math.random() * 10) + 7);
+        enemy.y = Math.floor(Math.random() * (enemy.max - enemy.min + 1) + enemy.min);
+    })
+
+    polar.x = polar.direction === 1 ? polar.direction * (Math.floor(Math.random() * 10) + 3) : (Math.floor(Math.random() * 10) + 7);
+    polar.y = Math.floor(Math.random() * (polar.max - polar.min + 1) + polar.min);
+
+    // reset baby penguins
+    allKids.forEach(function(kid) {
+        kid.hasFish = false;
+    })
+        
+    // reset life
+    var addLife = player.life === -1 ? 3 : 3 - player.life;
+    if (addLife !== 0) {
+        var fragment = document.createDocumentFragment();
+        for (let i = 0; i < addLife; i++) {
+            var heart = document.createElement('IMG');
+            heart.classList.add('heart');
+            heart.src = 'IMAGES/HEART.PNG';
+            fragment.appendChild(heart);
+        }
+        document.getElementById('life').appendChild(fragment);
     }
+
+    // remove screen if new game initiated from there
+    if (won !== undefined) {
+        won.style.display === 'none';
+        won.remove();
+    }
+
+    if (pauseScreen !== undefined) {
+        pauseScreen.style.display === 'none';
+        pauseScreen.remove();
+    }
+
+    if (lost !== undefined) {
+        lost.style.display === 'none';
+        lost.remove();
+    }
+
+    // reset variables
+    secCounter = 0;
+    minCounter = 0;
+    player.x = 3;
+    player.y = 1; 
+    player.life = 3;
+    fishCounter = 0;
+
+    timer();
+    enable();
+}
 
 // GAME OVER SCREEN
 function loose() {
 
+    // game over sound
+    // mute main music
+    mainMusic.volume = 0;
+    // play game over sound
+    gameOverSound.play();
+    // resume main music
+    setTimeout(function(){ 
+        mainMusic.volume = 1; 
+    }, 6000);
+    
+    // disable movement
     disable();
 
+    // clear timer
     clearInterval(timing);
-    loose = document.createElement('DIV');
-    loose.classList.add('lost');
+
+    // CREATE GAME OVER SCREEN
+    lost = document.createElement('DIV');
+    lost.classList.add('lost');
 
     // add header
     const lostHeader = document.createElement('H1');
@@ -351,9 +434,9 @@ function loose() {
     newGameComment.classList.add('newGameComment');
     newGameComment.textContent = 'or press any key';
         
-    loose.append(lostHeader, newGameButton, newGameComment);
+    lost.append(lostHeader, newGameButton, newGameComment);
 
-    document.body.appendChild(loose);  
+    document.body.appendChild(lost);  
 
     // event listeners for new game button - click or keypress
     newGameButton.onclick = function(){
@@ -362,23 +445,22 @@ function loose() {
     window.addEventListener('keypress', restart, false);
 }
 
-// LIFE COUNTER IN STAT PANEL
+// - - - - LIFE COUNTER IN STAT PANEL - - - -
 function looseLife() {
-    console.log(player.life);
+    // remove a life
     var child = document.getElementsByClassName('heart')[player.life];
     child.parentNode.removeChild(child);
 }
 
 // - - - - PAUSE BUTTON  - - - -
-
 const pauseButton = document.querySelector('.pause');
 pauseButton.onclick = function() {
     pause();
 };
 
-// function to pause the game
+// - - - - PAUSE - - - 
 function pause() {
-    // clear timer variable
+    // clear timer
     clearInterval(timing);
 
     // create pause screen
@@ -395,6 +477,7 @@ function pause() {
 
     document.body.appendChild(pauseScreen); 
 
+    // disable movement
     disable();
     
     // event listener to restart a game with a keypress or a click
@@ -404,29 +487,38 @@ function pause() {
     window.addEventListener('keypress', resume);
 }
 
-// function to resume the game after it was paused
+// - - - - RESUME the game after it was paused - - - -
 function resume() {
+    // enable movement
     enable();
 
     // hide pause screen and remove
     pauseScreen.style.display === 'none';
     pauseScreen.remove();
+
+    // start timer again
     timer();
 }
 
+// - - - - DISABLE movement - - - -
 function disable() {
+    // set enemies speed to zero
     allEnemies.forEach(function(enemy){
         enemy.speed = 0;
     })
-    console.log('disabled');
+    // remove input handler for player
     document.removeEventListener('keyup', movement);
 }
 
+// - - - - ENABLE movement - - - - 
 function enable() {
+    // remove event listener for keypress
     window.removeEventListener('keypress', resume);
     
+    // add back input handler for player
     document.addEventListener('keyup', movement);
 
+    // reset enemies speed to original
     allEnemies.forEach(function(enemy){
         enemy.speed = enemy.originalSpeed;
     })
@@ -443,9 +535,30 @@ function start() {
     startHeader.textContent = 'How to play?';
 
     // add info about the game
-    const startText = document.createElement('H2');
-    startText.classList.add('startText');
-    startText.textContent = "Collect fish for the baby penguins. When all the babies have a fish, you win! You can move with the arrow keys (left / right / up / down). Make sure you avoid enemies."
+    const instructions = document.createElement('DIV');
+
+    const firstLine = document.createElement('DIV');
+    firstLine.classList.add('instruction-div');
+
+    const fishImage = document.createElement('IMG');
+    fishImage.classList.add('fish');
+    fishImage.src = 'IMAGES/FISH-ICON.PNG';
+    
+    const firstLineText = document.createElement('H2');
+    firstLineText.classList.add('instruction-first-line');
+    firstLineText.textContent = "Collect fish for the baby penguins."
+
+    firstLine.append(fishImage, firstLineText);
+
+    const secondLine = document.createElement('H2');
+    secondLine.classList.add('instruction-text');
+    secondLine.textContent = "When all the little ones have a fish, you win!"
+
+    const thirdLine = document.createElement('H2');
+    thirdLine.classList.add('instruction-text');
+    thirdLine.textContent = "You can move with the arrow keys (← ↑ → ↓) but make sure you avoid enemies."
+
+    instructions.append(firstLine, secondLine, thirdLine);
 
     // add new game button
     const startGameButton = document.createElement('DIV');
@@ -457,17 +570,25 @@ function start() {
     startGameComment.classList.add('startGameComment');
     startGameComment.textContent = 'or press any key';
         
-    start.append(startHeader, startText, startGameButton, startGameComment);
+    start.append(startHeader, instructions, startGameButton, startGameComment);
 
     document.body.appendChild(start);  
+
+    // disable movement
     disable();
+    
     // event listeners for new game button - click or keypress
-    startGameButton.onclick = function(){
-        enable();
-        start.style.display === 'none';
-        start.remove();
-        timer();
-        mainMusic.play();
+    startGameButton.onclick = function() {
+        startGame();
     };
-    window.addEventListener('keypress', restart, false);
+
+    window.addEventListener('keypress', startGame, false);
+}
+
+function startGame() {
+    enable();
+    start.style.display === 'none';
+    start.remove();
+    timer();
+    mainMusic.play();
 }
