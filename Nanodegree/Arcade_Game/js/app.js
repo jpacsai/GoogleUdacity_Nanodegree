@@ -328,9 +328,9 @@ const restartButton = document.querySelector('.restart');
             kid.hasFish = false;
         })
         
+        console.log('life: ' + player.life);
         // reset life
-        var addLife = 3 - player.life;
-        var l = document.getElementById('life');
+        var addLife = player.life === -1 ? 3 : 3 - player.life;
         if (addLife !== 0) {
             var fragment = document.createDocumentFragment();
             for (let i = 0; i < addLife; i++) {
@@ -339,7 +339,7 @@ const restartButton = document.querySelector('.restart');
                 heart.src = 'IMAGES/HEART.PNG';
                 fragment.appendChild(heart);
             }
-            l.appendChild(fragment);
+            document.getElementById('life').appendChild(fragment);
         }
 
         // remove screen if new game initiated from there
