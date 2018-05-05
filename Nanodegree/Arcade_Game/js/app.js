@@ -578,12 +578,17 @@ function start() {
     disable();
     
     // event listeners for new game button - click or keypress
-    startGameButton.onclick = function(){
-        enable();
-        start.style.display === 'none';
-        start.remove();
-        timer();
-        mainMusic.play();
+    startGameButton.onclick = function() {
+        startGame();
     };
-    window.addEventListener('keypress', restart, false);
+
+    window.addEventListener('keypress', startGame, false);
+}
+
+function startGame() {
+    enable();
+    start.style.display === 'none';
+    start.remove();
+    timer();
+    mainMusic.play();
 }
