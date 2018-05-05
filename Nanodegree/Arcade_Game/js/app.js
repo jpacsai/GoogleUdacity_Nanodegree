@@ -1,38 +1,36 @@
-// - - - - TO-DO: - - - -
-// add animation to baby penguin
-// tidy up code
+// TODO: optional - leaderboard
 
 
 // - - - - VARIABLES - - - -
 // characters
-var allEnemies = [];
-var allKids = [];
-var allFish = [];
+let allEnemies = [];
+let allKids = [];
+let allFish = [];
 
-// counter variables
-var fishCounter = 0;
-var secCounter = 0;
-var minCounter = 0;
+// counters
+let fishCounter = 0;
+let secCounter = 0;
+let minCounter = 0;
 
 // screens
-var won;
-var lost;
-var pauseScreen;
+let won;
+let lost;
+let pauseScreen;
 
-// sounds and music
-var mainMusic = new Audio('sounds/main.mp3');
+// sound and music
+const mainMusic = new Audio('sounds/main.mp3');
 mainMusic.loop = true;
-var fishSound = new Audio('sounds/fish.wav');
-var hurtSound = new Audio('sounds/hurt.wav');
-var babySound = new Audio('sounds/baby.wav');
-var gameOverSound = new Audio('sounds/game_over.wav');
-var winSound = new Audio('sounds/win.wav');
+const fishSound = new Audio('sounds/fish.wav');
+const hurtSound = new Audio('sounds/hurt.wav');
+const babySound = new Audio('sounds/baby.wav');
+const gameOverSound = new Audio('sounds/game_over.wav');
+const winSound = new Audio('sounds/win.wav');
+const allSounds = [mainMusic, fishSound, hurtSound, babySound, gameOverSound, winSound];
+let muted = false;
 
-
-// - - - - ENEMIES our player must avoid - - - -
-var Enemy = function(length, file, speed, min, max, direction) {
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
+// - - - - ENEMIES - - - - 
+// our player must avoid
+let Enemy = function(length, file, speed, min, max, direction) {
     this.direction = direction === 'right' ? -1 : 1;
     this.x = direction === 'right' ? this.direction * (Math.floor(Math.random() * 10) + 3) : (Math.floor(Math.random() * 10) + 7);
     this.y = Math.floor(Math.random() * (max - min + 1) + min);
@@ -45,12 +43,9 @@ var Enemy = function(length, file, speed, min, max, direction) {
     allEnemies.push(this);
 };
 
-// Update the enemy's position, required method for game
+// Update the enemy's position
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
     this.x = (this.x + (-1 * this.direction) * this.speed * dt);
     if (this.direction === -1 && this.x > 7 || this.direction === 1 && this.x < -2) {
         this.x = this.direction === -1 ? this.direction * (Math.floor(Math.random() * 10) + 3) : (Math.floor(Math.random() * 12) + 9);
@@ -58,22 +53,20 @@ Enemy.prototype.update = function(dt) {
     }
 };
 
-// Draw the enemy on the screen, required method for game
+// Draw the enemy on the screen
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x * 101, this.y * 83 - 30);
 };
 
 // instantiate enemies
 for (let i = 0; i < 7; i++) {
-    var enemy1 = new Enemy(2, 'images/enemy-seal.png', 2, 3, 6, 'right');
+    let enemy1 = new Enemy(2, 'images/enemy-seal.png', 2, 3, 6, 'right');
 }
-var polar = new Enemy(2, 'images/polar.png', 1, 2, 2, 'left');
+let polar = new Enemy(2, 'images/polar.png', 1, 2, 2, 'left');
 
 
 // - - - - PLAYER CHARACTER - - - -
-// This class requires an update(), render() and
-// a handleInput() method.
-var Player = function() {
+let Player = function() {
     this.playerImage = 'images/player.png';
     this.x = 3;
     this.y = 1;
@@ -82,6 +75,7 @@ var Player = function() {
     this.life = 3;
 }
 
+// check for collision with enemies - loose life and fish if player was holding it
 Player.prototype.update = function() {  
     allEnemies.forEach(function(enemy){
         if ((enemy.direction === -1 && enemy.x + enemy.length - 0.2 >= player.x && enemy.x < player.x + 1 - 0.4 && player.y === enemy.y) || 
@@ -106,10 +100,12 @@ Player.prototype.update = function() {
     });
 }
 
+// draw player character
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.playerImage), this.x * 101, this.y * 83 - 30);
 }
 
+// move player on game screen
 Player.prototype.handleInput = function(key) {
     if (key === 'up' && this.y - 1 > 0) {
         this.y--;
@@ -117,7 +113,7 @@ Player.prototype.handleInput = function(key) {
             this.fish.y--;
         }
     }
-    else if (key === 'down' && this.y + 1 <= Math.round(document.querySelector("canvas").height / 115)) {
+    else if (key === 'down' && this.y + 1 <= Math.round(document.querySelector('canvas').height / 115)) {
         this.y++;
         if (this.grab === true) {
             this.fish.y++;
@@ -129,12 +125,13 @@ Player.prototype.handleInput = function(key) {
             this.fish.x--;
         }
     }
-    else if (key === 'right' && this.x + 1 < Math.round(document.querySelector("canvas").width / 100)) {
+    else if (key === 'right' && this.x + 1 < Math.round(document.querySelector('canvas').width / 100)) {
         this.x++;
         if (this.grab === true) {
             this.fish.x++;
         }
     }
+    // grab a fish if on same block
     if (this.grab === false && allFish.find(a => a.x === player.x && a.y === player.y) !== undefined) {
         let grabbedFish = allFish.find(a => a.x === player.x && a.y === player.y);
         this.grab = true;
@@ -142,6 +139,7 @@ Player.prototype.handleInput = function(key) {
         this.fish = grabbedFish;
         fishSound.play();
     }
+    // pass a fish to baby penguin if beneath one without a fish
     if (this.grab === true && this.y === 1) {
         let kidAbove = allKids.find(b => b.x === player.x);
         if (kidAbove.hasFish === false) {
@@ -149,9 +147,12 @@ Player.prototype.handleInput = function(key) {
             kidAbove.hasFish = true;
             this.fish.y--;
             this.grab = false;
+            kidAbove.jump = true;
             this.fish.grabbed = false;
             fishCounter++;
+            // if 7 fish is passed to baby penguin, the player wins
             if (fishCounter === 7) {
+                disable();
                 setTimeout(function() {
                     win();
                 }, 1000);
@@ -161,8 +162,7 @@ Player.prototype.handleInput = function(key) {
 }
 
 // instantiate player character
-var player = new Player;
-
+let player = new Player;
 
 // - - - - INPUT HANDLER - - - -
 // This listens for key presses and sends the keys to your
@@ -170,7 +170,7 @@ var player = new Player;
 document.addEventListener('keyup', movement);
 
 function movement(e) {
-    var allowedKeys = {
+    const allowedKeys = {
         37: 'left',
         38: 'up',
         39: 'right',
@@ -181,43 +181,60 @@ function movement(e) {
 }
 
 // - - - - BABY PENGUINS to feed - - - -
-var Kids = function(position) {
+let Kids = function(position) {
     this.x = position;
     this.y = 0;
     this.imageFile = 'images/baby-penguin.png';
     this.hasFish = false;
+    this.fishNumber = 'none';
+    this.jump = false;
     allKids.push(this);
 }
 
+// draw baby penguins
 Kids.prototype.render = function() {
     ctx.drawImage(Resources.get(this.imageFile), this.x * 101, this.y * 83 - 30);
 };
 
+// if a fish passed, make a jump
+Kids.prototype.update = function() {
+    if (this.jump === true) {
+        this.y -= 0.5;
+        player.fish.y -= 0.5;
+        let k = this;
+        setTimeout(function() {
+            k.y += 0.5;
+            player.fish.y += 0.5;
+        }, 200);
+        this.jump = false;
+    }
+}
+
 // instantiate baby penguins
-for (let i = 0; i < 7; i++) {
-    var kid = new Kids(i);
+for (let j = 0; j < 7; j++) {
+    let kid = new Kids(j);
 }
 
 // - - - - FISH to collect - - - -
-var Fish = function(x ,y, number) {
+let Fish = function(x ,y) {
     this.originalX = x;
     this.originalY = y;
     this.x = x;
     this.y = y;
     this.imageFile = 'images/fish.png';
     this.grabbed = false;
-    this.number = number;
     allFish.push(this);
 }
 
-// shuffle array to randomize fish x position
-var fishX = shuffle([0, 1, 2, 3, 4, 5, 6]); 
+// shuffle array to randomize fish's x position
+let fishX = shuffle([0, 1, 2, 3, 4, 5, 6]); 
 
 // instantiate fish
-for (let i = 0; i < 7; i++) {
-    var fish = new Fish(fishX[i], Math.floor(Math.random() * (6 - 3 + 1) + 3), i);
+for (let k = 0; k < 7; k++) {
+    let fish = new Fish(fishX[k], Math.floor(Math.random() * (6 - 3 + 1) + 3));
 }
 
+// draw fish
 Fish.prototype.render = function() {
     ctx.drawImage(Resources.get(this.imageFile), this.x * 101, this.y * 83 - 30);
 };
@@ -267,26 +284,25 @@ start();
 // - - - - WINNER SCREEN - - - - 
 function win() {
     // winner music
-    // mute main music
-    mainMusic.volume = 0;
+    // stop main music
+    mainMusic.pause();
     // play winner music
     winSound.play();
-    // resume main music
-    setTimeout(function(){ 
-        mainMusic.volume = 1; 
-    }, 8000);
 
+    // stop timer
     clearInterval(timing);
+
+    // create winner screen
     won = document.createElement('DIV');
     won.classList.add('winner');
 
     // add header
-    const wonHeader = document.createElement('H1');
+    let wonHeader = document.createElement('H1');
     wonHeader.classList.add('winnerHeader');
     wonHeader.textContent = 'Congratulation!';
 
     // add info about the game
-    const wonText = document.createElement('H2');
+    let wonText = document.createElement('H2');
     wonText.classList.add('winnerText');
     let wonInfo = minCounter === 0 ? 
         'You won in ' + secCounter + ' sec!' : 
@@ -294,21 +310,18 @@ function win() {
     wonText.textContent = wonInfo;
 
     // add new game button
-    const newGameButton = document.createElement('DIV');
+    let newGameButton = document.createElement('DIV');
     newGameButton.classList.add('newGameButton');
     newGameButton.textContent = 'Play again?';
 
-    // add key press comment
-    const newGameComment = document.createElement('H3');
+    // add press key comment
+    let newGameComment = document.createElement('H3');
     newGameComment.classList.add('newGameComment');
     newGameComment.textContent = 'or press any key';
         
     won.append(wonHeader, wonText, newGameButton, newGameComment);
 
     document.body.appendChild(won);  
-
-    // disable movement
-    disable();
 
     // event listeners for new game button - click or keypress
     newGameButton.onclick = function(){
@@ -320,21 +333,24 @@ function win() {
 // - - - - RESTART FUNCTION - - - -
 const restartButton = document.querySelector('.restart');
 
-    restartButton.onclick = function() {
-        restart();
-    };
+restartButton.onclick = function() {
+    restart();
+};
 
 // restart function, starts a new game
 function restart() {
+    // start main music
+    mainMusic.play();
 
     // reset timer
     clearInterval(timing);
     document.querySelector('.secCount').textContent = '00';
     document.querySelector('.minCount').textContent = '00';
 
+    // reshuffle fish's x position
     fishX = shuffle([0, 1, 2, 3, 4, 5, 6]);
 
-    // randomize fish
+    // randomize fish position
     allFish.forEach(function(fish, index) {
         fish.x = fishX[index];
         fish.y = Math.floor(Math.random() * (6 - 3 + 1) + 3);
@@ -346,21 +362,20 @@ function restart() {
         enemy.x = enemy.direction === 1 ? enemy.direction * (Math.floor(Math.random() * 10) + 3) : (Math.floor(Math.random() * 10) + 7);
         enemy.y = Math.floor(Math.random() * (enemy.max - enemy.min + 1) + enemy.min);
     })
-
     polar.x = polar.direction === 1 ? polar.direction * (Math.floor(Math.random() * 10) + 3) : (Math.floor(Math.random() * 10) + 7);
     polar.y = Math.floor(Math.random() * (polar.max - polar.min + 1) + polar.min);
 
-    // reset baby penguins
+    // reset baby penguins has fish
     allKids.forEach(function(kid) {
         kid.hasFish = false;
     })
         
     // reset life
-    var addLife = player.life === -1 ? 3 : 3 - player.life;
+    let addLife = player.life === -1 ? 3 : 3 - player.life;
     if (addLife !== 0) {
-        var fragment = document.createDocumentFragment();
-        for (let i = 0; i < addLife; i++) {
-            var heart = document.createElement('IMG');
+        let fragment = document.createDocumentFragment();
+        for (let m = 0; m < addLife; m++) {
+            let heart = document.createElement('IMG');
             heart.classList.add('heart');
             heart.src = 'IMAGES/HEART.PNG';
             fragment.appendChild(heart);
@@ -392,22 +407,47 @@ function restart() {
     player.life = 3;
     fishCounter = 0;
 
+    // start timer
     timer();
+
+    // enable movement
     enable();
 }
+
+// - - - - VOLUME FUNCTION - - - -
+const volumeButton = document.querySelector('.volume');
+
+volumeButton.onclick = function() {
+    let icon = document.querySelector('.volume-icon').classList;
+    // if not muted pause main music and mute all sounds
+    if (muted === false) {
+        mainMusic.pause();
+        allSounds.forEach(function(sound) {
+            sound.muted = true;
+        })
+        // change icon
+        icon.replace('fa-volume-up', 'fa-volume-off');
+        muted = true;
+    }
+    // if muted start main music unmute sounds
+    else {
+        mainMusic.play();
+        allSounds.forEach(function(sound) {
+            sound.muted = false;
+        });
+        // change back icon
+        icon.replace('fa-volume-off', 'fa-volume-up');
+        muted = false;
+    }
+};
 
 // GAME OVER SCREEN
 function loose() {
 
-    // game over sound
-    // mute main music
-    mainMusic.volume = 0;
+    // stop main music
+    mainMusic.pause();
     // play game over sound
     gameOverSound.play();
-    // resume main music
-    setTimeout(function(){ 
-        mainMusic.volume = 1; 
-    }, 6000);
     
     // disable movement
     disable();
@@ -420,17 +460,17 @@ function loose() {
     lost.classList.add('lost');
 
     // add header
-    const lostHeader = document.createElement('H1');
+    let lostHeader = document.createElement('H1');
     lostHeader.classList.add('lostHeader');
     lostHeader.textContent = 'GAME OVER';
 
     // add new game button
-    const newGameButton = document.createElement('DIV');
+    let newGameButton = document.createElement('DIV');
     newGameButton.classList.add('newGameButton');
     newGameButton.textContent = 'Play again?';
 
     // add key press comment
-    const newGameComment = document.createElement('H3');
+    let newGameComment = document.createElement('H3');
     newGameComment.classList.add('newGameComment');
     newGameComment.textContent = 'or press any key';
         
@@ -440,15 +480,15 @@ function loose() {
 
     // event listeners for new game button - click or keypress
     newGameButton.onclick = function(){
-        restart()
+        restart();
     };
     window.addEventListener('keypress', restart, false);
 }
 
 // - - - - LIFE COUNTER IN STAT PANEL - - - -
 function looseLife() {
-    // remove a life
-    var child = document.getElementsByClassName('heart')[player.life];
+    // remove a heart image
+    let child = document.getElementsByClassName('heart')[player.life];
     child.parentNode.removeChild(child);
 }
 
@@ -467,11 +507,11 @@ function pause() {
     pauseScreen = document.createElement('DIV');
     pauseScreen.classList.add('pause-screen');
 
-    const pauseText = document.createElement('H1');
+    let pauseText = document.createElement('H1');
     pauseText.textContent = 'Game paused';
     pauseScreen.appendChild(pauseText);
 
-    const pauseComment = document.createElement('H3');
+    let pauseComment = document.createElement('H3');
     pauseComment.textContent = 'press any key or click to return';
     pauseScreen.appendChild(pauseComment);
 
@@ -502,7 +542,7 @@ function resume() {
 
 // - - - - DISABLE movement - - - -
 function disable() {
-    // set enemies speed to zero
+    // set enemies' speed to zero
     allEnemies.forEach(function(enemy){
         enemy.speed = 0;
     })
@@ -515,10 +555,10 @@ function enable() {
     // remove event listener for keypress
     window.removeEventListener('keypress', resume);
     
-    // add back input handler for player
+    // add input handler back for player
     document.addEventListener('keyup', movement);
 
-    // reset enemies speed to original
+    // reset enemies' speed to original
     allEnemies.forEach(function(enemy){
         enemy.speed = enemy.originalSpeed;
     })
@@ -526,47 +566,48 @@ function enable() {
 
 // - - - - START SCREEN - - - - 
 function start() {
+    // CREATE START SCREEN
     start = document.createElement('DIV');
     start.classList.add('start');
 
     // add header
-    const startHeader = document.createElement('H1');
+    let startHeader = document.createElement('H1');
     startHeader.classList.add('startHeader');
     startHeader.textContent = 'How to play?';
 
     // add info about the game
-    const instructions = document.createElement('DIV');
+    let instructions = document.createElement('DIV');
 
-    const firstLine = document.createElement('DIV');
+    let firstLine = document.createElement('DIV');
     firstLine.classList.add('instruction-div');
 
-    const fishImage = document.createElement('IMG');
+    let fishImage = document.createElement('IMG');
     fishImage.classList.add('fish');
     fishImage.src = 'images/fish-small.png';
     
-    const firstLineText = document.createElement('H2');
+    let firstLineText = document.createElement('H2');
     firstLineText.classList.add('instruction-first-line');
-    firstLineText.textContent = "Collect fish for the baby penguins."
+    firstLineText.textContent = 'Collect fish for the baby penguins.'
 
     firstLine.append(fishImage, firstLineText);
 
-    const secondLine = document.createElement('H2');
+    let secondLine = document.createElement('H2');
     secondLine.classList.add('instruction-text');
-    secondLine.textContent = "When all the little ones have a fish, you win!"
+    secondLine.textContent = 'When all the little ones have a fish, you win!'
 
-    const thirdLine = document.createElement('H2');
+    let thirdLine = document.createElement('H2');
     thirdLine.classList.add('instruction-text');
-    thirdLine.textContent = "You can move with the arrow keys (← ↑ → ↓) but make sure you avoid enemies."
+    thirdLine.textContent = 'You can move with the arrow keys (← ↑ → ↓) but make sure you avoid enemies.'
 
     instructions.append(firstLine, secondLine, thirdLine);
 
     // add new game button
-    const startGameButton = document.createElement('DIV');
+    let startGameButton = document.createElement('DIV');
     startGameButton.classList.add('startGameButton');
     startGameButton.textContent = 'Start game';
 
     // add key press comment
-    const startGameComment = document.createElement('H3');
+    let startGameComment = document.createElement('H3');
     startGameComment.classList.add('startGameComment');
     startGameComment.textContent = 'or press any key';
         
@@ -585,10 +626,18 @@ function start() {
     window.addEventListener('keypress', startGame, false);
 }
 
+// - - - - START GAME - - - -
 function startGame() {
+    // enable movement
     enable();
+
+    // remove start screen
     start.style.display === 'none';
     start.remove();
+
+    // start timer
     timer();
+
+    // start main music
     mainMusic.play();
 }

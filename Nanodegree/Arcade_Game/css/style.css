@@ -10,7 +10,7 @@ body {
     margin: 10px auto;
     box-sizing: border-box;
     display: grid;
-    grid-template: 100% / 35% 35% 15% 15%;
+    grid-template: 100% / 35% 35% 10% 10% 10%;
     font-size: 1.5em;
 }
 
@@ -49,17 +49,13 @@ body {
     grid-area: 1 / 4 / 2 / 5;
 }
 
-.restart {
+.restart,
+.pause,
+.volume {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     cursor: pointer;
-}
-
-.pause {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
 }
 
 canvas {
@@ -88,6 +84,11 @@ canvas {
     animation: fadeIn 0.8s;
 }
 
+.start {
+    top: 0;
+    height: 100%;
+}
+
 .startGameButton,
 .newGameButton {
     width: 150px;
@@ -98,16 +99,16 @@ canvas {
     align-items: center;
     cursor: pointer;
     border-radius: 8px;
-    background-color: #8563be;
+    background-color: #379cc3;
     font-size: 1.3em;
     color: white;
-    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+    box-shadow: 5px 2px 20px rgba(46, 61, 73, 0.5);
     transition: all 0.3s ease 0s;
 }
 
 .startGameButton:hover,
 .newGameButton:hover {
-    background-color: #2f0b6b;
+    background-color: #003363;
     box-shadow: none;
 }
 
