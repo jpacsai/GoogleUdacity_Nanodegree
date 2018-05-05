@@ -13,6 +13,7 @@ var minCounter = 0;
 var won;
 var loose;
 var mainMusic = new Audio('sounds/main.mp3');
+mainMusic.loop = true;
 var fishSound = new Audio('sounds/fish.wav');
 var hurtSound = new Audio('sounds/hurt.wav');
 var babySound = new Audio('sounds/baby.wav');
