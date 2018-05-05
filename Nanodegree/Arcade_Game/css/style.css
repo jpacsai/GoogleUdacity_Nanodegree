@@ -84,6 +84,11 @@ canvas {
     animation: fadeIn 0.8s;
 }
 
+.start {
+    top: 0;
+    height: 100%;
+}
+
 .startGameButton,
 .newGameButton {
     width: 150px;
