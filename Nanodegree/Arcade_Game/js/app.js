@@ -28,6 +28,7 @@ var fishSound = new Audio('sounds/fish.wav');
 var hurtSound = new Audio('sounds/hurt.wav');
 var babySound = new Audio('sounds/baby.wav');
 var gameOverSound = new Audio('sounds/game_over.wav');
+var winSound = new Audio('sounds/win.wav');
 
 
 // - - - - ENEMIES our player must avoid - - - -
@@ -267,6 +268,16 @@ start();
 
 // - - - - WINNER SCREEN - - - - 
 function win() {
+    // winner music
+    // mute main music
+    mainMusic.volume = 0;
+    // play winner music
+    winSound.play();
+    // resume main music
+    setTimeout(function(){ 
+        mainMusic.volume = 1; 
+    }, 8000);
+
     clearInterval(timing);
     won = document.createElement('DIV');
     won.classList.add('winner');
