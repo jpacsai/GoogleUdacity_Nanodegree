@@ -542,7 +542,7 @@ function start() {
 
     const fishImage = document.createElement('IMG');
     fishImage.classList.add('fish');
-    fishImage.src = 'IMAGES/FISH-ICON.PNG';
+    fishImage.src = 'IMAGES/FISH-SMALL.PNG';
     
     const firstLineText = document.createElement('H2');
     firstLineText.classList.add('instruction-first-line');
