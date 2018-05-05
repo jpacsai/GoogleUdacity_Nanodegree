@@ -99,7 +99,7 @@ canvas {
     align-items: center;
     cursor: pointer;
     border-radius: 8px;
-    background-color: #8563be;
+    background-color: #379cc3;
     font-size: 1.3em;
     color: white;
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
@@ -108,7 +108,7 @@ canvas {
 
 .startGameButton:hover,
 .newGameButton:hover {
-    background-color: #2f0b6b;
+    background-color: #003363;
     box-shadow: none;
 }
 
