@@ -1,8 +1,8 @@
 // TO-DO:
 // find game over and winner sound
-// fix restart
 // fix starter screen with instructions
 // fix collision distances
+// add animation to baby penguin
 
 var allEnemies = [];
 var allKids = [];
