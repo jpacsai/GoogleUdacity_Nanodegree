@@ -1,7 +1,5 @@
 // - - - - TO-DO: - - - -
-// find winner sound
 // fix starter screen with instructions
-// fix collision distances
 // add animation to baby penguin
 
 
@@ -86,8 +84,8 @@ var Player = function() {
 
 Player.prototype.update = function() {  
     allEnemies.forEach(function(enemy){
-        if ((enemy.direction === -1 && enemy.x + enemy.length - 0.4 >= player.x && enemy.x < player.x && player.y === enemy.y) || 
-        (enemy.direction === 1 && enemy.x <= player.x + 1 - 0.4 && enemy.x + enemy.length - 0.4 > player.x && player.y === enemy.y)) {   
+        if ((enemy.direction === -1 && enemy.x + enemy.length >= player.x && enemy.x < player.x + 1 - 0.4 && player.y === enemy.y) || 
+        (enemy.direction === 1 && enemy.x <= player.x + 1 - 0.4 && enemy.x + enemy.length - 0.4> player.x && player.y === enemy.y)) {   
             player.x = 3;
             player.y = 1;
             player.life--;
