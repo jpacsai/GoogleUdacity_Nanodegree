@@ -18,6 +18,7 @@ mainMusic.loop = true;
 var fishSound = new Audio('sounds/fish.wav');
 var hurtSound = new Audio('sounds/hurt.wav');
 var babySound = new Audio('sounds/baby.wav');
+var gameOverSound = new Audio('sounds/game_over.wav');
 
 
 // Enemies our player must avoid
@@ -371,7 +372,12 @@ const restartButton = document.querySelector('.restart');
 
 // GAME OVER SCREEN
 function loose() {
-
+    mainMusic.volume = 0;
+    gameOverSound.play();
+    setTimeout(function(){ 
+        mainMusic.volume = 1; 
+    }, 6000);
+    
     disable();
 
     clearInterval(timing);
