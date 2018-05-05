@@ -11,7 +11,8 @@ var fishCounter = 0;
 var secCounter = 0;
 var minCounter = 0;
 var won;
-var loose;
+var lost;
+var pauseScreen;
 var mainMusic = new Audio('sounds/main.mp3');
 mainMusic.loop = true;
 var fishSound = new Audio('sounds/fish.wav');
@@ -297,35 +298,75 @@ const restartButton = document.querySelector('.restart');
     };
 
     // restart function, starts a new game
-    function restart() {/*
+    function restart() {
+
         // reset timer
         clearInterval(timing);
         document.querySelector('.secCount').textContent = '00';
         document.querySelector('.minCount').textContent = '00';
 
-        // reset hearts
-        /* let stars = Array.from(document.getElementsByClassName('fa'));
-        for (let s in stars) {
-            stars[s].classList.replace('fa-star-o', 'fa-star');
-        } */
+        fishX = shuffle([0, 1, 2, 3, 4, 5, 6]);
 
-        // reset variables
-     /*   secCounter = 0;
-        minCounter = 0;
-        player.x = 3;
-        player.y = 1;
-        allEnemies = [];
-        allKids = [];
-        allFish = [];
-        fishCounter = 0; 
+        // randomize fish
+        allFish.forEach(function(fish, index) {
+            fish.x = fishX[index];
+            fish.y = Math.floor(Math.random() * (6 - 3 + 1) + 3);
+            fish.grabbed = false;
+        });
 
-        // remove won screen if new game initiated from there
+        // reset and randomize enemies
+        allEnemies.forEach(function(enemy) {
+            enemy.x = enemy.direction === 1 ? enemy.direction * (Math.floor(Math.random() * 10) + 3) : (Math.floor(Math.random() * 10) + 7);
+            enemy.y = Math.floor(Math.random() * (enemy.max - enemy.min + 1) + enemy.min);
+        })
+        polar.x = polar.direction === 1 ? polar.direction * (Math.floor(Math.random() * 10) + 3) : (Math.floor(Math.random() * 10) + 7);
+        polar.y = Math.floor(Math.random() * (polar.max - polar.min + 1) + polar.min);
+
+        // reset baby penguins
+        allKids.forEach(function(kid) {
+            kid.hasFish = false;
+        })
+        
+        // reset life
+        var addLife = 3 - player.life;
+        var l = document.getElementById('life');
+        if (addLife !== 0) {
+            var fragment = document.createDocumentFragment();
+            for (let i = 0; i < addLife; i++) {
+                var heart = document.createElement('IMG');
+                heart.classList.add('heart');
+                heart.src = 'IMAGES/HEART.PNG';
+                fragment.appendChild(heart);
+            }
+            l.appendChild(fragment);
+        }
+
+        // remove screen if new game initiated from there
         if (won !== undefined) {
             won.style.display === 'none';
             won.remove();
-        } */
+        }
 
-        location.reload();
+        if (pauseScreen !== undefined) {
+            pauseScreen.style.display === 'none';
+            pauseScreen.remove();
+        }
+
+        if (lost !== undefined) {
+            lost.style.display === 'none';
+            lost.remove();
+        }
+
+        // reset variables
+        secCounter = 0;
+        minCounter = 0;
+        player.x = 3;
+        player.y = 1; 
+        player.life = 3;
+        fishCounter = 0;
+
+        timer();
+        enable();
     }
 
 // GAME OVER SCREEN
@@ -334,8 +375,8 @@ function loose() {
     disable();
 
     clearInterval(timing);
-    loose = document.createElement('DIV');
-    loose.classList.add('lost');
+    lost = document.createElement('DIV');
+    lost.classList.add('lost');
 
     // add header
     const lostHeader = document.createElement('H1');
@@ -352,9 +393,9 @@ function loose() {
     newGameComment.classList.add('newGameComment');
     newGameComment.textContent = 'or press any key';
         
-    loose.append(lostHeader, newGameButton, newGameComment);
+    lost.append(lostHeader, newGameButton, newGameComment);
 
-    document.body.appendChild(loose);  
+    document.body.appendChild(lost);  
 
     // event listeners for new game button - click or keypress
     newGameButton.onclick = function(){
@@ -365,7 +406,6 @@ function loose() {
 
 // LIFE COUNTER IN STAT PANEL
 function looseLife() {
-    console.log(player.life);
     var child = document.getElementsByClassName('heart')[player.life];
     child.parentNode.removeChild(child);
 }
