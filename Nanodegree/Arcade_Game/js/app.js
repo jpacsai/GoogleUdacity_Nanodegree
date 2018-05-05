@@ -267,14 +267,10 @@ start();
 // - - - - WINNER SCREEN - - - - 
 function win() {
     // winner music
-    // mute main music
-    mainMusic.volume = 0;
+    // stop main music
+    mainMusic.pause();
     // play winner music
     winSound.play();
-    // resume main music
-    setTimeout(function(){ 
-        mainMusic.volume = 1; 
-    }, 8000);
 
     clearInterval(timing);
     won = document.createElement('DIV');
@@ -326,7 +322,7 @@ const restartButton = document.querySelector('.restart');
 
 // restart function, starts a new game
 function restart() {
-
+    mainMusic.play();
     // reset timer
     clearInterval(timing);
     document.querySelector('.secCount').textContent = '00';
@@ -400,14 +396,10 @@ function restart() {
 function loose() {
 
     // game over sound
-    // mute main music
-    mainMusic.volume = 0;
+    // stop main music
+    mainMusic.pause();
     // play game over sound
     gameOverSound.play();
-    // resume main music
-    setTimeout(function(){ 
-        mainMusic.volume = 1; 
-    }, 6000);
     
     // disable movement
     disable();
@@ -440,7 +432,7 @@ function loose() {
 
     // event listeners for new game button - click or keypress
     newGameButton.onclick = function(){
-        restart()
+        restart();
     };
     window.addEventListener('keypress', restart, false);
 }
