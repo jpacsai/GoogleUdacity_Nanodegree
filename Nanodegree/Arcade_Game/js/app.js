@@ -535,9 +535,30 @@ function start() {
     startHeader.textContent = 'How to play?';
 
     // add info about the game
-    const startText = document.createElement('H2');
-    startText.classList.add('startText');
-    startText.textContent = "Collect fish for the baby penguins. When all the babies have a fish, you win! You can move with the arrow keys (left / right / up / down). Make sure you avoid enemies."
+    const instructions = document.createElement('DIV');
+
+    const firstLine = document.createElement('DIV');
+    firstLine.classList.add('instruction-div');
+
+    const fishImage = document.createElement('IMG');
+    fishImage.classList.add('fish');
+    fishImage.src = 'IMAGES/FISH-ICON.PNG';
+    
+    const firstLineText = document.createElement('H2');
+    firstLineText.classList.add('instruction-first-line');
+    firstLineText.textContent = "Collect fish for the baby penguins."
+
+    firstLine.append(fishImage, firstLineText);
+
+    const secondLine = document.createElement('H2');
+    secondLine.classList.add('instruction-text');
+    secondLine.textContent = "When all the little ones have a fish, you win!"
+
+    const thirdLine = document.createElement('H2');
+    thirdLine.classList.add('instruction-text');
+    thirdLine.textContent = "You can move with the arrow keys (← ↑ → ↓) but make sure you avoid enemies."
+
+    instructions.append(firstLine, secondLine, thirdLine);
 
     // add new game button
     const startGameButton = document.createElement('DIV');
@@ -549,7 +570,7 @@ function start() {
     startGameComment.classList.add('startGameComment');
     startGameComment.textContent = 'or press any key';
         
-    start.append(startHeader, startText, startGameButton, startGameComment);
+    start.append(startHeader, instructions, startGameButton, startGameComment);
 
     document.body.appendChild(start);  
 

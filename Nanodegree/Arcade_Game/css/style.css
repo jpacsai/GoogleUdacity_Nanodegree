@@ -143,3 +143,22 @@ canvas {
     width: 180px;
     margin: 30px;
 }
+
+.instruction-div {
+    
+}
+
+.fish {
+    display: inline;
+    position: relative;
+    top: 15px;
+}
+
+.instruction-first-line {
+    display: inline;
+    text-align: center;
+}
+
+.instruction-text {
+    text-align: center;
+}
