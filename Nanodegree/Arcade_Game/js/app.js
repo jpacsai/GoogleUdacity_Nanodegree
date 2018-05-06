@@ -31,139 +31,134 @@ let muted = false;
 
 // - - - - ENEMIES - - - - 
 // our player must avoid
-let Enemy = function(length, file, speed, min, max, direction) {
-    this.direction = direction === 'right' ? -1 : 1;
-    this.x = direction === 'right' ? this.direction * (Math.floor(Math.random() * 10) + 3) : (Math.floor(Math.random() * 10) + 7);
-    this.y = Math.floor(Math.random() * (max - min + 1) + min);
-    this.length = length;
-    this.originalSpeed = speed;
-    this.speed = speed;
-    this.min = min;
-    this.max = max;
-    this.sprite = file;
-    allEnemies.push(this);
-};
+class Enemy {
+    constructor(length, file, speed, min, max, direction) {
+        this.direction = direction === 'right' ? -1 : 1;
+        this.x = direction === 'right' ? this.direction * (Math.floor(Math.random() * 10) + 3) : (Math.floor(Math.random() * 10) + 7);
+        this.y = Math.floor(Math.random() * (max - min + 1) + min);
+        this.length = length;
+        this.originalSpeed = speed;
+        this.speed = speed;
+        this.min = min;
+        this.max = max;
+        this.sprite = file;
+        allEnemies.push(this);
+    }
 
-// Update the enemy's position
-// Parameter: dt, a time delta between ticks
-Enemy.prototype.update = function(dt) {
-    this.x = (this.x + (-1 * this.direction) * this.speed * dt);
-    if (this.direction === -1 && this.x > 7 || this.direction === 1 && this.x < -2) {
-        this.x = this.direction === -1 ? this.direction * (Math.floor(Math.random() * 10) + 3) : (Math.floor(Math.random() * 12) + 9);
-        this.y = Math.floor(Math.random() * (this.max - this.min + 1) + this.min);
+    // Update the enemy's position
+    // Parameter: dt, a time delta between ticks
+    update(dt) {
+        this.x = (this.x + (-1 * this.direction) * this.speed * dt);
+        if (this.direction === -1 && this.x > 7 || this.direction === 1 && this.x < -2) {
+            this.x = this.direction === -1 ? this.direction * (Math.floor(Math.random() * 10) + 3) : (Math.floor(Math.random() * 12) + 9);
+            this.y = Math.floor(Math.random() * (this.max - this.min + 1) + this.min);
+        }
+    }
+
+    // Draw the enemy on the screen
+    render() {
+        ctx.drawImage(Resources.get(this.sprite), this.x * 101, this.y * 83 - 30);
     }
 };
-
-// Draw the enemy on the screen
-Enemy.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x * 101, this.y * 83 - 30);
-};
-
-// instantiate enemies
-for (let i = 0; i < 7; i++) {
-    let enemy1 = new Enemy(2, 'images/enemy-seal.png', 2, 3, 6, 'right');
-}
-let polar = new Enemy(2, 'images/polar.png', 1, 2, 2, 'left');
-
 
 // - - - - PLAYER CHARACTER - - - -
-let Player = function() {
-    this.playerImage = 'images/player.png';
-    this.x = 3;
-    this.y = 1;
-    this.grab = false;
-    this.fish = false;
-    this.life = 3;
-}
-
-// check for collision with enemies - loose life and fish if player was holding it
-Player.prototype.update = function() {  
-    allEnemies.forEach(function(enemy){
-        if ((enemy.direction === -1 && enemy.x + enemy.length - 0.2 >= player.x && enemy.x < player.x + 1 - 0.4 && player.y === enemy.y) || 
-        (enemy.direction === 1 && enemy.x <= player.x + 1 - 0.4 && enemy.x + enemy.length - 0.4> player.x && player.y === enemy.y)) {   
-            player.x = 3;
-            player.y = 1;
-            player.life--;
-            if (player.grab === true) {
-                player.fish.x = player.fish.originalX;
-                player.fish.y = player.fish.originalY;
-                player.fish.grabbed = false;
-                player.grab = false;
+class Player {
+    constructor() {
+        this.playerImage = 'images/player.png';
+        this.x = 3;
+        this.y = 1;
+        this.grab = false;
+        this.fish = false;
+        this.life = 3;
+    }
+    
+    // check for collision with enemies - loose life and fish if player was holding it
+    update() {  
+        allEnemies.forEach(function(enemy){
+            if ((enemy.direction === -1 && enemy.x + enemy.length - 0.2 >= player.x && enemy.x < player.x + 1 - 0.4 && player.y === enemy.y) || 
+            (enemy.direction === 1 && enemy.x <= player.x + 1 - 0.4 && enemy.x + enemy.length - 0.4> player.x && player.y === enemy.y)) {   
+                player.x = 3;
+                player.y = 1;
+                player.life--;
+                if (player.grab === true) {
+                    player.fish.x = player.fish.originalX;
+                    player.fish.y = player.fish.originalY;
+                    player.fish.grabbed = false;
+                    player.grab = false;
+                }
+                if (player.life < 0) {
+                    loose();
+                }
+                else {
+                    hurtSound.play();
+                    looseLife();
+                }
             }
-            if (player.life < 0) {
-                loose();
-            }
-            else {
-                hurtSound.play();
-                looseLife();
-            }
-        }
-    });
-}
+        });
+    }
 
-// draw player character
-Player.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.playerImage), this.x * 101, this.y * 83 - 30);
-}
+    // draw player character
+    render() {
+        ctx.drawImage(Resources.get(this.playerImage), this.x * 101, this.y * 83 - 30);
+    }
 
-// move player on game screen
-Player.prototype.handleInput = function(key) {
-    if (key === 'up' && this.y - 1 > 0) {
-        this.y--;
-        if (this.grab === true) {
-            this.fish.y--;
-        }
-    }
-    else if (key === 'down' && this.y + 1 <= Math.round(document.querySelector('canvas').height / 115)) {
-        this.y++;
-        if (this.grab === true) {
-            this.fish.y++;
-        }
-    }
-    else if (key === 'left' && this.x - 1 >= 0) {
-        this.x--;
-        if (this.grab === true) {
-            this.fish.x--;
-        }
-    }
-    else if (key === 'right' && this.x + 1 < Math.round(document.querySelector('canvas').width / 100)) {
-        this.x++;
-        if (this.grab === true) {
-            this.fish.x++;
-        }
-    }
-    // grab a fish if on same block
-    if (this.grab === false && allFish.find(a => a.x === player.x && a.y === player.y) !== undefined) {
-        let grabbedFish = allFish.find(a => a.x === player.x && a.y === player.y);
-        this.grab = true;
-        grabbedFish.grabbed = true;
-        this.fish = grabbedFish;
-        fishSound.play();
-    }
-    // pass a fish to baby penguin if beneath one without a fish
-    if (this.grab === true && this.y === 1) {
-        let kidAbove = allKids.find(b => b.x === player.x);
-        if (kidAbove.hasFish === false) {
-            babySound.play();
-            kidAbove.hasFish = true;
-            this.fish.y--;
-            this.grab = false;
-            kidAbove.jump = true;
-            this.fish.grabbed = false;
-            fishCounter++;
-            // if 7 fish is passed to baby penguin, the player wins
-            if (fishCounter === 7) {
-                disable();
-                setTimeout(function() {
-                    win();
-                }, 1000);
+    // move player on game screen
+    handleInput(key) {
+        if (key === 'up' && this.y - 1 > 0) {
+            this.y--;
+            if (this.grab === true) {
+                this.fish.y--;
             }
         }
+        else if (key === 'down' && this.y + 1 <= Math.round(document.querySelector('canvas').height / 115)) {
+            this.y++;
+            if (this.grab === true) {
+                this.fish.y++;
+            }
+        }
+        else if (key === 'left' && this.x - 1 >= 0) {
+            this.x--;
+            if (this.grab === true) {
+                this.fish.x--;
+            }
+        }
+        else if (key === 'right' && this.x + 1 < Math.round(document.querySelector('canvas').width / 100)) {
+            this.x++;
+            if (this.grab === true) {
+                this.fish.x++;
+            }
+        }
+        // grab a fish if on same block
+        if (this.grab === false && allFish.find(a => a.x === player.x && a.y === player.y) !== undefined) {
+            let grabbedFish = allFish.find(a => a.x === player.x && a.y === player.y);
+            this.grab = true;
+            grabbedFish.grabbed = true;
+            this.fish = grabbedFish;
+            fishSound.play();
+        }
+        // pass a fish to baby penguin if beneath one without a fish
+        if (this.grab === true && this.y === 1) {
+            let kidAbove = allKids.find(b => b.x === player.x);
+            if (kidAbove.hasFish === false) {
+                babySound.play();
+                kidAbove.hasFish = true;
+                this.fish.y--;
+                this.grab = false;
+                kidAbove.jump = true;
+                this.fish.grabbed = false;
+                fishCounter++;
+                // if 7 fish is passed to baby penguin, the player wins
+                if (fishCounter === 7) {
+                    disable();
+                    setTimeout(function() {
+                        win();
+                    }, 1000);
+                }
+            }
+        }
     }
-}
 
-// instantiate player character
-let player = new Player;
+}
 
 // - - - - INPUT HANDLER - - - -
 // This listens for key presses and sends the keys to your
@@ -177,68 +172,63 @@ function movement(e) {
         39: 'right',
         40: 'down'
     };
-
     player.handleInput(allowedKeys[e.keyCode]);
 }
 
 // - - - - BABY PENGUINS to feed - - - -
-let Kids = function(position) {
-    this.x = position;
-    this.y = 0;
-    this.imageFile = 'images/baby-penguin.png';
-    this.hasFish = false;
-    this.fishNumber = 'none';
-    this.jump = false;
-    allKids.push(this);
-}
-
-// draw baby penguins
-Kids.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.imageFile), this.x * 101, this.y * 83 - 30);
-};
-
-// if a fish passed, make a jump
-Kids.prototype.update = function() {
-    if (this.jump === true) {
-        this.y -= 0.5;
-        player.fish.y -= 0.5;
-        let k = this;
-        setTimeout(function() {
-            k.y += 0.5;
-            player.fish.y += 0.5;
-        }, 200);
+class Kids {
+    constructor(position) {
+        this.x = position;
+        this.y = 0;
+        this.imageFile = 'images/baby-penguin.png';
+        this.hasFish = false;
+        this.fishNumber = 'none';
         this.jump = false;
+        allKids.push(this);
     }
-}
 
-// instantiate baby penguins
-for (let j = 0; j < 7; j++) {
-    let kid = new Kids(j);
+    // draw baby penguins
+    render() {
+        ctx.drawImage(Resources.get(this.imageFile), this.x * 101, this.y * 83 - 30);
+    }
+
+    update() {
+        if (this.jump === true) {
+            this.y -= 0.5;
+            player.fish.y -= 0.5;
+            let k = this;
+            setTimeout(function() {
+                k.y += 0.5;
+                player.fish.y += 0.5;
+            }, 200);
+            this.jump = false;
+        }
+    }
+
+
 }
 
 // - - - - FISH to collect - - - -
-let Fish = function(x ,y) {
-    this.originalX = x;
-    this.originalY = y;
-    this.x = x;
-    this.y = y;
-    this.imageFile = 'images/fish.png';
-    this.grabbed = false;
-    allFish.push(this);
+class Fish {
+    constructor(x ,y) {
+        this.originalX = x;
+        this.originalY = y;
+        this.x = x;
+        this.y = y;
+        this.imageFile = 'images/fish.png';
+        this.grabbed = false;
+        allFish.push(this);
+    }
+
+    // draw fish
+    render() {
+        ctx.drawImage(Resources.get(this.imageFile), this.x * 101, this.y * 83 - 30);
+    }
+
 }
 
 // shuffle array to randomize fish's x position
 let fishX = shuffle([0, 1, 2, 3, 4, 5, 6]); 
-
-// instantiate fish
-for (let k = 0; k < 7; k++) {
-    let fish = new Fish(fishX[k], Math.floor(Math.random() * (6 - 3 + 1) + 3));
-}
-
-// draw fish
-Fish.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.imageFile), this.x * 101, this.y * 83 - 30);
-};
 
 // - - - - SHUFFLE FUNCTION to randomize order of characters - - - -
 function shuffle(array) {
@@ -252,6 +242,26 @@ function shuffle(array) {
     }
     return array;
 }
+
+// instantiate player character
+let player = new Player;
+
+// instantiate enemies
+for (let i = 0; i < 7; i++) {
+    let enemy1 = new Enemy(2, 'images/enemy-seal.png', 2, 3, 6, 'right');
+}
+let polar = new Enemy(2, 'images/polar.png', 1, 2, 2, 'left');
+
+// instantiate baby penguins
+for (let j = 0; j < 7; j++) {
+    let kid = new Kids(j);
+}
+
+// instantiate fish
+for (let k = 0; k < 7; k++) {
+    let fish = new Fish(fishX[k], Math.floor(Math.random() * (6 - 3 + 1) + 3));
+}
+
 
 
 // - - - - TIMER - - - -
