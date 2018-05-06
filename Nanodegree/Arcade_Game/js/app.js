@@ -591,6 +591,8 @@ function win() {
 
     // event listeners for new game button - click or keypress
     newGameButton.onclick = function(){
+        winSound.pause();
+        winSound.currentTime = 0;
         restart();
     };
     window.addEventListener('keypress', restart, false);
@@ -635,6 +637,8 @@ function loose() {
 
     // event listeners for new game button - click or keypress
     newGameButton.onclick = function(){
+        gameOverSound.pause();
+        gameOverSound.currentTime = 0;
         restart();
     };
     window.addEventListener('keypress', restart, false);
