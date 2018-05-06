@@ -1,6 +1,6 @@
 // TODO: optional - leaderboard
 
-
+'use strict';
 // - - - - VARIABLES - - - -
 // characters
 let allEnemies = [];
@@ -9,6 +9,7 @@ let allFish = [];
 
 // counters
 let fishCounter = 0;
+let timing;
 let secCounter = 0;
 let minCounter = 0;
 
