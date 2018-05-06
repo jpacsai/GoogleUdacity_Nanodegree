@@ -3,9 +3,9 @@
 'use strict';
 // - - - - VARIABLES - - - -
 // characters
-let allEnemies = [];
-let allKids = [];
-let allFish = [];
+const allEnemies = [];
+const allKids = [];
+const allFish = [];
 
 // counters
 let fishCounter = 0;
