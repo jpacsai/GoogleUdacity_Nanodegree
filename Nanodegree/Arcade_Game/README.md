@@ -1,6 +1,19 @@
-frontend-nanodegree-arcade-game
+# Arcade Game Project
 ===============================
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+### Description  
+* a game where the user has to collect items on the screen moving the main character while avoids collision with enemies
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+### Resources:
+* Background: [Freepik](https://www.freepik.com/free-vector/scene-of-polar-bears-and-penguins-on-an-iceberg_1020375.htm)
+* Icons: [FontAwsome](https://fontawesome.com/v4.7.0/icons/)
+* Font: [Google Fonts](https://fonts.google.com/specimen/Mina)
+
+### How to Play & Rules
+* A user must move the main character with the arrow keys
+* Collect fish for the baby penguins one at a time
+* Avoid collision with enemies, otherwise a life is deducted
+* If all 3 lives are lost, the game is over
+* Player wins when all the baby penguins have a fish
+* A winning screen is presented with the time
+
