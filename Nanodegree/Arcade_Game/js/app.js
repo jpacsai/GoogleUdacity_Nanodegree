@@ -84,18 +84,18 @@ class Player extends Character {
     // check for collision with enemies - loose life and fish if player was holding it
     update() {  
         allEnemies.forEach(function(enemy){
-            if ((enemy.direction === -1 && enemy.x + enemy.length - 0.2 >= player.x && enemy.x < player.x + 1 - 0.4 && player.y === enemy.y) || 
-            (enemy.direction === 1 && enemy.x <= player.x + 1 - 0.4 && enemy.x + enemy.length - 0.4> player.x && player.y === enemy.y)) {   
-                player.x = 3;
-                player.y = 1;
-                player.life--;
-                if (player.grab === true) {
-                    player.fish.x = player.fish.originalX;
-                    player.fish.y = player.fish.originalY;
-                    player.fish.grabbed = false;
-                    player.grab = false;
+            if ((enemy.direction === -1 && enemy.x + enemy.length - 0.2 >= this.x && enemy.x < this.x + 1 - 0.4 && this.y === enemy.y) || 
+            (enemy.direction === 1 && enemy.x <= this.x + 1 - 0.4 && enemy.x + enemy.length - 0.4> this.x && this.y === enemy.y)) {   
+                this.x = 3;
+                this.y = 1;
+                this.life--;
+                if (this.grab === true) {
+                    this.fish.x = this.fish.originalX;
+                    this.fish.y = this.fish.originalY;
+                    this.fish.grabbed = false;
+                    this.grab = false;
                 }
-                if (player.life < 0) {
+                if (self.life < 0) {
                     loose();
                 }
                 else {
@@ -103,7 +103,7 @@ class Player extends Character {
                     looseLife();
                 }
             }
-        });
+        }.bind(this));
     }
 
     // move player on game screen
@@ -133,8 +133,8 @@ class Player extends Character {
             }
         }
         // grab a fish if on same block
-        if (this.grab === false && allFish.find(a => a.x === player.x && a.y === player.y) !== undefined) {
-            let grabbedFish = allFish.find(a => a.x === player.x && a.y === player.y);
+        if (this.grab === false && allFish.find(a => a.x === this.x && a.y === this.y) !== undefined) {
+            let grabbedFish = allFish.find(a => a.x === this.x && a.y === this.y);
             this.grab = true;
             grabbedFish.grabbed = true;
             this.fish = grabbedFish;
@@ -142,7 +142,7 @@ class Player extends Character {
         }
         // pass a fish to baby penguin if beneath one without a fish
         if (this.grab === true && this.y === 1) {
-            let kidAbove = allKids.find(b => b.x === player.x);
+            let kidAbove = allKids.find(b => b.x === this.x);
             if (kidAbove.hasFish === false) {
                 babySound.play();
                 kidAbove.hasFish = true;
