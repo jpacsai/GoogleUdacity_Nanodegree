@@ -380,7 +380,7 @@ function restart() {
             heart.src = 'IMAGES/HEART.PNG';
             fragment.appendChild(heart);
         }
-        document.getElementById('life').appendChild(fragment);
+        document.querySelector('.life').appendChild(fragment);
     }
 
     // remove screen if new game initiated from there
