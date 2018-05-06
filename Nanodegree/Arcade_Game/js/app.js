@@ -176,9 +176,7 @@ class Enemy extends Character {
             this.y = Math.floor(Math.random() * (this.max - this.min + 1) + this.min);
         }
     }
-};
-
-
+}
 
 // - - - - BABY PENGUINS to feed - - - -
 class Kids extends Character {
@@ -239,21 +237,19 @@ let player = new Player('images/player.png', 3, 1);
 
 // enemies
 for (let i = 0; i < 7; i++) {
-    let enemy1 = new Enemy('images/enemy-seal.png', 'right', 2, 2, 3, 6);
+    new Enemy('images/enemy-seal.png', 'right', 2, 2, 3, 6);
 }
 let polar = new Enemy('images/polar.png', 'left', 2, 1, 2, 2);
 
 // baby penguins
 for (let j = 0; j < 7; j++) {
-    let kid = new Kids('images/baby-penguin.png', j, 0);
+    new Kids('images/baby-penguin.png', j, 0);
 }
 
 // fish
 for (let k = 0; k < 7; k++) {
-    let fish = new Fish('images/fish.png', fishX[k], Math.floor(Math.random() * (6 - 3 + 1) + 3));
+    new Fish('images/fish.png', fishX[k], Math.floor(Math.random() * (6 - 3 + 1) + 3));
 }
-
-
 
 // - - - - TIMER - - - -
 function timer() {
@@ -306,17 +302,17 @@ function start() {
     
     let firstLineText = document.createElement('H2');
     firstLineText.classList.add('instruction-first-line');
-    firstLineText.textContent = 'Collect fish for the baby penguins.'
+    firstLineText.textContent = 'Collect fish for the baby penguins.';
 
     firstLine.append(fishImage, firstLineText);
 
     let secondLine = document.createElement('H2');
     secondLine.classList.add('instruction-text');
-    secondLine.textContent = 'When all the little ones have a fish, you win!'
+    secondLine.textContent = 'When all the little ones have a fish, you win!';
 
     let thirdLine = document.createElement('H2');
     thirdLine.classList.add('instruction-text');
-    thirdLine.textContent = 'You can move with the arrow keys (← ↑ → ↓) but make sure you avoid enemies.'
+    thirdLine.textContent = 'You can move with the arrow keys (← ↑ → ↓) but make sure you avoid enemies.';
 
     instructions.append(firstLine, secondLine, thirdLine);
 
@@ -351,7 +347,7 @@ function startGame() {
     enable();
 
     // remove start screen
-    start.style.display === 'none';
+    start.style.display = 'none';
     start.remove();
 
     // start timer
@@ -399,14 +395,14 @@ function restart() {
     allEnemies.forEach(function(enemy) {
         enemy.x = enemy.direction === 1 ? enemy.direction * (Math.floor(Math.random() * 10) + 3) : (Math.floor(Math.random() * 10) + 7);
         enemy.y = Math.floor(Math.random() * (enemy.max - enemy.min + 1) + enemy.min);
-    })
+    });
     polar.x = polar.direction === 1 ? polar.direction * (Math.floor(Math.random() * 10) + 3) : (Math.floor(Math.random() * 10) + 7);
     polar.y = Math.floor(Math.random() * (polar.max - polar.min + 1) + polar.min);
 
     // reset baby penguins has fish
     allKids.forEach(function(kid) {
         kid.hasFish = false;
-    })
+    });
         
     // reset life
     let addLife = player.life === -1 ? 3 : 3 - player.life;
@@ -423,17 +419,17 @@ function restart() {
 
     // remove screen if new game initiated from there
     if (won !== undefined) {
-        won.style.display === 'none';
+        won.style.display = 'none';
         won.remove();
     }
 
     if (pauseScreen !== undefined) {
-        pauseScreen.style.display === 'none';
+        pauseScreen.style.display = 'none';
         pauseScreen.remove();
     }
 
     if (lost !== undefined) {
-        lost.style.display === 'none';
+        lost.style.display = 'none';
         lost.remove();
     }
 
@@ -493,7 +489,7 @@ function resume() {
     enable();
 
     // hide pause screen and remove
-    pauseScreen.style.display === 'none';
+    pauseScreen.style.display = 'none';
     pauseScreen.remove();
 
     // start timer again
@@ -510,7 +506,7 @@ volumeButton.onclick = function() {
         mainMusic.pause();
         allSounds.forEach(function(sound) {
             sound.muted = true;
-        })
+        });
         // change icon
         icon.replace('fa-volume-up', 'fa-volume-off');
         muted = true;
@@ -532,7 +528,7 @@ function disable() {
     // set enemies' speed to zero
     allEnemies.forEach(function(enemy){
         enemy.speed = 0;
-    })
+    });
     // remove input handler for player
     document.removeEventListener('keyup', movement);
 }
@@ -548,7 +544,7 @@ function enable() {
     // reset enemies' speed to original
     allEnemies.forEach(function(enemy){
         enemy.speed = enemy.originalSpeed;
-    })
+    });
 }
 
 // - - - - WINNER SCREEN - - - - 
@@ -595,7 +591,7 @@ function win() {
 
     // event listeners for new game button - click or keypress
     newGameButton.onclick = function(){
-        restart()
+        restart();
     };
     window.addEventListener('keypress', restart, false);
 }
