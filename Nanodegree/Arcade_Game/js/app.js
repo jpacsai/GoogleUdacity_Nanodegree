@@ -29,10 +29,27 @@ const winSound = new Audio('sounds/win.wav');
 const allSounds = [mainMusic, fishSound, hurtSound, babySound, gameOverSound, winSound];
 let muted = false;
 
+
+// - - - - CHARACTER - - - -
+// basic character class
+class Character {
+    constructor(sprite, x, y) {
+        this.x = x;
+        this.y = y;
+        this.sprite = sprite;
+    }
+
+    render() {
+        ctx.drawImage(Resources.get(this.sprite), this.x * 101, this.y * 83 - 30);
+    }
+}
+
+
 // - - - - ENEMIES - - - - 
 // our player must avoid
-class Enemy {
-    constructor(length, file, speed, min, max, direction) {
+class Enemy extends Character {
+    constructor(sprite, direction, length, speed, min, max) {
+        super(sprite);
         this.direction = direction === 'right' ? -1 : 1;
         this.x = direction === 'right' ? this.direction * (Math.floor(Math.random() * 10) + 3) : (Math.floor(Math.random() * 10) + 7);
         this.y = Math.floor(Math.random() * (max - min + 1) + min);
@@ -41,7 +58,6 @@ class Enemy {
         this.speed = speed;
         this.min = min;
         this.max = max;
-        this.sprite = file;
         allEnemies.push(this);
     }
 
@@ -54,19 +70,12 @@ class Enemy {
             this.y = Math.floor(Math.random() * (this.max - this.min + 1) + this.min);
         }
     }
-
-    // Draw the enemy on the screen
-    render() {
-        ctx.drawImage(Resources.get(this.sprite), this.x * 101, this.y * 83 - 30);
-    }
 };
 
 // - - - - PLAYER CHARACTER - - - -
-class Player {
-    constructor() {
-        this.playerImage = 'images/player.png';
-        this.x = 3;
-        this.y = 1;
+class Player extends Character {
+    constructor(sprite, x, y) {
+        super(sprite, x , y);
         this.grab = false;
         this.fish = false;
         this.life = 3;
@@ -95,11 +104,6 @@ class Player {
                 }
             }
         });
-    }
-
-    // draw player character
-    render() {
-        ctx.drawImage(Resources.get(this.playerImage), this.x * 101, this.y * 83 - 30);
     }
 
     // move player on game screen
@@ -176,20 +180,13 @@ function movement(e) {
 }
 
 // - - - - BABY PENGUINS to feed - - - -
-class Kids {
-    constructor(position) {
-        this.x = position;
-        this.y = 0;
-        this.imageFile = 'images/baby-penguin.png';
+class Kids extends Character {
+    constructor(sprite, x, y) {
+        super(sprite, x, y);
         this.hasFish = false;
         this.fishNumber = 'none';
         this.jump = false;
         allKids.push(this);
-    }
-
-    // draw baby penguins
-    render() {
-        ctx.drawImage(Resources.get(this.imageFile), this.x * 101, this.y * 83 - 30);
     }
 
     update() {
@@ -204,27 +201,19 @@ class Kids {
             this.jump = false;
         }
     }
-
-
 }
 
 // - - - - FISH to collect - - - -
-class Fish {
-    constructor(x ,y) {
+class Fish extends Character {
+    constructor(sprite, x, y) {
+        super(sprite, x, y);
         this.originalX = x;
         this.originalY = y;
         this.x = x;
         this.y = y;
-        this.imageFile = 'images/fish.png';
         this.grabbed = false;
         allFish.push(this);
     }
-
-    // draw fish
-    render() {
-        ctx.drawImage(Resources.get(this.imageFile), this.x * 101, this.y * 83 - 30);
-    }
-
 }
 
 // shuffle array to randomize fish's x position
@@ -244,22 +233,22 @@ function shuffle(array) {
 }
 
 // instantiate player character
-let player = new Player;
+let player = new Player('images/player.png', 3, 1);
 
 // instantiate enemies
 for (let i = 0; i < 7; i++) {
-    let enemy1 = new Enemy(2, 'images/enemy-seal.png', 2, 3, 6, 'right');
+    let enemy1 = new Enemy('images/enemy-seal.png', 'right', 2, 2, 3, 6);
 }
-let polar = new Enemy(2, 'images/polar.png', 1, 2, 2, 'left');
+let polar = new Enemy('images/polar.png', 'left', 2, 1, 2, 2);
 
 // instantiate baby penguins
 for (let j = 0; j < 7; j++) {
-    let kid = new Kids(j);
+    let kid = new Kids('images/baby-penguin.png', j, 0);
 }
 
 // instantiate fish
 for (let k = 0; k < 7; k++) {
-    let fish = new Fish(fishX[k], Math.floor(Math.random() * (6 - 3 + 1) + 3));
+    let fish = new Fish('images/fish.png', fishX[k], Math.floor(Math.random() * (6 - 3 + 1) + 3));
 }
 
 
