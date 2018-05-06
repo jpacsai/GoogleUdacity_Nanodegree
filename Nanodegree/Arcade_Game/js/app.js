@@ -44,34 +44,6 @@ class Character {
     }
 }
 
-
-// - - - - ENEMIES - - - - 
-// our player must avoid
-class Enemy extends Character {
-    constructor(sprite, direction, length, speed, min, max) {
-        super(sprite);
-        this.direction = direction === 'right' ? -1 : 1;
-        this.x = direction === 'right' ? this.direction * (Math.floor(Math.random() * 10) + 3) : (Math.floor(Math.random() * 10) + 7);
-        this.y = Math.floor(Math.random() * (max - min + 1) + min);
-        this.length = length;
-        this.originalSpeed = speed;
-        this.speed = speed;
-        this.min = min;
-        this.max = max;
-        allEnemies.push(this);
-    }
-
-    // Update the enemy's position
-    // Parameter: dt, a time delta between ticks
-    update(dt) {
-        this.x = (this.x + (-1 * this.direction) * this.speed * dt);
-        if (this.direction === -1 && this.x > 7 || this.direction === 1 && this.x < -2) {
-            this.x = this.direction === -1 ? this.direction * (Math.floor(Math.random() * 10) + 3) : (Math.floor(Math.random() * 12) + 9);
-            this.y = Math.floor(Math.random() * (this.max - this.min + 1) + this.min);
-        }
-    }
-};
-
 // - - - - PLAYER CHARACTER - - - -
 class Player extends Character {
     constructor(sprite, x, y) {
@@ -179,6 +151,35 @@ function movement(e) {
     player.handleInput(allowedKeys[e.keyCode]);
 }
 
+// - - - - ENEMIES - - - - 
+// our player must avoid
+class Enemy extends Character {
+    constructor(sprite, direction, length, speed, min, max) {
+        super(sprite);
+        this.direction = direction === 'right' ? -1 : 1;
+        this.x = direction === 'right' ? this.direction * (Math.floor(Math.random() * 10) + 3) : (Math.floor(Math.random() * 10) + 7);
+        this.y = Math.floor(Math.random() * (max - min + 1) + min);
+        this.length = length;
+        this.originalSpeed = speed;
+        this.speed = speed;
+        this.min = min;
+        this.max = max;
+        allEnemies.push(this);
+    }
+
+    // Update the enemy's position
+    // Parameter: dt, a time delta between ticks
+    update(dt) {
+        this.x = (this.x + (-1 * this.direction) * this.speed * dt);
+        if (this.direction === -1 && this.x > 7 || this.direction === 1 && this.x < -2) {
+            this.x = this.direction === -1 ? this.direction * (Math.floor(Math.random() * 10) + 3) : (Math.floor(Math.random() * 12) + 9);
+            this.y = Math.floor(Math.random() * (this.max - this.min + 1) + this.min);
+        }
+    }
+};
+
+
+
 // - - - - BABY PENGUINS to feed - - - -
 class Kids extends Character {
     constructor(sprite, x, y) {
@@ -232,21 +233,22 @@ function shuffle(array) {
     return array;
 }
 
-// instantiate player character
+// - - - - INSTANTIATE CHARACTERS
+// player character
 let player = new Player('images/player.png', 3, 1);
 
-// instantiate enemies
+// enemies
 for (let i = 0; i < 7; i++) {
     let enemy1 = new Enemy('images/enemy-seal.png', 'right', 2, 2, 3, 6);
 }
 let polar = new Enemy('images/polar.png', 'left', 2, 1, 2, 2);
 
-// instantiate baby penguins
+// baby penguins
 for (let j = 0; j < 7; j++) {
     let kid = new Kids('images/baby-penguin.png', j, 0);
 }
 
-// instantiate fish
+// fish
 for (let k = 0; k < 7; k++) {
     let fish = new Fish('images/fish.png', fishX[k], Math.floor(Math.random() * (6 - 3 + 1) + 3));
 }
@@ -281,53 +283,89 @@ function timer() {
 // - - - - CALL STARTER SCREEN - - - -
 start();
 
-// - - - - WINNER SCREEN - - - - 
-function win() {
-    // winner music
-    // stop main music
-    mainMusic.pause();
-    // play winner music
-    winSound.play();
-
-    // stop timer
-    clearInterval(timing);
-
-    // create winner screen
-    won = document.createElement('DIV');
-    won.classList.add('winner');
+// - - - - START SCREEN - - - - 
+function start() {
+    // CREATE START SCREEN
+    start = document.createElement('DIV');
+    start.classList.add('start');
 
     // add header
-    let wonHeader = document.createElement('H1');
-    wonHeader.classList.add('winnerHeader');
-    wonHeader.textContent = 'Congratulation!';
+    let startHeader = document.createElement('H1');
+    startHeader.classList.add('startHeader');
+    startHeader.textContent = 'How to play?';
 
     // add info about the game
-    let wonText = document.createElement('H2');
-    wonText.classList.add('winnerText');
-    let wonInfo = minCounter === 0 ? 
-        'You won in ' + secCounter + ' sec!' : 
-        'You won in ' + minCounter + ' min ' + secCounter + ' sec!';
-    wonText.textContent = wonInfo;
+    let instructions = document.createElement('DIV');
+
+    let firstLine = document.createElement('DIV');
+    firstLine.classList.add('instruction-div');
+
+    let fishImage = document.createElement('IMG');
+    fishImage.classList.add('fish');
+    fishImage.src = 'images/fish-small.png';
+    
+    let firstLineText = document.createElement('H2');
+    firstLineText.classList.add('instruction-first-line');
+    firstLineText.textContent = 'Collect fish for the baby penguins.'
+
+    firstLine.append(fishImage, firstLineText);
+
+    let secondLine = document.createElement('H2');
+    secondLine.classList.add('instruction-text');
+    secondLine.textContent = 'When all the little ones have a fish, you win!'
+
+    let thirdLine = document.createElement('H2');
+    thirdLine.classList.add('instruction-text');
+    thirdLine.textContent = 'You can move with the arrow keys (← ↑ → ↓) but make sure you avoid enemies.'
+
+    instructions.append(firstLine, secondLine, thirdLine);
 
     // add new game button
-    let newGameButton = document.createElement('DIV');
-    newGameButton.classList.add('newGameButton');
-    newGameButton.textContent = 'Play again?';
+    let startGameButton = document.createElement('DIV');
+    startGameButton.classList.add('startGameButton');
+    startGameButton.textContent = 'Start game';
 
-    // add press key comment
-    let newGameComment = document.createElement('H3');
-    newGameComment.classList.add('newGameComment');
-    newGameComment.textContent = 'or press any key';
+    // add key press comment
+    let startGameComment = document.createElement('H3');
+    startGameComment.classList.add('startGameComment');
+    startGameComment.textContent = 'or press any key';
         
-    won.append(wonHeader, wonText, newGameButton, newGameComment);
+    start.append(startHeader, instructions, startGameButton, startGameComment);
 
-    document.body.appendChild(won);  
+    document.body.appendChild(start);  
 
+    // disable movement
+    disable();
+    
     // event listeners for new game button - click or keypress
-    newGameButton.onclick = function(){
-        restart()
+    startGameButton.onclick = function() {
+        startGame();
     };
-    window.addEventListener('keypress', restart, false);
+
+    window.addEventListener('keypress', startGame, false);
+}
+
+// - - - - START GAME - - - -
+function startGame() {
+    // enable movement
+    enable();
+
+    // remove start screen
+    start.style.display === 'none';
+    start.remove();
+
+    // start timer
+    timer();
+
+    // start main music
+    mainMusic.play();
+}
+
+// - - - - LIFE COUNTER IN STAT PANEL - - - -
+function looseLife() {
+    // remove a heart image
+    let child = document.getElementsByClassName('heart')[player.life];
+    child.parentNode.removeChild(child);
 }
 
 // - - - - RESTART FUNCTION - - - -
@@ -414,84 +452,6 @@ function restart() {
     enable();
 }
 
-// - - - - VOLUME FUNCTION - - - -
-const volumeButton = document.querySelector('.volume');
-
-volumeButton.onclick = function() {
-    let icon = document.querySelector('.volume-icon').classList;
-    // if not muted pause main music and mute all sounds
-    if (muted === false) {
-        mainMusic.pause();
-        allSounds.forEach(function(sound) {
-            sound.muted = true;
-        })
-        // change icon
-        icon.replace('fa-volume-up', 'fa-volume-off');
-        muted = true;
-    }
-    // if muted start main music unmute sounds
-    else {
-        mainMusic.play();
-        allSounds.forEach(function(sound) {
-            sound.muted = false;
-        });
-        // change back icon
-        icon.replace('fa-volume-off', 'fa-volume-up');
-        muted = false;
-    }
-};
-
-// GAME OVER SCREEN
-function loose() {
-
-    // stop main music
-    mainMusic.pause();
-    // play game over sound
-    gameOverSound.play();
-    
-    // disable movement
-    disable();
-
-    // clear timer
-    clearInterval(timing);
-
-    // CREATE GAME OVER SCREEN
-    lost = document.createElement('DIV');
-    lost.classList.add('lost');
-
-    // add header
-    let lostHeader = document.createElement('H1');
-    lostHeader.classList.add('lostHeader');
-    lostHeader.textContent = 'GAME OVER';
-
-    // add new game button
-    let newGameButton = document.createElement('DIV');
-    newGameButton.classList.add('newGameButton');
-    newGameButton.textContent = 'Play again?';
-
-    // add key press comment
-    let newGameComment = document.createElement('H3');
-    newGameComment.classList.add('newGameComment');
-    newGameComment.textContent = 'or press any key';
-        
-    lost.append(lostHeader, newGameButton, newGameComment);
-
-    document.body.appendChild(lost);  
-
-    // event listeners for new game button - click or keypress
-    newGameButton.onclick = function(){
-        restart();
-    };
-    window.addEventListener('keypress', restart, false);
-}
-
-// - - - - LIFE COUNTER IN STAT PANEL - - - -
-function looseLife() {
-    // remove a heart image
-    let child = document.getElementsByClassName('heart')[player.life];
-    child.parentNode.removeChild(child);
-}
-
 // - - - - PAUSE BUTTON  - - - -
 const pauseButton = document.querySelector('.pause');
 pauseButton.onclick = function() {
@@ -540,6 +500,33 @@ function resume() {
     timer();
 }
 
+// - - - - VOLUME FUNCTION - - - -
+const volumeButton = document.querySelector('.volume');
+
+volumeButton.onclick = function() {
+    let icon = document.querySelector('.volume-icon').classList;
+    // if not muted pause main music and mute all sounds
+    if (muted === false) {
+        mainMusic.pause();
+        allSounds.forEach(function(sound) {
+            sound.muted = true;
+        })
+        // change icon
+        icon.replace('fa-volume-up', 'fa-volume-off');
+        muted = true;
+    }
+    // if muted start main music unmute sounds
+    else {
+        mainMusic.play();
+        allSounds.forEach(function(sound) {
+            sound.muted = false;
+        });
+        // change back icon
+        icon.replace('fa-volume-off', 'fa-volume-up');
+        muted = false;
+    }
+};
+
 // - - - - DISABLE movement - - - -
 function disable() {
     // set enemies' speed to zero
@@ -564,80 +551,96 @@ function enable() {
     })
 }
 
-// - - - - START SCREEN - - - - 
-function start() {
-    // CREATE START SCREEN
-    start = document.createElement('DIV');
-    start.classList.add('start');
+// - - - - WINNER SCREEN - - - - 
+function win() {
+    // winner music
+    // stop main music
+    mainMusic.pause();
+    // play winner music
+    winSound.play();
+
+    // stop timer
+    clearInterval(timing);
+
+    // create winner screen
+    won = document.createElement('DIV');
+    won.classList.add('winner');
 
     // add header
-    let startHeader = document.createElement('H1');
-    startHeader.classList.add('startHeader');
-    startHeader.textContent = 'How to play?';
+    let wonHeader = document.createElement('H1');
+    wonHeader.classList.add('winnerHeader');
+    wonHeader.textContent = 'Congratulation!';
 
     // add info about the game
-    let instructions = document.createElement('DIV');
-
-    let firstLine = document.createElement('DIV');
-    firstLine.classList.add('instruction-div');
-
-    let fishImage = document.createElement('IMG');
-    fishImage.classList.add('fish');
-    fishImage.src = 'images/fish-small.png';
-    
-    let firstLineText = document.createElement('H2');
-    firstLineText.classList.add('instruction-first-line');
-    firstLineText.textContent = 'Collect fish for the baby penguins.'
-
-    firstLine.append(fishImage, firstLineText);
-
-    let secondLine = document.createElement('H2');
-    secondLine.classList.add('instruction-text');
-    secondLine.textContent = 'When all the little ones have a fish, you win!'
-
-    let thirdLine = document.createElement('H2');
-    thirdLine.classList.add('instruction-text');
-    thirdLine.textContent = 'You can move with the arrow keys (← ↑ → ↓) but make sure you avoid enemies.'
-
-    instructions.append(firstLine, secondLine, thirdLine);
+    let wonText = document.createElement('H2');
+    wonText.classList.add('winnerText');
+    let wonInfo = minCounter === 0 ? 
+        'You won in ' + secCounter + ' sec!' : 
+        'You won in ' + minCounter + ' min ' + secCounter + ' sec!';
+    wonText.textContent = wonInfo;
 
     // add new game button
-    let startGameButton = document.createElement('DIV');
-    startGameButton.classList.add('startGameButton');
-    startGameButton.textContent = 'Start game';
+    let newGameButton = document.createElement('DIV');
+    newGameButton.classList.add('newGameButton');
+    newGameButton.textContent = 'Play again?';
 
-    // add key press comment
-    let startGameComment = document.createElement('H3');
-    startGameComment.classList.add('startGameComment');
-    startGameComment.textContent = 'or press any key';
+    // add press key comment
+    let newGameComment = document.createElement('H3');
+    newGameComment.classList.add('newGameComment');
+    newGameComment.textContent = 'or press any key';
         
-    start.append(startHeader, instructions, startGameButton, startGameComment);
+    won.append(wonHeader, wonText, newGameButton, newGameComment);
 
-    document.body.appendChild(start);  
+    document.body.appendChild(won);  
 
+    // event listeners for new game button - click or keypress
+    newGameButton.onclick = function(){
+        restart()
+    };
+    window.addEventListener('keypress', restart, false);
+}
+
+// GAME OVER SCREEN
+function loose() {
+
+    // stop main music
+    mainMusic.pause();
+    // play game over sound
+    gameOverSound.play();
+    
     // disable movement
     disable();
-    
+
+    // clear timer
+    clearInterval(timing);
+
+    // CREATE GAME OVER SCREEN
+    lost = document.createElement('DIV');
+    lost.classList.add('lost');
+
+    // add header
+    let lostHeader = document.createElement('H1');
+    lostHeader.classList.add('lostHeader');
+    lostHeader.textContent = 'GAME OVER';
+
+    // add new game button
+    let newGameButton = document.createElement('DIV');
+    newGameButton.classList.add('newGameButton');
+    newGameButton.textContent = 'Play again?';
+
+    // add key press comment
+    let newGameComment = document.createElement('H3');
+    newGameComment.classList.add('newGameComment');
+    newGameComment.textContent = 'or press any key';
+        
+    lost.append(lostHeader, newGameButton, newGameComment);
+
+    document.body.appendChild(lost);  
+
     // event listeners for new game button - click or keypress
-    startGameButton.onclick = function() {
-        startGame();
+    newGameButton.onclick = function(){
+        restart();
     };
-
-    window.addEventListener('keypress', startGame, false);
+    window.addEventListener('keypress', restart, false);
 }
 
-// - - - - START GAME - - - -
-function startGame() {
-    // enable movement
-    enable();
-
-    // remove start screen
-    start.style.display === 'none';
-    start.remove();
-
-    // start timer
-    timer();
-
-    // start main music
-    mainMusic.play();
-}
