@@ -10,6 +10,7 @@ const allFish = [];
 // counters
 let fishCounter = 0;
 let timing;
+let time = false;
 let secCounter = 0;
 let minCounter = 0;
 
@@ -254,29 +255,38 @@ for (let k = 0; k < 7; k++) {
 
 // - - - - TIMER - - - -
 function timer() {
-    timing = setInterval(function(){
-        secCounter++;
-        // add leading zero to seconds
-        if (String(secCounter).length === 1) {
-            secCounter = '0' + secCounter;
-        }
-        // if seconds reaches 60 reset seconds, increment minutes
-        if (secCounter === 60) {
-            secCounter = '00';
-            document.querySelector('.secCount').textContent = secCounter;
-            minCounter++;
-            // add leading zero to minutes
-            if (String(minCounter).length === 1) {
-                minCounter = '0' + minCounter;
+    if (time === false) {
+        time = true;
+        timing = setInterval(function(){
+            secCounter++;
+            // add leading zero to seconds
+            if (String(secCounter).length === 1) {
+                secCounter = '0' + secCounter;
             }
-            document.querySelector('.minCount').textContent = minCounter;
-        }
-        else {
-            document.querySelector('.secCount').textContent = secCounter;
-        }
-    },1000);
+            // if seconds reaches 60 reset seconds, increment minutes
+            if (secCounter === 60) {
+                secCounter = '00';
+                document.querySelector('.secCount').textContent = secCounter;
+                minCounter++;
+                // add leading zero to minutes
+                if (String(minCounter).length === 1) {
+                    minCounter = '0' + minCounter;
+                }
+                document.querySelector('.minCount').textContent = minCounter;
+            }
+            else {
+                document.querySelector('.secCount').textContent = secCounter;
+            }
+        },1000);
+    }
 }
 
+function stopTimer() {
+    if (time === true) {
+        clearInterval(timing);
+        time = false;
+    }
+}
 // - - - - CALL STARTER SCREEN - - - -
 start();
 
@@ -380,7 +390,8 @@ function restart() {
     mainMusic.play();
 
     // reset timer
-    clearInterval(timing);
+    stopTimer();
+    
     document.querySelector('.secCount').textContent = '00';
     document.querySelector('.minCount').textContent = '00';
 
@@ -455,7 +466,7 @@ pauseButton.onclick = function() {
 // - - - - PAUSE - - - 
 function pause() {
     // clear timer
-    clearInterval(timing);
+    stopTimer();
 
     // create pause screen
     pauseScreen = document.createElement('DIV');
@@ -475,7 +486,7 @@ function pause() {
     disable();
     
     // event listener to resume a game with a keypress or click
-    window.addEventListener('keypress', resume);
+    window.addEventListener('keydown', resume);
     pauseScreen.onclick = function() {
         resume();
     };
@@ -488,7 +499,6 @@ function resume() {
 
     // hide pause screen and remove
     if (pauseScreen !== undefined) {
-        console.log('pauseScreen removed');
         pauseScreen.style.display = 'none';
         pauseScreen.remove();
     }
@@ -560,7 +570,7 @@ function win() {
     winSound.play();
 
     // stop timer
-    clearInterval(timing);
+    stopTimer();
 
     // create winner screen
     won = document.createElement('DIV');
@@ -614,7 +624,7 @@ function loose() {
     disable();
 
     // clear timer
-    clearInterval(timing);
+    stopTimer();
 
     // CREATE GAME OVER SCREEN
     lost = document.createElement('DIV');
