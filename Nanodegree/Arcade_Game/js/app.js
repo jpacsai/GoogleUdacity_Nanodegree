@@ -66,7 +66,7 @@ class Player extends Character {
                 if (this.grab === true) {
                     this.fish.x = this.fish.originalX;
                     this.fish.y = this.fish.originalY;
-                    this.fih.sprite = 'images/fish.png';
+                    this.fish.sprite = 'images/fish.png';
                     this.fish.grabbed = false;
                     this.grab = false;
                 }
