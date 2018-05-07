@@ -5,10 +5,13 @@
 ### Description  
 * a game where the user has to collect items on the screen moving the main character while avoids collision with enemies
 
-### Resources:
+### Resources
 * Background: [Freepik](https://www.freepik.com/free-vector/scene-of-polar-bears-and-penguins-on-an-iceberg_1020375.htm)
 * Icons: [FontAwsome](https://fontawesome.com/v4.7.0/icons/)
 * Font: [Google Fonts](https://fonts.google.com/specimen/Mina)
+
+### Installation
+*  load index.html on to the browser
 
 ### How to Play & Rules
 * A user must move the main character with the arrow keys

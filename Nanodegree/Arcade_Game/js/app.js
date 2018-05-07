@@ -66,6 +66,7 @@ class Player extends Character {
                 if (this.grab === true) {
                     this.fish.x = this.fish.originalX;
                     this.fish.y = this.fish.originalY;
+                    this.fih.sprite = 'images/fish.png';
                     this.fish.grabbed = false;
                     this.grab = false;
                 }
@@ -202,7 +203,6 @@ class Enemy extends Character {
         this.speed = speed;
         this.min = min;
         this.max = max;
-        allEnemies.push(this);
     }
 
     // Update the enemy's position
@@ -223,7 +223,6 @@ class Kids extends Character {
         this.hasFish = false;
         this.fishNumber = 'none';
         this.jump = false;
-        allKids.push(this);
     }
 
     update() {
@@ -249,7 +248,6 @@ class Fish extends Character {
         this.x = x;
         this.y = y;
         this.grabbed = false;
-        allFish.push(this);
     }
 }
 
@@ -275,18 +273,21 @@ let player = new Player('images/player.png', 3, 1);
 
 // enemies
 for (let i = 0; i < 7; i++) {
-    new Enemy('images/enemy-seal.png', 'right', 2, 2, 3, 6);
+    let e = new Enemy('images/enemy-seal.png', 'right', 2, 2, 3, 6);
+    allEnemies.push(e);
 }
 let polar = new Enemy('images/polar.png', 'left', 2, 1, 2, 2);
 
 // baby penguins
 for (let j = 0; j < 7; j++) {
-    new Kids('images/baby-penguin.png', j, 0);
+    let k = new Kids('images/baby-penguin.png', j, 0);
+    allKids.push(k);
 }
 
 // fish
 for (let k = 0; k < 7; k++) {
-    new Fish('images/fish.png', fishX[k], Math.floor(Math.random() * (6 - 3 + 1) + 3));
+    let f = new Fish('images/fish.png', fishX[k], Math.floor(Math.random() * (6 - 3 + 1) + 3));
+    allFish.push(f);
 }
 
 // - - - - TIMER - - - -
