@@ -62,6 +62,7 @@ class Player extends Character {
                 this.x = 3;
                 this.y = 1;
                 this.life--;
+                this.sprite = 'images/player.png';
                 if (this.grab === true) {
                     this.fish.x = this.fish.originalX;
                     this.fish.y = this.fish.originalY;
@@ -83,26 +84,64 @@ class Player extends Character {
     handleInput(key) {
         if (key === 'up' && this.y - 1 > 0) {
             this.y--;
+            if (this.y === 1) {
+                this.sprite = 'images/player.png';
+            }
+            else {
+                this.sprite = 'images/player-swim-up.png';
+            }
             if (this.grab === true) {
                 this.fish.y--;
+                this.fish.sprite = 'images/fish.png';
             }
         }
         else if (key === 'down' && this.y + 1 <= Math.round(document.querySelector('canvas').height / 115)) {
             this.y++;
+            if (this.y === 2) {
+                this.sprite = 'images/player-swim-up.png';
+            }
+            else {
+                this.sprite = 'images/player-swim-down.png';
+            }
             if (this.grab === true) {
                 this.fish.y++;
+                this.fish.sprite = 'images/fish-swim-down.png'
             }
         }
         else if (key === 'left' && this.x - 1 >= 0) {
             this.x--;
+            if (this.y === 1) {
+                this.sprite = 'images/player.png';
+            }
+            else {
+                this.sprite = 'images/player-swim-left.png';
+            }
             if (this.grab === true) {
                 this.fish.x--;
+                if (this.y === 1) {
+                    this.fish.sprite = 'images/fish.png';
+                }
+                else {
+                    this.fish.sprite = 'images/fish-swim-left.png';
+                }
             }
         }
         else if (key === 'right' && this.x + 1 < Math.round(document.querySelector('canvas').width / 100)) {
             this.x++;
+            if (this.y === 1) {
+                this.sprite = 'images/player.png';
+            }
+            else {
+                this.sprite = 'images/player-swim-right.png';
+            }
             if (this.grab === true) {
                 this.fish.x++;
+                if (this.y === 1) {
+                    this.fish.sprite = 'images/fish.png';
+                }
+                else {
+                    this.fish.sprite = 'images/fish-swim-right.png';
+                }
             }
         }
         // grab a fish if on same block
@@ -139,9 +178,6 @@ class Player extends Character {
 
 // - - - - INPUT HANDLER - - - -
 // This listens for key presses and sends the keys to Player.handleInput() method
-
-
-
 function movement(e) {
     
     const allowedKeys = {
