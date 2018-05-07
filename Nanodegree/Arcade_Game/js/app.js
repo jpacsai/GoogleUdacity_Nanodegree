@@ -137,11 +137,12 @@ class Player extends Character {
 }
 
 // - - - - INPUT HANDLER - - - -
-// This listens for key presses and sends the keys to your
-// Player.handleInput() method. You don't need to modify this.
-document.addEventListener('keyup', movement);
+// This listens for key presses and sends the keys to Player.handleInput() method
+
+
 
 function movement(e) {
+    
     const allowedKeys = {
         37: 'left',
         38: 'up',
@@ -373,6 +374,8 @@ restartButton.onclick = function() {
 
 // restart function, starts a new game
 function restart() {
+    window.removeEventListener('keypress', restart);
+
     // start main music
     mainMusic.play();
 
@@ -423,11 +426,6 @@ function restart() {
         won.remove();
     }
 
-    if (pauseScreen !== undefined) {
-        pauseScreen.style.display = 'none';
-        pauseScreen.remove();
-    }
-
     if (lost !== undefined) {
         lost.style.display = 'none';
         lost.remove();
@@ -441,11 +439,11 @@ function restart() {
     player.life = 3;
     fishCounter = 0;
 
-    // start timer
-    timer();
-
     // enable movement
     enable();
+
+    // start timer
+    timer();
 }
 
 // - - - - PAUSE BUTTON  - - - -
@@ -476,21 +474,27 @@ function pause() {
     // disable movement
     disable();
     
-    // event listener to restart a game with a keypress or a click
+    // event listener to resume a game with a keypress or click
+    window.addEventListener('keypress', resume);
     pauseScreen.onclick = function() {
         resume();
     };
-    window.addEventListener('keypress', resume);
+    
 }
 
 // - - - - RESUME the game after it was paused - - - -
 function resume() {
-    // enable movement
-    enable();
+    window.removeEventListener('keypress', resume);
 
     // hide pause screen and remove
-    pauseScreen.style.display = 'none';
-    pauseScreen.remove();
+    if (pauseScreen !== undefined) {
+        console.log('pauseScreen removed');
+        pauseScreen.style.display = 'none';
+        pauseScreen.remove();
+    }
+    
+    // enable movement
+    enable();
 
     // start timer again
     timer();
@@ -595,7 +599,7 @@ function win() {
         winSound.currentTime = 0;
         restart();
     };
-    window.addEventListener('keypress', restart, false);
+    window.addEventListener('keypress', restart);
 }
 
 // GAME OVER SCREEN
@@ -641,6 +645,6 @@ function loose() {
         gameOverSound.currentTime = 0;
         restart();
     };
-    window.addEventListener('keypress', restart, false);
+    window.addEventListener('keypress', restart);
 }
 
