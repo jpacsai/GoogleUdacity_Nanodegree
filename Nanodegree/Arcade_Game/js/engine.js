@@ -189,9 +189,16 @@ var Engine = (function(global) {
         'images/water-block.png',
         'images/baby-penguin.png',
         'images/player.png',
+        'images/player-swim-up.png',
+        'images/player-swim-down.png',
+        'images/player-swim-left.png',
+        'images/player-swim-right.png',
         'images/enemy-seal.png',
         'images/polar.png',
         'images/fish.png',
+        'images/fish-swim-down.png',
+        'images/fish-swim-left.png',
+        'images/fish-swim-right.png',
         'images/fish-small.png'
     ]);
     Resources.onReady(init);
