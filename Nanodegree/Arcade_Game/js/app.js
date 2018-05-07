@@ -10,6 +10,7 @@ const allFish = [];
 // counters
 let fishCounter = 0;
 let timing;
+let time = false;
 let secCounter = 0;
 let minCounter = 0;
 
@@ -67,7 +68,7 @@ class Player extends Character {
                     this.fish.grabbed = false;
                     this.grab = false;
                 }
-                if (self.life < 0) {
+                if (this.life < 0) {
                     loose();
                 }
                 else {
@@ -137,11 +138,12 @@ class Player extends Character {
 }
 
 // - - - - INPUT HANDLER - - - -
-// This listens for key presses and sends the keys to your
-// Player.handleInput() method. You don't need to modify this.
-document.addEventListener('keyup', movement);
+// This listens for key presses and sends the keys to Player.handleInput() method
+
+
 
 function movement(e) {
+    
     const allowedKeys = {
         37: 'left',
         38: 'up',
@@ -253,29 +255,38 @@ for (let k = 0; k < 7; k++) {
 
 // - - - - TIMER - - - -
 function timer() {
-    timing = setInterval(function(){
-        secCounter++;
-        // add leading zero to seconds
-        if (String(secCounter).length === 1) {
-            secCounter = '0' + secCounter;
-        }
-        // if seconds reaches 60 reset seconds, increment minutes
-        if (secCounter === 60) {
-            secCounter = '00';
-            document.querySelector('.secCount').textContent = secCounter;
-            minCounter++;
-            // add leading zero to minutes
-            if (String(minCounter).length === 1) {
-                minCounter = '0' + minCounter;
+    if (time === false) {
+        time = true;
+        timing = setInterval(function(){
+            secCounter++;
+            // add leading zero to seconds
+            if (String(secCounter).length === 1) {
+                secCounter = '0' + secCounter;
             }
-            document.querySelector('.minCount').textContent = minCounter;
-        }
-        else {
-            document.querySelector('.secCount').textContent = secCounter;
-        }
-    },1000);
+            // if seconds reaches 60 reset seconds, increment minutes
+            if (secCounter === 60) {
+                secCounter = '00';
+                document.querySelector('.secCount').textContent = secCounter;
+                minCounter++;
+                // add leading zero to minutes
+                if (String(minCounter).length === 1) {
+                    minCounter = '0' + minCounter;
+                }
+                document.querySelector('.minCount').textContent = minCounter;
+            }
+            else {
+                document.querySelector('.secCount').textContent = secCounter;
+            }
+        },1000);
+    }
 }
 
+function stopTimer() {
+    if (time === true) {
+        clearInterval(timing);
+        time = false;
+    }
+}
 // - - - - CALL STARTER SCREEN - - - -
 start();
 
@@ -373,11 +384,14 @@ restartButton.onclick = function() {
 
 // restart function, starts a new game
 function restart() {
+    window.removeEventListener('keypress', restart);
+
     // start main music
     mainMusic.play();
 
     // reset timer
-    clearInterval(timing);
+    stopTimer();
+    
     document.querySelector('.secCount').textContent = '00';
     document.querySelector('.minCount').textContent = '00';
 
@@ -423,11 +437,6 @@ function restart() {
         won.remove();
     }
 
-    if (pauseScreen !== undefined) {
-        pauseScreen.style.display = 'none';
-        pauseScreen.remove();
-    }
-
     if (lost !== undefined) {
         lost.style.display = 'none';
         lost.remove();
@@ -441,11 +450,11 @@ function restart() {
     player.life = 3;
     fishCounter = 0;
 
-    // start timer
-    timer();
-
     // enable movement
     enable();
+
+    // start timer
+    timer();
 }
 
 // - - - - PAUSE BUTTON  - - - -
@@ -457,7 +466,7 @@ pauseButton.onclick = function() {
 // - - - - PAUSE - - - 
 function pause() {
     // clear timer
-    clearInterval(timing);
+    stopTimer();
 
     // create pause screen
     pauseScreen = document.createElement('DIV');
@@ -476,21 +485,26 @@ function pause() {
     // disable movement
     disable();
     
-    // event listener to restart a game with a keypress or a click
+    // event listener to resume a game with a keypress or click
+    window.addEventListener('keydown', resume);
     pauseScreen.onclick = function() {
         resume();
     };
-    window.addEventListener('keypress', resume);
+    
 }
 
 // - - - - RESUME the game after it was paused - - - -
 function resume() {
-    // enable movement
-    enable();
+    window.removeEventListener('keypress', resume);
 
     // hide pause screen and remove
-    pauseScreen.style.display = 'none';
-    pauseScreen.remove();
+    if (pauseScreen !== undefined) {
+        pauseScreen.style.display = 'none';
+        pauseScreen.remove();
+    }
+    
+    // enable movement
+    enable();
 
     // start timer again
     timer();
@@ -556,7 +570,7 @@ function win() {
     winSound.play();
 
     // stop timer
-    clearInterval(timing);
+    stopTimer();
 
     // create winner screen
     won = document.createElement('DIV');
@@ -595,7 +609,7 @@ function win() {
         winSound.currentTime = 0;
         restart();
     };
-    window.addEventListener('keypress', restart, false);
+    window.addEventListener('keypress', restart);
 }
 
 // GAME OVER SCREEN
@@ -610,7 +624,7 @@ function loose() {
     disable();
 
     // clear timer
-    clearInterval(timing);
+    stopTimer();
 
     // CREATE GAME OVER SCREEN
     lost = document.createElement('DIV');
@@ -641,6 +655,6 @@ function loose() {
         gameOverSound.currentTime = 0;
         restart();
     };
-    window.addEventListener('keypress', restart, false);
+    window.addEventListener('keypress', restart);
 }
 
