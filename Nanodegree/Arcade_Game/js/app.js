@@ -67,7 +67,7 @@ class Player extends Character {
                     this.fish.grabbed = false;
                     this.grab = false;
                 }
-                if (self.life < 0) {
+                if (this.life < 0) {
                     loose();
                 }
                 else {
