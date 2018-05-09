@@ -277,6 +277,7 @@ for (let i = 0; i < 7; i++) {
     allEnemies.push(e);
 }
 let polar = new Enemy('images/polar.png', 'left', 2, 1, 2, 2);
+allEnemies.push(polar);
 
 // baby penguins
 for (let j = 0; j < 7; j++) {
