@@ -1,0 +1,21 @@
+{
+  "name": "lesson_2",
+  "version": "1.0.0",
+  "description": "gulp-test",
+  "main": "gulpfile.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "GoogleUdacity_Nanodegree"
+  },
+  "keywords": [
+    "google"
+  ],
+  "author": "jpacsai",
+  "license": "ISC"
+}
