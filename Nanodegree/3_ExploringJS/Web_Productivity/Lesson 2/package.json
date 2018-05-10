@@ -21,5 +21,11 @@
   "devDependencies": {
     "gulp": "^4.0.0",
     "gulp-util": "^3.0.8"
-  }
+  },
+  "eslintConfig": {
+        "env": {
+            "browser": true,
+            "node": true
+        }
+    }
 }

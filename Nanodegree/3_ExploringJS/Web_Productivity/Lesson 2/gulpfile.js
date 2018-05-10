@@ -17,11 +17,11 @@ gulp.task('styles', function(done) {
 		.pipe(gulp.dest('./css'))
 		.pipe(browserSync.reload({
 			stream: true
-		}))
+		}));
 	done();
 });
 
 browserSync.init({
-    server: "./"
+	server: './'
 });
 browserSync.stream();
