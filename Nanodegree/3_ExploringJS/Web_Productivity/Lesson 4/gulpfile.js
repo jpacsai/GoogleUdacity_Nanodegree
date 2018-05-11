@@ -43,6 +43,7 @@ gulp.task('tests', function () {
 	gulp.src('tests/spec/extraSpec.js')
 		.pipe(jasmine({
 			integration: true,
+			keepRunner: './',
 			vendor: 'js/**/*.js'
 		}));
 });
