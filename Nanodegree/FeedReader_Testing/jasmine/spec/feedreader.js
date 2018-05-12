@@ -31,28 +31,48 @@ $(function() {
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
          */
-
+        it('URLs are not empty', function() {
+            expect(allFeeds.every(f => f.hasOwnProperty('url') === true && f.url !== '')).toBe(true);
+        });
 
         /* TODO: Write a test that loops through each feed
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
          */
+        it('has name property and not empty', function() {
+            expect(allFeeds.every(f => f.hasOwnProperty('name') === true && f.name !== '')).toBe(true);
+        })
     });
 
 
     /* TODO: Write a new test suite named "The menu" */
-
+    describe('The menu', function() {
         /* TODO: Write a test that ensures the menu element is
          * hidden by default. You'll have to analyze the HTML and
          * the CSS to determine how we're performing the
          * hiding/showing of the menu element.
          */
+        let e = document.getElementsByTagName('body')[0];
+        let menuIcon = document.querySelector('.menu-icon-link');
+
+        it('menu is hidden by default', function() {
+            expect(e.classList.contains('menu-hidden')).toBe(true);
+        });
 
          /* TODO: Write a test that ensures the menu changes
           * visibility when the menu icon is clicked. This test
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
+        it ('menu changes visibility when the menu icon is clicked', function() {
+            menuIcon.click();
+            let state1 = e.classList.contains('menu-hidden');
+            menuIcon.click();
+            let state2 = e.classList.contains('menu-hidden');
+            expect(state1 !== state2).toBe(true);
+        });
+
+    });
 
     /* TODO: Write a new test suite named "Initial Entries" */
 
