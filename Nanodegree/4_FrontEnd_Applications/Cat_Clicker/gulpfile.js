@@ -2,11 +2,12 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
 var browserSync = require('browser-sync').create();
+var babel = require('gulp-babel');
 
-gulp.task('default', ['styles', 'copy-img', 'copy-js', 'copy-html', 'browser-sync'], function() {
+gulp.task('default', ['styles', 'copy-img', 'script', 'copy-html', 'browser-sync'], function() {
 	gulp.watch('sass/**/*.scss', ['styles']);
 	gulp.watch("images/*", ['copy-img']);
-	gulp.watch("js/*", ['copy-js']);
+	gulp.watch("js/*", ['script']);
 	gulp.watch("./*.html", ['copy-html', browserSync.reload]);
 });
 
@@ -30,8 +31,11 @@ gulp.task('copy-img', function() {
 		.pipe(gulp.dest('dist/images'));
 })
 
-gulp.task('copy-js', function() {
+gulp.task('script', function() {
 	gulp.src('./js/*')
+		.pipe(babel({
+			presets: ['env']
+			}))
 		.pipe(gulp.dest('dist/js'));
 })
 
