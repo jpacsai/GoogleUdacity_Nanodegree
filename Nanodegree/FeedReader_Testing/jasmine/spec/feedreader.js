@@ -69,7 +69,7 @@ $(function() {
             let state1 = e.classList.contains('menu-hidden');
             menuIcon.click();
             let state2 = e.classList.contains('menu-hidden');
-            expect(state1 !== state2).toBe(true);
+            expect(state1 === true && state2 === false).toBe(true);
         });
 
     });
