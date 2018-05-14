@@ -4,11 +4,14 @@ var autoprefixer = require('gulp-autoprefixer');
 var browserSync = require('browser-sync').create();
 var babel = require('gulp-babel');
 
-gulp.task('default', ['styles', 'copy-img', 'script', 'copy-html', 'browser-sync'], function() {
+gulp.task('default', ['styles', 'copy-img', 'script', 'copy-html'], function() {
 	gulp.watch('sass/**/*.scss', ['styles']);
 	gulp.watch("images/*", ['copy-img']);
 	gulp.watch("js/*", ['script']);
 	gulp.watch("./*.html", ['copy-html']);
+	browserSync.init({
+		server: "./dist"
+	});
 });
 
 gulp.task('styles', function() {
@@ -30,7 +33,7 @@ gulp.task('copy-html', function() {
 gulp.task('copy-img', function() {
 	gulp.src('./images/*')
 		.pipe(gulp.dest('dist/images'));
-})
+});
 
 gulp.task('script', function() {
 	gulp.src('./js/*')
@@ -39,10 +42,4 @@ gulp.task('script', function() {
 			}))
 		.pipe(gulp.dest('dist/js'))
 		.pipe(browserSync.stream());
-})
-
-gulp.task('browser-sync', function() {
-	browserSync.init({
-		server: "./dist"
-	});
 });
