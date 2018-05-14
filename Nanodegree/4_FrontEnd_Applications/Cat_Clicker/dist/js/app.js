@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }();
 
     var cecile = new Cat('cecile', 'Cecile', 'images/cat.jpg');
-    var bertalan = new Cat('bertalan', 'Bertalan', 'images/cat.jpg');
+    var bertalan = new Cat('bertalan', 'Bertalan', 'images/cat2.jpg');
 
     var cats = Array.from(document.getElementsByClassName('cat'));
 
