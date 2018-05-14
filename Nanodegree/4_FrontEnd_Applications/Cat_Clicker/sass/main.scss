@@ -1,3 +1,5 @@
+
+
 body {
     width: 100vw;
     height: 100vh;
@@ -16,7 +18,8 @@ body {
 }
 
 .title {
-    margin-bottom: 50px;
+    font-family: Cutive, serif;
+    font-size: 2em;
 }
 
 main {
@@ -24,6 +27,8 @@ main {
     justify-content: space-around;
     align-items: center;
     flex-direction: column;
+    font-family: 'Annie Use Your Telescope', sans-serif;
+    font-size: 2em;
 }
 
 .instruction {

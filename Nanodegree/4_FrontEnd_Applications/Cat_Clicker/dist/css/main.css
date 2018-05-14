@@ -21,7 +21,8 @@ body {
           box-shadow: 0 0 20px #8d6a36; }
 
 .title {
-  margin-bottom: 50px; }
+  font-family: Cutive, serif;
+  font-size: 2em; }
 
 main {
   display: -webkit-box;
@@ -35,7 +36,9 @@ main {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
-          flex-direction: column; }
+          flex-direction: column;
+  font-family: 'Annie Use Your Telescope', sans-serif;
+  font-size: 2em; }
 
 .instruction {
   display: block; }
