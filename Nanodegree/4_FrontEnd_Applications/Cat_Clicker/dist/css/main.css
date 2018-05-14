@@ -1,4 +1,44 @@
 body {
   width: 100vw;
   height: 100vh;
-  background-image: url("../images/background.jpg"); }
+  background-image: url("../images/background.jpg");
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; }
+
+.container {
+  background-color: white;
+  width: 50vw;
+  padding: 30px 30px 50px;
+  -webkit-box-shadow: 0 0 20px #8d6a36;
+          box-shadow: 0 0 20px #8d6a36; }
+
+.title {
+  margin-bottom: 50px; }
+
+main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column; }
+
+.instruction {
+  display: block; }
+
+.cat {
+  width: 400px; }

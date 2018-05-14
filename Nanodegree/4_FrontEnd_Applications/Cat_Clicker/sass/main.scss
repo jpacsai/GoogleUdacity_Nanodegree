@@ -2,4 +2,34 @@ body {
     width: 100vw;
     height: 100vh;
     background-image: url('../images/background.jpg');
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}
+
+.container {
+    background-color: white;
+    width: 50vw;
+    padding: 30px 30px 50px;
+    box-shadow: 0 0 20px rgb(141, 106, 54);
+}
+
+.title {
+    margin-bottom: 50px;
+}
+
+main {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+.instruction {
+    display: block;
+}
+
+.cat {
+    width: 400px;
 }
