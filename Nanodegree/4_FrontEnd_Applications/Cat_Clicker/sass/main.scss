@@ -1,5 +1,58 @@
+@import "css-reset.scss";  
+
 body {
-    width: 100vw;
-    height: 100vh;
     background-image: url('../images/background.jpg');
+    text-align: center;
+    display: flex;
+    justify-content: center;  
+}
+
+.container {
+    background-color: white;
+    margin: 10vh;
+    padding: 30px;
+    box-shadow: 0 0 20px rgb(141, 106, 54);
+}
+
+.title {
+    font-family: Cutive, serif;
+    font-size: 2em;
+    margin: 20px 40px 40px;
+}
+
+.kittyContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Annie Use Your Telescope', sans-serif;
+    font-size: 2em;
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid black;
+}
+
+.instruction,
+.click-count {
+    margin: 20px;
+}
+
+.cat {
+    width: 400px;
+    margin-bottom: 20px;
+    transition: all 0.4s;
+    cursor: pointer;
+}
+
+.cat:hover {
+    filter: drop-shadow(10px 10px 10px rgba(0,0,0,0.7));
+    transform: scale(1.005);
+    transition: none;
+}
+
+.cat:active {
+    width: 400px;
+    filter: none;
+    transform: none;
+    transition: none;
 }
