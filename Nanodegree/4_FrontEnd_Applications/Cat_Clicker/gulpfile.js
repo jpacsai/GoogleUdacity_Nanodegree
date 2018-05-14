@@ -12,7 +12,7 @@ gulp.task('default', ['styles', 'copy-img', 'script', 'copy-html', 'browser-sync
 });
 
 gulp.task('styles', function() {
-	gulp.src('sass/**/*.scss')
+	gulp.src('sass/**/main.scss')
 		.pipe(sass().on('error', sass.logError))
 		.pipe(autoprefixer({
 			browsers: ['last 2 versions']
