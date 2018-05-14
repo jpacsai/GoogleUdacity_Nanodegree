@@ -33,8 +33,8 @@ document.addEventListener("DOMContentLoaded", function(){
 
             kittyContainer.append(kittyHeader, catImage, counter);
 
-            const app = document.querySelector('.container');
-            app.appendChild(kittyContainer);
+            const parent = document.querySelector('.cat-container');
+            parent.appendChild(kittyContainer);
         }
 
         clicker() {

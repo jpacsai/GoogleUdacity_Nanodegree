@@ -43,8 +43,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 kittyContainer.append(kittyHeader, catImage, counter);
 
-                var app = document.querySelector('.container');
-                app.appendChild(kittyContainer);
+                var parent = document.querySelector('.cat-container');
+                parent.appendChild(kittyContainer);
             }
         }, {
             key: 'clicker',

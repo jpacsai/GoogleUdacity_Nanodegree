@@ -47,7 +47,6 @@ table {
 
 body {
   width: 100vw;
-  height: 100vh;
   background-image: url("../images/background.jpg");
   text-align: center;
   display: -webkit-box;
@@ -55,22 +54,19 @@ body {
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center; }
+          justify-content: center; }
 
 .container {
   background-color: white;
-  width: 50vw;
-  padding: 30px 30px 50px;
+  margin: 10vh;
+  padding: 30px;
   -webkit-box-shadow: 0 0 20px #8d6a36;
           box-shadow: 0 0 20px #8d6a36; }
 
 .title {
   font-family: Cutive, serif;
   font-size: 2em;
-  margin: 20px; }
+  margin: 20px 40px 40px; }
 
 .kittyContainer {
   display: -webkit-box;
@@ -86,7 +82,10 @@ body {
       -ms-flex-direction: column;
           flex-direction: column;
   font-family: 'Annie Use Your Telescope', sans-serif;
-  font-size: 2em; }
+  font-size: 2em;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid black; }
 
 .instruction,
 .click-count {
