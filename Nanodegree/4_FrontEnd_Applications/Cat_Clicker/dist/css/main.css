@@ -103,4 +103,15 @@ main {
   -webkit-filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.7));
           filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.7));
   -webkit-transform: scale(1.005);
-          transform: scale(1.005); }
+          transform: scale(1.005);
+  -webkit-transition: none;
+  transition: none; }
+
+.cat:active {
+  width: 400px;
+  -webkit-filter: none;
+          filter: none;
+  -webkit-transform: none;
+          transform: none;
+  -webkit-transition: none;
+  transition: none; }

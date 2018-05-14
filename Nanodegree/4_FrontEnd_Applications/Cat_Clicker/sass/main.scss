@@ -47,4 +47,12 @@ main {
 .cat:hover {
     filter: drop-shadow(10px 10px 10px rgba(0,0,0,0.7));
     transform: scale(1.005);
+    transition: none;
+}
+
+.cat:active {
+    width: 400px;
+    filter: none;
+    transform: none;
+    transition: none;
 }
