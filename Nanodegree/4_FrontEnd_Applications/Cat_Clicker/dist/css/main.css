@@ -46,7 +46,6 @@ table {
   border-spacing: 0; }
 
 body {
-  width: 100vw;
   background-image: url("../images/background.jpg");
   text-align: center;
   display: -webkit-box;
