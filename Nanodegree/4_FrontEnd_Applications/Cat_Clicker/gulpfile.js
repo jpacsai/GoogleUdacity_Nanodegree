@@ -8,7 +8,7 @@ gulp.task('default', ['styles', 'copy-img', 'script', 'copy-html', 'browser-sync
 	gulp.watch('sass/**/*.scss', ['styles']);
 	gulp.watch("images/*", ['copy-img']);
 	gulp.watch("js/*", ['script']);
-	gulp.watch("./*.html", ['copy-html', browserSync.reload]);
+	gulp.watch("./*.html", ['copy-html']);
 });
 
 gulp.task('styles', function() {
@@ -23,7 +23,8 @@ gulp.task('styles', function() {
 
 gulp.task('copy-html', function() {
 	gulp.src('./index.html')
-		.pipe(gulp.dest('./dist'));
+		.pipe(gulp.dest('./dist'))
+		.pipe(browserSync.stream());
 });
 
 gulp.task('copy-img', function() {
@@ -36,7 +37,8 @@ gulp.task('script', function() {
 		.pipe(babel({
 			presets: ['env']
 			}))
-		.pipe(gulp.dest('dist/js'));
+		.pipe(gulp.dest('dist/js'))
+		.pipe(browserSync.stream());
 })
 
 gulp.task('browser-sync', function() {
