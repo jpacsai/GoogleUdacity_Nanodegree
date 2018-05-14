@@ -1,4 +1,4 @@
-
+@import "css-reset.scss";  
 
 body {
     width: 100vw;
@@ -20,6 +20,7 @@ body {
 .title {
     font-family: Cutive, serif;
     font-size: 2em;
+    margin: 20px;
 }
 
 main {
@@ -31,10 +32,19 @@ main {
     font-size: 2em;
 }
 
-.instruction {
-    display: block;
+.instruction,
+.click-count {
+    margin: 20px;
 }
 
 .cat {
     width: 400px;
+    margin-bottom: 20px;
+    transition: all 0.4s;
+    cursor: pointer;
+}
+
+.cat:hover {
+    filter: drop-shadow(10px 10px 10px rgba(0,0,0,0.7));
+    transform: scale(1.005);
 }
