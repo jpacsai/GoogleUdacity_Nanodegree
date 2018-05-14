@@ -72,7 +72,7 @@ body {
   font-size: 2em;
   margin: 20px; }
 
-main {
+.kittyContainer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
