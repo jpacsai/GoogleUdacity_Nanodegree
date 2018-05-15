@@ -1,5 +1,6 @@
 @import "css-reset.scss";  
 
+
 body {
     background-image: url('../images/background.jpg');
     text-align: center;
@@ -9,9 +10,13 @@ body {
 
 .container {
     background-color: white;
-    margin: 10vh;
-    padding: 30px;
+    max-width: 90vw;
+    margin: 5vh auto;
+    padding: 10px;
     box-shadow: 0 0 20px rgb(141, 106, 54);
+    display: flex;
+        justify-content: center;
+        flex-direction: column;
 }
 
 .title {
@@ -28,7 +33,7 @@ body {
     font-family: 'Annie Use Your Telescope', sans-serif;
     font-size: 2em;
     margin: 20px;
-    padding: 20px;
+    padding: 5%;
     border: 1px solid black;
 }
 
@@ -38,7 +43,9 @@ body {
 }
 
 .cat {
-    width: 400px;
+    width: 50vw;
+    min-width: 210px;
+    max-width: 400px;
     margin-bottom: 20px;
     transition: all 0.4s;
     cursor: pointer;
@@ -51,8 +58,9 @@ body {
 }
 
 .cat:active {
-    width: 400px;
+    transform: scale(0.995);
     filter: none;
-    transform: none;
     transition: none;
 }
+
+@import "media.scss";

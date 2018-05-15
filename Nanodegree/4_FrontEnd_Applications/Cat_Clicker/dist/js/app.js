@@ -25,7 +25,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 var kittyHeader = document.createElement('H3');
                 kittyHeader.classList.add('instruction');
-                kittyHeader.textContent = 'Click on ' + this.name + '!';
+                kittyHeader.setAttribute('style', 'white-space: pre;');
+                kittyHeader.textContent = 'Click on\r\n';
+                kittyHeader.textContent += this.name + '!';
 
                 var catImage = document.createElement('IMG');
                 catImage.classList.add('cat');
