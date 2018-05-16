@@ -1,11 +1,11 @@
 document.addEventListener("DOMContentLoaded", function(){
+
     class Cat {
         constructor (id, name, url) {
             this.id = id;
             this.name = name;
             this.url = url;
             this.click = 0;
-            this.create();
         }
 
         create() {
@@ -37,30 +37,49 @@ document.addEventListener("DOMContentLoaded", function(){
 
             const parent = document.querySelector('.cat-container');
             parent.appendChild(kittyContainer);
-        }
-
-        clicker() {
+        };
+        
+        clicker(event) {
             this.click++;
         }
     }
 
-    let cecile = new Cat('cecile', 'Cecile', 'images/cat.jpg');
-    let bertalan = new Cat('bertalan', 'Bertalan', 'images/cat2.jpg');
+    (function instantiateCats() {
+        let cecile = new Cat('cecile', 'Cecile', 'images/cat1.jpg');
+        let bertalan = new Cat('bertalan', 'Bertalan', 'images/cat2.jpg');
+        let cats = [cecile, bertalan];
 
-    let cats = Array.from(document.getElementsByClassName('cat'));
+        createList(cats);
 
-    for (let c in cats) {
-        cats[c].onclick = function(event) {
-            catClicked(event);
-        };
+        let catNames = Array.from(document.getElementsByClassName('cat-list-element'));
+        
+        for (let i in catNames) {
+            catNames[i].onclick = function(event) {
+                catSelector(event, cats);
+            };
+        }
+    })();
+    
+    function createList(cats) {
+        var d = document.createDocumentFragment();
+        for (let c in cats) {
+            let li = document.createElement('LI');
+            li.classList.add('cat-list-element');
+            li.textContent = cats[c].name;
+            d.appendChild(li);
+        }
+        document.querySelector('.name-list').appendChild(d);
     }
 
-    function catClicked(event){
-        let element = event.target.parentElement;
-        let obj = eval(element.id);
-        obj.clicker();
-        element.lastChild.lastChild.textContent = obj.click;
+    function catSelector(event, cats) {
+        document.querySelector('.cat-container').innerHTML = '';
+        let element = event.target.textContent;
+        let obj = cats.find(x => x.name === element);
+        obj.create();
         
-    };
-
+        document.querySelector('.cat').onclick = function(event) {
+            obj.clicker();
+            event.target.parentNode.lastChild.lastChild.textContent = obj.click;
+        };
+    }
 });
