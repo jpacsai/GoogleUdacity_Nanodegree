@@ -13,7 +13,6 @@ document.addEventListener("DOMContentLoaded", function () {
             this.name = name;
             this.url = url;
             this.click = 0;
-            this.create();
         }
 
         _createClass(Cat, [{
@@ -50,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }, {
             key: 'clicker',
-            value: function clicker() {
+            value: function clicker(event) {
                 this.click++;
             }
         }]);
@@ -62,12 +61,14 @@ document.addEventListener("DOMContentLoaded", function () {
         var cecile = new Cat('cecile', 'Cecile', 'images/cat1.jpg');
         var bertalan = new Cat('bertalan', 'Bertalan', 'images/cat2.jpg');
         var cats = [cecile, bertalan];
+
         createList(cats);
 
-        var catImages = Array.from(document.getElementsByClassName('cat'));
-        for (var i in catImages) {
-            catImages[i].onclick = function (event) {
-                catClicked(event, cats);
+        var catNames = Array.from(document.getElementsByClassName('cat-list-element'));
+
+        for (var i in catNames) {
+            catNames[i].onclick = function (event) {
+                catSelector(event, cats);
             };
         }
     })();
@@ -83,12 +84,17 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector('.name-list').appendChild(d);
     }
 
-    function catClicked(event, cats) {
-        var element = event.target.parentElement;
+    function catSelector(event, cats) {
+        document.querySelector('.cat-container').innerHTML = '';
+        var element = event.target.textContent;
         var obj = cats.find(function (x) {
-            return x.id === element.id;
+            return x.name === element;
         });
-        obj.clicker();
-        element.lastChild.lastChild.textContent = obj.click;
-    };
+        obj.create();
+
+        document.querySelector('.cat').onclick = function (event) {
+            obj.clicker();
+            event.target.parentNode.lastChild.lastChild.textContent = obj.click;
+        };
+    }
 });
