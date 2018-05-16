@@ -178,7 +178,12 @@ body {
   font-size: 2em; }
 
 .cat-list-element {
-  margin: 5px auto 5px 20px; }
+  margin: 5px auto 5px 20px;
+  cursor: pointer; }
+
+.cat-list-element:hover,
+.cat-list-element:active {
+  background-color: #ddb17a; }
 
 .cat-list-visible {
   display: block; }
