@@ -44,10 +44,12 @@ The top 10% in the program earn an additional 6-month scholarship to one of four
 - **2.&nbsp;Web Programming with JavaScript:**
      - [Memory Game](https://jpacsai.github.io/GoogleUdacity_Nanodegree/Nanodegree/Memory_Game/)  
 - **3.&nbsp;Exploring JS - Objects, Tools and Testing**
-     - Classic Arcade Game clone
+     - [Classic Arcade Game clone](https://jpacsai.github.io/GoogleUdacity_Nanodegree/Nanodegree/Arcade_Game/)
      - Feed Reader testing
 - **4.&nbsp;Front End Applications:**
+     - [Cat Clicker](https://jpacsai.github.io/GoogleUdacity_Nanodegree/Nanodegree/4_FrontEnd_Applications/Cat_Clicker/dist/)
+     - Cat Clicker - Premium
      - Restaurant Reviews App
 - **5.&nbsp;Building with React:**
      - MyReads -a book tracking app
-     - Neighbour Map  
+     - Neighbour Map
