@@ -58,30 +58,36 @@ document.addEventListener("DOMContentLoaded", function () {
         return Cat;
     }();
 
-    var cecile = new Cat('cecile', 'Cecile', 'images/cat1.jpg');
-    var bertalan = new Cat('bertalan', 'Bertalan', 'images/cat2.jpg');
+    (function instantiateCats() {
+        var cecile = new Cat('cecile', 'Cecile', 'images/cat1.jpg');
+        var bertalan = new Cat('bertalan', 'Bertalan', 'images/cat2.jpg');
+        var cats = [cecile, bertalan];
+        createList(cats);
 
-    var cats = Array.from(document.getElementsByClassName('cat'));
-    var list = document.querySelector('.name-list');
-    var d = document.createDocumentFragment();
+        var catImages = Array.from(document.getElementsByClassName('cat'));
+        for (var i in catImages) {
+            catImages[i].onclick = function (event) {
+                catClicked(event, cats);
+            };
+        }
+    })();
 
-    for (var c in cats) {
-
-        cats[c].onclick = function (event) {
-            catClicked(event);
-        };
-        //console.log(cats[c].parentElement.classList[1]);
-        var li = document.createElement('LI');
-        li.classList.add('cat-list-element');
-        li.textContent = cats[c].parentElement.classList[1];
-        d.appendChild(li);
+    function createList(cats) {
+        var d = document.createDocumentFragment();
+        for (var c in cats) {
+            var li = document.createElement('LI');
+            li.classList.add('cat-list-element');
+            li.textContent = cats[c].name;
+            d.appendChild(li);
+        }
+        document.querySelector('.name-list').appendChild(d);
     }
 
-    list.appendChild(d);
-
-    function catClicked(event) {
+    function catClicked(event, cats) {
         var element = event.target.parentElement;
-        var obj = eval(element.id);
+        var obj = cats.find(function (x) {
+            return x.id === element.id;
+        });
         obj.clicker();
         element.lastChild.lastChild.textContent = obj.click;
     };

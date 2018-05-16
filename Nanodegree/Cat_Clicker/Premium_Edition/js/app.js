@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function(){
+
     class Cat {
         constructor (id, name, url) {
             this.id = id;
@@ -44,33 +45,36 @@ document.addEventListener("DOMContentLoaded", function(){
         }
     }
 
-    let cecile = new Cat('cecile', 'Cecile', 'images/cat1.jpg');
-    let bertalan = new Cat('bertalan', 'Bertalan', 'images/cat2.jpg');
+    (function instantiateCats () {
+        let cecile = new Cat('cecile', 'Cecile', 'images/cat1.jpg');
+        let bertalan = new Cat('bertalan', 'Bertalan', 'images/cat2.jpg');
+        let cats = [cecile, bertalan];
+        createList(cats);
 
-    let cats = Array.from(document.getElementsByClassName('cat'));
-    let list = document.querySelector('.name-list');
-    var d = document.createDocumentFragment();
+        let catImages = Array.from(document.getElementsByClassName('cat'));
+        for (let i in catImages) {
+            catImages[i].onclick = function(event) {
+                catClicked(event, cats);
+            };
+        }
+    })();
     
-    for (let c in cats) {
-        
-        cats[c].onclick = function(event) {
-            catClicked(event);
-        };
-        //console.log(cats[c].parentElement.classList[1]);
-        let li = document.createElement('LI');
-        li.classList.add('cat-list-element');
-        li.textContent = cats[c].parentElement.classList[1];
-        d.appendChild(li);
+
+    function createList (cats) {
+        var d = document.createDocumentFragment();
+        for (let c in cats) {
+            let li = document.createElement('LI');
+            li.classList.add('cat-list-element');
+            li.textContent = cats[c].name;
+            d.appendChild(li);
+        }
+        document.querySelector('.name-list').appendChild(d);
     }
 
-    list.appendChild(d);
-
-    function catClicked(event){
+    function catClicked(event, cats){
         let element = event.target.parentElement;
-        let obj = eval(element.id);
+        let obj = cats.find(x => x.id === element.id);
         obj.clicker();
         element.lastChild.lastChild.textContent = obj.click;
-        
     };
-
 });
