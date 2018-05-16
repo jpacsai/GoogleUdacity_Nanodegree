@@ -1,0 +1,25 @@
+@media screen and (min-width: 700px) {
+    .title {
+        margin-bottom: 20px;
+    }
+    
+	.container {
+        padding: 30px;
+    }
+
+    .cat-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: 80vw;
+    }
+
+	.kittyContainer {
+        padding: 2%;
+    }
+
+    .cat {
+        width: 29vw;
+        min-width: 200px;
+    }
+}
