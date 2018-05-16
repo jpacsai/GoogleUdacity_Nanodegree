@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function(){
         }
     }
 
-    let cecile = new Cat('cecile', 'Cecile', 'images/cat.jpg');
+    let cecile = new Cat('cecile', 'Cecile', 'images/cat1.jpg');
     let bertalan = new Cat('bertalan', 'Bertalan', 'images/cat2.jpg');
 
     let cats = Array.from(document.getElementsByClassName('cat'));
