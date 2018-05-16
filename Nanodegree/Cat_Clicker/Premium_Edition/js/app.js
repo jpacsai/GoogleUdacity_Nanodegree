@@ -48,12 +48,22 @@ document.addEventListener("DOMContentLoaded", function(){
     let bertalan = new Cat('bertalan', 'Bertalan', 'images/cat2.jpg');
 
     let cats = Array.from(document.getElementsByClassName('cat'));
-
+    let list = document.querySelector('.name-list');
+    var d = document.createDocumentFragment();
+    
     for (let c in cats) {
+        
         cats[c].onclick = function(event) {
             catClicked(event);
         };
+        //console.log(cats[c].parentElement.classList[1]);
+        let li = document.createElement('LI');
+        li.classList.add('cat-list-element');
+        li.textContent = cats[c].parentElement.classList[1];
+        d.appendChild(li);
     }
+
+    list.appendChild(d);
 
     function catClicked(event){
         let element = event.target.parentElement;

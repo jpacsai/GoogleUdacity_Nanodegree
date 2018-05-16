@@ -58,16 +58,26 @@ document.addEventListener("DOMContentLoaded", function () {
         return Cat;
     }();
 
-    var cecile = new Cat('cecile', 'Cecile', 'images/cat.jpg');
+    var cecile = new Cat('cecile', 'Cecile', 'images/cat1.jpg');
     var bertalan = new Cat('bertalan', 'Bertalan', 'images/cat2.jpg');
 
     var cats = Array.from(document.getElementsByClassName('cat'));
+    var list = document.querySelector('.name-list');
+    var d = document.createDocumentFragment();
 
     for (var c in cats) {
+
         cats[c].onclick = function (event) {
             catClicked(event);
         };
+        //console.log(cats[c].parentElement.classList[1]);
+        var li = document.createElement('LI');
+        li.classList.add('cat-list-element');
+        li.textContent = cats[c].parentElement.classList[1];
+        d.appendChild(li);
     }
+
+    list.appendChild(d);
 
     function catClicked(event) {
         var element = event.target.parentElement;
