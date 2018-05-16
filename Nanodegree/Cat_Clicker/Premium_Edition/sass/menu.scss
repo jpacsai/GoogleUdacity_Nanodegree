@@ -31,13 +31,17 @@
 
 .cat-list {
     text-align: left;
-    height: 140px;
+    max-height: 140px;
     background-color: bisque;
-    padding: 0 20px 20px;
+    padding: 5px 20px;
     font-family: 'Annie Use Your Telescope', sans-serif;
     font-size: 2em;
 }
 
 .cat-list-element {
     margin: 5px auto 5px 20px;
+}
+
+.cat-list-visible {
+    display: block;
 }
