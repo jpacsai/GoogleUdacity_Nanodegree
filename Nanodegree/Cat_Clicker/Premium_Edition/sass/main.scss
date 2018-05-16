@@ -15,8 +15,8 @@ body {
     padding: 10px;
     box-shadow: 0 0 20px rgb(141, 106, 54);
     display: flex;
-        justify-content: center;
-        flex-direction: column;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .title {
@@ -63,4 +63,5 @@ body {
     transition: none;
 }
 
+@import 'menu.scss';
 @import "media.scss";
