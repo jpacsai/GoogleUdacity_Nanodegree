@@ -6,8 +6,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 /* TO-DO: 
  - [ ] hide / unhide cat name list by click on the button
- - [ ] display selected name next to button
- - [ ] add more cats
+ - [x] display selected name next to button
+ - [x] add more cats
  - [x] highlight selected cat in list
 */
 
@@ -113,6 +113,8 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         };
         event.target.classList.add('selected-cat');
+
+        document.querySelector('.cat-select').textContent = event.target.textContent;
 
         document.querySelector('.cat').onclick = function (event) {
             obj.clicker();
