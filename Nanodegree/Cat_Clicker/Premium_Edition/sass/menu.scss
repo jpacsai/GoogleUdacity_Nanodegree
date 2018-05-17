@@ -39,10 +39,12 @@
 }
 
 .cat-list-element {
-    margin: 5px auto 5px 20px;
+    margin: 5px;
     cursor: pointer;
+    text-align: center;
 }
 
+.drop-btn:hover,
 .cat-list-element:hover,
 .cat-list-element:active {
     background-color: rgb(221, 177, 122);

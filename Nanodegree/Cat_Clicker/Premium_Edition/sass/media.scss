@@ -5,6 +5,7 @@
     
 	.container {
         padding: 30px;
+        margin: 0;
     }
 
     .cat-container {
@@ -12,7 +13,7 @@
         flex-wrap: wrap;
         justify-content: space-around;
         max-width: 80vw;
-        margin: 20px;
+        margin: 0;
     }
 
 	.kittyContainer {
@@ -20,7 +21,7 @@
     }
 
     .cat {
-        width: 29vw;
         min-width: 200px;
+        margin: 20px;
     }
 }

@@ -178,9 +178,11 @@ body {
   font-size: 2em; }
 
 .cat-list-element {
-  margin: 5px auto 5px 20px;
-  cursor: pointer; }
+  margin: 5px;
+  cursor: pointer;
+  text-align: center; }
 
+.drop-btn:hover,
 .cat-list-element:hover,
 .cat-list-element:active {
   background-color: #ddb17a; }
@@ -192,7 +194,8 @@ body {
   .title {
     margin-bottom: 20px; }
   .container {
-    padding: 30px; }
+    padding: 30px;
+    margin: 0; }
   .cat-container {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -202,9 +205,9 @@ body {
     -ms-flex-pack: distribute;
         justify-content: space-around;
     max-width: 80vw;
-    margin: 20px; }
+    margin: 0; }
   .kittyContainer {
     padding: 2%; }
   .cat {
-    width: 29vw;
-    min-width: 200px; } }
+    min-width: 200px;
+    margin: 20px; } }
