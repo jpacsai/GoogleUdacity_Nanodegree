@@ -59,8 +59,10 @@ document.addEventListener("DOMContentLoaded", function(){
         let mirtill = new Cat('mirtill', 'Mirtill', 'images/cat4.jpg');
         let misi = new Cat('misi', 'Misi', 'images/cat5.jpg');
         let johnny = new Cat('johnny', 'Johnny', 'images/cat6.jpg');
+        let bella = new Cat('bella', 'Bella', 'images/cat7.jpg');
+        let mici = new Cat('mici', 'Mici', 'images/cat8.jpg');
 
-        let cats = [cecile, bertalan, liuka, mirtill, misi, johnny];
+        let cats = [cecile, bertalan, liuka, mirtill, misi, johnny, bella, mici];
 
         createList(cats);
 
