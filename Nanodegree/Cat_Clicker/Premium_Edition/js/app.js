@@ -2,7 +2,7 @@
  - [ ] hide / unhide cat name list by click on the button
  - [ ] display selected name next to button
  - [ ] add more cats
- - [ ] highlight selected cat in list
+ - [x] highlight selected cat in list
 */
 
 
@@ -55,7 +55,12 @@ document.addEventListener("DOMContentLoaded", function(){
     (function instantiateCats() {
         let cecile = new Cat('cecile', 'Cecile', 'images/cat1.jpg');
         let bertalan = new Cat('bertalan', 'Bertalan', 'images/cat2.jpg');
-        let cats = [cecile, bertalan];
+        let liuka = new Cat('liuka', 'Liuka', 'images/cat3.jpg');
+        let mirtill = new Cat('mirtill', 'Mirtill', 'images/cat4.jpg');
+        let misi = new Cat('misi', 'Misi', 'images/cat5.jpg');
+        let johnny = new Cat('johnny', 'Johnny', 'images/cat6.jpg');
+
+        let cats = [cecile, bertalan, liuka, mirtill, misi, johnny];
 
         createList(cats);
 
