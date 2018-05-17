@@ -1,6 +1,7 @@
 $tumbleweed: #ddb17a;
 
 .menu {
+    position: relative;
     margin: 0 20px;
 }
 
@@ -32,15 +33,19 @@ $tumbleweed: #ddb17a;
 }
 
 .cat-list {
+    position: absolute;
+    z-index: 10;
     display: none;
     text-align: left;
-    max-height: 140px;
+    box-sizing: border-box;
+    width: 100%;
+    max-height: 120px;
     background-color: bisque;
     padding: 5px 20px;
     font-family: 'Annie Use Your Telescope', sans-serif;
     font-size: 2em;
     overflow: scroll;
-    overflow-x:hidden;
+    overflow-x: hidden;
 }
 
 .cat-list::-webkit-scrollbar {

@@ -127,6 +127,7 @@ body {
   transition: none; }
 
 .menu {
+  position: relative;
   margin: 0 20px; }
 
 .menu-btn {
@@ -170,9 +171,14 @@ body {
   cursor: pointer; }
 
 .cat-list {
+  position: absolute;
+  z-index: 10;
   display: none;
   text-align: left;
-  max-height: 140px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+  max-height: 120px;
   background-color: bisque;
   padding: 5px 20px;
   font-family: 'Annie Use Your Telescope', sans-serif;
