@@ -4,6 +4,13 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+/* TO-DO: 
+ - [ ] hide / unhide cat name list by click on the button
+ - [ ] display selected name next to button
+ - [ ] add more cats
+ - [ ] highlight selected cat in list
+*/
+
 document.addEventListener("DOMContentLoaded", function () {
     var Cat = function () {
         function Cat(id, name, url) {
@@ -91,6 +98,14 @@ document.addEventListener("DOMContentLoaded", function () {
             return x.name === element;
         });
         obj.create();
+
+        var all = Array.from(document.getElementsByClassName('cat-list-element'));
+        for (var a in all) {
+            if (all[a].classList.contains('selected-cat') === true) {
+                all[a].classList.remove('selected-cat');
+            }
+        };
+        event.target.classList.add('selected-cat');
 
         document.querySelector('.cat').onclick = function (event) {
             obj.clicker();

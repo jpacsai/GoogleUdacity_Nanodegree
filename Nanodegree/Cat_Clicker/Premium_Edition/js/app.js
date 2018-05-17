@@ -1,3 +1,11 @@
+/* TO-DO: 
+ - [ ] hide / unhide cat name list by click on the button
+ - [ ] display selected name next to button
+ - [ ] add more cats
+ - [ ] highlight selected cat in list
+*/
+
+
 document.addEventListener("DOMContentLoaded", function(){
 
     class Cat {
@@ -76,7 +84,15 @@ document.addEventListener("DOMContentLoaded", function(){
         let element = event.target.textContent;
         let obj = cats.find(x => x.name === element);
         obj.create();
-        
+
+        let all = Array.from(document.getElementsByClassName('cat-list-element'));
+        for (let a in all) {
+            if (all[a].classList.contains('selected-cat') === true) {
+                all[a].classList.remove('selected-cat'); 
+            }
+        };
+        event.target.classList.add('selected-cat');
+
         document.querySelector('.cat').onclick = function(event) {
             obj.clicker();
             event.target.parentNode.lastChild.lastChild.textContent = obj.click;

@@ -170,6 +170,7 @@ body {
   cursor: pointer; }
 
 .cat-list {
+  display: none;
   text-align: left;
   max-height: 140px;
   background-color: bisque;
@@ -182,6 +183,7 @@ body {
   cursor: pointer;
   text-align: center; }
 
+.selected-cat,
 .drop-btn:hover,
 .cat-list-element:hover,
 .cat-list-element:active {
