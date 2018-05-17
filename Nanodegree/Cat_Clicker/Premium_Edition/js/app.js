@@ -95,16 +95,22 @@ document.addEventListener("DOMContentLoaded", function(){
         let all = Array.from(document.getElementsByClassName('cat-list-element'));
         for (let a in all) {
             if (all[a].classList.contains('selected-cat') === true) {
-                all[a].classList.remove('selected-cat'); 
+                all[a].classList.remove('selected-cat');
             }
         };
         event.target.classList.add('selected-cat');
 
-        document.querySelector('.cat-select').textContent = event.target.textContent
+        document.querySelector('.cat-select').textContent = event.target.textContent;
+
+        document.querySelector('.cat-list').classList.remove('cat-list-visible'); 
 
         document.querySelector('.cat').onclick = function(event) {
             obj.clicker();
             event.target.parentNode.lastChild.lastChild.textContent = obj.click;
         };
     }
+
+    document.querySelector('.drop-btn').onclick = function() {
+        document.querySelector('.cat-list').classList.toggle("cat-list-visible");
+    };
 });

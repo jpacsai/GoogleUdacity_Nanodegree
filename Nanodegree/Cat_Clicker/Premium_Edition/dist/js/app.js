@@ -116,9 +116,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
         document.querySelector('.cat-select').textContent = event.target.textContent;
 
+        document.querySelector('.cat-list').classList.remove('cat-list-visible');
+
         document.querySelector('.cat').onclick = function (event) {
             obj.clicker();
             event.target.parentNode.lastChild.lastChild.textContent = obj.click;
         };
     }
+
+    document.querySelector('.drop-btn').onclick = function () {
+        document.querySelector('.cat-list').classList.toggle("cat-list-visible");
+    };
 });
