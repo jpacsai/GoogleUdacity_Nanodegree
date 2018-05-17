@@ -60,7 +60,14 @@ document.addEventListener("DOMContentLoaded", function () {
     (function instantiateCats() {
         var cecile = new Cat('cecile', 'Cecile', 'images/cat1.jpg');
         var bertalan = new Cat('bertalan', 'Bertalan', 'images/cat2.jpg');
-        var cats = [cecile, bertalan];
+        var liuka = new Cat('liuka', 'Liuka', 'images/cat3.jpg');
+        var mirtill = new Cat('mirtill', 'Mirtill', 'images/cat4.jpg');
+        var misi = new Cat('misi', 'Misi', 'images/cat5.jpg');
+        var johnny = new Cat('johnny', 'Johnny', 'images/cat6.jpg');
+        var bella = new Cat('bella', 'Bella', 'images/cat7.jpg');
+        var mici = new Cat('mici', 'Mici', 'images/cat8.jpg');
+
+        var cats = [cecile, bertalan, liuka, mirtill, misi, johnny, bella, mici];
 
         createList(cats);
 
@@ -92,9 +99,25 @@ document.addEventListener("DOMContentLoaded", function () {
         });
         obj.create();
 
+        var all = Array.from(document.getElementsByClassName('cat-list-element'));
+        for (var a in all) {
+            if (all[a].classList.contains('selected-cat') === true) {
+                all[a].classList.remove('selected-cat');
+            }
+        };
+        event.target.classList.add('selected-cat');
+
+        document.querySelector('.cat-select').textContent = event.target.textContent;
+
+        document.querySelector('.cat-list').classList.remove('cat-list-visible');
+
         document.querySelector('.cat').onclick = function (event) {
             obj.clicker();
             event.target.parentNode.lastChild.lastChild.textContent = obj.click;
         };
     }
+
+    document.querySelector('.drop-btn').onclick = function () {
+        document.querySelector('.cat-list').classList.toggle("cat-list-visible");
+    };
 });
