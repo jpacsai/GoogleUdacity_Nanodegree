@@ -176,7 +176,18 @@ body {
   background-color: bisque;
   padding: 5px 20px;
   font-family: 'Annie Use Your Telescope', sans-serif;
-  font-size: 2em; }
+  font-size: 2em;
+  overflow: scroll;
+  overflow-x: hidden; }
+
+.cat-list::-webkit-scrollbar {
+  width: 0.2em; }
+
+.cat-list::-webkit-scrollbar-track {
+  border: 1px solid #ddb17a; }
+
+.cat-list::-webkit-scrollbar-thumb {
+  background-color: #ddb17a; }
 
 .cat-list-element {
   margin: 5px;
