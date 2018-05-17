@@ -1,13 +1,5 @@
-/* TO-DO: 
- - [ ] hide / unhide cat name list by click on the button
- - [x] display selected name next to button
- - [x] add more cats
- - [x] highlight selected cat in list
-*/
-
-
 document.addEventListener("DOMContentLoaded", function(){
-
+    // cat class
     class Cat {
         constructor (id, name, url) {
             this.id = id;
@@ -16,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function(){
             this.click = 0;
         }
 
+        // add cat to html
         create() {
             let kittyContainer = document.createElement('SECTION');
             kittyContainer.id = this.id;
@@ -47,11 +40,13 @@ document.addEventListener("DOMContentLoaded", function(){
             parent.appendChild(kittyContainer);
         };
         
+        // increment click counter
         clicker(event) {
             this.click++;
         }
     }
 
+    // instantiate cats
     (function instantiateCats() {
         let cecile = new Cat('cecile', 'Cecile', 'images/cat1.jpg');
         let bertalan = new Cat('bertalan', 'Bertalan', 'images/cat2.jpg');
@@ -64,10 +59,12 @@ document.addEventListener("DOMContentLoaded", function(){
 
         let cats = [cecile, bertalan, liuka, mirtill, misi, johnny, bella, mici];
 
+        // create list of names from cat objects
         createList(cats);
 
         let catNames = Array.from(document.getElementsByClassName('cat-list-element'));
         
+        // add event listener for each name in the list
         for (let i in catNames) {
             catNames[i].onclick = function(event) {
                 catSelector(event, cats);
@@ -75,6 +72,7 @@ document.addEventListener("DOMContentLoaded", function(){
         }
     })();
     
+    // add list of cat names to html
     function createList(cats) {
         var d = document.createDocumentFragment();
         for (let c in cats) {
@@ -86,30 +84,44 @@ document.addEventListener("DOMContentLoaded", function(){
         document.querySelector('.name-list').appendChild(d);
     }
 
+    // add selected cat to html
     function catSelector(event, cats) {
+        // clear container of previous cat
         document.querySelector('.cat-container').innerHTML = '';
+        // set instruction text with selected cat's name
         let element = event.target.textContent;
+        // find object of selected cat
         let obj = cats.find(x => x.name === element);
+        // add selected cat to html
         obj.create();
 
+        // highlight selected cat's name in dropdown list
         let all = Array.from(document.getElementsByClassName('cat-list-element'));
+        // remove previous highlight
         for (let a in all) {
             if (all[a].classList.contains('selected-cat') === true) {
                 all[a].classList.remove('selected-cat');
             }
         };
+        // highligth name
         event.target.classList.add('selected-cat');
 
+        // set selected cat's name in header
         document.querySelector('.cat-select').textContent = event.target.textContent;
 
+        // hide drop-down list after selection
         document.querySelector('.cat-list').classList.remove('cat-list-visible'); 
 
+        // add event listener for cat's picture
         document.querySelector('.cat').onclick = function(event) {
+            // increment click count
             obj.clicker();
+            // display click value
             event.target.parentNode.lastChild.lastChild.textContent = obj.click;
         };
     }
 
+    // toggle visibilty of drop down list
     document.querySelector('.drop-btn').onclick = function() {
         document.querySelector('.cat-list').classList.toggle("cat-list-visible");
     };

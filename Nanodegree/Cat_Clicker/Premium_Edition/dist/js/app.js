@@ -4,13 +4,6 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-/* TO-DO: 
- - [ ] hide / unhide cat name list by click on the button
- - [x] display selected name next to button
- - [x] add more cats
- - [x] highlight selected cat in list
-*/
-
 document.addEventListener("DOMContentLoaded", function () {
     var Cat = function () {
         function Cat(id, name, url) {
