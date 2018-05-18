@@ -213,8 +213,7 @@ body {
   .title {
     margin-bottom: 20px; }
   .container {
-    padding: 30px;
-    margin: 0; }
+    padding: 30px; }
   .cat-container {
     display: -webkit-box;
     display: -ms-flexbox;

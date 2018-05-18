@@ -47,8 +47,8 @@ The top 10% in the program earn an additional 6-month scholarship to one of four
      - [Classic Arcade Game clone](https://jpacsai.github.io/GoogleUdacity_Nanodegree/Nanodegree/Arcade_Game/)
      - Feed Reader testing
 - **4.&nbsp;Front End Applications:**
-     - [Cat Clicker](https://jpacsai.github.io/GoogleUdacity_Nanodegree/Nanodegree/4_FrontEnd_Applications/Cat_Clicker/dist/)
-     - Cat Clicker - Premium
+     - [Cat Clicker](https://jpacsai.github.io/GoogleUdacity_Nanodegree/Nanodegree/Cat_Clicker/Basic/dist/index.html)
+     - [Cat Clicker - Premium](https://jpacsai.github.io/GoogleUdacity_Nanodegree/Nanodegree/Cat_Clicker/Premium_Edition/dist/)
      - Restaurant Reviews App
 - **5.&nbsp;Building with React:**
      - MyReads -a book tracking app
