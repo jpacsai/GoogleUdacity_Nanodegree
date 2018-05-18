@@ -5,6 +5,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 document.addEventListener("DOMContentLoaded", function () {
+    // cat class
     var Cat = function () {
         function Cat(id, name, url) {
             _classCallCheck(this, Cat);
@@ -14,6 +15,9 @@ document.addEventListener("DOMContentLoaded", function () {
             this.url = url;
             this.click = 0;
         }
+
+        // add cat to html
+
 
         _createClass(Cat, [{
             key: 'create',
@@ -49,6 +53,9 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }, {
             key: 'clicker',
+
+
+            // increment click counter
             value: function clicker(event) {
                 this.click++;
             }
@@ -56,6 +63,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         return Cat;
     }();
+
+    // instantiate cats
+
 
     (function instantiateCats() {
         var cecile = new Cat('cecile', 'Cecile', 'images/cat1.jpg');
@@ -69,10 +79,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         var cats = [cecile, bertalan, liuka, mirtill, misi, johnny, bella, mici];
 
+        // create list of names from cat objects
         createList(cats);
 
         var catNames = Array.from(document.getElementsByClassName('cat-list-element'));
 
+        // add event listener for each name in the list
         for (var i in catNames) {
             catNames[i].onclick = function (event) {
                 catSelector(event, cats);
@@ -80,6 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     })();
 
+    // add list of cat names to html
     function createList(cats) {
         var d = document.createDocumentFragment();
         for (var c in cats) {
@@ -91,32 +104,46 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector('.name-list').appendChild(d);
     }
 
+    // add selected cat to html
     function catSelector(event, cats) {
+        // clear container of previous cat
         document.querySelector('.cat-container').innerHTML = '';
+        // set instruction text with selected cat's name
         var element = event.target.textContent;
+        // find object of selected cat
         var obj = cats.find(function (x) {
             return x.name === element;
         });
+        // add selected cat to html
         obj.create();
 
+        // highlight selected cat's name in dropdown list
         var all = Array.from(document.getElementsByClassName('cat-list-element'));
+        // remove previous highlight
         for (var a in all) {
             if (all[a].classList.contains('selected-cat') === true) {
                 all[a].classList.remove('selected-cat');
             }
         };
+        // highligth name
         event.target.classList.add('selected-cat');
 
+        // set selected cat's name in header
         document.querySelector('.cat-select').textContent = event.target.textContent;
 
+        // hide drop-down list after selection
         document.querySelector('.cat-list').classList.remove('cat-list-visible');
 
+        // add event listener for cat's picture
         document.querySelector('.cat').onclick = function (event) {
+            // increment click count
             obj.clicker();
+            // display click value
             event.target.parentNode.lastChild.lastChild.textContent = obj.click;
         };
     }
 
+    // toggle visibilty of drop down list
     document.querySelector('.drop-btn').onclick = function () {
         document.querySelector('.cat-list').classList.toggle("cat-list-visible");
     };
