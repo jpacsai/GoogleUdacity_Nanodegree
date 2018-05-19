@@ -7,78 +7,15 @@ var cats = [];
 var catNames = [];
 
 var activeCat = '';
-function create() {
-    var kittyContainer = document.createElement('SECTION');
-    kittyContainer.id = this.id;
-    kittyContainer.classList.add('kittyContainer', this.name);
+document.addEventListener("DOMContentLoaded", function engine() {
+    instantiateCats();
+    createList();
+    catNameList();
+    buttonListener();
+    nameListener();
+});
 
-    var kittyHeader = document.createElement('H3');
-    kittyHeader.classList.add('instruction');
-    kittyHeader.setAttribute('style', 'white-space: pre;');
-    kittyHeader.textContent = 'Click on\r\n';
-    kittyHeader.textContent += this.name + '!';
-
-    var catImage = document.createElement('IMG');
-    catImage.classList.add('cat');
-    catImage.src = this.url;
-
-    var counter = document.createElement('DIV');
-    counter.classList.add('counter');
-    counter.textContent = 'Clicks: ';
-
-    var clickCounter = document.createElement('SPAN');
-    clickCounter.classList.add('click-count');
-    clickCounter.textContent = this.click;
-
-    counter.appendChild(clickCounter);
-
-    kittyContainer.append(kittyHeader, catImage, counter);
-
-    var parent = document.querySelector('.cat-container');
-    parent.appendChild(kittyContainer);
-};
-
-// create list of names from cat objects
-function createList(cats) {
-    var d = document.createDocumentFragment();
-    for (var c in cats) {
-        var li = document.createElement('LI');
-        li.classList.add('cat-list-element');
-        li.textContent = cats[c].name;
-        d.appendChild(li);
-    }
-    document.querySelector('.name-list').appendChild(d);
-}
-
-function clearHtml() {
-    document.querySelector('.cat-container').innerHTML = '';
-}
-
-// highlight selected cat's name in dropdown list
-function highlightList(event) {
-    // remove previous highlight
-    for (var c in catNames) {
-        if (catNames[c].classList.contains('selected-cat') === true) {
-            catNames[c].classList.remove('selected-cat');
-        }
-    };
-    // highligth name
-    event.target.classList.add('selected-cat');
-}
-
-// set selected cat's name in header
-function setName(event) {
-    document.querySelector('.cat-select').textContent = event.target.textContent;
-}
-
-// hide drop-down list after selection
-function hideList() {
-    document.querySelector('.cat-list').classList.remove('cat-list-visible');
-}
-
-function displayClick(event) {
-    event.target.parentNode.lastChild.lastChild.textContent = obj.click;
-}
+// instantiate cat objects
 function instantiateCats() {
     var Cat = function Cat(id, name, url) {
         _classCallCheck(this, Cat);
@@ -100,16 +37,31 @@ function instantiateCats() {
     var mici = new Cat('mici', 'Mici', 'images/cat8.jpg');
 }
 
-// add event listener for each name in the list  
-for (var i in catNames) {
-    catNames[i].onclick = function (event) {
-        catSelector(event, cats);
-        listSelector(event);
+// creates cat nem list for menu
+function catNameList() {
+    catNames = Array.from(document.getElementsByClassName('cat-list-element'));
+}
+
+// add event listener to menu button
+function buttonListener() {
+    document.querySelector('.drop-btn').onclick = function () {
+        buttonVisible();
     };
 }
 
+// add event listener to each name in the list 
+function nameListener() {
+    for (var i in catNames) {
+        catNames[i].onclick = function (event) {
+            catSelector(event);
+            listSelector(event);
+            clickListener();
+        };
+    }
+}
+
 // add selected cat to html
-function catSelector(event, cats) {
+function catSelector(event) {
     // find object of selected cat and set it as active cat
     activeCat = cats.find(function (x) {
         return x.name === event.target.textContent;
@@ -117,11 +69,7 @@ function catSelector(event, cats) {
     // clear container of previous cat
     clearHtml();
     // add selected cat to html
-    activeCat.create();
-}
-
-function createNameList() {
-    catNames = Array.from(document.getElementsByClassName('cat-list-element'));
+    renderCat();
 }
 
 // style list when clicked
@@ -134,10 +82,91 @@ function listSelector(event) {
     hideList();
 }
 
-// add event listener for cat's picture
-document.querySelector('.cat').onclick = function (event) {
-    // increment click count
-    activeCat.click++;
-    // display click value
-    displayClick(event);
+// add event listener to cat's picture
+function clickListener() {
+    document.querySelector('.cat').onclick = function () {
+        // increment click count
+        activeCat.click++;
+        // display click value
+        displayClick();
+    };
+}
+
+// create list of names from cat objects
+function createList() {
+    var d = document.createDocumentFragment();
+    for (var c in cats) {
+        var li = document.createElement('LI');
+        li.classList.add('cat-list-element');
+        li.textContent = cats[c].name;
+        d.appendChild(li);
+    }
+    document.querySelector('.name-list').appendChild(d);
+}
+
+// add active cat object to html
+function renderCat() {
+    var kittyContainer = document.createElement('SECTION');
+    kittyContainer.id = activeCat.id;
+    kittyContainer.classList.add('kittyContainer', activeCat.name);
+
+    var kittyHeader = document.createElement('H3');
+    kittyHeader.classList.add('instruction');
+    kittyHeader.setAttribute('style', 'white-space: pre;');
+    kittyHeader.textContent = 'Click on\r\n';
+    kittyHeader.textContent += activeCat.name + '!';
+
+    var catImage = document.createElement('IMG');
+    catImage.classList.add('cat');
+    catImage.src = activeCat.url;
+
+    var counter = document.createElement('DIV');
+    counter.classList.add('counter');
+    counter.textContent = 'Clicks: ';
+
+    var clickCounter = document.createElement('SPAN');
+    clickCounter.classList.add('click-count');
+    clickCounter.textContent = activeCat.click;
+
+    counter.appendChild(clickCounter);
+
+    kittyContainer.append(kittyHeader, catImage, counter);
+
+    var parent = document.querySelector('.cat-container');
+    parent.appendChild(kittyContainer);
 };
+
+// clear container of previous cat 
+function clearHtml() {
+    document.querySelector('.cat-container').innerHTML = '';
+}
+
+// highlight selected cat's name in dropdown list
+function highlightList(event) {
+    // remove previous highlight
+    for (var c in catNames) {
+        if (catNames[c].classList.contains('selected-cat') === true) {
+            catNames[c].classList.remove('selected-cat');
+        }
+    };
+    // highlight name
+    event.target.classList.add('selected-cat');
+}
+
+// set selected cat's name in header
+function setName(event) {
+    document.querySelector('.cat-select').textContent = event.target.textContent;
+}
+
+// hide drop-down list after selection
+function hideList() {
+    document.querySelector('.cat-list').classList.remove('cat-list-visible');
+}
+
+function displayClick() {
+    document.querySelector('.click-count').textContent = activeCat.click;
+}
+
+function buttonVisible() {
+    document.querySelector('.cat-list').classList.toggle("cat-list-visible");
+}

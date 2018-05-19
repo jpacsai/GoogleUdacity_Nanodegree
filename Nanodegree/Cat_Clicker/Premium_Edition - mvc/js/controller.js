@@ -1,3 +1,12 @@
+document.addEventListener("DOMContentLoaded", function engine(){
+    instantiateCats();
+    createList();
+    catNameList();
+    buttonListener();   
+    nameListener(); 
+});
+
+// instantiate cat objects
 function instantiateCats() {
     class Cat {
         constructor (id, name, url) {
@@ -19,26 +28,37 @@ function instantiateCats() {
     let mici = new Cat('mici', 'Mici', 'images/cat8.jpg');
 }
 
-// add event listener for each name in the list  
-for (let i in catNames) {    
-    catNames[i].onclick = function(event) {
-        catSelector(event, cats);
-        listSelector(event);
-    };
+// creates cat nem list for menu
+function catNameList() {
+    catNames = Array.from(document.getElementsByClassName('cat-list-element'));
+}
+
+// add event listener to menu button
+function buttonListener() {
+    document.querySelector('.drop-btn').onclick = function() {
+        buttonVisible();
+    }
+}
+
+// add event listener to each name in the list 
+function nameListener() {
+    for (let i in catNames) {    
+        catNames[i].onclick = function(event) {
+            catSelector(event);
+            listSelector(event);
+            clickListener();
+        };
+    }
 }
 
 // add selected cat to html
-function catSelector(event, cats) {
+function catSelector(event) {
     // find object of selected cat and set it as active cat
     activeCat = cats.find(x => x.name === event.target.textContent);
     // clear container of previous cat
     clearHtml();
     // add selected cat to html
-    activeCat.create();
-}
-
-function createNameList() {
-    catNames = Array.from(document.getElementsByClassName('cat-list-element'));
+    renderCat();
 }
 
 // style list when clicked
@@ -51,11 +71,17 @@ function listSelector(event) {
     hideList();
 }
 
-
-    // add event listener for cat's picture
-    document.querySelector('.cat').onclick = function(event) {
+// add event listener to cat's picture
+function clickListener() {
+    document.querySelector('.cat').onclick = function() {
         // increment click count
         activeCat.click++;
         // display click value
-        displayClick(event);
+        displayClick();
     };
+}
+
+
+
+
+    

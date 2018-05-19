@@ -1,37 +1,5 @@
-function create() {
-        let kittyContainer = document.createElement('SECTION');
-        kittyContainer.id = this.id;
-        kittyContainer.classList.add('kittyContainer', this.name);
-
-        let kittyHeader = document.createElement('H3');
-        kittyHeader.classList.add('instruction');
-        kittyHeader.setAttribute('style', 'white-space: pre;');
-        kittyHeader.textContent = 'Click on\r\n';
-        kittyHeader.textContent += this.name + '!';
-
-        let catImage = document.createElement('IMG');
-        catImage.classList.add('cat');
-        catImage.src = this.url;
-
-        let counter = document.createElement('DIV');
-        counter.classList.add('counter');
-        counter.textContent = 'Clicks: ';
-
-        let clickCounter = document.createElement('SPAN');
-        clickCounter.classList.add('click-count');
-        clickCounter.textContent = this.click;
-
-        counter.appendChild(clickCounter);
-
-        kittyContainer.append(kittyHeader, catImage, counter);
-
-        const parent = document.querySelector('.cat-container');
-        parent.appendChild(kittyContainer);
-};
-
-
 // create list of names from cat objects
-function createList(cats) {
+function createList() {
     let d = document.createDocumentFragment();
     for (let c in cats) {
         let li = document.createElement('LI');
@@ -42,6 +10,39 @@ function createList(cats) {
     document.querySelector('.name-list').appendChild(d);
 }
 
+// add active cat object to html
+function renderCat() {
+        let kittyContainer = document.createElement('SECTION');
+        kittyContainer.id = activeCat.id;
+        kittyContainer.classList.add('kittyContainer', activeCat.name);
+
+        let kittyHeader = document.createElement('H3');
+        kittyHeader.classList.add('instruction');
+        kittyHeader.setAttribute('style', 'white-space: pre;');
+        kittyHeader.textContent = 'Click on\r\n';
+        kittyHeader.textContent += activeCat.name + '!';
+
+        let catImage = document.createElement('IMG');
+        catImage.classList.add('cat');
+        catImage.src = activeCat.url;
+
+        let counter = document.createElement('DIV');
+        counter.classList.add('counter');
+        counter.textContent = 'Clicks: ';
+
+        let clickCounter = document.createElement('SPAN');
+        clickCounter.classList.add('click-count');
+        clickCounter.textContent = activeCat.click;
+
+        counter.appendChild(clickCounter);
+
+        kittyContainer.append(kittyHeader, catImage, counter);
+
+        const parent = document.querySelector('.cat-container');
+        parent.appendChild(kittyContainer);
+};
+
+// clear container of previous cat 
 function clearHtml() {
     document.querySelector('.cat-container').innerHTML = '';
 }
@@ -54,7 +55,7 @@ function highlightList(event) {
             catNames[c].classList.remove('selected-cat');
         }
     };
-    // highligth name
+    // highlight name
     event.target.classList.add('selected-cat');
 }
 
@@ -69,6 +70,10 @@ function hideList() {
 }
 
 
-function displayClick(event) {
-    event.target.parentNode.lastChild.lastChild.textContent = obj.click;
+function displayClick() {
+    document.querySelector('.click-count').textContent = activeCat.click;
+}
+
+function buttonVisible() {
+    document.querySelector('.cat-list').classList.toggle("cat-list-visible");
 }
