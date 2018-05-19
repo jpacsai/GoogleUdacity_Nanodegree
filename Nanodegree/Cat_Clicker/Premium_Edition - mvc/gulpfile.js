@@ -39,6 +39,7 @@ gulp.task('copy-img', function() {
 gulp.task('script', function() {
 	gulp.src(['js/model.js','js/view.js', 'js/controller.js'])
 		.pipe(concat('app.js'))
+		.pipe(gulp.dest('./js'))
 		.pipe(babel({
 			presets: ['env']
 			}))
