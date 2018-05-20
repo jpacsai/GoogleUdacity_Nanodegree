@@ -33,7 +33,7 @@ function instantiateCats() {
     var mirtill = new Cat('mirtill', 'Mirtill', 'images/cat4.jpg');
     var misi = new Cat('misi', 'Misi', 'images/cat5.jpg');
     var johnny = new Cat('johnny', 'Johnny', 'images/cat6.jpg');
-    var bella = new Cat('bella', 'Bella', 'images/cat7.jpg');
+    var guinness = new Cat('guinness', 'Guinness', 'images/cat7.jpg');
     var mici = new Cat('mici', 'Mici', 'images/cat8.jpg');
 }
 
