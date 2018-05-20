@@ -33,7 +33,7 @@ function instantiateCats() {
     var mirtill = new Cat('mirtill', 'Mirtill', 'images/cat4.jpg');
     var misi = new Cat('misi', 'Misi', 'images/cat5.jpg');
     var johnny = new Cat('johnny', 'Johnny', 'images/cat6.jpg');
-    var bella = new Cat('bella', 'Bella', 'images/cat7.jpg');
+    var guinness = new Cat('guinness', 'Guinness', 'images/cat7.jpg');
     var mici = new Cat('mici', 'Mici', 'images/cat8.jpg');
 }
 
@@ -112,9 +112,9 @@ function renderCat() {
 
     var kittyHeader = document.createElement('H3');
     kittyHeader.classList.add('instruction');
-    kittyHeader.setAttribute('style', 'white-space: pre;');
-    kittyHeader.textContent = 'Click on\r\n';
-    kittyHeader.textContent += activeCat.name + '!';
+    //kittyHeader.setAttribute('style', 'white-space: pre;');
+    kittyHeader.textContent = 'Click on ' + activeCat.name + '!';
+    //kittyHeader.textContent += activeCat.name + '!';
 
     var catImage = document.createElement('IMG');
     catImage.classList.add('cat');
