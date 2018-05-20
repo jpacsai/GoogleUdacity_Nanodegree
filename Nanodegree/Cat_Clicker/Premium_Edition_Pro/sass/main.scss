@@ -6,7 +6,7 @@ body {
     text-align: center;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     height: 100vh;
 }
 
@@ -19,12 +19,13 @@ body {
     justify-content: center;
     flex-direction: column;
     max-height: 95vh;
+    margin-top: 20px;
 }
 
 .title {
     font-family: Cutive, serif;
     font-size: 2em;
-    margin: 20px 40px 40px;
+    margin: 10px auto 20px;
 }
 
 .kittyContainer {
@@ -35,7 +36,7 @@ body {
     font-family: 'Annie Use Your Telescope', sans-serif;
     font-size: 2em;
     margin: 20px;
-    padding: 5%;
+    padding: 20px;
     border: 1px solid black;
 }
 
@@ -45,12 +46,13 @@ body {
 }
 
 .cat {
-    width: 50vw;
+    width: 100%;
     min-width: 210px;
     max-width: 400px;
     margin-bottom: 20px;
     transition: all 0.4s;
     cursor: pointer;
+    object-fit: contain;
 }
 
 .cat:hover {
