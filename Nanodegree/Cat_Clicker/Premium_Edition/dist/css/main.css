@@ -54,16 +54,15 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   height: 100vh; }
 
 .container {
   background-color: white;
   max-width: 90vw;
   padding: 10px;
-  margin-top: 20px;
   -webkit-box-shadow: 0 0 20px #8d6a36;
           box-shadow: 0 0 20px #8d6a36;
   display: -webkit-box;
@@ -81,7 +80,7 @@ body {
 .title {
   font-family: Cutive, serif;
   font-size: 2em;
-  margin: 10px auto 20px; }
+  margin: 20px 40px 40px; }
 
 .kittyContainer {
   display: -webkit-box;
@@ -99,7 +98,7 @@ body {
   font-family: 'Annie Use Your Telescope', sans-serif;
   font-size: 2em;
   margin: 20px;
-  padding: 20px;
+  padding: 5%;
   border: 1px solid black; }
 
 .instruction,
@@ -107,9 +106,7 @@ body {
   margin: 20px; }
 
 .cat {
-  width: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
+  width: 50vw;
   min-width: 210px;
   max-width: 400px;
   margin-bottom: 20px;
@@ -217,6 +214,8 @@ body {
   display: block; }
 
 @media screen and (min-width: 700px) {
+  .title {
+    margin-bottom: 20px; }
   .container {
     padding: 20px; }
   .cat-container {
@@ -229,6 +228,8 @@ body {
         justify-content: space-around;
     max-width: 80vw;
     margin: 0; }
+  .kittyContainer {
+    padding: 2%; }
   .cat {
     min-width: 200px;
     margin: 0 20px 20px; } }
