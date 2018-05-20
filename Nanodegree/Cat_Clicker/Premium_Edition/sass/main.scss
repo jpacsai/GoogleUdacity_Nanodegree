@@ -6,7 +6,7 @@ body {
     text-align: center;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     height: 100vh;
 }
 
@@ -19,6 +19,7 @@ body {
     justify-content: center;
     flex-direction: column;
     max-height: 95vh;
+    margin-top: 20px;
 }
 
 .title {
