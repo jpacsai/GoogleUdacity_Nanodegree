@@ -3,14 +3,15 @@ var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
 var browserSync = require('browser-sync').create();
 var babel = require('gulp-babel');
+var concat = require('gulp-concat');
 
 gulp.task('default', ['styles', 'copy-img', 'script', 'copy-html'], function() {
 	gulp.watch('sass/**/*.scss', ['styles']);
-	gulp.watch("images/*", ['copy-img']);
-	gulp.watch("js/*", ['script']);
-	gulp.watch("./*.html", ['copy-html']);
+	gulp.watch('images/*', ['copy-img']);
+	gulp.watch(['js/*', '!js/app.js'], ['script']);
+	gulp.watch('./*.html', ['copy-html']);
 	browserSync.init({
-		server: "./dist"
+		server: './dist'
 	});
 });
 
@@ -36,7 +37,9 @@ gulp.task('copy-img', function() {
 });
 
 gulp.task('script', function() {
-	gulp.src('./js/*')
+	gulp.src(['js/model.js', 'js/controller.js', 'js/view.js'])
+		.pipe(concat('app.js'))
+		.pipe(gulp.dest('./js'))
 		.pipe(babel({
 			presets: ['env']
 			}))
