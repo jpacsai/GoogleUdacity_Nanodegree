@@ -1,0 +1,231 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+body {
+  background-image: url("../images/background.jpg");
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
+
+.container {
+  background-color: white;
+  max-width: 90vw;
+  margin: 5vh auto;
+  padding: 10px;
+  -webkit-box-shadow: 0 0 20px #8d6a36;
+          box-shadow: 0 0 20px #8d6a36;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column; }
+
+.title {
+  font-family: Cutive, serif;
+  font-size: 2em;
+  margin: 20px 40px 40px; }
+
+.kittyContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-family: 'Annie Use Your Telescope', sans-serif;
+  font-size: 2em;
+  margin: 20px;
+  padding: 5%;
+  border: 1px solid black; }
+
+.instruction,
+.click-count {
+  margin: 20px; }
+
+.cat {
+  width: 50vw;
+  min-width: 210px;
+  max-width: 400px;
+  margin-bottom: 20px;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  cursor: pointer; }
+
+.cat:hover {
+  -webkit-filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.7));
+          filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.7));
+  -webkit-transform: scale(1.005);
+          transform: scale(1.005);
+  -webkit-transition: none;
+  transition: none; }
+
+.cat:active {
+  -webkit-transform: scale(0.995);
+          transform: scale(0.995);
+  -webkit-filter: none;
+          filter: none;
+  -webkit-transition: none;
+  transition: none; }
+
+.menu {
+  position: relative;
+  margin: 0 20px; }
+
+.menu-btn {
+  background-color: bisque;
+  width: 100%;
+  height: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
+
+.cat-select {
+  font-family: 'Annie Use Your Telescope', sans-serif;
+  font-size: 2em;
+  margin: 0 20px;
+  width: 140px; }
+
+.drop-btn {
+  width: 60px;
+  height: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  cursor: pointer; }
+
+.cat-list {
+  position: absolute;
+  z-index: 10;
+  display: none;
+  text-align: left;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+  max-height: 120px;
+  background-color: bisque;
+  padding: 5px 20px;
+  font-family: 'Annie Use Your Telescope', sans-serif;
+  font-size: 2em;
+  overflow: scroll;
+  overflow-x: hidden; }
+
+.cat-list::-webkit-scrollbar {
+  width: 0.2em; }
+
+.cat-list::-webkit-scrollbar-track {
+  border: 1px solid #ddb17a; }
+
+.cat-list::-webkit-scrollbar-thumb {
+  background-color: #ddb17a; }
+
+.cat-list-element {
+  margin: 5px;
+  cursor: pointer;
+  text-align: center; }
+
+.selected-cat,
+.drop-btn:hover,
+.cat-list-element:hover,
+.cat-list-element:active {
+  background-color: #ddb17a; }
+
+.cat-list-visible {
+  display: block; }
+
+@media screen and (min-width: 700px) {
+  .title {
+    margin-bottom: 20px; }
+  .container {
+    padding: 30px; }
+  .cat-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    max-width: 80vw;
+    margin: 0; }
+  .kittyContainer {
+    padding: 2%; }
+  .cat {
+    min-width: 200px;
+    margin: 20px; } }
