@@ -112,9 +112,9 @@ function renderCat() {
 
     var kittyHeader = document.createElement('H3');
     kittyHeader.classList.add('instruction');
-    kittyHeader.setAttribute('style', 'white-space: pre;');
-    kittyHeader.textContent = 'Click on\r\n';
-    kittyHeader.textContent += activeCat.name + '!';
+    //kittyHeader.setAttribute('style', 'white-space: pre;');
+    kittyHeader.textContent = 'Click on ' + activeCat.name + '!';
+    //kittyHeader.textContent += activeCat.name + '!';
 
     var catImage = document.createElement('IMG');
     catImage.classList.add('cat');
