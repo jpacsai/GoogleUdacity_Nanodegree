@@ -7,13 +7,45 @@ var cats = [];
 var catNames = [];
 
 var activeCat = '';
+
+var windowWidth = window.matchMedia('(min-width: 700px)');
+
+var sideMenu = false;
+
+var menu = void 0;
+var container = void 0;
+var main = void 0;
 document.addEventListener("DOMContentLoaded", function engine() {
+    setVariables();
+
+    media(windowWidth);
+    windowWidth.addListener(media);
+
     instantiateCats();
     createList();
     catNameList();
     buttonListener();
     nameListener();
 });
+
+function setVariables() {
+    container = document.querySelector('.container');
+    menu = document.querySelector('.menu');
+    main = document.querySelector('main');
+}
+
+function media(windowWidth) {
+    if (windowWidth.matches) {
+        // If media query matches
+        document.body.insertBefore(menu, container);
+        sideMenu = true;
+    } else {
+        if (sideMenu = true) {
+            container.insertBefore(menu, main);
+            sideMenu = false;
+        }
+    }
+}
 
 // instantiate cat objects
 function instantiateCats() {

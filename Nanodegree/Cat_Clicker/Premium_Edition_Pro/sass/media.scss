@@ -1,6 +1,26 @@
 @media screen and (min-width: 700px) {
-	.container {
+    body {
+        flex-direction: row;
+        align-items: initial;
+    }
+
+    .menu {
+        margin: 20px;
+    }
+
+    .drop-btn {
+        display: none;
+    }
+
+    .cat-list {
+        display: block;
+        max-height: initial;
+        overflow: initial;
+    }
+
+    .container {
         padding: 20px;
+        max-width: 50vw;
     }
 
     .cat-container {
