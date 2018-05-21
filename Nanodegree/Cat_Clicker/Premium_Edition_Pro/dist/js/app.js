@@ -211,3 +211,16 @@ function buttonVisible() {
 function admin() {
     document.querySelector('.admin-form').classList.toggle('form-hidden');
 }
+
+function media(windowWidth) {
+    if (windowWidth.matches) {
+        // If media query matches
+        document.body.insertBefore(menu, container);
+        sideMenu = true;
+    } else {
+        if (sideMenu = true) {
+            container.insertBefore(menu, main);
+            sideMenu = false;
+        }
+    }
+}
