@@ -10,6 +10,10 @@ function createList() {
     document.querySelector('.name-list').appendChild(d);
 }
 
+function showCard() {
+    container.classList.remove('hidden');
+}
+
 // add active cat object to html
 function renderCat() {
         let kittyContainer = document.createElement('SECTION');

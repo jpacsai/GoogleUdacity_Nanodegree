@@ -73,7 +73,7 @@ function buttonListener() {
 function nameListener() {
     for (let i in catNames) {    
         catNames[i].onclick = function(event) {
-            container.classList.remove('not-visible');
+            showCard();
             catSelector(event);
             listSelector(event);
             clickListener();
@@ -126,6 +126,10 @@ function createList() {
         d.appendChild(li);
     }
     document.querySelector('.name-list').appendChild(d);
+}
+
+function showCard() {
+    container.classList.remove('hidden');
 }
 
 // add active cat object to html

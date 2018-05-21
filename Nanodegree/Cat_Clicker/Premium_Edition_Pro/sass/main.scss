@@ -71,13 +71,9 @@ main {
 }
 
 .hidden {
-    display: none;
-}
-
-.not-visible {
     visibility: hidden;
 }
 
 @import 'menu.scss';
-@import "media.scss";
 @import "admin.scss";
+@import "media.scss";

@@ -16,7 +16,7 @@
   </header>
 
   <main>
-      <section class="container white-card not-visible">
+      <section class="container white-card hidden">
           <nav class="menu">
             <div class="menu-header">
               <h5 class="cat-select">Choose a cat</h5>
@@ -30,15 +30,16 @@
           <div class="cat-container">
           </div>
       </section>
-      <section class="admin white-card">
+      <section class="admin">
         <button class="admin-btn">Admin</button>
-        <form class="admin-form hidden">
+        <form class="admin-form white-card hidden">
           <span class="form-span">Name:<input class='admin-input' type="text" name="Cat name">
           </span>
           <span class="form-span">Url:<input class='admin-input' type="text" name="Url">
           </span>
           <span class="form-span">Click:<input class='admin-input' type="text" name="Click">
           </span>
+          <input class='submit-btn' type="submit" name="Submit">
         </form>
       </section>
   </main>
