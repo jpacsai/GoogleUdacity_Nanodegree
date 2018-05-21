@@ -7,13 +7,34 @@ var cats = [];
 var catNames = [];
 
 var activeCat = '';
+
+var windowWidth = window.matchMedia('(min-width: 900px)');
+
+var sideMenu = false;
+
+var menu = void 0;
+var container = void 0;
+var main = void 0;
+
+var adminMode = false;
 document.addEventListener("DOMContentLoaded", function engine() {
+    setVariables();
+
+    media(windowWidth);
+    windowWidth.addListener(media);
+
     instantiateCats();
     createList();
     catNameList();
     buttonListener();
     nameListener();
 });
+
+function setVariables() {
+    container = document.querySelector('.container');
+    menu = document.querySelector('.menu');
+    main = document.querySelector('main');
+}
 
 // instantiate cat objects
 function instantiateCats() {
@@ -47,12 +68,16 @@ function buttonListener() {
     document.querySelector('.drop-btn').onclick = function () {
         buttonVisible();
     };
+    document.querySelector('.admin-btn').onclick = function () {
+        admin();
+    };
 }
 
 // add event listener to each name in the list 
 function nameListener() {
     for (var i in catNames) {
         catNames[i].onclick = function (event) {
+            showCard();
             catSelector(event);
             listSelector(event);
             clickListener();
@@ -102,6 +127,10 @@ function createList() {
         d.appendChild(li);
     }
     document.querySelector('.name-list').appendChild(d);
+}
+
+function showCard() {
+    container.classList.remove('hidden');
 }
 
 // add active cat object to html
@@ -169,4 +198,21 @@ function displayClick() {
 
 function buttonVisible() {
     document.querySelector('.cat-list').classList.toggle("cat-list-visible");
+}
+
+function admin() {
+    document.querySelector('.admin-form').classList.toggle('hidden');
+}
+
+function media(windowWidth) {
+    if (windowWidth.matches) {
+        // If media query matches
+        main.insertBefore(menu, container);
+        sideMenu = true;
+    } else {
+        if (sideMenu = true) {
+            main.insertBefore(menu, container);
+            sideMenu = false;
+        }
+    }
 }

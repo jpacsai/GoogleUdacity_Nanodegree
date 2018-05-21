@@ -1,26 +1,37 @@
-@media screen and (min-width: 700px) {
-    .title {
-        margin-bottom: 20px;
+@media screen and (min-width: 900px) {
+    main {
+        display: grid;
+        grid-template: 1fr / 25% 50% 25%;
+        align-items: initial;
     }
-    
-	.container {
+
+    .menu {
         padding: 20px;
-    }
-
-    .cat-container {
         display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        max-width: 80vw;
+        flex-direction: column;
+        align-items: flex-end;
+        width: initial;
+    }
+
+    .menu-header {
+        display: none;
+    }
+
+    .cat-list {
+        position: initial;
+        overflow: initial;
+        overflow-x: initial;
+        max-height: initial;
+        display: block;
+        width: 180px;
+    }
+
+    .container {
+        margin: 20px auto;
+    }
+
+    .admin-btn {
         margin: 0;
-    }
-
-	.kittyContainer {
-        padding: 2%;
-    }
-
-    .cat {
-        min-width: 200px;
-        margin: 0 20px 20px;
+        margin-bottom: 20px;
     }
 }

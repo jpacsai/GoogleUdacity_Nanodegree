@@ -10,6 +10,10 @@ function createList() {
     document.querySelector('.name-list').appendChild(d);
 }
 
+function showCard() {
+    container.classList.remove('hidden');
+}
+
 // add active cat object to html
 function renderCat() {
         let kittyContainer = document.createElement('SECTION');
@@ -76,4 +80,21 @@ function displayClick() {
 
 function buttonVisible() {
     document.querySelector('.cat-list').classList.toggle("cat-list-visible");
+}
+
+function admin() {
+    document.querySelector('.admin-form').classList.toggle('hidden');
+}
+
+function media(windowWidth) {
+    if (windowWidth.matches) { // If media query matches
+        main.insertBefore(menu, container);
+        sideMenu = true;
+    }
+    else {
+        if (sideMenu = true) {
+            main.insertBefore(menu, container);
+            sideMenu = false;
+        }
+    }
 }

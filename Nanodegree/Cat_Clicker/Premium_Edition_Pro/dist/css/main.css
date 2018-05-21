@@ -48,71 +48,68 @@ table {
 body {
   background-image: url("../images/background.jpg");
   text-align: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  height: 100vh; }
+  display: grid;
+  grid-template: minmax(100px, -webkit-max-content) 1fr/1fr;
+  grid-template: minmax(100px, max-content) 1fr/1fr; }
 
-.container {
-  background-color: white;
-  max-width: 90vw;
-  padding: 10px;
-  -webkit-box-shadow: 0 0 20px #8d6a36;
-          box-shadow: 0 0 20px #8d6a36;
+main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  max-height: 95vh; }
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; }
+
+.white-card {
+  background-color: white;
+  -webkit-box-shadow: 0 0 20px #8d6a36;
+          box-shadow: 0 0 20px #8d6a36; }
+
+.container {
+  max-width: 500px;
+  min-width: 280px;
+  margin: 20px; }
+
+.cat-container {
+  padding: 20px; }
 
 .title {
   font-family: Cutive, serif;
   font-size: 2em;
-  margin: 20px 40px 40px; }
-
-.kittyContainer {
+  padding: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+          align-items: center; }
+
+.page-title {
+  padding: 20px 0;
+  max-width: 500px;
+  width: 100%; }
+
+.kittyContainer {
   font-family: 'Annie Use Your Telescope', sans-serif;
   font-size: 2em;
-  margin: 20px;
-  padding: 5%;
-  border: 1px solid black; }
-
-.instruction,
-.click-count {
-  margin: 20px; }
+  border: 1px solid black;
+  padding: 20px; }
 
 .cat {
-  width: 50vw;
-  min-width: 210px;
-  max-width: 400px;
-  margin-bottom: 20px;
   -webkit-transition: all 0.4s;
   transition: all 0.4s;
-  cursor: pointer; }
+  cursor: pointer;
+  -o-object-fit: contain;
+     object-fit: contain;
+  width: 100%;
+  margin: 20px auto; }
 
 .cat:hover {
   -webkit-filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.7));
@@ -130,48 +127,42 @@ body {
   -webkit-transition: none;
   transition: none; }
 
-.menu {
-  position: relative;
-  margin: 0 20px; }
+.hidden {
+  visibility: hidden; }
 
-.menu-btn {
+.menu {
+  width: 280px; }
+
+.menu-header {
   background-color: bisque;
-  width: 100%;
-  height: 60px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center; }
+  display: grid;
+  grid-template: 1fr / 60px 1fr 60px;
+  height: 60px; }
 
 .cat-select {
   font-family: 'Annie Use Your Telescope', sans-serif;
   font-size: 2em;
-  margin: 0 20px;
-  width: 140px; }
-
-.drop-btn {
-  width: 60px;
-  height: 60px;
+  grid-column: 2 / 3;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -ms-flex-item-align: end;
-      align-self: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; }
+
+.drop-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   cursor: pointer; }
 
 .cat-list {
@@ -181,14 +172,13 @@ body {
   text-align: left;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  width: 100%;
-  max-height: 120px;
   background-color: bisque;
-  padding: 5px 20px;
   font-family: 'Annie Use Your Telescope', sans-serif;
   font-size: 2em;
   overflow: scroll;
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  width: 280px;
+  max-height: 150px; }
 
 .cat-list::-webkit-scrollbar {
   width: 0.2em; }
@@ -213,23 +203,80 @@ body {
 .cat-list-visible {
   display: block; }
 
-@media screen and (min-width: 700px) {
-  .title {
-    margin-bottom: 20px; }
-  .container {
-    padding: 20px; }
-  .cat-container {
+.admin {
+  margin: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start; }
+
+.admin-btn {
+  margin: 0 auto 20px;
+  width: 80px; }
+
+.admin-form {
+  padding: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column; }
+
+.form-span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column; }
+
+.admin-input {
+  margin: 10px 0 15px; }
+
+.submit-btn {
+  width: 80px;
+  margin: 0 auto 0; }
+
+@media screen and (min-width: 900px) {
+  main {
+    display: grid;
+    grid-template: 1fr / 25% 50% 25%;
+    -webkit-box-align: initial;
+        -ms-flex-align: initial;
+            align-items: initial; }
+  .menu {
+    padding: 20px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
-    max-width: 80vw;
-    margin: 0; }
-  .kittyContainer {
-    padding: 2%; }
-  .cat {
-    min-width: 200px;
-    margin: 0 20px 20px; } }
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+    width: initial; }
+  .menu-header {
+    display: none; }
+  .cat-list {
+    position: initial;
+    overflow: initial;
+    overflow-x: initial;
+    max-height: initial;
+    display: block;
+    width: 180px; }
+  .container {
+    margin: 20px auto; }
+  .admin-btn {
+    margin: 0;
+    margin-bottom: 20px; } }

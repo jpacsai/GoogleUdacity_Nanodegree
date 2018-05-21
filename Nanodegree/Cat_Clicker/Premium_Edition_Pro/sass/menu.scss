@@ -1,34 +1,29 @@
 $tumbleweed: #ddb17a;
 
 .menu {
-    position: relative;
-    margin: 0 20px;
+    width: 280px;
 }
 
-.menu-btn {
+.menu-header {
     background-color: bisque;
-    width: 100%;
+    display: grid;
+    grid-template: 1fr / 60px 1fr 60px;
     height: 60px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
 }
 
 .cat-select {
     font-family: 'Annie Use Your Telescope', sans-serif;
     font-size: 2em;
-    margin: 0 20px;
-    width: 140px;
+    grid-column: 2 / 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .drop-btn {
-    width: 60px;
-    height: 60px;
     display: flex;
-    align-items: center;
     justify-content: center;
-    align-self: flex-end;
+    align-items: center;
     cursor: pointer;
 }
 
@@ -38,14 +33,13 @@ $tumbleweed: #ddb17a;
     display: none;
     text-align: left;
     box-sizing: border-box;
-    width: 100%;
-    max-height: 120px;
     background-color: bisque;
-    padding: 5px 20px;
     font-family: 'Annie Use Your Telescope', sans-serif;
     font-size: 2em;
     overflow: scroll;
     overflow-x: hidden;
+    width: 280px;
+    max-height: 150px;
 }
 
 .cat-list::-webkit-scrollbar {

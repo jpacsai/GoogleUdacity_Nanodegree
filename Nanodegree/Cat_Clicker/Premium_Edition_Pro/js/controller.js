@@ -1,10 +1,21 @@
 document.addEventListener("DOMContentLoaded", function engine(){
+    setVariables();
+    
+    media(windowWidth);
+    windowWidth.addListener(media);
+    
     instantiateCats();
     createList();
     catNameList();
     buttonListener();   
     nameListener(); 
 });
+
+function setVariables() {
+    container = document.querySelector('.container');
+    menu = document.querySelector('.menu');
+    main = document.querySelector('main');
+}
 
 // instantiate cat objects
 function instantiateCats() {
@@ -38,12 +49,16 @@ function buttonListener() {
     document.querySelector('.drop-btn').onclick = function() {
         buttonVisible();
     }
+    document.querySelector('.admin-btn').onclick = function() {
+        admin();
+    }
 }
 
 // add event listener to each name in the list 
 function nameListener() {
     for (let i in catNames) {    
         catNames[i].onclick = function(event) {
+            showCard();
             catSelector(event);
             listSelector(event);
             clickListener();

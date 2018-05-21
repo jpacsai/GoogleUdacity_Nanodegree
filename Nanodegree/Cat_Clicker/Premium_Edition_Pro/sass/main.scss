@@ -1,56 +1,61 @@
 @import "css-reset.scss";  
 
-
 body {
     background-image: url('../images/background.jpg');
     text-align: center;
+    display: grid;
+    grid-template: minmax(100px, max-content) 1fr / 1fr;
+}
+
+main {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    height: 100vh;
+}
+
+.white-card {
+    background-color: white;
+    box-shadow: 0 0 20px rgb(141, 106, 54);
 }
 
 .container {
-    background-color: white;
-    max-width: 90vw;
-    padding: 10px;
-    box-shadow: 0 0 20px rgb(141, 106, 54);
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    max-height: 95vh;
+    max-width: 500px;
+    min-width: 280px;
+    margin: 20px;
+}
+
+.cat-container {
+    padding: 20px;
 }
 
 .title {
     font-family: Cutive, serif;
     font-size: 2em;
-    margin: 20px 40px 40px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.page-title {
+    padding: 20px 0;
+    max-width: 500px;
+    width: 100%;
 }
 
 .kittyContainer {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-direction: column;
     font-family: 'Annie Use Your Telescope', sans-serif;
     font-size: 2em;
-    margin: 20px;
-    padding: 5%;
     border: 1px solid black;
-}
-
-.instruction,
-.click-count {
-    margin: 20px;
+    padding: 20px;
 }
 
 .cat {
-    width: 50vw;
-    min-width: 210px;
-    max-width: 400px;
-    margin-bottom: 20px;
     transition: all 0.4s;
     cursor: pointer;
+    object-fit: contain;
+    width: 100%;
+    margin: 20px auto;
 }
 
 .cat:hover {
@@ -65,5 +70,10 @@ body {
     transition: none;
 }
 
+.hidden {
+    visibility: hidden;
+}
+
 @import 'menu.scss';
+@import "admin.scss";
 @import "media.scss";
