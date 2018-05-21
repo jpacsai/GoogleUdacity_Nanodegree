@@ -234,7 +234,9 @@ main {
     overflow-x: initial;
     max-height: initial;
     display: block;
-    width: 180px; } }
+    width: 180px; }
+  .container {
+    margin: 20px auto; } }
 
 .admin {
   margin: 20px; }
