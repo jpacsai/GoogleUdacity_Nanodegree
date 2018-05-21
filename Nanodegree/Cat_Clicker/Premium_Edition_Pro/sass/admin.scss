@@ -1,5 +1,6 @@
 .admin {
     margin: 20px;
+    height: 100%;
 }
 
 .admin-container {
@@ -7,10 +8,23 @@
 }
 
 .admin-form {
-    display: grid;
+    margin: 20px;
 
+}
+
+.admin-input {
+    margin-left: 10px;
 }
 
 .submit-btn {
     margin: 20px;
+}
+
+.form-hidden {
+    display: none;
+}
+
+.form-span {
+    display: flex;
+    justify-content: space-between;
 }

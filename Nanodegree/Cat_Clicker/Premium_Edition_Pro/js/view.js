@@ -79,45 +79,5 @@ function buttonVisible() {
 }
 
 function admin() {
-    if (adminMode === false) {
-        let adminContainer = document.createElement('DIV');
-        adminContainer.classList.add('admin-container');
-
-        let adminForm = document.createElement('FORM');
-        adminForm.classList.add('admin-form');
-
-        let nameSpan = document.createElement('SPAN');
-        nameSpan.classList.add('formSpan');
-        nameSpan.textContent = 'Name';
-        let inputName = document.createElement('INPUT');
-        inputName.setAttribute("type", "text");
-        inputName.setAttribute("name", "Cat name");
-        let submitName = document.createElement('INPUT');
-        submitName.setAttribute("submit", "submit");
-
-        let urlSpan = document.createElement('SPAN');
-        urlSpan.classList.add('formSpan');
-        urlSpan.textContent = 'Url';
-        let inputUrl = document.createElement('INPUT');
-        inputUrl.setAttribute("type", "text");
-        inputUrl.setAttribute("name", "Url");
-        let submitUrl = document.createElement('INPUT');
-        submitUrl.setAttribute("submit", "submit");
-
-        let clickSpan = document.createElement('SPAN');
-        clickSpan.classList.add('formSpan');
-        clickSpan.textContent = 'Click';
-        let inputClick = document.createElement('INPUT');
-        inputClick.setAttribute("type", "text");
-        inputClick.setAttribute("name", "Clicks");
-        let submitClick = document.createElement('INPUT');
-        submitClick.classList.add('submit-btn');
-        submitClick.setAttribute("type", "submit");
-        
-        adminForm.append(nameSpan, inputName, urlSpan, inputUrl, clickSpan, inputClick, submitClick);
-        adminContainer.append(adminForm);
-        document.querySelector('.admin').appendChild(adminContainer);
-
-        adminMode = true;
-    }
+    document.querySelector('.admin-form').classList.toggle('form-hidden');
 }
