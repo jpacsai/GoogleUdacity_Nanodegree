@@ -79,7 +79,7 @@ function buttonVisible() {
 }
 
 function admin() {
-    document.querySelector('.admin-form').classList.toggle('form-hidden');
+    document.querySelector('.admin-form').classList.toggle('hidden');
 }
 
 function media(windowWidth) {
