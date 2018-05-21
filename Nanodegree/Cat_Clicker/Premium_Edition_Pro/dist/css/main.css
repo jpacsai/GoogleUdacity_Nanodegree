@@ -137,6 +137,12 @@ body {
   -webkit-transition: none;
   transition: none; }
 
+.hidden {
+  display: none; }
+
+.not-visible {
+  visibility: hidden; }
+
 .menu {
   position: relative;
   margin: 0 20px; }
@@ -221,14 +227,10 @@ body {
   display: block; }
 
 @media screen and (min-width: 700px) {
-  body {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -webkit-box-align: initial;
-        -ms-flex-align: initial;
-            align-items: initial; }
+  main {
+    display: grid;
+    grid-template: 1fr / 25% 50% 25%;
+    width: 100%; }
   .menu {
     margin: 20px;
     width: 180px; }
@@ -239,7 +241,6 @@ body {
     max-height: initial;
     overflow: initial; }
   .container {
-    padding: 20px;
     max-width: 50vw; }
   .cat-container {
     display: -webkit-box;
@@ -250,7 +251,10 @@ body {
     -ms-flex-pack: distribute;
         justify-content: space-around;
     max-width: 80vw;
-    margin: 0; }
+    margin: 0;
+    border: 1px solid black; }
+  .kittyContainer {
+    border: none; }
   .cat {
     min-width: 200px;
     margin: 0 20px 20px; }
@@ -272,9 +276,6 @@ body {
 
 .submit-btn {
   margin: 20px; }
-
-.form-hidden {
-  display: none; }
 
 .form-span {
   display: -webkit-box;

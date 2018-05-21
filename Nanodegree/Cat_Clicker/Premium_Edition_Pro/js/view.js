@@ -84,12 +84,12 @@ function admin() {
 
 function media(windowWidth) {
     if (windowWidth.matches) { // If media query matches
-        document.body.insertBefore(menu, container);
+        main.insertBefore(menu, container);
         sideMenu = true;
     }
     else {
         if (sideMenu = true) {
-            container.insertBefore(menu, main);
+            main.insertBefore(menu, container);
             sideMenu = false;
         }
     }

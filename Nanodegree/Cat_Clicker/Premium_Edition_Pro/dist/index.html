@@ -10,33 +10,38 @@
   <script src="js/app.js"></script>
 </head>
 <body>
-  <section class="container white-card">
-      <header class="title">
-          <h1 class="page-title">Cat Clicker</h1>
-      </header>
-      <nav class="menu">
-        <div class="menu-btn">
-          <h5 class="cat-select">Choose a cat</h5>
-          <div class="drop-btn"><img src="images/arrow.svg" alt="arrow button"></div>
-        </div>
-        <div class="cat-list">
-          <ul class="name-list">
-          </ul>
-        </div>
-      </nav>
-      <main class="cat-container">
-      </main>
-  </section>
-  <section class="admin white-card">
-    <button class="admin-btn">Admin</button>
-    <form class="admin-form form-hidden">
-      <span class="form-span">Name:<input class='admin-input' type="text" name="Cat name">
-      </span>
-      <span class="form-span">Url:<input class='admin-input' type="text" name="Url">
-      </span>
-      <span class="form-span">Click:<input class='admin-input' type="text" name="Click">
-      </span>
-    </form>
-  </section>
+
+  <header class="title white-card">
+        <h1 class="page-title">Cat Clicker</h1>
+  </header>
+
+  <main>
+      <section class="container white-card not-visible">
+          <nav class="menu">
+            <div class="menu-btn">
+              <h5 class="cat-select">Choose a cat</h5>
+              <div class="drop-btn"><img src="images/arrow.svg" alt="arrow button"></div>
+            </div>
+            <div class="cat-list">
+              <ul class="name-list">
+              </ul>
+            </div>
+          </nav>
+          <div class="cat-container">
+          </div>
+      </section>
+      <section class="admin white-card">
+        <button class="admin-btn">Admin</button>
+        <form class="admin-form hidden">
+          <span class="form-span">Name:<input class='admin-input' type="text" name="Cat name">
+          </span>
+          <span class="form-span">Url:<input class='admin-input' type="text" name="Url">
+          </span>
+          <span class="form-span">Click:<input class='admin-input' type="text" name="Click">
+          </span>
+        </form>
+      </section>
+  </main>
+  
 </body>
 </html>

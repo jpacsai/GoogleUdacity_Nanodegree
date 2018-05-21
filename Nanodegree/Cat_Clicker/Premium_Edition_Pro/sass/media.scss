@@ -1,7 +1,8 @@
 @media screen and (min-width: 700px) {
-    body {
-        flex-direction: row;
-        align-items: initial;
+    main {
+        display: grid;
+        grid-template: 1fr / 25% 50% 25%;
+        width: 100%;
     }
 
     .menu {
@@ -20,7 +21,6 @@
     }
 
     .container {
-        padding: 20px;
         max-width: 50vw;
     }
 
@@ -30,6 +30,11 @@
         justify-content: space-around;
         max-width: 80vw;
         margin: 0;
+        border: 1px solid black;
+    }
+
+    .kittyContainer {
+        border: none;
     }
 
     .cat {

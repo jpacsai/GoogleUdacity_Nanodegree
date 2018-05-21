@@ -36,19 +36,6 @@ function setVariables() {
     main = document.querySelector('main');
 }
 
-function media(windowWidth) {
-    if (windowWidth.matches) {
-        // If media query matches
-        document.body.insertBefore(menu, container);
-        sideMenu = true;
-    } else {
-        if (sideMenu = true) {
-            container.insertBefore(menu, main);
-            sideMenu = false;
-        }
-    }
-}
-
 // instantiate cat objects
 function instantiateCats() {
     var Cat = function Cat(id, name, url) {
@@ -90,6 +77,7 @@ function buttonListener() {
 function nameListener() {
     for (var i in catNames) {
         catNames[i].onclick = function (event) {
+            container.classList.remove('not-visible');
             catSelector(event);
             listSelector(event);
             clickListener();
@@ -215,11 +203,11 @@ function admin() {
 function media(windowWidth) {
     if (windowWidth.matches) {
         // If media query matches
-        document.body.insertBefore(menu, container);
+        main.insertBefore(menu, container);
         sideMenu = true;
     } else {
         if (sideMenu = true) {
-            container.insertBefore(menu, main);
+            main.insertBefore(menu, container);
             sideMenu = false;
         }
     }
