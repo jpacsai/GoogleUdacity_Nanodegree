@@ -228,8 +228,9 @@ body {
         -ms-flex-align: initial;
             align-items: initial; }
   .menu {
-    margin: 20px; }
-  .drop-btn {
+    margin: 20px;
+    width: 180px; }
+  .menu-btn {
     display: none; }
   .cat-list {
     display: block;
