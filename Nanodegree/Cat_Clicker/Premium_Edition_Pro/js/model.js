@@ -4,7 +4,7 @@ let catNames = [];
 
 let activeCat = '';
 
-let windowWidth = window.matchMedia('(min-width: 700px)');
+let windowWidth = window.matchMedia('(min-width: 900px)');
 
 let sideMenu = false;
 

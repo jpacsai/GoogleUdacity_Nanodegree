@@ -92,7 +92,7 @@ main {
           align-items: center; }
 
 .page-title {
-  padding: 20px;
+  padding: 20px 0;
   max-width: 500px;
   width: 100%; }
 
@@ -205,6 +205,36 @@ main {
 
 .cat-list-visible {
   display: block; }
+
+@media screen and (min-width: 900px) {
+  main {
+    display: grid;
+    grid-template: 1fr / 25% 50% 25%;
+    -webkit-box-align: initial;
+        -ms-flex-align: initial;
+            align-items: initial; }
+  .menu {
+    padding: 20px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+    width: initial; }
+  .menu-header {
+    display: none; }
+  .cat-list {
+    position: initial;
+    overflow: initial;
+    overflow-x: initial;
+    max-height: initial;
+    display: block;
+    width: 180px; } }
 
 .admin {
   margin: 20px; }

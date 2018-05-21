@@ -8,7 +8,7 @@ var catNames = [];
 
 var activeCat = '';
 
-var windowWidth = window.matchMedia('(min-width: 700px)');
+var windowWidth = window.matchMedia('(min-width: 900px)');
 
 var sideMenu = false;
 
