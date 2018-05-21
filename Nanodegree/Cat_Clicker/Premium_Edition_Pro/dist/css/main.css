@@ -255,3 +255,12 @@ body {
 
 .admin {
   margin: 20px; }
+
+.admin-container {
+  margin: 20px; }
+
+.admin-form {
+  display: grid; }
+
+.submit-btn {
+  margin: 20px; }

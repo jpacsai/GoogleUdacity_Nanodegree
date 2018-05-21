@@ -15,6 +15,8 @@ var sideMenu = false;
 var menu = void 0;
 var container = void 0;
 var main = void 0;
+
+var adminMode = false;
 document.addEventListener("DOMContentLoaded", function engine() {
     setVariables();
 
@@ -78,6 +80,9 @@ function catNameList() {
 function buttonListener() {
     document.querySelector('.drop-btn').onclick = function () {
         buttonVisible();
+    };
+    document.querySelector('.admin-btn').onclick = function () {
+        admin();
     };
 }
 
@@ -201,4 +206,48 @@ function displayClick() {
 
 function buttonVisible() {
     document.querySelector('.cat-list').classList.toggle("cat-list-visible");
+}
+
+function admin() {
+    if (adminMode === false) {
+        var adminContainer = document.createElement('DIV');
+        adminContainer.classList.add('admin-container');
+
+        var adminForm = document.createElement('FORM');
+        adminForm.classList.add('admin-form');
+
+        var nameSpan = document.createElement('SPAN');
+        nameSpan.classList.add('formSpan');
+        nameSpan.textContent = 'Name';
+        var inputName = document.createElement('INPUT');
+        inputName.setAttribute("type", "text");
+        inputName.setAttribute("name", "Cat name");
+        var submitName = document.createElement('INPUT');
+        submitName.setAttribute("submit", "submit");
+
+        var urlSpan = document.createElement('SPAN');
+        urlSpan.classList.add('formSpan');
+        urlSpan.textContent = 'Url';
+        var inputUrl = document.createElement('INPUT');
+        inputUrl.setAttribute("type", "text");
+        inputUrl.setAttribute("name", "Url");
+        var submitUrl = document.createElement('INPUT');
+        submitUrl.setAttribute("submit", "submit");
+
+        var clickSpan = document.createElement('SPAN');
+        clickSpan.classList.add('formSpan');
+        clickSpan.textContent = 'Click';
+        var inputClick = document.createElement('INPUT');
+        inputClick.setAttribute("type", "text");
+        inputClick.setAttribute("name", "Clicks");
+        var submitClick = document.createElement('INPUT');
+        submitClick.classList.add('submit-btn');
+        submitClick.setAttribute("type", "submit");
+
+        adminForm.append(nameSpan, inputName, urlSpan, inputUrl, clickSpan, inputClick, submitClick);
+        adminContainer.append(adminForm);
+        document.querySelector('.admin').appendChild(adminContainer);
+
+        adminMode = true;
+    }
 }

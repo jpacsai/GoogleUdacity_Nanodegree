@@ -62,6 +62,9 @@ function buttonListener() {
     document.querySelector('.drop-btn').onclick = function() {
         buttonVisible();
     }
+    document.querySelector('.admin-btn').onclick = function() {
+        admin();
+    }
 }
 
 // add event listener to each name in the list 

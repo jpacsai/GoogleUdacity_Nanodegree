@@ -11,3 +11,5 @@ let sideMenu = false;
 let menu;
 let container;
 let main;
+
+let adminMode = false;
