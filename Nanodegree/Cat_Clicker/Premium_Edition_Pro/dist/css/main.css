@@ -47,7 +47,10 @@ table {
 
 body {
   background-image: url("../images/background.jpg");
-  text-align: center; }
+  text-align: center;
+  display: grid;
+  grid-template: minmax(100px, -webkit-max-content) 1fr/1fr;
+  grid-template: minmax(100px, max-content) 1fr/1fr; }
 
 main {
   display: -webkit-box;
@@ -77,10 +80,21 @@ main {
 .title {
   font-family: Cutive, serif;
   font-size: 2em;
-  margin: 5% auto 20px;
-  width: 80%;
+  padding: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; }
+
+.page-title {
+  padding: 20px;
   max-width: 500px;
-  padding: 20px; }
+  width: 100%; }
 
 .kittyContainer {
   font-family: 'Annie Use Your Telescope', sans-serif;

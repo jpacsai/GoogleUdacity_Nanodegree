@@ -3,6 +3,8 @@
 body {
     background-image: url('../images/background.jpg');
     text-align: center;
+    display: grid;
+    grid-template: minmax(100px, max-content) 1fr / 1fr;
 }
 
 main {
@@ -29,10 +31,16 @@ main {
 .title {
     font-family: Cutive, serif;
     font-size: 2em;
-    margin: 5% auto 20px;
-    width: 80%;
-    max-width: 500px;
     padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.page-title {
+    padding: 20px;
+    max-width: 500px;
+    width: 100%;
 }
 
 .kittyContainer {
@@ -40,11 +48,6 @@ main {
     font-size: 2em;
     border: 1px solid black;
     padding: 20px;
-}
-
-.instruction,
-.counter {
-    
 }
 
 .cat {
