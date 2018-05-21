@@ -3,58 +3,56 @@
 body {
     background-image: url('../images/background.jpg');
     text-align: center;
+}
+
+main {
     display: flex;
-    align-items: center;
     flex-direction: column;
-    flex-wrap: wrap;
+    align-items: center;
 }
 
 .white-card {
     background-color: white;
     box-shadow: 0 0 20px rgb(141, 106, 54);
-    padding: 10px;
 }
 
 .container {
-    max-width: 90vw;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    max-height: 95vh;
-    margin-top: 20px;
+    max-width: 500px;
+    min-width: 280px;
+    margin: 20px;
+}
+
+.cat-container {
+    padding: 20px;
 }
 
 .title {
     font-family: Cutive, serif;
     font-size: 2em;
-    margin: 10px auto 20px;
+    margin: 5% auto 20px;
+    width: 80%;
+    max-width: 500px;
+    padding: 20px;
 }
 
 .kittyContainer {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-direction: column;
     font-family: 'Annie Use Your Telescope', sans-serif;
     font-size: 2em;
-    margin: 20px;
-    padding: 20px;
     border: 1px solid black;
+    padding: 20px;
 }
 
 .instruction,
-.click-count {
-    margin: 20px;
+.counter {
+    
 }
 
 .cat {
-    width: 100%;
-    min-width: 210px;
-    max-width: 400px;
-    margin-bottom: 20px;
     transition: all 0.4s;
     cursor: pointer;
     object-fit: contain;
+    width: 100%;
+    margin: 20px auto;
 }
 
 .cat:hover {
