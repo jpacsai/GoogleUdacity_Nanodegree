@@ -118,15 +118,3 @@ function submit() {
     activeCat.url = document.getElementById('url').value;
     activeCat.click = document.getElementById('click').value;
 }
-
-function checkForm() {
-    if (document.getElementById('name').value === '') {
-        document.getElementById('name').value = activeCat.name;
-    }
-    if (document.getElementById('url').value === '') {
-        document.getElementById('url').value = activeCat.url;
-    }
-    if (document.getElementById('click').value === '') {
-        document.getElementById('click').value = activeCat.click;
-    }
-}
