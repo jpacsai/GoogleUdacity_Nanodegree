@@ -72,7 +72,9 @@ function buttonListener() {
     };
     document.querySelector('.admin-btn').onclick = function () {
         admin();
-        formFresh();
+        nameFresh();
+        urlFresh();
+        clickFresh();
     };
 }
 
@@ -84,7 +86,9 @@ function nameListener() {
             catSelector(event);
             listSelector(event);
             clickListener();
-            formFresh();
+            nameFresh();
+            urlFresh();
+            clickFresh();
         };
     }
 }
@@ -118,14 +122,8 @@ function clickListener() {
         activeCat.click++;
         // display click value
         displayClick();
+        clickFresh();
     };
-}
-
-function formFresh() {
-
-    document.getElementById('name').value = activeCat.name;
-    document.getElementById('url').value = activeCat.url;
-    document.getElementById('click').value = activeCat.click;
 }
 
 // create list of names from cat objects
@@ -228,8 +226,20 @@ function media(windowWidth) {
     }
 }
 
-function formFresh() {
-    document.getElementById('name').value = activeCat.name;
-    document.getElementById('url').value = activeCat.url;
-    document.getElementById('click').value = activeCat.click;
+function nameFresh() {
+    if (activeCat !== "") {
+        document.getElementById('name').value = activeCat.name;
+    }
+}
+
+function urlFresh() {
+    if (activeCat !== "") {
+        document.getElementById('url').value = activeCat.url;
+    }
+}
+
+function clickFresh() {
+    if (activeCat !== "") {
+        document.getElementById('click').value = activeCat.click;
+    }
 }
