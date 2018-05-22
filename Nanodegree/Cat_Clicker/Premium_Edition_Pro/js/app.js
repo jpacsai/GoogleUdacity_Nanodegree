@@ -13,6 +13,8 @@ let container;
 let main;
 
 let adminMode = false;
+
+const formFields = ['name', 'url', 'click'];
 document.addEventListener("DOMContentLoaded", function engine(){
     setVariables();
     
@@ -66,6 +68,7 @@ function buttonListener() {
     }
     document.querySelector('.admin-btn').onclick = function() {
         admin();
+        formFresh();
     }
 }
 
@@ -77,6 +80,7 @@ function nameListener() {
             catSelector(event);
             listSelector(event);
             clickListener();
+            formFresh();
         };
     }
 }
@@ -111,8 +115,12 @@ function clickListener() {
     };
 }
 
-
-
+function formFresh() {
+    
+    document.getElementById('name').value= activeCat.name;
+    document.getElementById('url').value= activeCat.url;
+    document.getElementById('click').value= activeCat.click;
+}
 
     
 
@@ -215,4 +223,10 @@ function media(windowWidth) {
             sideMenu = false;
         }
     }
+}
+
+function formFresh() {
+    document.getElementById('name').value= activeCat.name;
+    document.getElementById('url').value= activeCat.url;
+    document.getElementById('click').value= activeCat.click;
 }

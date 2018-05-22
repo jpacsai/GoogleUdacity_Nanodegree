@@ -17,6 +17,8 @@ var container = void 0;
 var main = void 0;
 
 var adminMode = false;
+
+var formFields = ['name', 'url', 'click'];
 document.addEventListener("DOMContentLoaded", function engine() {
     setVariables();
 
@@ -70,6 +72,7 @@ function buttonListener() {
     };
     document.querySelector('.admin-btn').onclick = function () {
         admin();
+        formFresh();
     };
 }
 
@@ -81,6 +84,7 @@ function nameListener() {
             catSelector(event);
             listSelector(event);
             clickListener();
+            formFresh();
         };
     }
 }
@@ -115,6 +119,13 @@ function clickListener() {
         // display click value
         displayClick();
     };
+}
+
+function formFresh() {
+
+    document.getElementById('name').value = activeCat.name;
+    document.getElementById('url').value = activeCat.url;
+    document.getElementById('click').value = activeCat.click;
 }
 
 // create list of names from cat objects
@@ -215,4 +226,10 @@ function media(windowWidth) {
             sideMenu = false;
         }
     }
+}
+
+function formFresh() {
+    document.getElementById('name').value = activeCat.name;
+    document.getElementById('url').value = activeCat.url;
+    document.getElementById('click').value = activeCat.click;
 }

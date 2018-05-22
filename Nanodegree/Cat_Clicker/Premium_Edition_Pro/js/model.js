@@ -13,3 +13,5 @@ let container;
 let main;
 
 let adminMode = false;
+
+const formFields = ['name', 'url', 'click'];

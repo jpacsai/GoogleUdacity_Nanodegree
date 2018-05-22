@@ -98,3 +98,9 @@ function media(windowWidth) {
         }
     }
 }
+
+function formFresh() {
+    document.getElementById('name').value= activeCat.name;
+    document.getElementById('url').value= activeCat.url;
+    document.getElementById('click').value= activeCat.click;
+}
