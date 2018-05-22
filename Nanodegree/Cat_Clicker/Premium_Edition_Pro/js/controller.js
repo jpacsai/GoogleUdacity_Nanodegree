@@ -58,6 +58,7 @@ function buttonListener() {
     document.querySelector('#submit').onclick = function(e) {
         e.preventDefault();
         if (activeCat !== '') {
+            checkForm();
             submit();
             clearHtml();
             renderCat();
@@ -114,6 +115,18 @@ function clickListener() {
 
 function submit() {
     activeCat.name = document.getElementById('name').value;
-    activeCat.click = document.getElementById('click').value;
     activeCat.url = document.getElementById('url').value;
+    activeCat.click = document.getElementById('click').value;
+}
+
+function checkForm() {
+    if (document.getElementById('name').value === '') {
+        document.getElementById('name').value = activeCat.name;
+    }
+    if (document.getElementById('url').value === '') {
+        document.getElementById('url').value = activeCat.url;
+    }
+    if (document.getElementById('click').value === '') {
+        document.getElementById('click').value = activeCat.click;
+    }
 }
