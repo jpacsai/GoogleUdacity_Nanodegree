@@ -76,6 +76,13 @@ function buttonListener() {
         urlFresh();
         clickFresh();
     };
+    document.querySelector('#submit').onclick = function (e) {
+        e.preventDefault();
+        submit();
+        clearHtml();
+        renderCat();
+        listFresh();
+    };
 }
 
 // add event listener to each name in the list 
@@ -124,6 +131,10 @@ function clickListener() {
         displayClick();
         clickFresh();
     };
+}
+
+function submit() {
+    activeCat.name = document.getElementById('name').value;
 }
 
 // create list of names from cat objects
@@ -242,4 +253,9 @@ function clickFresh() {
     if (activeCat !== "") {
         document.getElementById('click').value = activeCat.click;
     }
+}
+
+function listFresh() {
+    document.querySelector('.cat-select').textContent = activeCat.name;
+    document.querySelector('.selected-cat').textContent = activeCat.name;
 }
