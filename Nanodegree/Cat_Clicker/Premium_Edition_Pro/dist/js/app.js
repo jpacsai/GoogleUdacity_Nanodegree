@@ -78,10 +78,12 @@ function buttonListener() {
     };
     document.querySelector('#submit').onclick = function (e) {
         e.preventDefault();
-        submit();
-        clearHtml();
-        renderCat();
-        listFresh();
+        if (activeCat !== '') {
+            submit();
+            clearHtml();
+            renderCat();
+            listFresh();
+        }
     };
 }
 
