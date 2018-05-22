@@ -112,4 +112,5 @@ function clickListener() {
 
 function submit() {
     activeCat.name = document.getElementById('name').value;
+    activeCat.click = document.getElementById('click').value;
 }
