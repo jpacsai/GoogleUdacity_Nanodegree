@@ -105,7 +105,7 @@ function updateAdmin() {
     if (model.activeCat !== "") {
         document.getElementById('name').value = model.activeCat.name;
         document.getElementById('url').value = model.activeCat.url;
-        clickFresh();
+        clickFresh(); // update click value in admin form
     }
 }
 

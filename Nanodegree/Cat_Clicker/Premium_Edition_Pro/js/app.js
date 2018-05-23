@@ -73,7 +73,7 @@ function listener() {
             submit(); // update active cat object values
             renderCat(); // add selected cat to html
             listFresh(); // update cat name in menu list
-            clickListener();
+            clickListener(); // add event listener to cat's rerendered picture
         }
     }
 
@@ -96,7 +96,7 @@ function catSelector(event) {
     renderCat(); // add selected cat to html
 }
 
-// style list when clicked
+// add new styling to list when clicked
 function listSelector(event) {
     highlightList(event); // highlight selected cat's name in dropdown list
     setName(event); // set selected cat's name in header
@@ -225,7 +225,7 @@ function updateAdmin() {
     if (model.activeCat !== "") {
         document.getElementById('name').value = model.activeCat.name;
         document.getElementById('url').value = model.activeCat.url;
-        clickFresh();
+        clickFresh(); // update click value in admin form
     }
 }
 
