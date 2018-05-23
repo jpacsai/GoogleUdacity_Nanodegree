@@ -77,6 +77,7 @@ function listener() {
             submit(); // update active cat object values
             renderCat(); // add selected cat to html
             listFresh(); // update cat name in menu list
+            clickListener();
         }
     };
 
