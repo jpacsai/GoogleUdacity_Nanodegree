@@ -2,40 +2,33 @@
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var cats = [];
-
-var catNames = [];
-
-var activeCat = '';
-
-var windowWidth = window.matchMedia('(min-width: 900px)');
-
-var sideMenu = false;
-
-var menu = void 0;
-var container = void 0;
-var main = void 0;
-
-var adminMode = false;
-
-var formFields = ['name', 'url', 'click'];
+var model = {
+    windowWidth: window.matchMedia('(min-width: 900px)'),
+    sideMenu: false,
+    cats: [],
+    catNames: [],
+    activeCat: '',
+    main: '',
+    container: '',
+    menu: ''
+};
 document.addEventListener("DOMContentLoaded", function engine() {
     setVariables();
 
-    media(windowWidth);
-    windowWidth.addListener(media);
+    media();
+    model.windowWidth.addListener(media);
 
     instantiateCats();
     createList();
     catNameList();
-    buttonListener();
-    nameListener();
+    listener();
 });
 
+// get variable values from DOM
 function setVariables() {
-    container = document.querySelector('.container');
-    menu = document.querySelector('.menu');
-    main = document.querySelector('main');
+    model.container = document.querySelector('.container');
+    model.menu = document.querySelector('.menu');
+    model.main = document.querySelector('main');
 }
 
 // instantiate cat objects
@@ -47,7 +40,7 @@ function instantiateCats() {
         this.name = name;
         this.url = url;
         this.click = 0;
-        cats.push(this);
+        model.cats.push(this);
     };
 
     var cecile = new Cat('cecile', 'Cecile', 'images/cat1.jpg');
@@ -60,130 +53,109 @@ function instantiateCats() {
     var mici = new Cat('mici', 'Mici', 'images/cat8.jpg');
 }
 
-// creates cat nem list for menu
+// create cat name list for menu
 function catNameList() {
-    catNames = Array.from(document.getElementsByClassName('cat-list-element'));
+    model.catNames = Array.from(document.getElementsByClassName('cat-list-element'));
 }
 
-// add event listener to menu button
-function buttonListener() {
+// event listeners to buttons
+function listener() {
+    // menu button
     document.querySelector('.drop-btn').onclick = function () {
         buttonVisible();
     };
+    // admin button
     document.querySelector('.admin-btn').onclick = function () {
-        admin();
-        nameFresh();
-        urlFresh();
-        clickFresh();
+        admin(); // hide/unhide admin form
+        updateAdmin(); // update active cat's property values
     };
+    // submit button
     document.querySelector('#submit').onclick = function (e) {
         e.preventDefault();
-        if (activeCat !== '') {
-            checkForm();
-            submit();
-            clearHtml();
-            renderCat();
-            listFresh();
+        if (model.activeCat !== '') {
+            checkForm(); // check for empty fields in admin form
+            submit(); // update active cat object values
+            renderCat(); // add selected cat to html
+            listFresh(); // update cat name in menu list
         }
     };
-}
 
-// add event listener to each name in the list 
-function nameListener() {
-    for (var i in catNames) {
-        catNames[i].onclick = function (event) {
-            showCard();
-            catSelector(event);
-            listSelector(event);
-            clickListener();
-            nameFresh();
-            urlFresh();
-            clickFresh();
+    // name list in the menu
+    for (var i in model.catNames) {
+        model.catNames[i].onclick = function (event) {
+            showCard(); // unhide card if hidden
+            catSelector(event); // add selected cat to html 
+            listSelector(event); // style list when clicked
+            clickListener(); // add event listener to active cat's picture
+            updateAdmin(); // update active cat's property values if changed by admin form
         };
     }
 }
 
 // add selected cat to html
 function catSelector(event) {
-    // find object of selected cat and set it as active cat
-    activeCat = cats.find(function (x) {
+    // find the object of the selected cat and set it as active cat
+    model.activeCat = model.cats.find(function (x) {
         return x.name === event.target.textContent;
     });
-    // clear container of previous cat
-    clearHtml();
-    // add selected cat to html
-    renderCat();
+    renderCat(); // add selected cat to html
 }
 
 // style list when clicked
 function listSelector(event) {
-    // highlight selected cat's name in dropdown list
-    highlightList(event);
-    // set selected cat's name in header
-    setName(event);
-    // hide drop-down list after selection
-    hideList();
+    highlightList(event); // highlight selected cat's name in dropdown list
+    setName(event); // set selected cat's name in header
+    hideList(); // hide drop-down list after selection (in mobile view)
 }
 
 // add event listener to cat's picture
 function clickListener() {
     document.querySelector('.cat').onclick = function () {
-        // increment click count
-        activeCat.click++;
-        // display click value
-        displayClick();
-        clickFresh();
+        model.activeCat.click++; // increment click count
+        displayClick(); // update click value on screen
+        clickFresh(); // update click value in admin form
     };
 }
 
+// update active cat object values
 function submit() {
-    activeCat.name = document.getElementById('name').value;
-    activeCat.url = document.getElementById('url').value;
-    activeCat.click = document.getElementById('click').value;
-}
-
-function checkForm() {
-    if (document.getElementById('name').value === '') {
-        document.getElementById('name').value = activeCat.name;
-    }
-    if (document.getElementById('url').value === '') {
-        document.getElementById('url').value = activeCat.url;
-    }
-    if (document.getElementById('click').value === '') {
-        document.getElementById('click').value = activeCat.click;
-    }
+    model.activeCat.name = document.getElementById('name').value;
+    model.activeCat.url = document.getElementById('url').value;
+    model.activeCat.click = document.getElementById('click').value;
 }
 // create list of names from cat objects
 function createList() {
     var d = document.createDocumentFragment();
-    for (var c in cats) {
+    for (var c in model.cats) {
         var li = document.createElement('LI');
         li.classList.add('cat-list-element');
-        li.textContent = cats[c].name;
+        li.textContent = model.cats[c].name;
         d.appendChild(li);
     }
     document.querySelector('.name-list').appendChild(d);
 }
 
+// remove hidden class from container
 function showCard() {
-    container.classList.remove('hidden');
+    model.container.classList.remove('hidden');
 }
 
 // add active cat object to html
 function renderCat() {
+    // clear container of previous cat
+    document.querySelector('.cat-container').innerHTML = '';
+
     var kittyContainer = document.createElement('SECTION');
-    kittyContainer.id = activeCat.id;
-    kittyContainer.classList.add('kittyContainer', activeCat.name);
+    kittyContainer.id = model.activeCat.id;
+    kittyContainer.classList.add('kittyContainer', model.activeCat.name);
 
     var kittyHeader = document.createElement('H3');
     kittyHeader.classList.add('instruction');
-    //kittyHeader.setAttribute('style', 'white-space: pre;');
-    kittyHeader.textContent = 'Click on ' + activeCat.name + '!';
-    //kittyHeader.textContent += activeCat.name + '!';
+    kittyHeader.textContent = 'Click on ' + model.activeCat.name + '!';
 
     var catImage = document.createElement('IMG');
     catImage.classList.add('cat');
-    catImage.src = activeCat.url;
+    catImage.src = model.activeCat.url;
 
     var counter = document.createElement('DIV');
     counter.classList.add('counter');
@@ -191,7 +163,7 @@ function renderCat() {
 
     var clickCounter = document.createElement('SPAN');
     clickCounter.classList.add('click-count');
-    clickCounter.textContent = activeCat.click;
+    clickCounter.textContent = model.activeCat.click;
 
     counter.appendChild(clickCounter);
 
@@ -201,21 +173,15 @@ function renderCat() {
     parent.appendChild(kittyContainer);
 };
 
-// clear container of previous cat 
-function clearHtml() {
-    document.querySelector('.cat-container').innerHTML = '';
-}
-
 // highlight selected cat's name in dropdown list
 function highlightList(event) {
     // remove previous highlight
-    for (var c in catNames) {
-        if (catNames[c].classList.contains('selected-cat') === true) {
-            catNames[c].classList.remove('selected-cat');
+    for (var c in model.catNames) {
+        if (model.catNames[c].classList.contains('selected-cat') === true) {
+            model.catNames[c].classList.remove('selected-cat');
         }
     };
-    // highlight name
-    event.target.classList.add('selected-cat');
+    event.target.classList.add('selected-cat'); // highlight name
 }
 
 // set selected cat's name in header
@@ -228,50 +194,66 @@ function hideList() {
     document.querySelector('.cat-list').classList.remove('cat-list-visible');
 }
 
+// update click value on screen
 function displayClick() {
-    document.querySelector('.click-count').textContent = activeCat.click;
+    document.querySelector('.click-count').textContent = model.activeCat.click;
 }
 
+// hide/unhide catlist
 function buttonVisible() {
     document.querySelector('.cat-list').classList.toggle("cat-list-visible");
 }
 
+// hide/unhide admin form
 function admin() {
     document.querySelector('.admin-form').classList.toggle('hidden');
 }
 
-function media(windowWidth) {
-    if (windowWidth.matches) {
-        // If media query matches
-        main.insertBefore(menu, container);
-        sideMenu = true;
+// watching window width
+function media() {
+    if (model.windowWidth.matches) {
+        // If media query matches 
+        // move menu on the side
+        model.main.insertBefore(model.menu, model.container);
+        model.sideMenu = true;
     } else {
-        if (sideMenu = true) {
-            main.insertBefore(menu, container);
-            sideMenu = false;
+        // move menu back if not
+        if (model.sideMenu = true) {
+            model.main.insertBefore(model.menu, model.container);
+            model.sideMenu = false;
         }
     }
 }
 
-function nameFresh() {
-    if (activeCat !== "") {
-        document.getElementById('name').value = activeCat.name;
-    }
-}
-
-function urlFresh() {
-    if (activeCat !== "") {
-        document.getElementById('url').value = activeCat.url;
+// update active cat's property values if changed by admin form
+function updateAdmin() {
+    if (model.activeCat !== "") {
+        document.getElementById('name').value = model.activeCat.name;
+        document.getElementById('url').value = model.activeCat.url;
+        clickFresh();
     }
 }
 
 function clickFresh() {
-    if (activeCat !== "") {
-        document.getElementById('click').value = activeCat.click;
-    }
+    document.getElementById('click').value = model.activeCat.click;
 }
 
+// update cat name in menu list if changed by admin form
 function listFresh() {
-    document.querySelector('.cat-select').textContent = activeCat.name;
-    document.querySelector('.selected-cat').textContent = activeCat.name;
+    document.querySelector('.cat-select').textContent = model.activeCat.name;
+    document.querySelector('.selected-cat').textContent = model.activeCat.name;
+}
+
+// check for empty fields in admin form
+// if the input field is empty fill it back with active cat's relevant property value
+function checkForm() {
+    if (document.getElementById('name').value === '') {
+        document.getElementById('name').value = model.activeCat.name;
+    }
+    if (document.getElementById('url').value === '') {
+        document.getElementById('url').value = model.activeCat.url;
+    }
+    if (document.getElementById('click').value === '') {
+        document.getElementById('click').value = model.activeCat.click;
+    }
 }
