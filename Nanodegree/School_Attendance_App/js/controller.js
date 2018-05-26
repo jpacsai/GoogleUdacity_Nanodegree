@@ -1,9 +1,9 @@
 let controller = {
     
-    setAttendance() {
-        model.attendance = JSON.parse(localStorage.attendance);
-    },
-
+    /* Create an initial
+    * attendance record if one is not found
+    * within localStorage.
+    */
     localStorage() {
         if (!localStorage.attendance) {
             console.log('Creating attendance records...');
@@ -26,7 +26,13 @@ let controller = {
             localStorage.attendance = JSON.stringify(attendance);
         }
     },
+
+    // set value of variable
+    setAttendance() {
+        model.attendance = JSON.parse(localStorage.attendance);
+    },
     
+    // Count a student's missed days
     countMissing() {
         model.$allMissed.each(function() {
             var studentRow = $(this).parent('tr'),
@@ -43,6 +49,7 @@ let controller = {
         });
     },
 
+    // When a checkbox is clicked, update localStorage
     update() {
         model.$allCheckboxes.on('click', function() {
             var studentRows = $('tbody .student'),

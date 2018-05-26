@@ -1,4 +1,6 @@
 let view = {
+    
+    // Check boxes, based on attendace records
     check() {
         $.each(model.attendance, function(name, days) {
             var studentRow = $('tbody .name-col:contains("' + name + '")').parent('tr'),
