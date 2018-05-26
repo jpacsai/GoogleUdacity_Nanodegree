@@ -37,7 +37,7 @@ gulp.task('copy-img', function() {
 });
 
 gulp.task('script', function() {
-	gulp.src(['js/model.js', 'js/controller.js', 'js/view.js'])
+	gulp.src(['js/model.js', 'js/engine.js', 'js/controller.js', 'js/view.js'])
 		.pipe(concat('app.js'))
 		.pipe(gulp.dest('./js'))
 		.pipe(babel({
