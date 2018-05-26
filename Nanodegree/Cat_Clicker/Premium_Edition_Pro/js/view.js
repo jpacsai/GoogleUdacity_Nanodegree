@@ -109,6 +109,7 @@ let view = {
         }
     },
 
+    // update click value in admin form
     clickFresh() {
         document.getElementById('click').value = model.activeCat.click;
     },

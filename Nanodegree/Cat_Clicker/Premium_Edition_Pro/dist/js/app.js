@@ -255,6 +255,9 @@ var view = {
             this.clickFresh(); // update click value in admin form
         }
     },
+
+
+    // update click value in admin form
     clickFresh: function clickFresh() {
         document.getElementById('click').value = model.activeCat.click;
     },
