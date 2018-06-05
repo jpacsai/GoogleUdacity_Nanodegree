@@ -40,7 +40,6 @@
     function addArticles() {
         let htmlContent = '';
         let data = JSON.parse(this.responseText);
-        console.log(data);
 
         if (data.response && data.response.docs && data.response.docs.length > 1) {
             htmlContent = '<ul>' + data.response.docs.map(article => `<li class='article'>
