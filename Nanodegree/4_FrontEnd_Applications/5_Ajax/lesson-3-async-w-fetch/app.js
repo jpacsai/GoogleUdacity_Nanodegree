@@ -15,6 +15,8 @@
             }
         }).then((response) => response.json()).then(addImage);
 
+        fetch(`http://api.nytimes.com/svc/search/v2/articlesearch.json?q=${searchedForText}&api-key=04783637e8264c5eabd5e5a7b5b3a533`
+        ).then((response) => response.json()).then(addArticles);
         /*
         const nytimesRequest = new XMLHttpRequest();
         nytimesRequest.onload = addArticles;
@@ -37,9 +39,8 @@
         responseContainer.insertAdjacentHTML('afterbegin', htmlContent);
     }
 
-    function addArticles() {
+    function addArticles(data) {
         let htmlContent = '';
-        let data = JSON.parse(this.responseText);
 
         if (data.response && data.response.docs && data.response.docs.length > 1) {
             htmlContent = '<ul>' + data.response.docs.map(article => `<li class='article'>
