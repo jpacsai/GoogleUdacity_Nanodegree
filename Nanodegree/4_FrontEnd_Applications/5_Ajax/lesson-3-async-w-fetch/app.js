@@ -13,15 +13,16 @@
             headers: {
                 Authorization: 'Client-ID ee3405648f48ea0a6bda1043547588b5f43ef4d611d5853eca705d5e8a7f60ea'
             }
-        }).then((response) => response.json()).then(addImage);
+        })
+            .then((response) => response.json())
+            .then(addImage)
+            .catch(requestError(e, 'image'));
 
         fetch(`http://api.nytimes.com/svc/search/v2/articlesearch.json?q=${searchedForText}&api-key=04783637e8264c5eabd5e5a7b5b3a533`
-        ).then((response) => response.json()).then(addArticles);
-        /*
-        const nytimesRequest = new XMLHttpRequest();
-        nytimesRequest.onload = addArticles;
-        nytimesRequest.open('GET', `http://api.nytimes.com/svc/search/v2/articlesearch.json?q=${searchedForText}&api-key=04783637e8264c5eabd5e5a7b5b3a533`);
-        nytimesRequest.send();*/
+        )
+            .then((response) => response.json())
+            .then(addArticles)
+            .catch(requestError(e, 'articles'));
     });
 
     function addImage(data) {
@@ -47,9 +48,12 @@
             <h2><a href=${article.web_url}>${article.headline.main}</a></h2>
             <p>${article.snippet}</p>
         </li>`).join('') + '</ul>';
-        } else {
-            htmlContent = '<div class="error-no-article">No articles available</div>';
         }
         responseContainer.insertAdjacentHTML('beforeend', htmlContent);
+    }
+
+    function requestError(e, part) {
+        console.log(e);
+        responseContainer.insertAdjacentHTML('beforeend', `<p class="network-warning">Oh no! There was an error making a request for the ${part}.</p>`);
     }
 })();
