@@ -344,7 +344,7 @@ template {
 
 body,td,th,p{
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 10pt;
+	font-size: 16px;
 	color: #333;
 	line-height: 1.5;
 }
@@ -357,7 +357,7 @@ body {
 
 ul, li {
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 10pt;
+	font-size: 16px;
 	color: #333;
 }
 
@@ -584,7 +584,8 @@ nav h1 a {
 }
 
 #restaurant-img {
-	max-width: 100%;
+  max-width: 100%;
+  border-radius: 10% 0;
 }
 
 #restaurant-address {
