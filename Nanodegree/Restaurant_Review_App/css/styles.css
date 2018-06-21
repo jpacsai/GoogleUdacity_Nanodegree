@@ -626,19 +626,33 @@ nav h1 a {
 }
 
 #reviews-list li {
-  background-color: #fff;
-    border: 2px solid #f3f3f3;
-  display: block;
   list-style-type: none;
-  margin: 0 0 30px;
-  overflow: hidden;
-  padding: 0 20px 20px;
-  position: relative;
-  width: 85%;
 }
 
-#reviews-list li p {
-  margin: 0 0 10px;
+.review-name {
+  background-color: black;
+  color: white;
+  border-radius: 30px 0 0 0;
+  padding: 15px;
+}
+
+.review-date {
+  color: #cccccc;
+}
+
+.review-rating {
+  background-color: #ffa500;
+  color: white;
+  text-transform: uppercase;
+  padding: 8px 12px;
+  display: inline;
+  font-weight: bold;
+  border-radius: 3px;
+}
+
+.review-comments {
+  color: #919191;
+  background-color: white;
 }
 
 #restaurant-hours td {
