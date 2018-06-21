@@ -574,7 +574,8 @@ nav h1 a {
   width: 50%;
 }
 
-#restaurant-name {
+#restaurant-name,
+#reviews-container h2  {
   color: #f18200;
   font-family: Arial,sans-serif;
   font-size: 20px;
@@ -616,11 +617,7 @@ nav h1 a {
 }
 
 #reviews-container h2 {
-  color: #f58500;
-  font-size: 24pt;
-  font-weight: 300;
-  letter-spacing: -1px;
-  padding-bottom: 1pt;
+  text-transform: none;
 }
 
 #reviews-list {
