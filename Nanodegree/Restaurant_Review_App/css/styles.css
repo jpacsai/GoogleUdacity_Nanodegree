@@ -676,3 +676,21 @@ nav h1 a {
   color: #666;
   padding: 0 10px 0 0;
 }
+
+/* ====================== Media queries ====================== */
+
+@media only screen and (min-width: 600px) and (max-width: 900px) {
+
+  #restaurants-list {
+    padding: 0 30px;
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    justify-content: space-around;
+  }
+
+  #restaurants-list li {
+    margin: 3vw auto;
+    width: 32vw;
+  }
+}
