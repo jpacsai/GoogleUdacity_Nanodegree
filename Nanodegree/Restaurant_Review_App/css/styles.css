@@ -549,12 +549,12 @@ nav h1 a {
 }
 
 /* ====================== Restaurant Details ====================== */
+
+/*
 .inside header {
-  /*position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;*/
+  
 }
+*/
 
 .inside #map-container {
   background: blue none repeat scroll 0 0;
@@ -613,7 +613,7 @@ nav h1 a {
 }
 
 #reviews-container {
-  padding: 30px 40px 80px;
+  padding: 30px;
 }
 
 #reviews-container h2 {
@@ -632,15 +632,18 @@ nav h1 a {
 .review-header {
   background-color: black;
   border-radius: 20px 0 0 0;
-  padding: 15px;
+  padding: 15px 20px;
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
   margin-top: 30px;
+  letter-spacing: 1px;
 }
 
 .review-name {
   color: white;
   margin: 0;
+  font-size: 20px;
 }
 
 .review-date {
@@ -670,6 +673,11 @@ nav h1 a {
   color: #919191;
 }
 
+#restaurant-hours {
+  width: 100%;
+}
+
 #restaurant-hours td {
   color: #666;
+  padding: 0 10px 0 0;
 }
