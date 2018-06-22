@@ -693,4 +693,12 @@ nav h1 a {
     margin: 3vw auto;
     width: 32vw;
   }
+
+  .inside #map-container {
+    width: 50%;
+  }
+
+  #restaurant-container {
+    width: 50%;
+  }
 }
