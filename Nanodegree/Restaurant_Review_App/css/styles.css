@@ -431,6 +431,7 @@ nav h1 a {
 /* Display list items side by side */
 #breadcrumb li {
     display: inline;
+    font-size: 20px;
 }
 
 /* Add a slash symbol (/) before/behind each list item */
@@ -459,6 +460,10 @@ nav h1 a {
   background-color: #ccc;
 }
 
+/* ====================== Main Container ====================== */
+#main-container {
+  width: 100vw;
+}
 /* ====================== Restaurant Filtering ====================== */
 .filter-options {
   width: 100%;
@@ -675,4 +680,82 @@ nav h1 a {
 #restaurant-hours td {
   color: #666;
   padding: 0 10px 0 0;
+}
+
+/* ====================== Media queries ====================== */
+
+@media only screen and (min-width: 600px) /* and (max-width: 900px) */ {
+
+  .filter-options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 2vw;
+  }
+
+  #restaurants-list {
+    padding: 0 30px;
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    justify-content: space-around;
+  }
+
+  #restaurants-list li {
+    margin: 2vw auto;
+    width: 32vw;
+    display: grid;
+    grid-template-rows: 50% 80px 30px 70px 1fr;
+  }
+
+  #restaurants-list li a {
+    height: 24px;
+    width: 115px;
+  }
+
+  .inside #map-container {
+    width: 50%;
+  }
+
+  #restaurant-container {
+    width: 50%;
+    box-sizing: border-box;
+  }
+
+  /* ========== Review page ========== */
+
+  #maincontent {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  #map-container {
+    order: 2;
+  }
+
+  .inside #map-container {
+    height: unset;
+  }
+
+  #restaurant-container {
+    order: 1;
+  }
+
+  #restaurant-hours td:last-of-type {
+    padding: 0;
+  }
+
+  #reviews-container {
+    order: 3;
+  }
+
+  #footer {
+    margin-top: 2vw;
+  }
+}
+
+@media only screen and (min-width: 900px) {
+  #restaurants-list li {
+    width: 22vw;
+  }
 }
