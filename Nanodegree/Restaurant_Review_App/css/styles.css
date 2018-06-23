@@ -747,3 +747,9 @@ nav h1 a {
     order: 3;
   }
 }
+
+@media only screen and (min-width: 900px) {
+  #restaurants-list li {
+    width: 22vw;
+  }
+}
