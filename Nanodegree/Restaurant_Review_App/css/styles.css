@@ -679,7 +679,13 @@ nav h1 a {
 
 /* ====================== Media queries ====================== */
 
-@media only screen and (min-width: 600px) and (max-width: 900px) {
+@media only screen and (min-width: 600px) /* and (max-width: 900px) */ {
+
+  .filter-options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 
   #restaurants-list {
     padding: 0 30px;
