@@ -689,6 +689,7 @@ nav h1 a {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin-bottom: 2vw;
   }
 
   #restaurants-list {
@@ -700,7 +701,7 @@ nav h1 a {
   }
 
   #restaurants-list li {
-    margin: 3vw auto;
+    margin: 2vw auto;
     width: 32vw;
     display: grid;
     grid-template-rows: 50% 80px 30px 70px 1fr;
@@ -745,6 +746,10 @@ nav h1 a {
 
   #reviews-container {
     order: 3;
+  }
+
+  #footer {
+    margin-top: 2vw;
   }
 }
 
