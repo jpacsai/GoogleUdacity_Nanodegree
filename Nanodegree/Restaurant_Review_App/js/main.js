@@ -100,6 +100,7 @@ updateRestaurants = () => {
     if (error) { // Got an error!
       console.error(error);
     } else {
+      console.log(restaurants);
       resetRestaurants(restaurants);
       fillRestaurantsHTML();
     }
@@ -152,13 +153,13 @@ createRestaurantHTML = (restaurant) => {
   li.append(neighborhood);
 
   const address = document.createElement('p');
-  address.innerHTML = restaurant.address;
+  address.innerHTML = restaurant.address.replace(/, /g, '<br>');
   li.append(address);
 
   const more = document.createElement('a');
   more.innerHTML = 'View Details';
   more.href = DBHelper.urlForRestaurant(restaurant);
-  li.append(more)
+  li.append(more);
 
   return li
 }
