@@ -699,10 +699,10 @@ nav h1 a {
     margin: 3vw auto;
     width: 32vw;
     display: grid;
-    grid-template-rows: 50% 80px 24px 48px 1fr;
+    grid-template-rows: 50% 80px 30px 70px 1fr;
   }
 
-  #restuarant-list li a {
+  #restaurants-list li a {
     height: 24px;
     width: 115px;
   }
