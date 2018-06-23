@@ -459,6 +459,10 @@ nav h1 a {
   background-color: #ccc;
 }
 
+/* ====================== Main Container ====================== */
+#main-container {
+  width: 100vw;
+}
 /* ====================== Restaurant Filtering ====================== */
 .filter-options {
   width: 100%;
