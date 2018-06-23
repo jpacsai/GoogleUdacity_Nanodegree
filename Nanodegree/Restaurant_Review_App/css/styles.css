@@ -706,5 +706,33 @@ nav h1 a {
 
   #restaurant-container {
     width: 50%;
+    box-sizing: border-box;
+  }
+
+  /* ========== Review page ========== */
+
+  #maincontent {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  #map-container {
+    order: 2;
+  }
+
+  .inside #map-container {
+    height: unset;
+  }
+
+  #restaurant-container {
+    order: 1;
+  }
+
+  #restaurant-hours td:last-of-type {
+    padding: 0;
+  }
+
+  #reviews-container {
+    order: 3;
   }
 }
