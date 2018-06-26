@@ -81,6 +81,7 @@ window.initMap = () => {
     scrollwheel: false
   });
   updateRestaurants();
+  console.log(map);
 }
 
 /**
@@ -100,7 +101,6 @@ updateRestaurants = () => {
     if (error) { // Got an error!
       console.error(error);
     } else {
-      console.log(restaurants);
       resetRestaurants(restaurants);
       fillRestaurantsHTML();
     }
