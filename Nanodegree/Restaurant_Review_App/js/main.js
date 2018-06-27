@@ -10,6 +10,9 @@ var markers = []
 document.addEventListener('DOMContentLoaded', (event) => {
   fetchNeighborhoods();
   fetchCuisines();
+  const ifr = document.getElementsByClassName('gm-style').item(0);
+  console.log(ifr);
+  //document.getElementsByTagName("IFRAME")[0].setAttribute("name", "hellloooo");
 });
 
 /**
@@ -80,9 +83,10 @@ window.initMap = () => {
     center: loc,
     scrollwheel: false
   });
+  
   updateRestaurants();
-  console.log(map);
 }
+
 
 /**
  * Update page and map for current restaurants.
@@ -177,4 +181,5 @@ addMarkersToMap = (restaurants = self.restaurants) => {
     });
     self.markers.push(marker);
   });
+  
 }
