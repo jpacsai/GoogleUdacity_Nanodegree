@@ -499,6 +499,10 @@ nav h1 a {
   width: 200px;
 }
 
+.select-dropdown:focus {
+  border: 2px solid orange;
+}
+
 /* ====================== Restaurant Listing ====================== */
 #restaurants-list {
   background-color: #f3f3f3;
@@ -550,6 +554,10 @@ nav h1 a {
   text-transform: uppercase;
 }
 
+#restaurants-list li a:focus {
+  background-color: blue;
+  box-shadow: 4px 4px 4px grey;
+}
 /* ====================== Restaurant Details ====================== */
 
 /*
