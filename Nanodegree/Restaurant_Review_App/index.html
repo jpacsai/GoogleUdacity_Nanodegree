@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
   <link rel="stylesheet" href="css/styles.css">
   <title>Restaurant Reviews</title>
 </head>
@@ -17,27 +16,32 @@
   </header>
 
   <main id="maincontent">
-    <section id="map-container">
+    <section id="map-container" class="map-container1">
       <div id="map"></div>
     </section>
     <section id="main-container">
       <div class="filter-options">
         <h2>Filter Results</h2>
         <div class="filter-select-container">
-          <select id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()">
+          <label for="neighborhoods-select" class="filter-label">Neighborhood: 
+            <select id="neighborhoods-select" class="select-dropdown" name="neighborhoods" onchange="updateRestaurants()">
               <option value="all">All Neighborhoods</option>
             </select>
-            <select id="cuisines-select" name="cuisines" onchange="updateRestaurants()">
+          </label>
+          <label for="cuisines-select" class="filter-label">Cuisine:
+            <select id="cuisines-select" class="select-dropdown" name="cuisines" onchange="updateRestaurants()">
               <option value="all">All Cuisines</option>
             </select>
+          </label>
+          
         </div> 
       </div>
       <ul id="restaurants-list"></ul>
     </section>
   </main>
 
-  <script type="application/javascript" charset="utf-8" src="js/dbhelper.js"></script>
-  <script type="application/javascript" charset="utf-8" src="js/main.js"></script>
+  <script src="js/dbhelper.js"></script>
+  <script src="js/main.js"></script>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQgAS-I3xuMYwP8h9xKCalJnwIEOe2pCE&libraries=places&callback=initMap"></script>
 
 
