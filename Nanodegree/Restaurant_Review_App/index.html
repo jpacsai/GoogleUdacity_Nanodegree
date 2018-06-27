@@ -4,50 +4,71 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
+  <!-- Main CSS file -->
   <link rel="stylesheet" href="css/styles.css">
   <title>Restaurant Reviews</title>
 </head>
 
 <body>
+  
+  <!-- Beginning header -->
   <header>
+    <!-- Beginning nav -->
     <nav>
       <h1><a href="/">Restaurant Reviews</a></h1>
     </nav>
+    <!-- End nav -->
   </header>
+  <!-- End header -->
 
+  <!-- Beginning main -->
   <main id="maincontent">
+    <!-- Beginning map -->
     <section id="map-container" class="map-container1">
       <div id="map"></div>
     </section>
+    <!-- End map -->
+    <!-- Beginning filter and restaurant container -->
     <section id="main-container">
+      <!-- Beginning filter section -->
       <div class="filter-options">
         <h2>Filter Results</h2>
+        <!-- Beginning dropdown menu -->
         <div class="filter-select-container">
+          <!-- Beginning filter for neighborhood -->
           <label for="neighborhoods-select" class="filter-label">Neighborhood: 
             <select id="neighborhoods-select" class="select-dropdown" name="neighborhoods" onchange="updateRestaurants()">
               <option value="all">All Neighborhoods</option>
             </select>
           </label>
+          <!-- End filter for neighborhood -->
+          <!-- Beginning filter for cuisines -->
           <label for="cuisines-select" class="filter-label">Cuisine:
             <select id="cuisines-select" class="select-dropdown" name="cuisines" onchange="updateRestaurants()">
               <option value="all">All Cuisines</option>
             </select>
           </label>
-          
+          <!-- End filter for cuisines -->
         </div> 
       </div>
+      <!-- End filter section -->
+      <!-- Beginning restaurant list -->
       <ul id="restaurants-list"></ul>
+      <!-- End restaurant list -->
     </section>
+    <!-- End filter and restaurant container -->
   </main>
+  <!-- End main -->
 
   <script src="js/dbhelper.js"></script>
   <script src="js/main.js"></script>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQgAS-I3xuMYwP8h9xKCalJnwIEOe2pCE&libraries=places&callback=initMap"></script>
 
-
+  <!-- Beginning footer -->
   <footer id="footer">
     Copyright (c) 2017 <a href="/"><strong>Restaurant Reviews</strong></a> All Rights Reserved.
   </footer>
+  <!-- End footer -->
 
 </body>
 
