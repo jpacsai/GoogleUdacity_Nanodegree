@@ -488,6 +488,12 @@ nav h1 a {
   justify-content: space-around;
 }
 
+.filter-label {
+  width: 250px;
+  text-align: center;
+  display: grid;
+}
+
 .filter-options select {
   background-color: white;
   border: 1px solid #fff;
