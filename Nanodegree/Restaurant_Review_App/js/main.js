@@ -1,3 +1,16 @@
+
+if('serviceWorker' in navigator) {
+  console.log('CLIENT: service worker registration in progress.');
+  navigator.serviceWorker.register('sw.js').then(function() {
+    console.log('CLIENT: service worker registration complete.');
+  }, function() {
+    console.log('CLIENT: service worker registration failure.');
+  });
+} else {
+  console.log('CLIENT: service worker is not supported.');
+}
+
+
 let restaurants,
   neighborhoods,
   cuisines
@@ -10,9 +23,6 @@ var markers = []
 document.addEventListener('DOMContentLoaded', (event) => {
   fetchNeighborhoods();
   fetchCuisines();
-  const ifr = document.getElementsByClassName('gm-style').item(0);
-  console.log(ifr);
-  //document.getElementsByTagName("IFRAME")[0].setAttribute("name", "hellloooo");
 });
 
 /**
@@ -83,7 +93,6 @@ window.initMap = () => {
     center: loc,
     scrollwheel: false
   });
-  
   updateRestaurants();
 }
 

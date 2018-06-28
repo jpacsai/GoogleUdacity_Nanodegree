@@ -403,6 +403,10 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
   color: #ffd68a;
 }
 
+#footer a:hover {
+  color: #DBE2FF;
+}
+
 /* ====================== Navigation ====================== */
 nav {
   width: 100%;
@@ -422,6 +426,10 @@ nav h1 a {
   font-weight: 200;
   letter-spacing: 10px;
   text-transform: uppercase;
+}
+
+nav h1 a:hover {
+  color: #FFBB3D;
 }
 
 #breadcrumb {
@@ -509,8 +517,14 @@ nav h1 a {
   width: 200px;
 }
 
+.select-dropdown:hover {
+  cursor: pointer;
+  background-color: #ffd68a;
+}
+
 .select-dropdown:focus {
-  border: 2px solid orange;
+  border: 3px solid orange;
+  background-color: white;
 }
 
 /* ====================== Restaurant Listing ====================== */
@@ -554,7 +568,6 @@ nav h1 a {
 
 #restaurants-list li a {
   background-color: orange;
-  border-bottom: 3px solid #eee;
   color: black;
   display: inline-block;
   margin: 15px 0 0;
@@ -564,9 +577,11 @@ nav h1 a {
   text-transform: uppercase;
 }
 
+#restaurants-list li a:hover,
 #restaurants-list li a:focus {
-  background-color: blue;
+  background-color: #207ab6;
   box-shadow: 4px 4px 4px grey;
+  color: white
 }
 /* ====================== Restaurant Details ====================== */
 
@@ -590,12 +605,6 @@ nav h1 a {
   height: 100%;
   width: 100%;
 }
-
-/*
-.inside #footer {
-  
-}
-*/
 
 #restaurant-name,
 #reviews-container h2  {
