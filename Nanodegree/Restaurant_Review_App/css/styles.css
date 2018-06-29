@@ -587,11 +587,14 @@ nav h1 a:hover {
 
 .inside #map-container {
   background: blue none repeat scroll 0 0;
-  height: 50vh;
 }
 
 .inside .map-container1 {
   width: 100%;
+}
+
+.inside .map-container2 {
+  height: 50vh;
 }
 
 .inside #map {
