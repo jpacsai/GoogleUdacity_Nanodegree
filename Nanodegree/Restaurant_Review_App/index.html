@@ -24,7 +24,7 @@
   <!-- Beginning main -->
   <main id="maincontent">
     <!-- Beginning map -->
-    <section id="map-container" class="map-container1">
+    <section id="map-container" class="map-container1" role="application">
       <div id="map"></div>
     </section>
     <!-- End map -->
@@ -60,10 +60,16 @@
   </main>
   <!-- End main -->
 
+  <!-- Beginning scripts -->
+  <!-- Database helpers -->
   <script src="js/dbhelper.js"></script>
+  <!-- Main javascript file -->
   <script src="js/main.js"></script>
+  <!-- Google Maps -->
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQgAS-I3xuMYwP8h9xKCalJnwIEOe2pCE&libraries=places&callback=initMap"></script>
+  <!-- Service Worker -->
   <script src="./sw.js"></script>
+  <!-- End scripts -->
 
   <!-- Beginning footer -->
   <footer id="footer">

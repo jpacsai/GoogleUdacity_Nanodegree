@@ -433,36 +433,36 @@ nav h1 a:hover {
 }
 
 #breadcrumb {
-    padding: 10px 30px 16px;
-    list-style: none;
-    background-color: #eee;
-    font-size: 20px;
-    margin: 0;
+  padding: 10px 30px 16px;
+  list-style: none;
+  background-color: #eee;
+  font-size: 20px;
+  margin: 0;
 }
 
 /* Display list items side by side */
 #breadcrumb li {
-    display: inline;
-    font-size: 20px;
+  display: inline;
+  font-size: 20px;
 }
 
 /* Add a slash symbol (/) before/behind each list item */
 #breadcrumb li+li:before {
-    padding: 8px;
-    color: black;
-    content: "/\00a0";
+  padding: 8px;
+  color: black;
+  content: "/\00a0";
 }
 
 /* Add a color to all links inside the list */
 #breadcrumb li a {
-    color: #185d8C;
-    text-decoration: none;
+  color: #185d8C;
+  text-decoration: none;
 }
 
 /* Add a color on mouse-over */
 #breadcrumb li a:hover {
-    color: black;
-    text-decoration: underline;
+  color: black;
+  text-decoration: underline;
 }
 
 /* ====================== Map ====================== */
@@ -584,12 +584,6 @@ nav h1 a:hover {
   color: white
 }
 /* ====================== Restaurant Details ====================== */
-
-/*
-.inside header {
-  
-}
-*/
 
 .inside #map-container {
   background: blue none repeat scroll 0 0;
