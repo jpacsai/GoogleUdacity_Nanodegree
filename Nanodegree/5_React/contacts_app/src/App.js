@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import ListContacts from './ListContacts'
 
 class App extends Component {
   state = {
-    contacts : [
+    contacts: [
       {
         "id": "ryan",
         "name": "Ryan Florence",
@@ -32,7 +32,10 @@ class App extends Component {
   render() {
     return (
       <div>
-        <ListContacts onDeleteContact = {this.removeContact} contacts = {this.state.contacts}/>
+        <ListContacts
+          onDeleteContact={this.removeContact}
+          contacts={this.state.contacts}
+        />
       </div>
     )
   }
