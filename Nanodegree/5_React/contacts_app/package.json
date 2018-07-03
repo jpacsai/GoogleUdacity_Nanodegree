@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "escape-string-regexp": "^1.0.5",
     "eslint": "^5.0.1",
     "prop-types": "^15.6.2",
     "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react-dom": "^15.6.1",
+    "sort-by": "^1.2.0"
   },
   "devDependencies": {
     "react-scripts": "1.0.7"
