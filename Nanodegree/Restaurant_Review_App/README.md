@@ -4,6 +4,7 @@ This project is developed for Google/Udacity Front End Web Development Nanodegre
 ## Table of Contents
 
 * [Project](#project)
+* [Link](#live-link)
 * [Dependencies](#dependencies)
 * [Installation](#installation)
 * [Compatibility](#browser-compatibility)
@@ -12,6 +13,9 @@ This project is developed for Google/Udacity Front End Web Development Nanodegre
 1. Make the page fully responsive on all devices
 2. Implement accessibility features
 3. Add Service Worker for offline availability
+
+## Live link
+https://jpacsai.github.io/GoogleUdacity_Nanodegree/Nanodegree/Restaurant_Review_App/
 
 ## Dependencies
 - Starter code from [Udacity](https://github.com/udacity/mws-restaurant-stage-1) 
