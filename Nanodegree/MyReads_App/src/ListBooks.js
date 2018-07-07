@@ -1,9 +1,30 @@
 import React from 'react'
 import { Component } from 'react'
 import { Link } from 'react-router-dom'
+import * as BooksAPI from './BooksAPI'
 
-class BookList extends Component {
+class BookShelf extends Component {
+    state = {
+      currentlyReading: [],
+      wantToRead: [],
+      read: []
+    }
+    
+    componentDidMount() {
+      BooksAPI.getAll().then((books) => {
+        const current = books.filter((book) => book.shelf === 'currentlyReading');
+        const want = books.filter((book) => book.shelf === 'wantToRead');
+        const read = books.filter((book) => book.shelf === 'read');
+        this.setState({
+          currentlyReading: current,
+          wantToRead: want,
+          read: read
+        })
+      });
+    }
+
     render() {
+      console.log(this.state.read);
         return (
             <div className="list-books">
             <div className="list-books-title">
@@ -168,4 +189,4 @@ class BookList extends Component {
     }
 }
 
-export default BookList
+export default BookShelf
