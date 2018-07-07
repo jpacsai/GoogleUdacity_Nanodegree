@@ -3,7 +3,7 @@ import React from 'react'
 import './App.css'
 import { Route } from 'react-router-dom'
 import SearchBooks from './SearchBooks';
-import BookList from './ListBooks';
+import ListBooks from './ListBooks';
 
 class BooksApp extends React.Component {
   state = {
@@ -13,13 +13,12 @@ class BooksApp extends React.Component {
      * users can use the browser's back and forward buttons to navigate between
      * pages, as well as provide a good URL they can bookmark and share.
      */
-    showSearchPage: false
   }
 
   render() {
     return (
       <div className="app">
-        <Route exact path='/' component={ BookList }/>
+        <Route exact path='/' component={ ListBooks }/>
         <Route path='/search' component={ SearchBooks } />
       </div>
     )
