@@ -5,56 +5,68 @@ import * as BooksAPI from './BooksAPI'
 import BookShelf from './BookShelf';
 
 class ListBooks extends Component {
-    state = {
-      currentlyReading: [],
-      wantToRead: [],
+  constructor(props) {
+		super(props);
+    this.changeShelf = this.changeShelf.bind(this);
+    this.state = {
+      current: [],
+      want: [],
       read: []
     }
+  }
+  
+  changeShelf(e,b) {
+    console.log(e);
+    BooksAPI.update(b, e);
+    // remove from old shelf array
+    // add to new shelf array
+    // setState return both shelves
+  }
 
-    componentDidMount() {
-      BooksAPI.getAll().then((books) => {
-        const current = books.filter((book) => book.shelf === 'currentlyReading');
-        const want = books.filter((book) => book.shelf === 'wantToRead');
-        const read = books.filter((book) => book.shelf === 'read');
-        this.setState({
-          currentlyReading: current,
-          wantToRead: want,
-          read: read
-        })
-      });
-    }
+  componentDidMount() {
+    BooksAPI.getAll().then((b) => {
+      const current = b.filter((book) => book.shelf === 'currentlyReading');
+      const want = b.filter((book) => book.shelf === 'wantToRead');
+      const read = b.filter((book) => book.shelf === 'read');
+      this.setState({
+        current,
+        want,
+        read
+      })
+    });
+  }
 
-    render() {
-        return (
-          <div className="list-books">
-            <div className="list-books-title">
-              <h1>MyReads</h1>
-            </div>
-            <div className="list-books-content">
-              <div>
-                <div className="bookshelf">
-                    <h2 className="bookshelf-title">Currently Reading</h2>
-                    <BookShelf shelf={this.state.currentlyReading} />
-                </div>
-
-                <div className="bookshelf">
-                  <h2 className="bookshelf-title">Want to Read</h2>
-                  <BookShelf shelf={this.state.wantToRead} />
-                </div>
-
-                <div className="bookshelf">
-                  <h2 className="bookshelf-title">Read</h2>
-                  <BookShelf shelf={this.state.read} />
-                </div>
-              </div>
+  render() {
+    return (
+      <div className="list-books">
+        <div className="list-books-title">
+          <h1>MyReads</h1>
+        </div>
+        <div className="list-books-content">
+          <div>
+            <div className="bookshelf">
+              <h2 className="bookshelf-title">Currently Reading</h2>
+              <BookShelf changeShelf={this.changeShelf} shelf={this.state.current}/>
             </div>
 
-            <div className="open-search">
-              <Link to='/search'>Add a book</Link>
+            <div className="bookshelf">
+              <h2 className="bookshelf-title">Want to Read</h2>
+              <BookShelf changeShelf={this.changeShelf} shelf={this.state.want}/>
+            </div>
+
+            <div className="bookshelf">
+              <h2 className="bookshelf-title">Read</h2>
+              <BookShelf changeShelf={this.changeShelf} shelf={this.state.read}/>
             </div>
           </div>
-        )
-    }
+        </div>
+
+        <div className="open-search">
+          <Link to='/search'>Add a book</Link>
+        </div>
+      </div>
+    )
+  }
 }
 
 export default ListBooks
