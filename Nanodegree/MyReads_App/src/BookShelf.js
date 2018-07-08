@@ -3,12 +3,24 @@ import { Component } from 'react'
 import * as BooksAPI from './BooksAPI'
 
 class BookShelf extends Component {
-    
+    state = {
+        books: []
+    }
+
+    componentDidMount() {
+        BooksAPI.getAll().then((b) => {
+            const current = b.filter((book) => book.shelf === this.props.shelf);
+            this.setState({
+                books: current
+            })
+        });
+    }
+
     render() {
         return (
             <div className="bookshelf-books">
                 <ol className="books-grid">
-                    { this.props.shelf.map((book) => (
+                    { this.state.books.map((book) => (
                         <li key={'book.industryIdentifiers[0].identifier' }>
                         <div className="book">
                             <div className="book-top">
@@ -20,7 +32,7 @@ class BookShelf extends Component {
                                 }}>
                             </div>
                             <div className="book-shelf-changer">
-                                <select onChange={ (event) => this.shelfChange(event.target.value, book) }>
+                                <select>
                                     <option value="move" disabled>Move to...</option>
                                     <option value="currentlyReading">Currently Reading</option>
                                     <option value="wantToRead">Want to Read</option>

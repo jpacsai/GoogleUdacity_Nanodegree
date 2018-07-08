@@ -1,33 +1,11 @@
 import React from 'react'
 import { Component } from 'react'
 import { Link } from 'react-router-dom'
-import * as BooksAPI from './BooksAPI'
+//import * as BooksAPI from './BooksAPI'
 import BookShelf from './BookShelf';
 
 class ListBooks extends Component {
-    state = {
-      currentlyReading: [],
-      wantToRead: [],
-      read: []
-    }
-
-    componentDidMount() {
-      const books = this.props.bookList;
-      
-      /*const current = books.filter((book) => book.shelf === 'currentlyReading');
-      const want = books.filter((book) => book.shelf === 'wantToRead');
-      const read = books.filter((book) => book.shelf === 'read');
-      this.setState({
-        currentlyReading: current,
-        wantToRead: want,
-        read: read
-      })*/
-    }
-
-    
-
     render() {
-
         return (
           <div className="list-books">
             <div className="list-books-title">
@@ -36,18 +14,18 @@ class ListBooks extends Component {
             <div className="list-books-content">
               <div>
                 <div className="bookshelf">
-                    <h2 className="bookshelf-title">Currently Reading</h2>
-                    <BookShelf shelf={this.state.currentlyReading} />
+                  <h2 className="bookshelf-title">Currently Reading</h2>
+                  <BookShelf shelf={'currentlyReading'}/>
                 </div>
 
                 <div className="bookshelf">
                   <h2 className="bookshelf-title">Want to Read</h2>
-                  <BookShelf shelf={this.state.wantToRead} />
+                  <BookShelf shelf={'wantToRead'}/>
                 </div>
 
                 <div className="bookshelf">
                   <h2 className="bookshelf-title">Read</h2>
-                  <BookShelf shelf={this.state.read} />
+                  <BookShelf shelf={'read'}/>
                 </div>
               </div>
             </div>
