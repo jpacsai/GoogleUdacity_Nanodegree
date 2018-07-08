@@ -13,6 +13,7 @@ class ListBooks extends Component {
 
     componentDidMount() {
       BooksAPI.getAll().then((books) => {
+        console.log(books);
         const current = books.filter((book) => book.shelf === 'currentlyReading');
         const want = books.filter((book) => book.shelf === 'wantToRead');
         const read = books.filter((book) => book.shelf === 'read');
