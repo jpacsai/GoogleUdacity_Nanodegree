@@ -12,20 +12,22 @@ class ListBooks extends Component {
     }
 
     componentDidMount() {
-      BooksAPI.getAll().then((books) => {
-        console.log(books);
-        const current = books.filter((book) => book.shelf === 'currentlyReading');
-        const want = books.filter((book) => book.shelf === 'wantToRead');
-        const read = books.filter((book) => book.shelf === 'read');
-        this.setState({
-          currentlyReading: current,
-          wantToRead: want,
-          read: read
-        })
-      });
+      const books = this.props.bookList;
+      
+      /*const current = books.filter((book) => book.shelf === 'currentlyReading');
+      const want = books.filter((book) => book.shelf === 'wantToRead');
+      const read = books.filter((book) => book.shelf === 'read');
+      this.setState({
+        currentlyReading: current,
+        wantToRead: want,
+        read: read
+      })*/
     }
 
+    
+
     render() {
+
         return (
           <div className="list-books">
             <div className="list-books-title">
