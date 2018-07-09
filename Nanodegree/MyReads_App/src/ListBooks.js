@@ -16,7 +16,6 @@ class ListBooks extends Component {
   }
   
   changeShelf(e,b) {
-    console.log('changeShelf');
     BooksAPI.update(b, e).then(() => 
       this.getShelf()
     /*{
@@ -38,16 +37,6 @@ class ListBooks extends Component {
       })
   }
 
-  getShelf() {
-    BooksAPI.getAll().then((b) => {
-      this.sortBooks(b);
-    });
-  }
-
-  componentDidMount() {
-    this.getShelf();
-  }
-
   render() {
     return (
       <div className="list-books">
@@ -58,17 +47,17 @@ class ListBooks extends Component {
           <div>
             <div className="bookshelf">
               <h2 className="bookshelf-title">Currently Reading</h2>
-              <BookShelf changeShelf={this.changeShelf} shelf={this.state.current}/>
+              <BookShelf changeShelf={this.changeShelf} shelf={this.state.current} books={this.props.books}/>
             </div>
 
             <div className="bookshelf">
               <h2 className="bookshelf-title">Want to Read</h2>
-              <BookShelf changeShelf={this.changeShelf} shelf={this.state.want}/>
+              <BookShelf changeShelf={this.changeShelf} shelf={this.state.want} books={this.props.books}/>
             </div>
 
             <div className="bookshelf">
               <h2 className="bookshelf-title">Read</h2>
-              <BookShelf changeShelf={this.changeShelf} shelf={this.state.read}/>
+              <BookShelf changeShelf={this.changeShelf} shelf={this.state.read} books={this.props.books}/>
             </div>
           </div>
         </div>

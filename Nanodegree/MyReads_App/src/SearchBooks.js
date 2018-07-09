@@ -7,15 +7,22 @@ import BookShelf from './BookShelf';
 import * as BooksAPI from './BooksAPI'
 
 class SearchBooks extends Component {
-    state = {
-        query: []
+    constructor(props) {
+        super(props);
+        this.state = {
+            query: []
+        }
     }
 
     handleChange(e) {
         BooksAPI.search(e).then((books) => {
             console.log(books);
+            const result = books && Array.isArray(books) ? books : [];
+            if (result.length > 0) {
+                result.forEach((b) => console.log(b))
+            }
             this.setState({
-                query : (books && Array.isArray(books)) ? books : []
+                query : result
             })
         })
     }
@@ -45,7 +52,7 @@ class SearchBooks extends Component {
                 </div>
                 <div className="search-books-results">
                     <ol className="books-grid">
-                        <BookShelf shelf={this.state.query} />
+                        <BookShelf onShelf={this.props.books} books={this.state.query}/>
                     </ol>
                 </div>
             </div>

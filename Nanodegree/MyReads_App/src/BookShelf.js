@@ -4,10 +4,11 @@ import { Component } from 'react'
 class BookShelf extends Component {
     render() {
         const {changeShelf} = this.props;
+        const books = this.props.books;
         return (
             <div className="bookshelf-books">
                 <ol className="books-grid">
-                    { this.props.shelf.map((book) => (
+                    { books.map((book) => (
                         <li key={ book.id }>
                         <div className="book">
                             <div className="book-top">
