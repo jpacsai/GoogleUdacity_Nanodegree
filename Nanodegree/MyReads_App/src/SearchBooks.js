@@ -19,12 +19,21 @@ class SearchBooks extends Component {
             console.log(books);
             const result = books && Array.isArray(books) ? books : [];
             if (result.length > 0) {
-                result.forEach((b) => console.log(b))
+                console.log('check length')
+                result.forEach((b) => {
+                    if (this.props.books.includes(b) === true) {
+                        console.log('includes: ' + b.title);
+                    }
+                })
             }
             this.setState({
                 query : result
             })
         })
+    }
+
+    checkOnShelf() {
+
     }
 
     render() {
@@ -52,7 +61,7 @@ class SearchBooks extends Component {
                 </div>
                 <div className="search-books-results">
                     <ol className="books-grid">
-                        <BookShelf onShelf={this.props.books} books={this.state.query}/>
+                        <BookShelf onShelf={this.props.books} books={this.state.query} changeShelf={this.props.changeShelf}/>
                     </ol>
                 </div>
             </div>
