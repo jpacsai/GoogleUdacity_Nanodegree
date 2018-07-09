@@ -18,23 +18,7 @@ class ListBooks extends Component {
   changeShelf(e,b) {
     BooksAPI.update(b, e).then(() => 
       this.getShelf()
-    /*{
-      let jointArrays = this.state.current.concat(this.state.want, this.state.read);
-      console.log(jointArrays);
-      this.sortBooks(jointArrays);
-    }*/
     );
-  }
-
-  sortBooks(b) {
-    const current = b.filter((book) => book.shelf === 'currentlyReading');
-      const want = b.filter((book) => book.shelf === 'wantToRead');
-      const read = b.filter((book) => book.shelf === 'read');
-      this.setState({
-        current,
-        want,
-        read
-      })
   }
 
   render() {
@@ -47,17 +31,17 @@ class ListBooks extends Component {
           <div>
             <div className="bookshelf">
               <h2 className="bookshelf-title">Currently Reading</h2>
-              <BookShelf changeShelf={this.changeShelf} shelf={this.state.current} books={this.props.books}/>
+              <BookShelf changeShelf={this.changeShelf} books={this.props.current}/>
             </div>
 
             <div className="bookshelf">
               <h2 className="bookshelf-title">Want to Read</h2>
-              <BookShelf changeShelf={this.changeShelf} shelf={this.state.want} books={this.props.books}/>
+              <BookShelf changeShelf={this.changeShelf} books={this.props.want}/>
             </div>
 
             <div className="bookshelf">
               <h2 className="bookshelf-title">Read</h2>
-              <BookShelf changeShelf={this.changeShelf} shelf={this.state.read} books={this.props.books}/>
+              <BookShelf changeShelf={this.changeShelf} books={this.props.read}/>
             </div>
           </div>
         </div>
