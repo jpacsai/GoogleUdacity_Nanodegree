@@ -3,8 +3,7 @@ import { Component } from 'react'
 
 class BookShelf extends Component {
     render() {
-        const {changeShelf} = this.props;
-        const books = this.props.books;
+        const {changeShelf, books} = this.props;
         return (
             <div className="bookshelf-books">
                 <ol className="books-grid">

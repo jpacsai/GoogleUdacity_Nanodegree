@@ -7,18 +7,11 @@ import BookShelf from './BookShelf';
 class ListBooks extends Component {
   constructor(props) {
 		super(props);
-    this.changeShelf = this.changeShelf.bind(this);
     this.state = {
       current: [],
       want: [],
       read: []
     }
-  }
-  
-  changeShelf(e,b) {
-    BooksAPI.update(b, e).then(() => 
-      this.getShelf()
-    );
   }
 
   render() {
@@ -31,17 +24,17 @@ class ListBooks extends Component {
           <div>
             <div className="bookshelf">
               <h2 className="bookshelf-title">Currently Reading</h2>
-              <BookShelf changeShelf={this.changeShelf} books={this.props.current}/>
+              <BookShelf changeShelf={this.props.changeShelf} books={this.props.current}/>
             </div>
 
             <div className="bookshelf">
               <h2 className="bookshelf-title">Want to Read</h2>
-              <BookShelf changeShelf={this.changeShelf} books={this.props.want}/>
+              <BookShelf changeShelf={this.props.changeShelf} books={this.props.want}/>
             </div>
 
             <div className="bookshelf">
               <h2 className="bookshelf-title">Read</h2>
-              <BookShelf changeShelf={this.changeShelf} books={this.props.read}/>
+              <BookShelf changeShelf={this.props.changeShelf} books={this.props.read}/>
             </div>
           </div>
         </div>
