@@ -16,16 +16,19 @@ class ListBooks extends Component {
   }
   
   changeShelf(e,b) {
-    console.log(e);
-    BooksAPI.update(b, e);
-    // remove from old shelf array
-    // add to new shelf array
-    // setState return both shelves
+    console.log('changeShelf');
+    BooksAPI.update(b, e).then(() => 
+      this.getShelf()
+    /*{
+      let jointArrays = this.state.current.concat(this.state.want, this.state.read);
+      console.log(jointArrays);
+      this.sortBooks(jointArrays);
+    }*/
+    );
   }
 
-  componentDidMount() {
-    BooksAPI.getAll().then((b) => {
-      const current = b.filter((book) => book.shelf === 'currentlyReading');
+  sortBooks(b) {
+    const current = b.filter((book) => book.shelf === 'currentlyReading');
       const want = b.filter((book) => book.shelf === 'wantToRead');
       const read = b.filter((book) => book.shelf === 'read');
       this.setState({
@@ -33,7 +36,16 @@ class ListBooks extends Component {
         want,
         read
       })
+  }
+
+  getShelf() {
+    BooksAPI.getAll().then((b) => {
+      this.sortBooks(b);
     });
+  }
+
+  componentDidMount() {
+    this.getShelf
   }
 
   render() {
