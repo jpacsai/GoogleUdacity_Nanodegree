@@ -45,7 +45,7 @@ class ListBooks extends Component {
   }
 
   componentDidMount() {
-    this.getShelf
+    this.getShelf();
   }
 
   render() {
