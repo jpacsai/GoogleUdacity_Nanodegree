@@ -3,7 +3,7 @@ import { Component } from 'react'
 
 class BookShelf extends Component {
     render() {
-        const {changeShelf, books} = this.props;
+        const {changeShelf, books, checkShelf} = this.props;
         return (
             <div className="bookshelf-books">
                 <ol className="books-grid">
@@ -19,7 +19,7 @@ class BookShelf extends Component {
                                 }}>
                             </div>
                             <div className="book-shelf-changer">
-                                <select onChange={(event) => changeShelf(event.target.value, book)} value={book.shelf}>
+                                <select onChange={(event) => changeShelf(event.target.value, book)} value={checkShelf(book)}>
                                     <option value="move" disabled>Move to...</option>
                                     <option value="currentlyReading">Currently Reading</option>
                                     <option value="wantToRead">Want to Read</option>

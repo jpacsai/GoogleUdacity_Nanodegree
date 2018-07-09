@@ -9,6 +9,7 @@ class BooksApp extends React.Component {
   constructor(props) {
     super(props);
     this.changeShelf = this.changeShelf.bind(this);
+    this.checkShelf = this.checkShelf.bind(this);
     this.state = {
       books: [],
       current: [],
@@ -17,8 +18,13 @@ class BooksApp extends React.Component {
     }
   }
 
+  checkShelf(b) {
+    const result = this.state.books.filter((s) => s.id === b.id);
+    console.log(b.title);
+    return result.length > 0 ? result[0].shelf : 'none';
+  }
+
   sortBooks(b) {
-    //console.log(b);
     const current = b.filter((book) => book.shelf === 'currentlyReading');
     const want = b.filter((book) => book.shelf === 'wantToRead');
     const read = b.filter((book) => book.shelf === 'read');
@@ -54,6 +60,7 @@ class BooksApp extends React.Component {
             current={this.state.current}
             want={this.state.want}
             read={this.state.read}
+            checkShelf={this.checkShelf}
             changeShelf={this.changeShelf} /> 
           }/>
 
@@ -63,6 +70,7 @@ class BooksApp extends React.Component {
             current={this.state.current}
             want={this.state.want}
             read={this.state.read}
+            checkShelf={this.checkShelf}
             changeShelf={this.changeShelf} /> 
           }/>
       </div>

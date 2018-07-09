@@ -24,17 +24,26 @@ class ListBooks extends Component {
           <div>
             <div className="bookshelf">
               <h2 className="bookshelf-title">Currently Reading</h2>
-              <BookShelf changeShelf={this.props.changeShelf} books={this.props.current}/>
+              <BookShelf
+                checkShelf={this.props.checkShelf}
+                changeShelf={this.props.changeShelf}
+                books={this.props.current} />
             </div>
 
             <div className="bookshelf">
               <h2 className="bookshelf-title">Want to Read</h2>
-              <BookShelf changeShelf={this.props.changeShelf} books={this.props.want}/>
+              <BookShelf
+                checkShelf={this.props.checkShelf}
+                changeShelf={this.props.changeShelf}
+                books={this.props.want} />
             </div>
 
             <div className="bookshelf">
               <h2 className="bookshelf-title">Read</h2>
-              <BookShelf changeShelf={this.props.changeShelf} books={this.props.read}/>
+              <BookShelf
+                checkShelf={this.props.checkShelf}
+                changeShelf={this.props.changeShelf}
+                books={this.props.read} />
             </div>
           </div>
         </div>

@@ -2,8 +2,6 @@ import React from 'react'
 import { Component } from 'react'
 import { Link } from 'react-router-dom'
 import BookShelf from './BookShelf';
-//import escapeRegexp from 'escape-string-regexp'
-//import sortBy from 'sort-by'
 import * as BooksAPI from './BooksAPI'
 
 class SearchBooks extends Component {
@@ -18,22 +16,10 @@ class SearchBooks extends Component {
         BooksAPI.search(e).then((books) => {
             console.log(books);
             const result = books && Array.isArray(books) ? books : [];
-            if (result.length > 0) {
-                console.log('check length')
-                result.forEach((b) => {
-                    if (this.props.books.includes(b) === true) {
-                        console.log('includes: ' + b.title);
-                    }
-                })
-            }
             this.setState({
                 query : result
             })
         })
-    }
-
-    checkOnShelf() {
-
     }
 
     render() {
@@ -61,7 +47,7 @@ class SearchBooks extends Component {
                 </div>
                 <div className="search-books-results">
                     <ol className="books-grid">
-                        <BookShelf onShelf={this.props.books} books={this.state.query} changeShelf={this.props.changeShelf}/>
+                        <BookShelf onShelf={this.props.books} books={this.state.query} changeShelf={this.props.changeShelf} checkShelf={this.props.checkShelf}/>
                     </ol>
                 </div>
             </div>
