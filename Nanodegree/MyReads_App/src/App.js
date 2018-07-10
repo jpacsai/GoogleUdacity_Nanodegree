@@ -19,15 +19,40 @@ class BooksApp extends Component {
     }
   }
 
-  checkShelf(b) {
-    const result = this.state.onShelf.filter((s) => s.id === b.id);
-    return result.length > 0 ? result[0].shelf : 'none';
+  // fetch all books already on shelves on page load
+  componentDidMount(){
+    this.getShelf();
   }
 
+  // fetch all books already on shelves (currently reading, want to read and read)
+  // then check if each book has missing properties (image url, author)
+  // sort books into relevant shelves in state
+  getShelf() {
+    BooksAPI.getAll().then((books) => {
+      books.forEach((book) => this.bookChecker(book));
+      this.sortBooks(books);
+    });
+  }
+
+  // then check if each book has missing properties (image url, author)
+  bookChecker(b){
+    // if imageLink property is missing add a link for placeholder
+    if (b.hasOwnProperty('imageLinks') === false) {
+      b.imageLinks = 'url("https://i.imgur.com/OUAxmdN.png")'
+    }
+    // if author property is missing add text
+    if (b.hasOwnProperty('authors') === false) {
+      b.authors = ['unknown author']
+    }
+    return b;
+  }
+
+  // sort a book into it's relevant shelf based on it's in shelf property
   sortBooks(b) {
     const current = b.filter((book) => book.shelf === 'currentlyReading');
     const want = b.filter((book) => book.shelf === 'wantToRead');
     const read = b.filter((book) => book.shelf === 'read');
+    // set it in state
     this.setState({
       onShelf: b,
       current,
@@ -36,29 +61,16 @@ class BooksApp extends Component {
     })
   }
 
+  // check if book is on shelf
+  // return it's shelf value or 'none' if not on shelf
+  checkShelf(b) {
+    const result = this.state.onShelf.filter((s) => s.id === b.id);
+    return result.length > 0 ? result[0].shelf : 'none';
+  }
+
+  // update a books shelf property
   changeShelf(e, b) {
     BooksAPI.update(b, e).then(this.getShelf());
-  }
-
-  getShelf() {
-    BooksAPI.getAll().then((books) => {
-      books.forEach((book) => this.bookChecker(book));
-      this.sortBooks(books);
-    });
-  }
-
-  bookChecker(b){
-    if (b.hasOwnProperty('imageLinks') === false) {
-      b.imageLinks = 'url("https://i.imgur.com/OUAxmdN.png")'
-    }
-    if (b.hasOwnProperty('authors') === false) {
-      b.authors = ['unknown author']
-    }
-    return b;
-  }
-
-  componentDidMount(){
-    this.getShelf();
   }
 
   render() {
