@@ -4,20 +4,20 @@ import './App.css'
 import { Route } from 'react-router-dom'
 import SearchBooks from './SearchBooks';
 import ListBooks from './ListBooks';
+import { Component } from 'react';
 
-class BooksApp extends React.Component {
+class BooksApp extends Component {
   constructor(props) {
     super(props);
     this.changeShelf = this.changeShelf.bind(this);
     this.checkShelf = this.checkShelf.bind(this);
-    this.handleChange = this.handleChange.bind(this);
     this.state = {
       onShelf: [],
       current: [],
       want: [],
       read: [],
       query: [],
-      matchCounter: ''
+      
     }
   }
 
@@ -47,30 +47,6 @@ class BooksApp extends React.Component {
       this.bookChecker(books);
       this.sortBooks(books);
     });
-  }
-
-  handleChange(expression) {
-    BooksAPI.search(expression).then((results) => {
-      const result = results && Array.isArray(results) ? results : [];
-      let counterText = '';
-      if (result.length > 0) {
-        const matchCounter = result.length;
-        counterText = matchCounter + " matching books";
-        result.forEach((b => {
-          this.bookChecker(b);
-        }))
-      }
-      else if (result.length === 0 && expression.length > 0) {
-        counterText = 'Sorry, no matching book found'
-      }
-      else {
-        counterText = '';
-      }
-      this.setState({
-        query: result,
-        matchCounter: counterText
-      })
-    })
   }
 
   bookChecker(b){
@@ -103,14 +79,9 @@ class BooksApp extends React.Component {
         <Route path='/search' render={ () => 
           <SearchBooks 
             books={ this.state.onShelf }
-            current={ this.state.current }
-            want={ this.state.want }
-            read={ this.state.read }
             checkShelf={ this.checkShelf }
             changeShelf={ this.changeShelf } 
-            handleChange={ this.handleChange }
-            query={ this.state.query }
-            matchCounter={ this.state.matchCounter }/> 
+            bookChecker={ this.bookChecker } />
           }/>
       </div>
     )
