@@ -1,48 +1,37 @@
 import React from 'react'
-import { Component } from 'react'
 import { Link } from 'react-router-dom'
-import BookShelf from './BookShelf';
-import * as BooksAPI from './BooksAPI'
+import BookShelf from './BookShelf'
 
-class SearchBooks extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      query: []
-    }
-  }
-
-  render() {
-    const { handleChange } = this.props;
-    return (
-      <div className="search-books">
-        <div className="search-books-bar">
-          <Link
-            className="close-search"
-            to='/'>
-            Close
-          </Link>
-          <div className="search-books-input-wrapper">
-            <input
-              type="text"
-              placeholder="Search by title or author"
-              onChange={ (event) => handleChange(event.target.value) }
-            /> 
-          </div>
-        </div>
-        <div className="search-books-results">
-          <ol className="books-grid">
-            <BookShelf
-              onShelf={ this.props.books }
-              books={ this.props.query}
-              changeShelf={ this.props.changeShelf }
-              checkShelf={ this.props.checkShelf }
-            />
-          </ol>
+const SearchBooks = (props) => {
+  const { handleChange } = props;
+  return (
+    <div className="search-books">
+      <div className="search-books-bar">
+        <Link
+          className="close-search"
+          to='/'>
+          Close
+        </Link>
+        <div className="search-books-input-wrapper">
+          <input
+            type="text"
+            placeholder="Search by title or author"
+            onChange={ (event) => handleChange(event.target.value) }
+          /> 
         </div>
       </div>
-    )
-  }
+      <div className="search-books-results">
+        <ol className="books-grid">
+          <BookShelf
+            onShelf={ props.books }
+            books={ props.query}
+            changeShelf={ props.changeShelf }
+            checkShelf={ props.checkShelf }
+          />
+        </ol>
+      </div>
+    </div>
+  )
 }
 
 export default SearchBooks
