@@ -4,7 +4,6 @@ This project is developed for Google/Udacity Front End Web Development Nanodegre
 ## Table of Contents
 
 * [Project](#project)
-* [Link](#live-link)
 * [Dependencies](#dependencies)
 * [Installation](#installation)
 * [How to use](#using-the-app)
@@ -12,10 +11,6 @@ This project is developed for Google/Udacity Front End Web Development Nanodegre
 
 ## Project 
 Adding interactivity to the app with React by refactoring the static code 
-
-
-## Live link
-https://jpacsai.github.io/GoogleUdacity_Nanodegree/Nanodegree/Restaurant_Review_App/
 
 ## Dependencies
 - Starter code from [Udacity](https://github.com/udacity/reactnd-project-myreads-starter)  
