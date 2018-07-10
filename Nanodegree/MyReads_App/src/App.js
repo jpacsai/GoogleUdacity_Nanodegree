@@ -12,7 +12,7 @@ class BooksApp extends React.Component {
     this.checkShelf = this.checkShelf.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.state = {
-      books: [],
+      onShelf: [],
       current: [],
       want: [],
       read: [],
@@ -21,7 +21,7 @@ class BooksApp extends React.Component {
   }
 
   checkShelf(b) {
-    const result = this.state.books.filter((s) => s.id === b.id);
+    const result = this.state.onShelf.filter((s) => s.id === b.id);
     return result.length > 0 ? result[0].shelf : 'none';
   }
 
@@ -33,7 +33,7 @@ class BooksApp extends React.Component {
       current,
       want,
       read,
-      books: b
+      onShelf: b
     })
   }
 
@@ -81,7 +81,7 @@ class BooksApp extends React.Component {
       <div className="app">
         <Route exact path='/' render={ () => 
           <ListBooks
-            books={ this.state.books }
+            books={ this.state.onShelf }
             current={ this.state.current }
             want={ this.state.want }
             read={ this.state.read }
@@ -91,7 +91,7 @@ class BooksApp extends React.Component {
 
         <Route path='/search' render={ () => 
           <SearchBooks 
-            books={ this.state.books }
+            books={ this.state.onShelf }
             current={ this.state.current }
             want={ this.state.want }
             read={ this.state.read }
