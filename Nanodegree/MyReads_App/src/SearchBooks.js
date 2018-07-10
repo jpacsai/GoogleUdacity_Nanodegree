@@ -21,7 +21,9 @@ const SearchBooks = (props) => {
         </div>
       </div>
       <div className="search-books-results">
-        <p>{ props.matchCounter }</p>
+        <p className="search-counter">
+          { props.matchCounter }
+        </p>
         <ol className="books-grid">
           <BookShelf
             onShelf={ props.books }

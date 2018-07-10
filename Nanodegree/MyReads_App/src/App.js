@@ -52,22 +52,23 @@ class BooksApp extends React.Component {
   handleChange(expression) {
     BooksAPI.search(expression).then((results) => {
       const result = results && Array.isArray(results) ? results : [];
+      let counterText = '';
       if (result.length > 0) {
         const matchCounter = result.length;
-        this.setState({
-          matchCounter
-        })
+        counterText = matchCounter + " matching books";
         result.forEach((b => {
           this.bookChecker(b);
         }))
       }
       else if (result.length === 0 && expression.length > 0) {
-        this.setState({
-          matchCounter: 'Sorry, no matching book found'
-        })
+        counterText = 'Sorry, no matching book found'
+      }
+      else {
+        counterText = '';
       }
       this.setState({
         query: result,
+        matchCounter: counterText
       })
     })
   }
