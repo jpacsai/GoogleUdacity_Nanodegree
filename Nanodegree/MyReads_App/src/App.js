@@ -30,10 +30,10 @@ class BooksApp extends React.Component {
     const want = b.filter((book) => book.shelf === 'wantToRead');
     const read = b.filter((book) => book.shelf === 'read');
     this.setState({
+      onShelf: b,
       current,
       want,
-      read,
-      onShelf: b
+      read
     })
   }
 
@@ -43,14 +43,14 @@ class BooksApp extends React.Component {
 
   getShelf() {
     BooksAPI.getAll().then((books) => {
+      this.bookChecker(books);
       this.sortBooks(books);
     });
   }
 
-  
-  handleChange(e) {
-    BooksAPI.search(e).then((books) => {
-      const result = books && Array.isArray(books) ? books : [];
+  handleChange(expression) {
+    BooksAPI.search(expression).then((results) => {
+      const result = results && Array.isArray(results) ? results : [];
       if (result.length > 0) {
         result.forEach((b => {
           this.bookChecker(b);
