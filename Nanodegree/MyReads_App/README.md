@@ -7,6 +7,7 @@ This project is developed for Google/Udacity Front End Web Development Nanodegre
 * [Link](#live-link)
 * [Dependencies](#dependencies)
 * [Installation](#installation)
+* [How to use](#using-the-app)
 * [Compatibility](#browser-compatibility)
 
 ## Project 
