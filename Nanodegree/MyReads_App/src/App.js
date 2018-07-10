@@ -16,7 +16,8 @@ class BooksApp extends React.Component {
       current: [],
       want: [],
       read: [],
-      query: []
+      query: [],
+      matchCounter: ''
     }
   }
 
@@ -52,12 +53,21 @@ class BooksApp extends React.Component {
     BooksAPI.search(expression).then((results) => {
       const result = results && Array.isArray(results) ? results : [];
       if (result.length > 0) {
+        const matchCounter = result.length;
+        this.setState({
+          matchCounter
+        })
         result.forEach((b => {
           this.bookChecker(b);
         }))
       }
+      else if (result.length === 0 && expression.length > 0) {
+        this.setState({
+          matchCounter: 'Sorry, no matching book found'
+        })
+      }
       this.setState({
-        query: result
+        query: result,
       })
     })
   }
@@ -98,7 +108,8 @@ class BooksApp extends React.Component {
             checkShelf={ this.checkShelf }
             changeShelf={ this.changeShelf } 
             handleChange={ this.handleChange }
-            query={ this.state.query }/> 
+            query={ this.state.query }
+            matchCounter={ this.state.matchCounter }/> 
           }/>
       </div>
     )
