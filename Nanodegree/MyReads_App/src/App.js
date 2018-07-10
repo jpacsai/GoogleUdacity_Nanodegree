@@ -15,9 +15,7 @@ class BooksApp extends Component {
       onShelf: [],
       current: [],
       want: [],
-      read: [],
-      query: [],
-      
+      read: []
     }
   }
 
@@ -44,7 +42,7 @@ class BooksApp extends Component {
 
   getShelf() {
     BooksAPI.getAll().then((books) => {
-      this.bookChecker(books);
+      books.forEach((book) => this.bookChecker(book));
       this.sortBooks(books);
     });
   }
@@ -54,7 +52,7 @@ class BooksApp extends Component {
       b.imageLinks = 'url("https://i.imgur.com/OUAxmdN.png")'
     }
     if (b.hasOwnProperty('authors') === false) {
-      b.authors = ['author unknown']
+      b.authors = ['unknown author']
     }
     return b;
   }
