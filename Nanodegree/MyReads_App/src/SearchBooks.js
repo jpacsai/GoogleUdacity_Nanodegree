@@ -12,16 +12,8 @@ class SearchBooks extends Component {
     }
   }
 
-  handleChange(e) {
-    BooksAPI.search(e).then((books) => {
-      const result = books && Array.isArray(books) ? books : [];
-      this.setState({
-        query : result
-      })
-    })
-  }
-
   render() {
+    const { handleChange } = this.props;
     return (
       <div className="search-books">
         <div className="search-books-bar">
@@ -34,7 +26,7 @@ class SearchBooks extends Component {
             <input
               type="text"
               placeholder="Search by title or author"
-              onChange={ (event) => this.handleChange(event.target.value) }
+              onChange={ (event) => handleChange(event.target.value) }
             /> 
           </div>
         </div>
@@ -42,7 +34,7 @@ class SearchBooks extends Component {
           <ol className="books-grid">
             <BookShelf
               onShelf={ this.props.books }
-              books={ this.state.query}
+              books={ this.props.query}
               changeShelf={ this.props.changeShelf }
               checkShelf={ this.props.checkShelf }
             />

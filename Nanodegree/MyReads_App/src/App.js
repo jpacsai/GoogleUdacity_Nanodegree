@@ -10,17 +10,18 @@ class BooksApp extends React.Component {
     super(props);
     this.changeShelf = this.changeShelf.bind(this);
     this.checkShelf = this.checkShelf.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.state = {
       books: [],
       current: [],
       want: [],
-      read: []
+      read: [],
+      query: []
     }
   }
 
   checkShelf(b) {
     const result = this.state.books.filter((s) => s.id === b.id);
-    console.log(b.title);
     return result.length > 0 ? result[0].shelf : 'none';
   }
 
@@ -42,9 +43,33 @@ class BooksApp extends React.Component {
 
   getShelf() {
     BooksAPI.getAll().then((books) => {
-      console.log(books);
       this.sortBooks(books);
     });
+  }
+
+  
+  handleChange(e) {
+    BooksAPI.search(e).then((books) => {
+      const result = books && Array.isArray(books) ? books : [];
+      if (result.length > 0) {
+        result.forEach((b => {
+          this.bookChecker(b);
+        }))
+      }
+      this.setState({
+        query: result
+      })
+    })
+  }
+
+  bookChecker(b){
+    if (b.hasOwnProperty('imageLinks') === false) {
+      b.imageLinks = 'url("https://i.imgur.com/OUAxmdN.png")'
+    }
+    if (b.hasOwnProperty('authors') === false) {
+      b.authors = ['author unknown']
+    }
+    return b;
   }
 
   componentDidMount(){
@@ -71,7 +96,9 @@ class BooksApp extends React.Component {
             want={ this.state.want }
             read={ this.state.read }
             checkShelf={ this.checkShelf }
-            changeShelf={ this.changeShelf } /> 
+            changeShelf={ this.changeShelf } 
+            handleChange={ this.handleChange }
+            query={ this.state.query }/> 
           }/>
       </div>
     )
