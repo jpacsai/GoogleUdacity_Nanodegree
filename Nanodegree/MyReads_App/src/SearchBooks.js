@@ -14,6 +14,7 @@ class SearchBooks extends Component {
     }
   }
 
+  // handling text input in search form
   handleChange(expression) {
     let result = [];
     let counterText = '';
@@ -26,7 +27,7 @@ class SearchBooks extends Component {
             this.props.bookChecker(b);
           }))
         }
-        else if (results.length === 0 && expression.length > 0) {
+        else if (result.length === 0 && expression.length > 0) {
           counterText = 'Sorry, no matching book found'
         }
       }).then( () => this.setQuery(result, counterText))
@@ -64,7 +65,7 @@ class SearchBooks extends Component {
         </div>
         <div className="search-books-results">
           <p className="search-counter">
-            { this.props.matchCounter }
+            { this.state.matchCounter }
           </p>
           <ol className="books-grid">
             <BookShelf
