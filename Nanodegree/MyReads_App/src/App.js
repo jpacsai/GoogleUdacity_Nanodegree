@@ -68,12 +68,22 @@ class BooksApp extends Component {
     return result.length > 0 ? result[0].shelf : 'none';
   }
 
-  // update a books shelf property
+  // update a book's shelf property
   changeShelf(e, b) {
-    BooksAPI.update(b, e).then(this.getShelf());
+    // copy array of books on shelves to modify changed book's shelf property
+    const updateShelf = this.state.onShelf.slice(0);
+    // find book's index in the array
+    const index = this.state.onShelf.findIndex((k) => k.title === b.title);
+    // update the books's shelf property in array
+    updateShelf[index].shelf = e;
+    // sort updated array of books to shelves
+    // and set it in state to reflect shelf change immediately
+    this.sortBooks(updateShelf);
+    BooksAPI.update(b, e);
   }
 
   render() {
+    
     return (
       <div className="app">
         <Route exact path='/' render={ () => 
