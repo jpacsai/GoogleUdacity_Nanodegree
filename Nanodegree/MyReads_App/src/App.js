@@ -72,8 +72,13 @@ class BooksApp extends Component {
   changeShelf(e, b) {
     // copy array of books on shelves to modify changed book's shelf property
     const updateShelf = this.state.onShelf.slice(0);
+    // check if modified book is already on shelf
+    // if not, add it to the copied array
+    if (b.hasOwnProperty('shelf') === false) {
+      updateShelf.push(b);
+    }
     // find book's index in the array
-    const index = this.state.onShelf.findIndex((k) => k.title === b.title);
+    let index = updateShelf.findIndex((k) => k.title === b.title);
     // update the books's shelf property in array
     updateShelf[index].shelf = e;
     // sort updated array of books to shelves
