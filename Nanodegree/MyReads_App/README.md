@@ -10,7 +10,7 @@ This project is developed for Google/Udacity Front End Web Development Nanodegre
 * [Compatibility](#browser-compatibility)
 
 ## Project 
-Adding interactivity to the app with React by refactoring the static code 
+Adding interactivity to the app with React by refactoring the code provided for the basic static page
 
 ## Dependencies
 - Starter code from [Udacity](https://github.com/udacity/reactnd-project-myreads-starter)  
