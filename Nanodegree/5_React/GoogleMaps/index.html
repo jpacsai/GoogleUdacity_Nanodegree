@@ -23,6 +23,12 @@
           map: map,
           title: "Home :)"
         });
+        var infowindow = new google.maps.InfoWindow({
+          content: "Hello World!"
+        });
+        marker.addListener('click', function() {
+          infowindow.open(map, marker);
+        })
       }
   </script>
   <script async defer
