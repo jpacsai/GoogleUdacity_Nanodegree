@@ -1,5 +1,3 @@
-// TODO: optional - leaderboard
-
 'use strict';
 // - - - - VARIABLES - - - -
 // characters
