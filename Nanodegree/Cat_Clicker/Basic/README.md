@@ -1,4 +1,4 @@
-# Cat Clicker App - basic
+# Cat Clicker App - basic 😺
 
 **Developed for Udacity Nanodegree course**  
 
@@ -19,6 +19,7 @@ The aim of the project is to practice how to structure a web application with po
 * [Licence](#licence)
 * [Credits](#credits)
 
+
 ## 🔗 Live link  
 Open the page directly from [here](https://jpacsai.github.io/GoogleUdacity_Nanodegree/Nanodegree/Cat_Clicker/Basic/dist/index.html)  
 
@@ -38,7 +39,7 @@ The system expected to have the following dependencies installed: `Git`
 The site was tested on Google Chrome only
 
 ## 🍴 How to use  
-Clicking on the images of the cats increments the their counter beneath them.
+Clicking on the images of the cats increments its counter beneath it.
 
 ## 📜 Licence
 
