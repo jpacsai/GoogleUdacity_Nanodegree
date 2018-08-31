@@ -1,4 +1,4 @@
-# Cat Clicker App - premium edition pro
+# Cat Clicker App - premium edition pro 😺
 
 **Developed for Udacity Nanodegree course**  
 
