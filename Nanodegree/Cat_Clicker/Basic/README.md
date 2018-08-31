@@ -30,6 +30,10 @@ The system expected to have the following dependencies installed: `Git`
 1. Clone [repository](https://github.com/jpacsai/Neighborhood-App)
 2. Open **index.html** in your browser
 
+### Built with  
+* Gulp
+* Sass
+
 ### Browser compatibility  
 The site was tested on Google Chrome only
 
