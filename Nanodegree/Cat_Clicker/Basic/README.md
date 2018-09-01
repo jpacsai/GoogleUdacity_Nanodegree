@@ -13,11 +13,11 @@ The aim of the project is to practice how to structure a web application with po
 ***
 
 ## 📑 Table of Contents
-* [Live link](#live-link)
-* [Getting started](#getting-started)
-* [How to use](#how-to-use)
-* [Licence](#licence)
-* [Credits](#credits)
+* [Live link](#🔗-live-link)
+* [Getting started](#🏁-getting-started)
+* [How to use](#🍴-how-to-use)
+* [Licence](#📜-licence)
+* [Credits](#💰-credits)
 
 
 ## 🔗 Live link  
