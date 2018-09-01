@@ -1,4 +1,4 @@
-# Animal Trading Card Project
+# Animal Trading Card Project 🐦
 
 **This project is developed for Google/Udacity Front End Web Development Nanodegree (Project 1).**  
 
