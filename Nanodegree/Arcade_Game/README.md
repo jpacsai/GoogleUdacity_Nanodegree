@@ -1,10 +1,10 @@
 # Arcade Game Project 🐧
 
-**This project is developed for Google/Udacity Front End Web Development Nanodegree (Project 2).**
+**This project is developed for Google/Udacity Front End Web Development Nanodegree (Project 3).**
 
 A classic style arcade game where the player has to feed all the baby penguins with fish to win the game while avoiding enemies in the water.
 
-The aim of the project is to build the game functionalities with the provided the art assets and game engine.
+The aim of the project is to build the game functionalities with the provided art assets and game engine.
 
 ***
 
