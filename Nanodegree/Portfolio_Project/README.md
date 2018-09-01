@@ -32,7 +32,7 @@ Open the page directly from [here](https://jpacsai.github.io/GoogleUdacity_Nanod
 ### Installation  
 The system expected to have the following dependencies installed: `Git`
 
-1. Clone [repository](https://github.com/jpacsai/Neighborhood-App)
+1. Clone [repository](https://github.com/jpacsai/GoogleUdacity_Nanodegree/tree/master/Nanodegree/Portfolio_Project)
 2. Open **index.html** in your browser
 
 ### Browser compatibility  
