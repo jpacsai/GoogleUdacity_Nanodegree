@@ -1,4 +1,4 @@
-# Cat Clicker App - premium edition
+# Cat Clicker App - premium edition 😺
 
 **Developed for Udacity Nanodegree course**  
 
@@ -17,18 +17,17 @@ The number of clicks in the cat area is unique to each cat, and increments when 
 ***
 
 ## 📑 Table of Contents
-* [Live link](#live-link)
-* [Project requirements](#project-requirements)
-* [Getting started](#getting-started)
-* [How to use](#how-to-use)
-* [Licence](#licence)
-* [Credits](#credits)
+* [Live link](#-live-link)
+* [Project requirements](#-project-requirements)
+* [Getting started](#-getting-started)
+* [How to use](#-how-to-use)
+* [Licence](#-licence)
+* [Credits](#-credits)
 
 ## 🔗 Live link  
 Open the page directly from [here](https://jpacsai.github.io/GoogleUdacity_Nanodegree/Nanodegree/Cat_Clicker/Premium_Edition/dist/)  
 
 ## 📌 Project requirements:
-**Visuals**  
 The application should display
 - a list of at least 5 cats, listed by name
 - an area to display the selected cat
@@ -62,6 +61,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](https://gi
 
 ## 💰 Credits
 - background [image](https://www.freepik.com/free-vector/cats-pattern_1259818.htm#term=cat%20background%20pattern&page=1&position=16) from [Freepik](https://www.freepik.com/)
+- [favicon](https://www.flaticon.com/free-icon/dog-paw_12638#term=cat%20paw&page=1&position=5) from [Flaticon](https://www.flaticon.com/)
 - Cecile's [image](https://pixabay.com/en/cat-eyes-green-eyes-domestic-cat-2151830/) from [Marcocarli](https://pixabay.com/en/users/Marcocarli-4847725/) at [PixaBay](https://pixabay.com/)
 - Bertalan's [image](https://pixabay.com/en/cat-silhouette-cats-silhouette-694730/) from [bella67](https://pixabay.com/en/users/bella67-887962/) at [PixaBay](https://pixabay.com/)
 - Liuka's [image](https://pixabay.com/en/cat-relaxation-rest-feline-animal-649164/) from [pikabum](https://pixabay.com/en/users/pikabum-273706/) at [PixaBay](https://pixabay.com/)
