@@ -18,11 +18,11 @@ and I have added some features with JavaScript to the page (wall clock, steaming
 ***
 
 ## 📑 Table of Contents
-* [Live link](#live-link)
-* [Getting started](#getting-started)
-* [How to use](#how-to-use)
-* [Licence](#licence)
-* [Credits](#credits)
+* [Live link](#-live-link)
+* [Getting started](#-getting-started)
+* [How to use](#-how-to-use)
+* [Licence](#-licence)
+* [Credits](#-credits)
 
 ## 🔗 Live link  
 Open the page directly from [here](https://jpacsai.github.io/GoogleUdacity_Nanodegree/Nanodegree/Portfolio_Project/)  
