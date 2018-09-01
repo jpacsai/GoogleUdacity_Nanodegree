@@ -1,4 +1,4 @@
-# Portfolio
+# Portfolio 💻
 
 **This project is developed for Google/Udacity Front End Web Development Nanodegree (Project 2).**
 
