@@ -19,18 +19,17 @@ There is an admin form included in the page too to update the details of the cat
 ***
 
 ## 📑 Table of Contents
-* [Live link](#live-link)
-* [Project requirements](#project-requirements)
-* [Getting started](#getting-started)
-* [How to use](#how-to-use)
-* [Licence](#licence)
-* [Credits](#credits)
+* [Live link](#-live-link)
+* [Project requirements](#-project-requirements)
+* [Getting started](#-getting-started)
+* [How to use](#-how-to-use)
+* [Licence](#-licence)
+* [Credits](#-credits)
 
 ## 🔗 Live link  
 Open the page directly from [here](https://jpacsai.github.io/GoogleUdacity_Nanodegree/Nanodegree/Cat_Clicker/Premium_Edition_Pro/dist/)  
 
 ## 📌 Project requirements:
-**Visuals**  
 The application should display
 - a list of at least 5 cats, listed by name
 - an area to display the selected cat
