@@ -47,5 +47,6 @@ This project is licensed under the MIT License - see the [LICENSE.md](https://gi
 
 ## 💰 Credits
 - background [image](https://www.freepik.com/free-vector/cats-pattern_1259818.htm#term=cat%20background%20pattern&page=1&position=16) from [Freepik](https://www.freepik.com/)
-- orange cat [image](https://pixabay.com/en/cat-eyes-green-eyes-domestic-cat-2151830/) from [Marcocarli](https://pixabay.com/en/users/Marcocarli-4847725/) at [PixaBay](https://pixabay.com/)
-- black cat [image](https://pixabay.com/en/cat-silhouette-cats-silhouette-694730/) from [bella67](https://pixabay.com/en/users/bella67-887962/) at [PixaBay](https://pixabay.com/)
+- [favicon](https://www.flaticon.com/free-icon/dog-paw_12638#term=cat%20paw&page=1&position=5) from [Flaticon](https://www.flaticon.com/)
+- Cecile's [image](https://pixabay.com/en/cat-eyes-green-eyes-domestic-cat-2151830/) from [Marcocarli](https://pixabay.com/en/users/Marcocarli-4847725/) at [PixaBay](https://pixabay.com/)
+- Bertalan's [image](https://pixabay.com/en/cat-silhouette-cats-silhouette-694730/) from [bella67](https://pixabay.com/en/users/bella67-887962/) at [PixaBay](https://pixabay.com/)
