@@ -1,4 +1,4 @@
-# Pixel Art Maker Project
+# Pixel Art Maker Project 🎨
 
 **This project is developed for Google/Udacity Front End Web Development Scholarship - Challenge Phase.**  
 
@@ -12,11 +12,11 @@ The aim of the project was to build a single-page web app that allows users to d
 
 ***
 ## 📑 Table of Contents
-* [Live link](#live-link)
-* [Getting started](#getting-started)
-* [How to use](#how-to-use)
-* [Licence](#licence)
-* [Credits](#credits)
+* [Live link](#-live-link)
+* [Getting started](#-getting-started)
+* [How to use](#-how-to-use)
+* [Licence](#-licence)
+* [Credits](#-credits)
 
 ## 🔗 Live link  
 Open the page directly from [here](https://jpacsai.github.io/GoogleUdacity_Nanodegree/ChallengePhase/FinalProject/)  
@@ -26,7 +26,7 @@ Open the page directly from [here](https://jpacsai.github.io/GoogleUdacity_Nanod
 ### Installation  
 The system expected to have the following dependencies installed: `Git`
 
-1. Clone [repository](https://github.com/jpacsai/Neighborhood-App)
+1. Clone [repository](https://github.com/jpacsai/GoogleUdacity_Nanodegree/tree/master/ChallengePhase/FinalProject)
 2. Open **index.html** in your browser
 
 ### Built with  

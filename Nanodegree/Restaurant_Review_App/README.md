@@ -29,13 +29,13 @@ Open the page directly from [here](https://jpacsai.github.io/GoogleUdacity_Nanod
 The system expected to have the following dependencies installed: `Git`
 
 ## Installation
-1. Clone [repository](https://github.com/jpacsai/Restaurant_Reviews_App)
+1. Clone [repository](https://github.com/jpacsai/GoogleUdacity_Nanodegree/tree/master/Nanodegree/Restaurant_Review_App)
 2. Use [Web Server for Chrome](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb) Applicaton
 3. Set Port to 8000
 4. Open in browser [http://localhost:8000/](http://localhost:8000/)  
 
 Alternatively:  
-1. Clone [repository](https://github.com/jpacsai/Restaurant_Reviews_App)
+1. Clone [repository](https://github.com/jpacsai/GoogleUdacity_Nanodegree/tree/master/Nanodegree/Restaurant_Review_App)
 2. Open the code directory `cd Restaurant_Reviews_App`
 3. In a terminal, check the version of Python you have `python -V`
 4. If you have Python 2.x `python -m SimpleHTTPServer 8000`

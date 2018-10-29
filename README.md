@@ -49,7 +49,8 @@ The top 10% in the program earn an additional 6-month scholarship to one of four
 - **4.&nbsp;Front End Applications:**
      - [Cat Clicker](https://jpacsai.github.io/GoogleUdacity_Nanodegree/Nanodegree/Cat_Clicker/Basic/dist/index.html)
      - [Cat Clicker - Premium](https://jpacsai.github.io/GoogleUdacity_Nanodegree/Nanodegree/Cat_Clicker/Premium_Edition/dist/)
-     - Restaurant Reviews App
+     - [Cat Clicker - Premium Pro](https://jpacsai.github.io/GoogleUdacity_Nanodegree/Nanodegree/Cat_Clicker/Premium_Edition_Pro/dist/)
+     - [Restaurant Reviews App](https://jpacsai.github.io/GoogleUdacity_Nanodegree/Nanodegree/Restaurant_Review_App/)
 - **5.&nbsp;Building with React:**
-     - MyReads -a book tracking app
-     - Neighbour Map
+     - [MyReads -a book tracking app](https://jpacsai.github.io/MyReads-App/#/)
+     - [Neighbourhood App](https://jpacsai.github.io/Neighborhood-App/)
