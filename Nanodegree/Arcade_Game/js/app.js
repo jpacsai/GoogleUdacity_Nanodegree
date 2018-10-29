@@ -461,7 +461,7 @@ function restart() {
         for (let m = 0; m < addLife; m++) {
             let heart = document.createElement('IMG');
             heart.classList.add('heart');
-            heart.src = 'IMAGES/HEART.PNG';
+            heart.src = 'images/heart.png';
             fragment.appendChild(heart);
         }
         document.querySelector('.life').appendChild(fragment);
